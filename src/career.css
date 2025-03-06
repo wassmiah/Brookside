@@ -1,0 +1,257 @@
+/* General Styles */
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .career-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main.career-content {
+    flex: 1;
+    padding: 2rem 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* Top Bar */
+  .top-bar {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+  }
+  
+  .top-bar .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #ffffff;
+  }
+  
+  .navbar-brand img {
+    height: 50px;
+  }
+  
+  .nav-link {
+    color: white !important;
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    color: #ff9800 !important;
+  }
+  
+  /* Job Section */
+  .current-job-offers {
+    font-size: 2.5rem;
+    color: #ff9800;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .job-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 1200px;
+    gap: 2rem;
+  }
+  
+  /* Job List Styles */
+  .job-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .job-list-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .job-list-header {
+    font-size: 2rem;
+    color: #ff9800;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ff9800;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  
+  .job-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  .job-list li {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #333;
+  }
+  
+  .job-list li i {
+    font-size: 1.5rem;
+    color: #ff9800;
+  }
+  
+  .application-instructions {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .application-instructions a {
+    color: #ff9800;
+    text-decoration: none;
+  }
+  
+  .application-instructions a:hover {
+    text-decoration: underline;
+  }  
+  
+  /* Resume Image */
+  .job-image {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .job-image img {
+    max-width: 75%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+/* Footer */
+.footer {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 2rem 0;
+  }
+  
+  .footer-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-section h5 {
+    font-size: 1.25rem;
+    color: #ff9800;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section p,
+  .footer-section ul {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-links li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-links li a:hover {
+    text-decoration: underline;
+    color: #ff9800;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333; /* Dark circle background */
+    color: white; /* Icon color */
+    border-radius: 50%; /* Make it round */
+    font-size: 1.5rem; /* Icon size */
+    transition: all 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    background-color: #ff9800; 
+    color: white;
+  }
+  
+  .social-icon.facebook:hover {
+    background-color: #4267B2;
+  }
+  
+  .social-icon.linkedin:hover {
+    background-color: #0077b5; 
+  }
+  
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .newsletter-form input {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
+  
+  .newsletter-form button {
+    border: none;
+    padding: 0.5rem 1rem;
+    background-color: #ff9800;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .newsletter-form button:hover {
+    background-color: #e68900;
+  }  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .job-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .job-list-card,
+    .job-image {
+      max-width: 90%;
+    }
+  }
+  
