@@ -4,6 +4,7 @@ import "./App.css";
 import Career from "./career";
 import Home from "./Home";
 import MeetTheTeam from "./MeetTheTeam"; 
+import LearnHere from "./LearnHere";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
           <Link to="/">Home</Link>
           <Link to="/meet-the-team">Meet the Team</Link>
           <Link to="/career">Apply Now</Link>
+          <Link to="/LearnHere">Learn Here</Link>
         </div>
       </div>
 
@@ -38,6 +40,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/meet-the-team" element={<MeetTheTeam />} />
         <Route path="/career" element={<Career />} />
+        <Route path="/LearnHere" element={<LearnHere />} />
       </Routes>
     </>
   );
