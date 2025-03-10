@@ -1,3 +1,164 @@
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center; /* Center content */
+  align-items: center;
+  padding: 18px 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  height: 80px;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 40px; 
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 35px;
+  font-weight: 600;
+  font-size: 18px;
+  align-items: center; 
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  transition: color 0.3s ease-in-out;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #f5a623;
+}
+
+/* Apply Now Button */
+.apply-now-btn {
+  background-color: #f5a623;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.apply-now-btn:hover {
+  background-color: #2d9cdb;
+  transform: scale(1.05);
+}
+
+/* Responsive Navbar */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 30px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .apply-now-btn {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+    height: auto;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .apply-now-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+
+/* Responsive Navbar */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 30px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .apply-now-btn {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+    height: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .apply-now-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -40,12 +201,6 @@
   margin: 0 auto; /* Removed extra margin to bring it closer to the button */
 }
 
-.hero h1 {
-  font-size: 55px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 25px;
-  border-radius: 10px;
-}
 
 .content {
   padding: 60px;
