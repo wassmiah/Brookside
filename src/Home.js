@@ -95,10 +95,11 @@ function Home() {
         <div className="services-container">
           <div className="service-box">
             <img src="/services/placement.png" alt="Placement" className="service-image" />
-            <h3 className="service-title">JOB PLACEMENT</h3>
+            <h3 className="service-title">TALENT ACQUISITION</h3>
             <p>
-              As a dedicated job placement company, we connect skilled talents with leading hospitality 
-              businesses in Metro Manila, assuring the right fit for both employers and job seekers.
+              We specialize in sourcing and matching top-tier hospitality professionals with industry-leading 
+              businesses. Our extensive network and strategic partnerships help companies build high-performing 
+              teams while providing job seekers with rewarding career opportunities.
             </p>
           </div>
           <div className="service-box">
