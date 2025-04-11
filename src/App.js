@@ -5,6 +5,8 @@ import Career from "./career";
 import Home from "./Home";
 import MeetTheTeam from "./MeetTheTeam";
 import LearnHere from "./LearnHere";
+import AdminDashboard from "./AdminDashboard";
+import EmployeeEvaluation from "./EmployeeEvaluation";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -43,6 +45,8 @@ function App() {
         <Route path="/meet-the-team" element={<MeetTheTeam />} />
         <Route path="/career" element={<Career />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/evaluate/:id" element={<EmployeeEvaluation />} />
         <Route path="/LearnHere" element={
           <ProtectedRoute>
             <LearnHere />

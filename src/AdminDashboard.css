@@ -1,0 +1,96 @@
+
+.admin-dashboard {
+  padding: 40px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fc;
+  min-height: 100vh;
+}
+
+.admin-dashboard h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #002e5b;
+}
+
+.upload-controls {
+  margin-bottom: 20px;
+}
+
+.upload-controls input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.upload-controls p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.employee-table th {
+  background-color: #f1f1f1;
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+}
+
+.employee-table td {
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #444;
+  border-bottom: 1px solid #eee;
+}
+
+.employee-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.evaluate-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 10px;       
+    font-size: 13px;          
+    border-radius: 4px;       
+    display: flex;
+    align-items: center;
+    gap: 4px;                 
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .evaluate-btn:hover {
+    background-color: #218838;
+  }
+  
+  
