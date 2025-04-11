@@ -1,16 +1,14 @@
-// AdminDashboard.js (with KPI score and remarks)
+// AdminDashboard.js
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { db } from "./firebase";
-import { collection, addDoc, getDocs, Timestamp } from "firebase/firestore";
-import * as XLSX from "xlsx";
+import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { FaCheck } from "react-icons/fa";
 import "./AdminDashboard.css";
 
 function AdminDashboard() {
   const [employees, setEmployees] = useState([]);
-  const [filters, setFilters] = useState({ gender: "", company: "", branch: "", startMonth: "", startYear: "" });
+  const [filters, setFilters] = useState({ gender: "", company: "", branch: "", status: "", search: "" });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,33 +20,20 @@ function AdminDashboard() {
     fetchEmployees();
   }, []);
 
-  const handleUpload = async (e) => {
+  const handleUpload = (e) => {
     const file = e.target.files[0];
-    const data = await file.arrayBuffer();
-    const workbook = XLSX.read(data);
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const parsed = XLSX.utils.sheet_to_json(sheet);
-
-    for (let emp of parsed) {
-      const birth = new Date(emp.birthdate);
-      const start = new Date(emp.startDate);
-      await addDoc(collection(db, "employees"), {
-        ...emp,
-        birthdate: isNaN(birth) ? Timestamp.now() : Timestamp.fromDate(birth),
-        startDate: isNaN(start) ? Timestamp.now() : Timestamp.fromDate(start),
-      });
+    if (file) {
+      alert("Upload handler not implemented yet. Accepts: " + file.name);
     }
-    alert("Upload successful. Refresh to view new records.");
   };
 
   const filteredEmployees = employees.filter(emp => {
-    const startDate = emp.startDate?.toDate?.();
+    const matchesSearch = !filters.search || `${emp.givenName} ${emp.lastName}`.toLowerCase().includes(filters.search.toLowerCase());
     const matchesGender = !filters.gender || emp.gender === filters.gender;
     const matchesCompany = !filters.company || emp.company === filters.company;
     const matchesBranch = !filters.branch || emp.branch === filters.branch;
-    const matchesMonth = !filters.startMonth || (startDate && startDate.getMonth() + 1 === parseInt(filters.startMonth));
-    const matchesYear = !filters.startYear || (startDate && startDate.getFullYear() === parseInt(filters.startYear));
-    return matchesGender && matchesCompany && matchesBranch && matchesMonth && matchesYear;
+    const matchesStatus = !filters.status || emp.status === filters.status;
+    return matchesSearch && matchesGender && matchesCompany && matchesBranch && matchesStatus;
   });
 
   const handleEvaluate = (emp) => {
@@ -67,6 +52,13 @@ function AdminDashboard() {
         </div>
 
         <div className="filters">
+          <input
+            type="text"
+            placeholder="Search name..."
+            value={filters.search}
+            onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+          />
+
           <select value={filters.gender} onChange={(e) => setFilters({ ...filters, gender: e.target.value })}>
             <option value="">All Genders</option>
             <option value="Male">Male</option>
@@ -97,20 +89,11 @@ function AdminDashboard() {
             <option value="Malate">Malate</option>
           </select>
 
-          <select value={filters.startMonth} onChange={(e) => setFilters({ ...filters, startMonth: e.target.value })}>
-            <option value="">All Months</option>
-            {Array.from({ length: 12 }, (_, i) => (
-              <option key={i + 1} value={i + 1}>{new Date(0, i).toLocaleString('default', { month: 'long' })}</option>
-            ))}
+          <select value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value })}>
+            <option value="">All Statuses</option>
+            <option value="Probationary">Probationary</option>
+            <option value="Regular">Regular</option>
           </select>
-
-          <input
-            type="number"
-            placeholder="Start Year"
-            value={filters.startYear}
-            onChange={(e) => setFilters({ ...filters, startYear: e.target.value })}
-            style={{ width: '120px' }}
-          />
         </div>
 
         <table className="employee-table">
@@ -122,6 +105,7 @@ function AdminDashboard() {
               <th>Company</th>
               <th>Branch</th>
               <th>Start Date</th>
+              <th>Status</th>
               <th>KPI Score</th>
               <th>Remarks</th>
               <th>Action</th>
@@ -135,13 +119,12 @@ function AdminDashboard() {
                 <td>{emp.gender}</td>
                 <td>{emp.company}</td>
                 <td>{emp.branch}</td>
-                <td>{emp.startDate?.toDate?.().toLocaleDateString()}</td>
+                <td>{emp.startDate?.toDate?.().toLocaleDateString?.() || "—"}</td>
+                <td>{emp.status ?? "—"}</td>
                 <td>{emp.kpiScore ?? "—"}</td>
                 <td>{emp.remarks ?? "—"}</td>
                 <td>
-                  <button className="evaluate-btn" onClick={() => handleEvaluate(emp)}>
-                    Evaluate <FaCheck style={{ marginLeft: "6px" }} />
-                  </button>
+                  <button className="evaluate-btn" onClick={() => handleEvaluate(emp)}>Evaluate</button>
                 </td>
               </tr>
             ))}

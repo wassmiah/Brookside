@@ -14,13 +14,19 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate("/LearnHere");
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if (user.email === "admin@brookside.com") {
+          navigate("/admin-dashboard");
+        } else {
+          navigate("/LearnHere");
+        }
       })
       .catch((err) => {
         alert("Login failed: " + err.message);
       });
   };
+  
 
   return (
     <>

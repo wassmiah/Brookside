@@ -97,10 +97,10 @@ function Home() {
             <img src="/services/placement.png" alt="Placement" className="service-image" />
             <h3 className="service-title">TALENT ACQUISITION</h3>
             <p>
-              We specialize in sourcing and matching top-tier hospitality professionals with industry-leading 
-              businesses. Our extensive network and strategic partnerships help companies build high-performing 
-              teams while providing job seekers with rewarding career opportunities.
-            </p>
+               We specialize in sourcing and matching top-tier hospitality professionals with industry-leading 
+               businesses. Our extensive network and strategic partnerships help companies build high-performing 
+               teams while providing job seekers with rewarding career opportunities.
+          </p>
           </div>
           <div className="service-box">
             <img src="/services/manpower.png" alt="Manpower Services" className="service-image" />
