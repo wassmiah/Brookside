@@ -13,14 +13,16 @@ const KPI_CRITERIA = {
     { label: "Attendance (0 absence in 2 months)", weight: 20 },
     { label: "Tardiness (≤2 in 2 months)", weight: 20 },
     { label: "Guest Engagement / Transaction Accuracy / Reservation Accuracy", weight: 15 },
-    { label: "Team Dynamics / Professionalism", weight: 15 }
+    { label: "Team Dynamics / Professionalism", weight: 15 },
+    { label: "Grooming & Demeanor (see checklist below)", weight: 30, disabled: true }
   ],
   BOH: [
     { label: "Personal Hygiene (checklist applied)", weight: 20 },
     { label: "Food Handling / Sanitation / Ingredient Prep", weight: 30 },
     { label: "Attendance (0 absence in 2 months)", weight: 15 },
     { label: "Tardiness (≤2 in 2 months)", weight: 15 },
-    { label: "Team Dynamics / Professionalism", weight: 20 }
+    { label: "Team Dynamics / Professionalism", weight: 20 },
+    { label: "Grooming & Demeanor (see checklist below)", weight: 30, disabled: true }
   ]
 };
 
@@ -125,17 +127,20 @@ function EmployeeEvaluation() {
       <p><strong>Department:</strong> {isFOH ? "FOH" : "BOH"}</p>
 
       <form className="evaluation-form">
-        {kpiList.map((kpi, idx) => (
-          <label key={idx} className="kpi-item">
-            <input type="checkbox" checked={scores[idx]} onChange={() => handleToggle(idx)} />
-            {kpi.label} — <em>{kpi.weight}%</em>
-          </label>
-        ))}
+      { kpiList.map((kpi, idx) => (
+        <label key={idx} className="kpi-item">
+          <input
+            type="checkbox"
+            disabled={kpi.disabled}
+            checked={kpi.disabled ? groomingScore > 0 : scores[idx]}
+            onChange={() => !kpi.disabled && handleToggle(idx)}
+          />
+          {kpi.label} — <em>{kpi.weight}%</em>
+        </label>
+      ))}
       </form>
 
       <div className="evaluation-checklist">
-        <h4>Grooming & Demeanor</h4>
-        <p className="grooming-description">Grooming & Hygiene Checklist</p>
         <ul>
           {groomingChecklist.map((item, idx) => (
             <li key={idx}>
