@@ -2,7 +2,6 @@ import React from "react";
 import "./LearnHere.css";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
-import Navbar from "./components/Navbar";
 
 
 function LearnHere() {
@@ -19,11 +18,6 @@ function LearnHere() {
   
   return (
     <>
-
-    {/* Nav Section */}
-    <Navbar onLogout={handleLogout} />
-
-          
       {/* Hero Section */}
       <div className="learn-here hero" id="learn">
         <video autoPlay muted loop id="heroVideo">
@@ -34,6 +28,11 @@ function LearnHere() {
         <div className="hero-overlay">
           <img src="/logo.png" alt="Business Logo" className="hero-logo" />
           <h1>LEARNING LINK</h1>
+
+          <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          <button className="admin-btn">
+            <a href="/admin-dashboard">Admin Dashboard</a>
+          </button>
         </div>
       </div>
       </div>

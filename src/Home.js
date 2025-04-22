@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import Navbar from "./components/Navbar";
-
 
 function Home() {
   const [index, setIndex] = useState(0);
@@ -25,10 +23,6 @@ function Home() {
 
   return (
     <>
-      {/* Nav Section */}
-      <Navbar />
-
-
       {/* Hero Section */}
       <div className="hero" id="home">
         <video autoPlay muted loop id="heroVideo">

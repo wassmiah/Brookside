@@ -1,8 +1,7 @@
-// EmployeeEvaluation.js
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { db } from "./firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import "./EmployeeEvaluation.css";
 
 const FOH_POSITIONS = ["Receptionist", "Waitstaff", "Cashier", "Barista", "Bartender"];
@@ -106,12 +105,19 @@ function EmployeeEvaluation() {
     if (!confirm) return;
 
     try {
-      const empRef = doc(db, "employees", employee.id);
-      await updateDoc(empRef, {
+      const evaluationsRef = collection(db, "employees", employee.id, "evaluations");
+
+      const existing = await getDocs(evaluationsRef);
+      const instance = existing.docs.length + 1;
+
+      await addDoc(evaluationsRef, {
+        instance,
         kpiScore: total,
-        remarks: remarks,
-        groomingChecklist: groomingChecklist.map((item, i) => ({ item, passed: checklist[i] }))
+        remarks,
+        groomingChecklist: groomingChecklist.map((item, i) => ({ item, passed: checklist[i] })),
+        evaluatedAt: new Date().toISOString()
       });
+
       alert("Evaluation submitted successfully.");
       navigate(-1);
     } catch (error) {
@@ -127,20 +133,21 @@ function EmployeeEvaluation() {
       <p><strong>Department:</strong> {isFOH ? "FOH" : "BOH"}</p>
 
       <form className="evaluation-form">
-      { kpiList.map((kpi, idx) => (
-        <label key={idx} className="kpi-item">
-          <input
-            type="checkbox"
-            disabled={kpi.disabled}
-            checked={kpi.disabled ? groomingScore > 0 : scores[idx]}
-            onChange={() => !kpi.disabled && handleToggle(idx)}
-          />
-          {kpi.label} — <em>{kpi.weight}%</em>
-        </label>
-      ))}
+        {kpiList.map((kpi, idx) => (
+          <label key={idx} className="kpi-item">
+            <input
+              type="checkbox"
+              disabled={kpi.disabled}
+              checked={kpi.disabled ? groomingScore > 0 : scores[idx]}
+              onChange={() => !kpi.disabled && handleToggle(idx)}
+            />
+            {kpi.label} — <em>{kpi.weight}%</em>
+          </label>
+        ))}
       </form>
 
       <div className="evaluation-checklist">
+        <h4>Grooming & Hygiene Checklist</h4>
         <ul>
           {groomingChecklist.map((item, idx) => (
             <li key={idx}>
@@ -152,7 +159,7 @@ function EmployeeEvaluation() {
           ))}
         </ul>
         <p><strong>Checklist Status:</strong> {groomingStatus} ({groomingChecked}/{groomingChecklist.length}) — <strong>{groomingPercent.toFixed(0)}%</strong></p>
-        </div>
+      </div>
 
       <div className="evaluation-result">
         <p><strong>Total Score:</strong> {total}%</p>

@@ -17,6 +17,12 @@
   font-weight: 600;
 }
 
+.login-container a {
+  color: #f7a61a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .login-container form {
   display: flex;
   flex-direction: column;

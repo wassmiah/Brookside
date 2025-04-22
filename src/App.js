@@ -1,14 +1,18 @@
 import { useEffect } from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Career from "./career";
 import Home from "./Home";
 import MeetTheTeam from "./MeetTheTeam";
 import LearnHere from "./LearnHere";
+import Register from "./Register";
 import AdminDashboard from "./AdminDashboard";
 import EmployeeEvaluation from "./EmployeeEvaluation";
+import EmployeeProfile from "./EmployeeProfile";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
+import Navbar from "./components/Navbar";
+import NotFound from "./NotFound";
 
 function App() {
   const location = useLocation();
@@ -17,9 +21,9 @@ function App() {
     const handleScroll = () => {
       const navbar = document.querySelector(".navbar");
       if (window.scrollY > 50) {
-        navbar.classList.add("sticky");
+        navbar?.classList.add("sticky");
       } else {
-        navbar.classList.remove("sticky");
+        navbar?.classList.remove("sticky");
       }
     };
 
@@ -27,31 +31,46 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <>
-      <div className="navbar">
-        <img src="/logo.png" alt="Company Logo" className="navbar-logo" />
-        <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/meet-the-team">Meet the Team</Link>
-          <Link to="/career">Apply Now</Link>
-          {/* Go to login first, then protect LearnHere */}
-          <Link to={location.pathname === "/LearnHere" ? "/LearnHere" : "/login"}>Learn Here</Link>
-        </div>
-      </div>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/meet-the-team" element={<MeetTheTeam />} />
-        <Route path="/career" element={<Career />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/evaluate/:id" element={<EmployeeEvaluation />} />
+        <Route path="/career" element={<Career />} />
+        <Route path="/meet-the-team" element={<MeetTheTeam />} />
+        <Route path="/register" element={<Register />} />
+
         <Route path="/LearnHere" element={
           <ProtectedRoute>
             <LearnHere />
           </ProtectedRoute>
         } />
+
+        <Route path="/admin-dashboard" element={
+          <ProtectedRoute requireAdmin>
+            <AdminDashboard />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/evaluate/:id" element={
+          <ProtectedRoute requireAdmin>
+            <EmployeeEvaluation />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/employee/:id" element={
+          <ProtectedRoute requireAdmin>
+            <EmployeeProfile />
+          </ProtectedRoute>
+        } />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

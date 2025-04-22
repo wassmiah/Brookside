@@ -1,16 +1,10 @@
 import React from "react";
 import "./career.css";
 import resume from "./how-to-resume.png";
-import Navbar from "./components/Navbar";
-
 
 function Career() {
   return (
-    <>
-      {/* Nav Section */}
-            <Navbar />
-        
-      
+    <>     
       <div className="career-page">
 
       {/* Career Content */}

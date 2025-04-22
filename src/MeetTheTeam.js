@@ -1,7 +1,5 @@
 import React from "react";
 import "./MeetTheTeam.css";
-import Navbar from "./components/Navbar";
-
 
 function MeetTheTeam() {
   const teamMembers = [
@@ -15,9 +13,6 @@ function MeetTheTeam() {
 
   return (
     <>
-      {/* Nav Section */}
-      <Navbar />
-
       {/* CEO Section */}
       <section className="ceo-section">
         <div className="ceo-container">

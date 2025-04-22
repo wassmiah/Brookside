@@ -1,118 +1,135 @@
-/* ========== Navbar Base Styles ========== */
+/* === GLOBAL NAVBAR CONTAINER === */
 .navbar {
-  background-color: #ffffff;
-  padding: 16px 20px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 70px;
-  position: fixed;
-  top: 0;
   width: 100%;
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #222;
+/* === FLEX LAYOUT FOR NAVBAR === */
+.navbar-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
 }
 
-/* Navigation Links */
-.nav-links {
+/* === LEFT: LOGO === */
+.navbar-left {
   display: flex;
-  gap: 20px;
   align-items: center;
 }
 
-.nav-links a {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 16px;
-  color: #222;
+.navbar-logo {
+  height: 42px;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
 }
 
-/* Grouped Actions (Apply + Logout) */
-.nav-actions {
+.navbar-logo.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* === CENTER: NAV LINKS === */
+.navbar-center {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-left: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  min-width: 0;
 }
 
-/* Apply Now button */
-.apply-now-btn {
-  background-color: #f5a623;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: bold;
+.navbar-center a {
   text-decoration: none;
+  color: #222;
+  font-weight: 600;
   font-size: 16px;
+  padding: 6px 8px;
+  transition: color 0.5s ease;
+}
+
+.navbar-center a:hover {
+  color: #f7a61a;
+}
+
+/* === RIGHT: ACTIONS === */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+/* === BUTTONS === */
+.apply-now-btn,
+.logout-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
   transition: background-color 0.3s ease;
+}
+
+.apply-now-btn {
+  background-color: #f7a61a;
+  color: white;
 }
 
 .apply-now-btn:hover {
-  background-color: #2d9cdb;
+  background-color: #dd8f10;
 }
 
-/* Logout button */
-.logout-btn {
-  background-color: #f44336;
-  color: white;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+
+/* === MENU TOGGLE FOR MOBILE === */
+.menu-toggle {
+  display: none;
 }
 
-.logout-btn:hover {
-  background-color: #d32f2f;
-}
-
-/* ========== Responsive Styles ========== */
+/* === RESPONSIVE: MOBILE VIEW === */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block !important;
+  .navbar-content {
+    grid-template-columns: 1fr;
+    padding: 12px 24px;
   }
 
-  .nav-links {
-    display: none !important;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 70px;
-    left: 0;
+  .navbar-left {
     width: 100%;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px 0;
-    gap: 16px;
-    z-index: 999;
+    justify-content: space-between;
   }
 
-  .nav-links.show {
-    display: flex !important;
-  }
-
-  .nav-actions {
+  .navbar-center {
     flex-direction: column;
-    align-items: center;
     width: 100%;
-    gap: 10px;
+    display: none;
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  .navbar-center.show {
+    display: flex;
+  }
+
+  .navbar-right {
+    width: 100%;
+    justify-content: flex-start;
     margin-top: 10px;
   }
 
-  .nav-actions .apply-now-btn,
-  .nav-actions .logout-btn {
-    width: 90%;
-    max-width: 240px;
-    text-align: center;
+  .menu-toggle {
     display: block;
+    font-size: 22px;
+    cursor: pointer;
+    color: #222;
   }
 }
