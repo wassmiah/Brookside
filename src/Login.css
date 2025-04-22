@@ -47,6 +47,24 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* Space for the icon */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #888;
+}
+
 
 .login-container button:hover {
   background-color: #2d9cdb;

@@ -10,6 +10,7 @@ import "./Login.css";
 function Login() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
   const findUserByUsername = async (username) => {
@@ -76,13 +77,21 @@ function Login() {
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+       <div className="password-input-wrapper">
+          <input
+            type={passwordVisible ? "text" : "password"}
+            placeholder="Password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <span
+            className="toggle-password"
+            onClick={() => setPasswordVisible((prev) => !prev)}
+          >
+            <i className={`fas ${passwordVisible ? "fa-eye-slash" : "fa-eye"}`}></i>
+          </span>
+        </div>
         <button type="submit">Login</button>
       </form>
       <p>New user? <a href="/register">Create an account</a></p>
