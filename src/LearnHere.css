@@ -1,0 +1,228 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Hero Section */
+.learn-here.hero {
+  position: relative;
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0;
+  z-index: 1;
+}
+
+.logout-btn {
+  margin-top: 10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+.admin-btn {
+  margin-top: 10px;
+  background-color: #3c3ce778;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.admin-btn:hover {
+  background-color: #3c3ce7;
+}
+
+.learn-here #heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.learn-here .hero-overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.learn-here .hero-logo {
+  max-width: 60vh;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.learn-here.hero .hero-overlay h1 {
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "HK Modular", sans-serif;
+}
+
+
+/* Learning Link Section */
+.learn-here .content,
+.learn-here #learning-link {
+  padding: 30px 40px 40px 40px;
+  text-align: center;
+}
+
+.learn-here .services-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #002e5b;
+  text-transform: uppercase;
+  font-family: "HK Modular", sans-serif;
+  margin: 50px 0;
+  text-align: center;
+}
+
+.learn-here p {
+  max-width: 900px;
+  margin: 40px auto 30px;
+  font-size: 17px;
+  color: #333;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.learn-here .services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+.learn-here .service-box {
+  max-width: 220px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.learn-here .service-box a {
+  text-decoration: none;
+  color: black;
+}
+
+.learn-here .service-image {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+  margin-left: 100px;
+}
+
+.learn-here .service-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+  margin-left: 150px;
+}
+
+.learn-here .service-box p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+  color: #333;
+  margin-top: 10px;
+  max-width: 600px;
+}
+
+.learn-here .service-image:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .learn-here.hero {
+    height: 45vh;
+  }
+
+  .learn-here .hero h1 {
+    font-size: 28px;
+    padding: 5px;
+    letter-spacing: 1.5px;
+    margin-bottom: 0;
+  }
+
+  .learn-here .services-title {
+    font-size: 28px;
+  }
+
+  .learn-here .services-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .learn-here .service-box {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .learn-here p {
+    padding: 0 15px;
+  }
+
+  .learn-here .logout-btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  /* 👇 FIXED: remove weird side push on mobile */
+  .learn-here .service-image,
+  .learn-here .service-title {
+    margin-left: 0 !important;
+  }
+
+  .learn-here .service-image {
+    max-width: 150px;
+  }
+
+  .learn-here .service-title {
+    text-align: center;
+  }
+}
+
+
