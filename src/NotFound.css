@@ -1,0 +1,32 @@
+.notfound-container {
+  text-align: center;
+  padding: 100px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.notfound-container h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #e53935;
+}
+
+.notfound-container p {
+  font-size: 18px;
+  color: #555;
+}
+
+.back-home-btn {
+  margin-top: 30px;
+  display: inline-block;
+  background-color: #f7a61a;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-home-btn:hover {
+  background-color: #dd8f10;
+}
