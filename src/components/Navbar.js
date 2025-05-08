@@ -46,7 +46,7 @@ function Navbar({ onLogout }) {
           <a href="/">Home</a>
           <a href="/#about">About Us</a>
           <a href="/#services">Services</a>
-          <a href="/#contact">Contact Us</a>
+          <a href="/#commitment">Our Commitment</a>
           <a href="/meet-the-team">Meet the Team</a>
           {/* <a href="/LearnHere">Learn Here</a> */}
          </div>

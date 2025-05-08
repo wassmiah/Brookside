@@ -1,10 +1,10 @@
-
 /* CEO Section */
 .ceo-section {
-  background: #f5f5f5;
+  background: #10131a;
   padding: 60px 10%;
   text-align: center;
   margin-top: 80px;
+  color: #fff;
 }
 
 .ceo-container {
@@ -19,46 +19,61 @@
 .ceo-image img {
   width: 300px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  background: #181c23;
 }
 
 .ceo-text {
   max-width: 600px;
   text-align: left;
+  color: #fff;
 }
 
 .ceo-text h2 {
   font-size: 32px;
-  color: #002e5b;
+  color: #40b4ff;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .ceo-text h3 {
   font-size: 20px;
   color: #f5a623;
   font-weight: bold;
+  margin-bottom: 12px;
 }
 
 .ceo-text p {
   font-size: 18px;
-  color: #333;
+  color: #e0e0e0;
   margin-top: 10px;
+  line-height: 1.7;
 }
 
 /* Team Section */
 .team-section {
   text-align: center;
   padding: 60px 10%;
+  background: #181c23;
+  color: #fff;
 }
 
 .team-title {
   font-size: 40px;
   font-weight: bold;
-  color: #002e5b;
+  color: #40b4ff;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
+  margin-bottom: 40px;
+}
+
+.team-title .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .team-container {
@@ -72,32 +87,39 @@
 .team-card {
   width: 250px;
   text-align: center;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: transform 0.3s ease-in-out;
+  background: #232733;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  padding: 28px 20px 24px 20px;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+  border: 1px solid #232733;
 }
 
 .team-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px #40b4ff44, 0 2px 24px rgba(0,0,0,0.35);
+  border: 1px solid #40b4ff;
 }
 
 .team-card img {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 15px;
+  background: #181c23;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
 }
 
 .team-card h3 {
   font-size: 20px;
-  color: #002e5b;
+  color: #40b4ff;
   font-weight: bold;
+  margin-bottom: 6px;
 }
 
 .team-card p {
   font-size: 16px;
-  color: #666;
+  color: #f5a623;
+  margin-bottom: 14px;
 }
 
 .linkedin-button {
@@ -108,12 +130,15 @@
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s, box-shadow 0.3s;
   text-align: center;
+  box-shadow: 0 2px 8px #0077b555;
+  letter-spacing: 1px;
 }
 
 .linkedin-button:hover {
   background-color: #005582;
+  box-shadow: 0 4px 16px #40b4ff55;
 }
 
 /* 🌟 RESPONSIVE DESIGN 🌟 */

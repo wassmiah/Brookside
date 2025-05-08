@@ -28,10 +28,11 @@
 
 .navbar-logo {
   height: 42px;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateY(-12px);
   visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .navbar-logo.visible {
@@ -82,14 +83,39 @@
 }
 
 .apply-now-btn {
+  background: linear-gradient(90deg, #f78f3f 0%, #f5a623 100%);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border: none;
+  box-shadow: 0 2px 12px #f5a62333;
+  text-transform: uppercase;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.apply-now-btn:hover, .apply-now-btn:focus {
+  background: linear-gradient(90deg, #f5a623 0%, #f78f3f 100%);
+  color: #fff;
+  box-shadow: 0 4px 24px #f5a62366;
+  transform: translateY(-2px) scale(1.04);
+  text-decoration: none;
+}
+
+.logout-btn {
   background-color: #f7a61a;
   color: white;
 }
 
-.apply-now-btn:hover {
+.logout-btn:hover {
   background-color: #dd8f10;
 }
-
 
 /* === MENU TOGGLE FOR MOBILE === */
 .menu-toggle {

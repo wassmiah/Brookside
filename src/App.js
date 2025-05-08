@@ -10,6 +10,7 @@ import AdminDashboard from "./AdminDashboard";
 import EmployeeEvaluation from "./EmployeeEvaluation";
 import EmployeeProfile from "./EmployeeProfile";
 import Login from "./Login";
+import ContactUs from "./ContactUs";
 import ProtectedRoute from "./ProtectedRoute";
 import Navbar from "./components/Navbar";
 import NotFound from "./NotFound";
@@ -45,6 +46,7 @@ function App() {
         <Route path="/career" element={<Career />} />
         <Route path="/meet-the-team" element={<MeetTheTeam />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<ContactUs />} />
 
         <Route path="/LearnHere" element={
           <ProtectedRoute>
