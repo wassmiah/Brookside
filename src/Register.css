@@ -1,75 +1,93 @@
+body, .register-bg {
+  background: #10131a !important;
+  min-height: 100vh;
+  font-family: 'Questrial', sans-serif;
+}
+
 .register-container {
   max-width: 400px;
   margin: 60px auto;
   padding: 40px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  font-family: "Poppins", sans-serif;
+  background-color: #181c23;
+  box-shadow: 0 4px 24px rgba(64,180,255,0.10);
+  border-radius: 16px;
+  font-family: 'Questrial', sans-serif;
 }
 
 .register-container h2 {
   text-align: center;
   margin-bottom: 24px;
-  font-size: 28px;
-  color: #333;
+  font-size: 2rem;
+  color: #40b4ff;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .register-container form {
   display: flex;
   flex-direction: column;
+  gap: 18px;
 }
 
 .register-container input {
-  padding: 12px;
-  margin-bottom: 18px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: border-color 0.2s;
+  padding: 14px 16px;
+  margin-bottom: 0;
+  border: 1px solid #40b4ff;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #232733;
+  color: #fff;
+  font-family: 'Questrial', sans-serif;
+  transition: border-color 0.2s, background 0.2s;
 }
 
 .register-container input:focus {
   outline: none;
-  border-color: #f7a61a;
+  border-color: #f5a623;
+  background: #232733;
 }
 
 .register-container button {
-  padding: 12px;
-  background-color: #f7a61a;
+  padding: 14px;
+  background: #40b4ff;
   color: white;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(64,180,255,0.10);
+  font-family: 'Questrial', sans-serif;
 }
 
 .register-container button:hover {
-  background-color: #dd8f10;
+  background: #2d9cdb;
+  box-shadow: 0 4px 16px #40b4ff44;
 }
 
 .register-container p {
   text-align: center;
   margin-top: 16px;
-  font-size: 14px;
+  font-size: 1rem;
+  color: #fff;
 }
 
 .register-container a {
-  color: #f7a61a;
+  color: #f5a623;
   text-decoration: none;
   font-weight: 600;
+  transition: color 0.2s;
 }
 
 .register-container a:hover {
-  text-decoration: underline;
+  color: #40b4ff;
 }
 
 .password-input-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .password-input-wrapper input {
@@ -83,9 +101,27 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #888;
+  color: #40b4ff;
+  font-size: 1.2rem;
+  transition: color 0.2s;
 }
 
 .toggle-password:hover {
-  color: #333;
+  color: #f5a623;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .register-container {
+    margin: 40px 10px;
+    padding: 24px 8px;
+  }
+  .register-container h2 {
+    font-size: 1.3rem;
+  }
+  .register-container input,
+  .register-container button {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
 }

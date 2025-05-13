@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ContactUs.css';
+import Footer from './components/Footer';
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -112,6 +113,7 @@ function ContactUs() {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

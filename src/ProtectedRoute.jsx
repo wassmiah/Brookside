@@ -15,7 +15,7 @@ function ProtectedRoute({ children, requireAdmin = false }) {
         if (!requireAdmin) {
           setIsAllowed(true);
         } else {
-          const ref = doc(db, "users", user.email || "");
+          const ref = doc(db, "users", user.uid);
           const userDoc = await getDoc(ref);
           if (userDoc.exists() && userDoc.data()?.role === "admin") {
             setIsAllowed(true);

@@ -14,6 +14,9 @@ import ContactUs from "./ContactUs";
 import ProtectedRoute from "./ProtectedRoute";
 import Navbar from "./components/Navbar";
 import NotFound from "./NotFound";
+import VerifyEmail from "./VerifyEmail";
+import EmailVerified from "./EmailVerified";
+import ForgotPassword from "./ForgotPassword";
 
 function App() {
   const location = useLocation();
@@ -47,6 +50,9 @@ function App() {
         <Route path="/meet-the-team" element={<MeetTheTeam />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/email-verified" element={<EmailVerified />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route path="/LearnHere" element={
           <ProtectedRoute>

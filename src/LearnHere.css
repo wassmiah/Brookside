@@ -1,59 +1,24 @@
 /* General Styles */
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Questrial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #181c23;
 }
 
 /* Hero Section */
 .learn-here.hero {
   position: relative;
   display: flex;
-  height: 70vh;
+  height: 60vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: #fff;
   padding: 0;
   z-index: 1;
-}
-
-.logout-btn {
-  margin-top: 10px;
-  background-color: #e74c3c;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-}
-
-.logout-btn:hover {
-  background-color: #c0392b;
-}
-
-.admin-btn {
-  margin-top: 10px;
-  background-color: #3c3ce778;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-}
-
-.admin-btn:hover {
-  background-color: #3c3ce7;
+  background: #10131a;
 }
 
 .learn-here #heroVideo {
@@ -64,6 +29,7 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  opacity: 0.25;
 }
 
 .learn-here .hero-overlay {
@@ -77,44 +43,103 @@ body {
 }
 
 .learn-here .hero-logo {
-  max-width: 60vh;
+  max-width: 220px;
   height: auto;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
 }
 
 .learn-here.hero .hero-overlay h1 {
-  font-size: 40px;
-  color: black;
-  font-weight: bold;
+  font-size: 2.5rem;
+  color: #40b4ff;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: "HK Modular", sans-serif;
+  font-family: 'Questrial', sans-serif;
+  margin-bottom: 10px;
 }
 
+.hero-btn-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+}
+.hero-btn.logout-btn {
+  background: #40b4ff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s, box-shadow 0.25s, text-shadow 0.25s;
+  box-shadow: 0 0 16px 4px #40b4ff, 0 2px 8px rgba(64,180,255,0.10);
+  font-family: 'Questrial', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 0 8px #40b4ff, 0 0 2px #fff;
+  letter-spacing: 1px;
+}
+.hero-btn.logout-btn:hover {
+  background: #40b4ff;
+  box-shadow: 0 0 32px 8px #40b4ff, 0 2px 16px #40b4ff99;
+  color: #fff;
+  text-shadow: 0 0 16px #40b4ff, 0 0 4px #fff;
+}
+.hero-btn.logout-btn i {
+  font-size: 1.2rem;
+  margin-right: 6px;
+  text-shadow: 0 0 8px #40b4ff, 0 0 2px #fff;
+}
+
+.hero-btn.admin-btn {
+  background: #40b4ff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 28px;
+  border: none;  
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s, box-shadow 0.25s, text-shadow 0.25s;
+  box-shadow: 0 0 16px 4px #40b4ff, 0 2px 8px rgba(64,180,255,0.10);
+  font-family: 'Questrial', sans-serif;
+  display: flex;  
+}
+.hero-btn.admin-btn:hover {
+  background: #40b4ff;
+  box-shadow: 0 0 32px 8px #40b4ff, 0 2px 16px #40b4ff99;
+  color: #fff;
+  text-shadow: 0 0 16px #40b4ff, 0 0 4px #fff;
+}
+  
+  
 
 /* Learning Link Section */
-.learn-here .content,
 .learn-here #learning-link {
-  padding: 30px 40px 40px 40px;
+  padding: 40px 10px 60px 10px;
+  background: #181c23;
   text-align: center;
 }
 
 .learn-here .services-title {
-  font-size: 40px;
+  font-size: 2.2rem;
   font-weight: bold;
-  color: #002e5b;
+  color: #40b4ff;
   text-transform: uppercase;
-  font-family: "HK Modular", sans-serif;
-  margin: 50px 0;
+  font-family: 'Questrial', sans-serif;
+  margin: 40px 0 20px 0;
   text-align: center;
+  letter-spacing: 1px;
 }
 
 .learn-here p {
   max-width: 900px;
-  margin: 40px auto 30px;
-  font-size: 17px;
-  color: #333;
+  margin: 0 auto 30px auto;
+  font-size: 1.1rem;
+  color: #fff;
   line-height: 1.7;
   text-align: center;
 }
@@ -130,98 +155,102 @@ body {
 
 .learn-here .service-box {
   max-width: 220px;
+  min-width: 180px;
+  background: #232733;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(64,180,255,0.10);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 24px 12px 18px 12px;
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.learn-here .service-box:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 32px #40b4ff44, 0 2px 24px rgba(0,0,0,0.35);
 }
 
 .learn-here .service-box a {
   text-decoration: none;
-  color: black;
+  color: #40b4ff;
+  font-weight: 600;
 }
 
 .learn-here .service-image {
   width: 100%;
-  max-width: 180px;
+  max-width: 120px;
   border-radius: 50%;
   transition: transform 0.3s ease-in-out;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: block;
-  margin: 0 auto;
-  margin-left: 100px;
+  margin: 0 auto 10px auto;
 }
 
 .learn-here .service-title {
-  font-size: 16px;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 12px;
   text-align: center;
-  margin-left: 150px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.learn-here .service-title a {
+  color: #40b4ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.learn-here .service-title a:hover {
+  color: #f5a623;
 }
 
 .learn-here .service-box p {
-  font-size: 16px;
+  font-size: 1rem;
   text-align: center;
   line-height: 1.6;
-  color: #333;
+  color: #fff;
   margin-top: 10px;
   max-width: 600px;
 }
 
-.learn-here .service-image:hover {
-  transform: scale(1.05);
-}
 
 /* Responsive Design */
+@media (max-width: 700px) {
+  .footer-contact-container {
+    padding: 0 10px;
+  }
+  .footer-contact-title {
+    font-size: 2rem;
+  }
+  .footer-contact-label {
+    font-size: 1rem;
+  }
+  .footer-social-icon {
+    font-size: 1.5rem;
+  }
+}
 @media (max-width: 768px) {
   .learn-here.hero {
-    height: 45vh;
+    height: 35vh;
   }
-
-  .learn-here .hero h1 {
-    font-size: 28px;
-    padding: 5px;
-    letter-spacing: 1.5px;
-    margin-bottom: 0;
+  .learn-here .hero-overlay h1 {
+    font-size: 1.5rem;
   }
-
   .learn-here .services-title {
-    font-size: 28px;
+    font-size: 1.3rem;
   }
-
   .learn-here .services-container {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
-
   .learn-here .service-box {
     width: 100%;
-    max-width: 280px;
-  }
-
-  .learn-here p {
-    padding: 0 15px;
-  }
-
-  .learn-here .logout-btn {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-
-  /* 👇 FIXED: remove weird side push on mobile */
-  .learn-here .service-image,
-  .learn-here .service-title {
-    margin-left: 0 !important;
-  }
-
-  .learn-here .service-image {
-    max-width: 150px;
-  }
-
-  .learn-here .service-title {
-    text-align: center;
+    max-width: 320px;
+    margin-bottom: 18px;
   }
 }
 

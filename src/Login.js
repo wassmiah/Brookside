@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "./firebase";
@@ -11,6 +10,7 @@ function Login() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const findUserByUsername = async (username) => {
@@ -24,12 +24,14 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       let email = identifier;
       if (!identifier.includes("@")) {
         const resolvedEmail = await findUserByUsername(identifier);
         if (!resolvedEmail) {
           showToast("Username not found.");
+          setLoading(false);
           return;
         }
         email = resolvedEmail;
@@ -40,6 +42,7 @@ function Login() {
 
       if (!user.emailVerified) {
         navigate("/verify-email");
+        setLoading(false);
         return;
       }
 
@@ -63,6 +66,8 @@ function Login() {
       }
     } catch (err) {
       showToast("Login failed: " + err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,8 +97,11 @@ function Login() {
             <i className={`fas ${passwordVisible ? "fa-eye-slash" : "fa-eye"}`}></i>
           </span>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" disabled={loading}>{loading ? "Loading..." : "Login"}</button>
       </form>
+      <p style={{ marginTop: '10px' }}>
+        <a href="/forgot-password" style={{ color: '#40b4ff', textDecoration: 'underline', fontSize: '0.98rem' }}>Forgot Password?</a>
+      </p>
       <p>New user? <a href="/register">Create an account</a></p>
     </div>
   );

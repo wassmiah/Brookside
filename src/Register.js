@@ -24,6 +24,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const isUsernameTaken = async (username) => {
@@ -34,15 +35,15 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
       showToast("Passwords do not match.");
       return;
     }
-
+    setLoading(true);
     try {
       if (await isUsernameTaken(username)) {
         showToast("Username is already taken. Please choose another one.");
+        setLoading(false);
         return;
       }
 
@@ -67,12 +68,14 @@ function Register() {
       navigate("/verify-email");
     } catch (error) {
       showToast("Error: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
+      <h2>Register to Brookside</h2>
       <form onSubmit={handleRegister}>
         <input
           type="text"
@@ -128,7 +131,7 @@ function Register() {
           </span>
         </div>
 
-        <button type="submit">Register</button>
+        <button type="submit" disabled={loading}>{loading ? "Loading..." : "Register"}</button>
       </form>
       <p>Already registered? <a href="/login">Login here</a></p>
     </div>

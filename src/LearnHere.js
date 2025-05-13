@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./LearnHere.css";
 import { signOut } from "firebase/auth";
-import { auth } from "./firebase";
-
+import { auth, db } from "./firebase";
+import { Link } from "react-router-dom";
+import Footer from "./components/Footer";
+import { doc, getDoc } from "firebase/firestore";
 
 function LearnHere() {
+  const [role, setRole] = useState(null);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          setRole(userSnap.data().role);
+        }
+      }
+    };
+    fetchRole();
+  }, []);
 
   const handleLogout = () => {
     signOut(auth)
@@ -15,32 +32,32 @@ function LearnHere() {
         alert("Logout failed: " + error.message);
       });
   };
-  
+
   return (
     <>
       {/* Hero Section */}
-      <div className="learn-here hero" id="learn">
-        <video autoPlay muted loop id="heroVideo">
+      <div className="hero learn-hero" id="learn">
+        <video autoPlay muted loop playsInline preload="auto" id="heroVideo" aria-hidden="true">
           <source src="/herobg.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="learn-here hero">
         <div className="hero-overlay">
-          <img src="/logo.png" alt="Business Logo" className="hero-logo" />
-          <h1>LEARNING LINK</h1>
-
-          <button className="logout-btn" onClick={handleLogout}>Logout</button>
-          <button className="admin-btn">
-            <a href="/admin-dashboard">Admin Dashboard</a>
-          </button>
+          <img src="/logohero.webp" alt="Brookside Manpower Logo" className="hero-logo" width="500" height="200" loading="eager" decoding="async" />
+          <h1>Learning Link</h1>
+          <div className="hero-btn-group">
+            <button className="hero-btn logout-btn" onClick={handleLogout}><i className="fas fa-sign-out-alt"></i> Logout</button>
+            {role === "admin" && (
+              <Link to="/admin-dashboard" className="hero-btn admin-btn">Admin Dashboard</Link>
+            )}
+          </div>
         </div>
       </div>
-      </div>
-  {/* Learning Link Section */}
-  <div className="learn-here" id="learning-link">
+
+      {/* Learning Link Section */}
+      <div className="learn-here" id="learning-link">
         <h2 className="services-title">LEARNING NEVER STOPS</h2>
         <p>
-          Brookside’s Learning Link is here to provide a continuous learning experience for you. <br />
+          Brookside's Learning Link is here to provide a continuous learning experience for you. <br />
           This enables Brookies to refresh knowledge and promote self-paced learning even after training.
         </p>
         <div className="services-container">
@@ -113,46 +130,8 @@ function LearnHere() {
         </div>
       </div>
 
-
-    {/* Footer */}
-    <footer className="footer">
-            <div className="footer-container">
-              <div className="footer-section footer-logo">
-                <img src="/logo.png" alt="Brookside Logo" className="footer-logo-img" />
-              </div>
-              <div className="footer-section">
-                <p>&copy; 2025 Brookside Manpower Services, All Rights Reserved.</p>
-              </div>
-              <div className="footer-section">
-            <div className="social-links">
-            <a
-                href="https://www.tiktok.com/@brooksidemps"
-                target="_blank"
-                rel="noreferrer"
-                className="social-icon tiktok"
-              >
-                <i className="fab fa-tiktok"></i>
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61560528418956"
-                target="_blank"
-                rel="noreferrer"
-                className="social-icon facebook"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/company/brookside-manpower-services"
-                target="_blank"
-                rel="noreferrer"
-                className="social-icon linkedin"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </div>
-            </div>
-          </footer>
+      {/* Footer */}
+      <Footer />
     </>
   );
 }

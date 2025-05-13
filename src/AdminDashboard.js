@@ -31,6 +31,7 @@ function AdminDashboard() {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
+        alert("Successfully logged out.");
         navigate("/login");
       })
       .catch((error) => {
@@ -206,7 +207,7 @@ function AdminDashboard() {
       <div className="admin-dashboard">
         <div className="dashboard-header">
           <h2>Admin Dashboard</h2>
-          <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          <button className="logout-btn" onClick={handleLogout}><i className="fas fa-sign-out-alt"></i> Logout</button>
         </div>
 
 
