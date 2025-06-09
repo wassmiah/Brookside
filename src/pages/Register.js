@@ -11,9 +11,9 @@ import {
   getDocs,
   collection,
 } from "firebase/firestore";
-import { auth, db } from "./firebase";
+import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { showToast } from "./utils/toast";
+import { showToast } from "../utils/toast";
 import "./Register.css";
 
 function Register() {
@@ -133,7 +133,7 @@ function Register() {
 
         <button type="submit" disabled={loading}>{loading ? "Loading..." : "Register"}</button>
       </form>
-      <p>Already registered? <a href="/login">Login here</a></p>
+      <p>Already registered? <a href="/employee-access">Login here</a></p>
     </div>
   );
 }

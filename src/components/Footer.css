@@ -1,21 +1,25 @@
 .footer {
-  background: #070707;
+  background: #000;
   color: #fff;
-  padding: 60px 0 30px 0;
+  padding: 48px 0 32px 0;
   font-family: 'Questrial', sans-serif;
   text-align: left;
+  width: 100vw;
+  left: 0;
+  border-top: 2px solid #222;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  z-index: 10;
 }
 .footer-contact-container {
-  max-width: 700px;
-  margin-left: 20px;
-  margin-right: 0;
-  margin-top: -50px;
-  padding: 0 30px 0;
+  max-width: 900px;
+  margin-left: 48px;
+  margin-right: auto;
+  padding: 0 24px;
   text-align: left;
 }
 .footer-contact-title {
   color: #40b4ff;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 32px;
   text-align: left;
@@ -23,7 +27,7 @@
 .footer-contact-info {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 18px;
   text-align: left;
 }
 .footer-contact-block {
@@ -32,15 +36,16 @@
 }
 .footer-contact-label {
   font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 4px;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
   color: #fff;
   text-align: left;
 }
 .footer-contact-block div {
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.98rem;
   text-align: left;
+  line-height: 1.5;
 }
 .footer-social-links {
   display: flex;
@@ -49,25 +54,58 @@
   text-align: left;
 }
 .footer-social-icon {
-  color: #40b4ff;
-  font-size: 2rem;
+  color: #fff;
+  font-size: 1.7rem;
   transition: color 0.2s;
 }
 .footer-social-icon:hover {
-  color: #f5a623;
+  color: #40b4ff;
 }
-@media (max-width: 700px) {
+.employee-access-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #40b4ff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  transition: color 0.3s;
+  font-size: 1rem;
+}
+.employee-access-link:hover {
+  color: #0099ff;
+  background: none;
+}
+.employee-access-link i {
+  font-size: 1.1rem;
+}
+@media (max-width: 900px) {
   .footer-contact-container {
-    margin-left: 10px;
-    padding: 0 5px 0 0;
+    margin-left: 18px;
+    padding: 0 10px;
+  }
+}
+@media (max-width: 600px) {
+  .footer {
+    padding: 28px 0 16px 0;
+  }
+  .footer-contact-container {
+    margin-left: 6px;
+    padding: 0 4px;
   }
   .footer-contact-title {
-    font-size: 2rem;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
   }
   .footer-contact-label {
     font-size: 1rem;
   }
+  .footer-contact-block div {
+    font-size: 0.92rem;
+  }
   .footer-social-icon {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 } 

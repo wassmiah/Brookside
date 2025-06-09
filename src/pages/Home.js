@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Footer from "./components/Footer";
+import SEO from "../components/SEO";
 
 function Home() {
 
@@ -37,8 +37,16 @@ function Home() {
 
   return (
     <>
+      <SEO 
+        title="Home"
+        description="Brookside Manpower Services - Your trusted partner in hospitality staffing solutions. We connect skilled talents to leading hotels, resorts, and restaurants in Metro Manila."
+        keywords="hospitality staffing, hotel jobs, restaurant jobs, manpower services, job placement, Metro Manila, Philippines"
+        ogImage="/logohero.webp"
+        canonicalUrl="/"
+      />
+
       {/* Hero Section */}
-      <div className="hero" id="home">
+      <section className="hero" id="home" aria-label="Hero section">
         <video autoPlay muted loop playsInline preload="auto" id="heroVideo" aria-hidden="true">
           <source src="/herobg.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -47,18 +55,25 @@ function Home() {
         <div className="hero-overlay">
           <picture>
             <source srcSet="/logohero.webp" type="image/webp" />
-            <img src="/logohero.png" alt="Brookside Manpower Logo" className="hero-logo" width="500" height="200" loading="eager" decoding="async" />
+            <img 
+              src="/logohero.png" 
+              alt="Brookside Manpower Services Logo" 
+              className="hero-logo" 
+              width="500" 
+              height="200" 
+              loading="eager" 
+              decoding="async" 
+            />
           </picture>
 
-          <Link to="/contact" className="contact-us-btn">
+          <Link to="/contact" className="contact-us-btn" aria-label="Contact us">
             <span>Contact Us</span>
           </Link>
         </div>
-      </div>
-
+      </section>
 
       {/* About Section */}
-      <div className="about-new" id="about">
+      <section className="about-new" id="about" aria-label="About us">
         <div className="about-left" data-aos="fade-right">
           <h1 className="about-heading">
             Leave your <span className="highlight">staffing</span><br />problem to us.
@@ -78,67 +93,85 @@ function Home() {
           </p>
         </div>
         <div className="about-right" data-aos="fade-left">
-          <img src="/about-bms1.png" alt="Brookside Team" className="about-photo" />
+          <img 
+            src="/about-bms1.png" 
+            alt="Brookside Manpower Services team working together" 
+            className="about-photo"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
         </div>
-      </div>
+      </section>
 
-    {/* Services Section */}
-    <div className="what-we-do-section" id="services">
+      {/* Services Section */}
+      <section className="what-we-do-section" id="services" aria-label="Our services">
         <h2 className="neon-section-title" data-aos="fade-up">
           <span className="orange">Bridging</span> & <span className="blue">building</span><br />are our thing
         </h2>
 
         <div className="get-quoted-btn-wrapper" data-aos="fade-up" data-aos-delay="100">
-          <Link to="/contact" className="get-quoted-btn">GET QUOTED</Link>
+          <Link to="/contact" className="get-quoted-btn" aria-label="Get a quote">GET QUOTED</Link>
         </div>
 
         <div className="service-row">
-          <div className="service-item" data-aos="fade-right">
-            <div className="service-label">MANPOWER SERVICES</div>
+          <article className="service-item" data-aos="fade-right">
+            <h3 className="service-label">MANPOWER SERVICES</h3>
             <p>We attract, acquire, and retain the top talents for you; strengthening your brand's workforce.</p>
-          </div>
-          <div className="service-item" data-aos="fade-left">
-            <div className="service-label">TALENT DEVELOPMENT</div>
+          </article>
+          <article className="service-item" data-aos="fade-left">
+            <h3 className="service-label">TALENT DEVELOPMENT</h3>
             <p>We specialize in the training and development of our candidates prior deployment.</p>
-          </div>
-          <div className="service-item" data-aos="fade-up">
-            <div className="service-label">CONSULTATION SERVICES</div>
+          </article>
+          <article className="service-item" data-aos="fade-up">
+            <h3 className="service-label">CONSULTATION SERVICES</h3>
             <p>We advise businesses on workforce planning and achieve the best manpower solutions.</p>
-          </div>
+          </article>
         </div>
-      </div>
+      </section>
 
       {/* Commitment Section */}
-      <div className="commitment-section" id="commitment">
-        <img src="/commitment-bg.png" alt="City Background" className="commitment-bg-img" />
+      <section className="commitment-section" id="commitment" aria-label="Our commitment">
+        <img 
+          src="/commitment-bg.png" 
+          alt="Modern city background" 
+          className="commitment-bg-img"
+          loading="lazy"
+        />
         <div className="commitment-overlay"></div>
         <div className="commitment-content">
           <div className="commitment-left">
-            <div className="commitment-block" data-aos="fade-up" data-aos-delay="0">
+            <article className="commitment-block" data-aos="fade-up" data-aos-delay="0">
               <h2 className="commitment-title blue">Vision</h2>
               <div className="commitment-desc">To be a hub for 5–Star premium professionals.</div>
-            </div>
-            <div className="commitment-block" data-aos="fade-up" data-aos-delay="100">
+            </article>
+            <article className="commitment-block" data-aos="fade-up" data-aos-delay="100">
               <h2 className="commitment-title blue">Mission</h2>
               <div className="commitment-desc">For all professionals to be trained by industry practitioners & be given fulfilling careers.</div>
-            </div>
-            <div className="commitment-block" data-aos="fade-up" data-aos-delay="200">
+            </article>
+            <article className="commitment-block" data-aos="fade-up" data-aos-delay="200">
               <h2 className="commitment-title blue">Values</h2>
               <div className="commitment-desc">
-                <div>Innovative and revolutionary</div>
-                <div>Constant progression and results-driven</div>
-                <div>Empathetic collaborator</div>
+                <ul>
+                  <li>Innovative and revolutionary</li>
+                  <li>Constant progression and results-driven</li>
+                  <li>Empathetic collaborator</li>
+                </ul>
               </div>
-            </div>
+            </article>
           </div>
           <div className="commitment-right" data-aos="fade-left">
-            <img src="/ceo.png" alt="Timothy Justin Zeta" className="commitment-ceo-img" />
+            <img 
+              src="/ceo.png" 
+              alt="Timothy Justin Zeta - CEO of Brookside Manpower Services" 
+              className="commitment-ceo-img"
+              width="400"
+              height="500"
+              loading="lazy"
+            />
           </div>
         </div>
-      </div>
-
-      {/* Footer */}
-      <Footer />
+      </section>
     </>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "./firebase";
+import { auth, db } from "../firebase";
 import { doc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { showToast } from "./utils/toast";
+import { showToast } from "../utils/toast";
 import "./Login.css";
 
 function Login() {
@@ -59,7 +59,7 @@ function Login() {
         if (role === "admin") {
           navigate("/admin-dashboard");
         } else {
-          navigate("/LearnHere");
+          navigate("/learn-here");
         }
       } else {
         showToast("User role not found. Contact admin.");

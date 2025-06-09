@@ -123,69 +123,6 @@ main.career-content {
   text-decoration: underline;
 }
 
-/* Footer */
-.footer {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  padding: 2rem 0;
-  text-align: center;
-}
-
-.footer-section {
-  margin-bottom: 1.5rem;
-}
-
-.footer-section h5 {
-  font-size: 1.2rem;
-  color: #ff9800;
-  margin-bottom: 1rem;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-links li a {
-  color: black;
-  text-decoration: none;
-}
-
-.footer-links li a:hover {
-  text-decoration: underline;
-  color: #ff9800;
-}
-
-/* Social Media Icons */
-.social-links {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.social-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #333;
-  color: white;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  background-color: #ff9800;
-  color: white;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .job-section {

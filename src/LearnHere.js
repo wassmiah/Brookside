@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./LearnHere.css";
 import { signOut } from "firebase/auth";
 import { auth, db } from "./firebase";
-import { Link } from "react-router-dom";
-import Footer from "./components/Footer";
+import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 
 function LearnHere() {
-  const [role, setRole] = useState(null);
+  const [setRole] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRole = async () => {
@@ -21,12 +21,12 @@ function LearnHere() {
       }
     };
     fetchRole();
-  }, []);
+  }, [setRole]);
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        window.location.href = "/login";
+        navigate("/login");
       })
       .catch((error) => {
         alert("Logout failed: " + error.message);
@@ -46,9 +46,6 @@ function LearnHere() {
           <h1>Learning Link</h1>
           <div className="hero-btn-group">
             <button className="hero-btn logout-btn" onClick={handleLogout}><i className="fas fa-sign-out-alt"></i> Logout</button>
-            {role === "admin" && (
-              <Link to="/admin-dashboard" className="hero-btn admin-btn">Admin Dashboard</Link>
-            )}
           </div>
         </div>
       </div>
@@ -129,9 +126,6 @@ function LearnHere() {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <Footer />
     </>
   );
 }
