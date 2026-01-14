@@ -1,18 +1,33 @@
+body, html {
+  height: 100%;
+}
+
 .notfound-container {
-  text-align: center;
-  padding: 100px 20px;
-  font-family: "Poppins", sans-serif;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #181b20;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  margin: 48px auto 0 auto;
+  max-width: 700px;
+  padding: 64px 32px 48px 32px;
 }
 
 .notfound-container h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 24px;
   color: #e53935;
+  letter-spacing: 1px;
 }
 
 .notfound-container p {
-  font-size: 18px;
-  color: #555;
+  font-size: 1.25rem;
+  color: #888;
+  margin-bottom: 32px;
 }
 
 .back-home-btn {
@@ -29,4 +44,114 @@
 
 .back-home-btn:hover {
   background-color: #dd8f10;
+}
+
+.notfound-links {
+  margin: 32px 0 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+.notfound-link {
+  background: #23272f;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(40,40,40,0.08);
+  border: none;
+  outline: none;
+  letter-spacing: 0.5px;
+}
+
+.notfound-link:hover {
+  background: #40b4ff;
+  color: #fff;
+  box-shadow: 0 4px 16px #40b4ff44;
+}
+
+.notfound-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.notfound-search input[type="text"] {
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid #333;
+  font-size: 1.1rem;
+  width: 240px;
+  background: #23272f;
+  color: #fff;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.notfound-search input[type="text"]:focus {
+  border: 1.5px solid #40b4ff;
+}
+
+.notfound-search button {
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: #f78f3f;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #f78f3f33;
+}
+
+.notfound-search button:hover {
+  background: #40b4ff;
+  box-shadow: 0 4px 16px #40b4ff44;
+}
+
+.notfound-help {
+  margin-top: 24px;
+  color: #b0b0b0;
+  font-size: 1.1rem;
+}
+
+.notfound-help a {
+  color: #40b4ff;
+  text-decoration: underline;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.notfound-help a:hover {
+  color: #f78f3f;
+}
+
+@media (max-width: 700px) {
+  .notfound-container {
+    padding: 32px 8px 24px 8px;
+    max-width: 98vw;
+  }
+  .notfound-container h1 {
+    font-size: 2.1rem;
+  }
+  .notfound-link {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+  .notfound-search input[type="text"] {
+    width: 120px;
+    font-size: 1rem;
+  }
+  .notfound-search button {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
 }

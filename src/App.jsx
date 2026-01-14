@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -15,11 +15,17 @@ import EmployeeAccess from './pages/EmployeeAccess';
 import ProtectedRoute from './ProtectedRoute';
 import ForgotPassword from './pages/ForgotPassword';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import NotFound from './NotFound';
+import Eva from './pages/Eva';
+import EvaInquiry from './pages/EvaInquiry';
 import './App.css';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isEvaPage = location.pathname === '/eva';
+
   return (
-    <Router>
+    <>
       <Helmet>
         <title>Brookside Manpower Services Inc. | Top Hospitality Staffing Solutions in Philippines</title>
         <meta name="description" content="Brookside Manpower Services connects skilled talents to leading hospitality companies in Metro Manila. Find your next career opportunity in hotels, resorts, and restaurants." />
@@ -65,7 +71,7 @@ function App() {
       </Helmet>
       
       <div className="App">
-        <Navbar />
+        {!isEvaPage && <Navbar />}
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -93,11 +99,22 @@ function App() {
                 </ProtectedRoute>
               } 
             />
+            <Route path="/eva" element={<Eva />} />
+            <Route path="/eva/inquiry" element={<EvaInquiry />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-        <Footer />
+        {!isEvaPage && <Footer />}
         <ConsentManager />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

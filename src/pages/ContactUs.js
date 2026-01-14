@@ -98,8 +98,8 @@ function ContactUs() {
                 <div>
                   <h3><i className="fas fa-envelope" aria-hidden="true"></i>Email</h3>
                   <p>
-                    <a href="mailto:inquire@brooksidemanpower.com" aria-label="Send email to inquire@brooksidemanpower.com">
-                      inquire@brooksidemanpower.com
+                    <a href={`mailto:${'inquire' + '@' + 'brooksidemanpower.com'}`} aria-label="Send email to inquire@brooksidemanpower.com">
+                      {['inquire', '@', 'brooksidemanpower.com'].join('')}
                     </a>
                   </p>
                 </div>
@@ -118,10 +118,21 @@ function ContactUs() {
                 <div>
                   <h3><i className="fas fa-map-marker-alt" aria-hidden="true"></i>Office</h3>
                   <address>
-                    Unit 604, Tower 2, PITX Building,<br />
-                    1 Kennedy Road, Barangay Tambo,<br />
-                    Parañaque City, Metro Manila, Philippines
+                    Unit 704C, Tower 3, PITX Building, 1 Kennedy Road, <br />
+                    Barangay Tambo, Paranaque City, 1701 Metro Manila
                   </address>
+                  <div className="contact-map-container">
+                    <iframe
+                      className="contact-map-iframe"
+                      title="Brookside Manpower Services Inc. Location"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3862.5828563774644!2d120.98709607510447!3d14.508619985966975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cff0f354180d%3A0x7ad62cd3e2c16311!2sBrookside%20Manpower%20Services%20Inc.!5e0!3m2!1sen!2sph!4v1751337563003!5m2!1sen!2sph"
+                      width="100%"
+                      height="350"
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
                 </div>
               </div>
             </div>

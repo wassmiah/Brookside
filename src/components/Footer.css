@@ -81,6 +81,15 @@
 .employee-access-link i {
   font-size: 1.1rem;
 }
+.footer-email-link {
+  color: #fff;
+  text-decoration: underline;
+  word-break: break-all;
+  transition: color 0.2s;
+}
+.footer-email-link:hover {
+  color: #40b4ff;
+}
 @media (max-width: 900px) {
   .footer-contact-container {
     margin-left: 18px;

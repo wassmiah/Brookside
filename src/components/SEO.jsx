@@ -25,11 +25,7 @@ const SEO = ({
       <meta property="og:image" content={`https://brooksidemps.com${ogImage}`} />
       <meta property="og:url" content={`https://brooksidemps.com${canonicalUrl || ''}`} />
       
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description || defaultDescription} />
-      <meta name="twitter:image" content={`https://brooksidemps.com${ogImage}`} />
+
       
       {/* Canonical URL */}
       <link rel="canonical" href={`https://brooksidemps.com${canonicalUrl || ''}`} />

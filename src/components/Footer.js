@@ -10,7 +10,7 @@ function Footer() {
         <div className="footer-contact-info">
           <div className="footer-contact-block">
             <div className="footer-contact-label">Office</div>
-            <div>Unit 604, Tower 2, PITX Building, 1 Kennedy Road,<br />Barangay Tambo, Parañaque City,  Metro Manila, Philippines</div>
+            <div>Unit 704C, Tower 3, PITX Building, 1 Kennedy Road,<br />Barangay Tambo, Paranaque City, 1701 Metro Manila</div>
           </div>
           <div className="footer-contact-block">
             <div className="footer-contact-label">Phone</div>
@@ -18,7 +18,11 @@ function Footer() {
           </div>
           <div className="footer-contact-block">
             <div className="footer-contact-label">Email</div>
-            <div>inquire@brooksidemanpower.com</div>
+            <div>
+              <a href={`mailto:${'inquire' + '@' + 'brooksidemanpower.com'}`} className="footer-email-link">
+                {['inquire', '@', 'brooksidemanpower.com'].join('')}
+              </a>
+            </div>
           </div>
           <div className="footer-contact-block">
             <div className="footer-contact-label">Social</div>

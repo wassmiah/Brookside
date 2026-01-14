@@ -63,6 +63,41 @@
   color: #f7a61a;
 }
 
+/* EVA Virtual Assistants Link - Special Styling */
+.eva-nav-link {
+  background: linear-gradient(135deg, #9d4edd 0%, #40b4ff 100%);
+  color: #fff !important;
+  padding: 8px 20px !important;
+  border-radius: 20px;
+  font-weight: 700 !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(157, 78, 221, 0.3);
+  transition: all 0.3s ease;
+}
+
+.eva-nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.eva-nav-link:hover {
+  color: #fff !important;
+  background: linear-gradient(135deg, #40b4ff 0%, #9d4edd 100%);
+  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.5);
+  transform: translateY(-2px);
+}
+
+.eva-nav-link:hover::before {
+  left: 100%;
+}
+
 /* === RIGHT: ACTIONS === */
 .navbar-right {
   display: flex;

@@ -51,7 +51,6 @@ function Home() {
           <source src="/herobg.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-
         <div className="hero-overlay">
           <picture>
             <source srcSet="/logohero.webp" type="image/webp" />
@@ -65,7 +64,6 @@ function Home() {
               decoding="async" 
             />
           </picture>
-
           <Link to="/contact" className="contact-us-btn" aria-label="Contact us">
             <span>Contact Us</span>
           </Link>
@@ -74,10 +72,13 @@ function Home() {
 
       {/* About Section */}
       <section className="about-new" id="about" aria-label="About us">
+        <h1 className="about-main-heading">
+          <span className="orange">Brookside Manpower Services</span> – Hospitality Staffing in <span className="blue">Metro Manila</span>
+        </h1>
         <div className="about-left" data-aos="fade-right">
-          <h1 className="about-heading">
+          <h2 className="about-heading">
             Leave your <span className="highlight">staffing</span><br />problem to us.
-          </h1>
+          </h2>
           <p>
             Brookside is a job placement company dedicated to connecting skilled talents to the leading
             hospitality businesses in Metro Manila. We are committed to bridge opportunities and build
@@ -85,12 +86,18 @@ function Home() {
           </p>
           <p>
             Our partners are mainly from hospitality business segments such as but not limited to integrated
-            resorts, 5-star hotels, BPO, and high-end restaurant chains.
+            resorts, 5-star hotels, BPO, and high-end restaurant chains. 
           </p>
           <p>
             Brookside explores potentials from different parts of the Philippines by engaging local government
-            units and more.
+            units and more. 
           </p>
+          <div className="social-share">
+            <span className="social-share-label">Follow us:</span>
+            <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" aria-label="Visit our TikTok"><i className="fab fa-tiktok"></i></a>
+          </div>
         </div>
         <div className="about-right" data-aos="fade-left">
           <img 

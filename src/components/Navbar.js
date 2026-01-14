@@ -48,6 +48,7 @@ function Navbar({ onLogout }) {
           <a href="/#services">Services</a>
           <a href="/#commitment">Our Commitment</a>
           <a href="/meet-the-team">Meet the Team</a>
+          <a href="/eva" className="eva-nav-link">Hire Virtual Assistants</a>
           {/* <a href="/LearnHere">Learn Here</a> */}
          </div>
 
