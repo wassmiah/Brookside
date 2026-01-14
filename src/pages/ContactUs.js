@@ -98,7 +98,7 @@ function ContactUs() {
                 <div>
                   <h3><i className="fas fa-envelope" aria-hidden="true"></i>Email</h3>
                   <p>
-                    <a href={`mailto:${'inquire' + '@' + 'brooksidemanpower.com'}`} aria-label="Send email to inquire@brooksidemanpower.com">
+                    <a href={`"mailto:inquire@brooksidemanpower.com"'}`} aria-label="Send email to inquire@brooksidemanpower.com">
                       {['inquire', '@', 'brooksidemanpower.com'].join('')}
                     </a>
                   </p>

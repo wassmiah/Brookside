@@ -1,6 +1,7 @@
+/* eslint-disable no-useless-concat */
 import React from "react";
 import { Link } from "react-router-dom";
-import "./NotFound.css"; // optional
+import "./NotFound.css"; 
 
 function NotFound() {
   return (

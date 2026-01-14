@@ -19,7 +19,7 @@ function Footer() {
           <div className="footer-contact-block">
             <div className="footer-contact-label">Email</div>
             <div>
-              <a href={`mailto:${'inquire' + '@' + 'brooksidemanpower.com'}`} className="footer-email-link">
+              <a href={`"mailto:inquire@brooksidemanpower.com"'}`} className="footer-email-link">
                 {['inquire', '@', 'brooksidemanpower.com'].join('')}
               </a>
             </div>
