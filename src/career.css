@@ -1,0 +1,269 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Career Page */
+.career-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main Content */
+main.career-content {
+  flex: 1;
+  padding: 2rem 10%;
+  background-color: #f9f9f9;
+}
+
+
+/* Job Section */
+.current-job-offers {
+  font-size: 2rem;
+  color: #ff9800;
+  margin-top: 100px; 
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Job List */
+.job-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: 1200px;
+  gap: 2rem;
+  padding: 40px 0;
+}
+
+.job-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.job-list-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.job-list-header {
+  font-size: 1.8rem;
+  color: #ff9800;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ff9800;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.job-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.job-list li {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #333;
+}
+
+.job-list li i {
+  font-size: 1.3rem;
+  color: #ff9800;
+}
+
+/* Resume Image */
+.job-image {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+}
+
+.job-image img {
+  max-width: 95%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Application Instructions */
+.application-instructions {
+  margin-top: 2rem;
+  font-size: 1.3rem; /* Increased size */
+  text-align: center;
+  color: #222;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+
+.application-instructions a {
+  color: #f5a623;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.application-instructions a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-section {
+  margin-bottom: 1.5rem;
+}
+
+.footer-section h5 {
+  font-size: 1.2rem;
+  color: #ff9800;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links li a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-links li a:hover {
+  text-decoration: underline;
+  color: #ff9800;
+}
+
+/* Social Media Icons */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .job-list-card,
+  .job-image {
+    max-width: 90%;
+  }
+
+  .current-job-offers {
+    font-size: 1.8rem;
+  }
+}
+
+/* Job Descriptions */
+.job-descriptions {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.job-descriptions h2 {
+  font-size: 2rem;
+  color: #ff9800;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #ff9800;
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+}
+
+.job-table th,
+.job-table td {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  vertical-align: top;
+}
+
+.job-table th {
+  background-color: #fafafa;
+  color: #333;
+  font-weight: 600;
+}
+
+.job-title {
+  font-weight: 600;
+  color: #0b3b64;
+}
+
+.job-table .highlight {
+  color: #ff9800;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .job-table th,
+  .job-table td {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .job-descriptions {
+    padding: 1.5rem;
+  }
+}
+
