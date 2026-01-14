@@ -97,9 +97,9 @@ function Eva() {
             <Link to="/" className="eva-nav-logo">E-VA</Link>
             <div className="eva-nav-links">
               <a href="#home">Home</a>
-              <a href="#about">About</a>
               <a href="#services">Services</a>
               <a href="#clients">Clients</a>
+              <a href="#about">About</a>
               <a href="#apply">Apply</a>
               <a href="#contact">Contact</a>
             </div>
@@ -117,50 +117,6 @@ function Eva() {
             </div>
             <h1 className="eva-hero-tagline">Elevate your<br />everything</h1>
             <Link to="/eva/inquiry" className="eva-cta-button">KNOW MORE</Link>
-          </div>
-        </section>
-
-        {/* Apply Section - Ready to get hired & trained */}
-        <section className="eva-apply-section" id="apply">
-          <div className="eva-apply-content">
-            <h2 className="eva-apply-heading">
-              <span className="eva-apply-heading-line1">Ready to get</span>
-              <span className="eva-apply-heading-line2">hired & trained?</span>
-            </h2>
-            <Link to="/career" className="eva-apply-button">APPLY NOW</Link>
-            <div className="eva-categories">
-              <div className="eva-category-box">
-                <span>REAL ESTATE</span>
-              </div>
-              <div className="eva-category-box">
-                <span>DIGITAL MARKETING</span>
-              </div>
-              <div className="eva-category-box">
-                <span>CUSTOMER SERVICE</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Vision Mission Values Section */}
-        <section className="eva-vmv-section" id="about">
-          <div className="eva-vmv-content">
-            <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">Vision</h3>
-              <p className="eva-vmv-text">To provide elevated support through talent, grit, and passion for literally everything.</p>
-            </div>
-            <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">Mission</h3>
-              <p className="eva-vmv-text">Happy clients meet exceptional service.</p>
-            </div>
-            <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">Values</h3>
-              <ul className="eva-vmv-values-list">
-                <li>Bespoke excellence</li>
-                <li>Non-stop innovation</li>
-                <li>Reliable efficiency</li>
-              </ul>
-            </div>
           </div>
         </section>
 
@@ -380,6 +336,51 @@ function Eva() {
               <p className="eva-pricing-tagline">ELEVATING LIVES</p>
               <p className="eva-pricing-text">Get yours for only</p>
               <p className="eva-pricing-amount">$2k/month</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Vision Mission Values Section */}
+        <section className="eva-vmv-section" id="about">
+          <div className="eva-vmv-content">
+            <div className="eva-vmv-item">
+              <h3 className="eva-vmv-title">Vision</h3>
+              <p className="eva-vmv-text">To provide elevated support through talent, grit, and passion for literally everything.</p>
+            </div>
+            <div className="eva-vmv-item">
+              <h3 className="eva-vmv-title">Mission</h3>
+              <p className="eva-vmv-text">Happy clients meet exceptional service.</p>
+            </div>
+            <div className="eva-vmv-item">
+              <h3 className="eva-vmv-title">Values</h3>
+              <ul className="eva-vmv-values-list">
+                <li>Bespoke excellence</li>
+                <li>Non-stop innovation</li>
+                <li>Reliable efficiency</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        {/* Apply Section - Ready to get hired & trained */}
+        <section className="eva-apply-section" id="apply">
+          <div className="eva-apply-content">
+            <h2 className="eva-apply-heading">
+              <span className="eva-apply-heading-line1">Ready to get</span>
+              <span className="eva-apply-heading-line2">hired & trained?</span>
+            </h2>
+            <Link to="/career" className="eva-apply-button">APPLY NOW</Link>
+            <div className="eva-categories">
+              <div className="eva-category-box">
+                <span>REAL ESTATE</span>
+              </div>
+              <div className="eva-category-box">
+                <span>DIGITAL MARKETING</span>
+              </div>
+              <div className="eva-category-box">
+                <span>CUSTOMER SERVICE</span>
+              </div>
             </div>
           </div>
         </section>
