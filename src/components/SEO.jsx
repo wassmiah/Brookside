@@ -1,12 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ 
-  title, 
-  description, 
-  keywords, 
+const SEO = ({
+  title,
+  description,
+  keywords,
   ogImage = '/logo192.png',
   ogType = 'website',
-  canonicalUrl
+  canonicalUrl,
+  structuredData
 }) => {
   const fullTitle = `${title} | Brookside Manpower Services`;
   const defaultDescription = "Brookside Manpower Services connects skilled talents to leading hospitality companies in Metro Manila. Find your next career opportunity in hotels, resorts, and restaurants.";
@@ -29,6 +30,13 @@ const SEO = ({
       
       {/* Canonical URL */}
       <link rel="canonical" href={`https://brooksidemps.com${canonicalUrl || ''}`} />
+
+      {/* Structured Data */}
+      {structuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      )}
     </Helmet>
   );
 };

@@ -82,19 +82,83 @@ function Eva() {
 
   return (
     <>
-      <SEO 
-        title="E-VA - Elevate Your Everything | Virtual Assistant Services"
-        description="E-VA provides elite virtual assistant services and top-tier assistance. Elevate your business with our skilled virtual assistants."
-        keywords="virtual assistant, VA services, business support, executive assistance, virtual staffing"
-        ogImage="/eva-logo-placeholder.png"
+      <SEO
+        title="E-VA Virtual Assistants | Elite Business Support & Remote Staffing Solutions"
+        description="Transform your business with elite virtual assistants. Save up to 70% on staffing costs while getting top-tier talent. 98% client retention rate. Fast hiring in 21 days average."
+        keywords="virtual assistant services, remote staffing, business process outsourcing, executive assistant, administrative support, virtual staffing solutions, offshore virtual assistants, business support services, cost-effective staffing, professional virtual assistants"
+        ogImage="/eva-logo.png"
         canonicalUrl="/eva"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "E-VA Virtual Assistant Services",
+          "description": "Elite virtual assistant services providing business support, administrative assistance, and remote staffing solutions",
+          "provider": {
+            "@type": "Organization",
+            "name": "Brookside Manpower Services",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Unit 704C, Tower 3, PITX Building, 1 Kennedy Road",
+              "addressLocality": "Paranaque City",
+              "addressRegion": "Metro Manila",
+              "postalCode": "1701",
+              "addressCountry": "PH"
+            },
+            "telephone": "+63 917 157 8874"
+          },
+          "serviceType": "Virtual Assistant Services",
+          "areaServed": "Global",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Virtual Assistant Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Property Management Support"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "E-Commerce Operations"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Digital Marketing Support"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Financial Administration"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Executive Assistance"
+                }
+              }
+            ]
+          }
+        }}
       />
 
       <div className="eva-page">
         {/* Navigation */}
         <nav className="eva-nav">
           <div className="eva-nav-container">
-            <Link to="/" className="eva-nav-logo">E-VA</Link>
+            <Link to="/">
+              <img src="/eva-logo.png" alt="E-VA Logo" className="eva-logo-small" />
+            </Link>
             <div className="eva-nav-links">
               <a href="#home">Home</a>
               <a href="#services">Services</a>
@@ -108,59 +172,151 @@ function Eva() {
 
         {/* Hero Section */}
         <section className="eva-hero" id="home">
-          <div className="eva-hero-background">
-            <div className="eva-hero-overlay"></div>
-          </div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            id="heroVideo"
+            aria-hidden="true"
+            onError={(e) => {
+              console.error('Video failed to load:', e);
+              e.target.style.display = 'none';
+            }}
+            onLoadStart={() => {
+              console.log('Video started loading');
+            }}
+            onCanPlay={() => {
+              console.log('Video can play');
+            }}
+          >
+            <source src="/hero-eva-bg.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="eva-hero-fallback"></div>
           <div className="eva-hero-content">
             <div className="eva-logo-container">
-              <img src="/eva-logo-placeholder.png" alt="E-VA Logo" className="eva-logo" />
+              <img src="/eva-logo.png" alt="E-VA Logo" className="eva-logo-hero" />
             </div>
-            <h1 className="eva-hero-tagline">Elevate your<br />everything</h1>
-            <Link to="/eva/inquiry" className="eva-cta-button">KNOW MORE</Link>
+            <h1 className="eva-hero-tagline">Elevate Your Business<br />with Elite Virtual Assistants</h1>
+            <p className="eva-hero-subtitle">Save up to 70% on staffing costs while getting top-tier talent. Fast hiring, no upfront fees.</p>
+
+            <div className="eva-hero-buttons">
+              <Link to="/eva/inquiry" className="eva-cta-button-secondary">Get Started Today</Link>
+            </div>
           </div>
         </section>
 
-        {/* Specializations Section */}
-        <section className="eva-specializations-section" id="services">
-          <div className="eva-specializations-container">
-            <div className="eva-specializations-header">
-              <h2 className="eva-specializations-title">Our Specializations</h2>
-              <p className="eva-specializations-subtitle">Expert virtual assistant services tailored to your business needs</p>
+        {/* Services Overview Section */}
+        <section className="eva-services-section" id="services">
+          <div className="eva-services-container">
+            <div className="eva-services-header">
+              <h2 className="eva-services-title">Our Virtual Assistant Services</h2>
+              <p className="eva-services-subtitle">Professional support across all business functions to help you scale efficiently</p>
             </div>
-            <div className="eva-specializations-grid">
-              <div className="eva-specialization-card">
-                <div className="eva-specialization-icon">
+
+            <div className="eva-services-grid">
+              <div className="eva-service-card">
+                <div className="eva-service-icon">
                   <i className="fas fa-building"></i>
                 </div>
-                <h3 className="eva-specialization-name">Property Management</h3>
+                <div className="eva-service-content">
+                  <h3 className="eva-service-name">Property Management</h3>
+                  <p className="eva-service-description">Complete property administration, tenant management, and real estate support services</p>
+                </div>
               </div>
-              <div className="eva-specialization-card">
-                <div className="eva-specialization-icon">
+              <div className="eva-service-card">
+                <div className="eva-service-icon">
                   <i className="fas fa-shopping-cart"></i>
                 </div>
-                <h3 className="eva-specialization-name">E-Commerce</h3>
+                <div className="eva-service-content">
+                  <h3 className="eva-service-name">E-Commerce Operations</h3>
+                  <p className="eva-service-description">Online store management, order processing, inventory control, and customer service</p>
+                </div>
               </div>
-              <div className="eva-specialization-card">
-                <div className="eva-specialization-icon">
+              <div className="eva-service-card">
+                <div className="eva-service-icon">
                   <i className="fas fa-bullhorn"></i>
                 </div>
-                <h3 className="eva-specialization-name">Marketing/Social Media VA</h3>
+                <div className="eva-service-content">
+                  <h3 className="eva-service-name">Digital Marketing</h3>
+                  <p className="eva-service-description">Social media management, content creation, campaign management, and brand promotion</p>
+                </div>
               </div>
-              <div className="eva-specialization-card">
-                <div className="eva-specialization-icon">
+              <div className="eva-service-card">
+                <div className="eva-service-icon">
                   <i className="fas fa-calculator"></i>
                 </div>
-                <h3 className="eva-specialization-name">Bookkeeping</h3>
+                <div className="eva-service-content">
+                  <h3 className="eva-service-name">Financial Administration</h3>
+                  <p className="eva-service-description">Bookkeeping, invoicing, expense tracking, and financial reporting services</p>
+                </div>
               </div>
-              <div className="eva-specialization-card">
-                <div className="eva-specialization-icon">
+              <div className="eva-service-card">
+                <div className="eva-service-icon">
                   <i className="fas fa-briefcase"></i>
                 </div>
-                <h3 className="eva-specialization-name">Executive Admin</h3>
+                <div className="eva-service-content">
+                  <h3 className="eva-service-name">Executive Assistance</h3>
+                  <p className="eva-service-description">Calendar management, email handling, travel coordination, and executive support</p>
+                </div>
+              </div>
+              <div className="eva-service-card">
+                <div className="eva-service-icon">
+                  <i className="fas fa-headset"></i>
+                </div>
+                <div className="eva-service-content">
+                  <h3 className="eva-service-name">Customer Service</h3>
+                  <p className="eva-service-description">Professional customer support, inquiry handling, and relationship management</p>
+                </div>
               </div>
             </div>
-            <div className="eva-specializations-cta">
-              <Link to="/eva/inquiry" className="eva-specializations-button">Get Started</Link>
+
+            <div className="eva-services-benefits">
+              <h3 className="eva-services-benefits-title">Why Choose Our Virtual Assistant Services?</h3>
+              <div className="eva-services-benefits-grid">
+                <div className="eva-services-benefit">
+                  <div className="eva-services-benefit-icon">
+                    <i className="fas fa-dollar-sign"></i>
+                  </div>
+                  <div className="eva-services-benefit-text">
+                    <h4>Cost Effective</h4>
+                    <p>Save up to 70% compared to hiring full-time local staff</p>
+                  </div>
+                </div>
+                <div className="eva-services-benefit">
+                  <div className="eva-services-benefit-icon">
+                    <i className="fas fa-rocket"></i>
+                  </div>
+                  <div className="eva-services-benefit-text">
+                    <h4>Quick Deployment</h4>
+                    <p>Get started in as little as 21 days with our streamlined process</p>
+                  </div>
+                </div>
+                <div className="eva-services-benefit">
+                  <div className="eva-services-benefit-icon">
+                    <i className="fas fa-user-check"></i>
+                  </div>
+                  <div className="eva-services-benefit-text">
+                    <h4>Highly Skilled</h4>
+                    <p>Access to top 1% talent with specialized training and expertise</p>
+                  </div>
+                </div>
+                <div className="eva-services-benefit">
+                  <div className="eva-services-benefit-icon">
+                    <i className="fas fa-clock"></i>
+                  </div>
+                  <div className="eva-services-benefit-text">
+                    <h4>Flexible Hours</h4>
+                    <p>24/7 availability to support your business across time zones</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="eva-services-cta">
+              <Link to="/eva/inquiry" className="eva-services-button">Start Your Free Consultation</Link>
             </div>
           </div>
         </section>
@@ -170,10 +326,13 @@ function Eva() {
           <div className="eva-elite-content">
             <div className="eva-elite-text">
               <h2 className="eva-elite-heading">
-                Get elite support &<br />
-                top-tier assistance
+                Ready to Transform<br />
+                Your Business?
               </h2>
-              <Link to="/eva/inquiry" className="eva-hire-button">HIRE HERE</Link>
+              <p className="eva-elite-description">
+                Join hundreds of successful businesses that have elevated their operations with our elite virtual assistants. Get started today and experience the difference.
+              </p>
+              <Link to="/eva/inquiry" className="eva-hire-button">Start Free Consultation</Link>
             </div>
             <div className="eva-elite-graphic">
               <div className="eva-graphic-placeholder"></div>
@@ -218,7 +377,7 @@ function Eva() {
         <section className="eva-ceo-section">
           <div className="eva-ceo-container">
             <div className="eva-ceo-image">
-              <img src="/eva-ceo-placeholder.png" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
+              <img src="/eva-ceo.png" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
               <h2 className="eva-ceo-title">Message from our CEO</h2>
@@ -236,30 +395,72 @@ function Eva() {
           </div>
         </section>
 
-        {/* Statistics & Achievements Section */}
-        <section className="eva-statistics" id="clients" ref={statsRef}>
-          <div className="eva-statistics-container">
-            <div className="eva-statistics-header">
-              <h2 className="eva-statistics-title">Trusted by Industry Leaders</h2>
-              <p className="eva-statistics-subtitle">Join hundreds of successful businesses that rely on our elite virtual assistants</p>
+        {/* Why Choose E-VA Section */}
+        <section className="eva-why-choose" id="clients" ref={statsRef}>
+          <div className="eva-why-choose-container">
+            <div className="eva-why-choose-header">
+              <h2 className="eva-why-choose-title">Why Leading Businesses Choose E-VA</h2>
+              <p className="eva-why-choose-subtitle">Transform your business operations with our proven virtual assistant solutions</p>
             </div>
 
-            <div className="eva-stats-grid">
-              <div className="eva-stat-card">
-                <div className="eva-stat-number" data-target="1000">0</div>
-                <div className="eva-stat-label">+ Talents Placed in Top Restaurants</div>
+            <div className="eva-benefits-grid">
+              <div className="eva-benefit-card">
+                <div className="eva-benefit-icon">
+                  <i className="fas fa-chart-line"></i>
+                </div>
+                <div className="eva-benefit-content">
+                  <h3 className="eva-benefit-title">70% Cost Savings</h3>
+                  <p className="eva-benefit-description">Reduce your staffing costs significantly without compromising on quality or expertise</p>
+                </div>
               </div>
-              <div className="eva-stat-card">
-                <div className="eva-stat-number" data-target="95">0</div>
-                <div className="eva-stat-label">% Client Satisfaction Rate</div>
+              <div className="eva-benefit-card">
+                <div className="eva-benefit-icon">
+                  <i className="fas fa-clock"></i>
+                </div>
+                <div className="eva-benefit-content">
+                  <h3 className="eva-benefit-title">21 Days Average to Fill</h3>
+                  <p className="eva-benefit-description">Fast-track your hiring process with our streamlined recruitment and onboarding</p>
+                </div>
               </div>
-              <div className="eva-stat-card">
-                <div className="eva-stat-number" data-target="150">0</div>
-                <div className="eva-stat-label">+ Premium F&B Partners</div>
+              <div className="eva-benefit-card">
+                <div className="eva-benefit-icon">
+                  <i className="fas fa-users"></i>
+                </div>
+                <div className="eva-benefit-content">
+                  <h3 className="eva-benefit-title">98% Client Retention</h3>
+                  <p className="eva-benefit-description">Our long-term partnerships speak to the quality and reliability of our services</p>
+                </div>
               </div>
-              <div className="eva-stat-card">
-                <div className="eva-stat-number" data-target="45">0</div>
-                <div className="eva-stat-label">% Increase in Quality Applicants</div>
+              <div className="eva-benefit-card">
+                <div className="eva-benefit-icon">
+                  <i className="fas fa-star"></i>
+                </div>
+                <div className="eva-benefit-content">
+                  <h3 className="eva-benefit-title">Top 1% Talent</h3>
+                  <p className="eva-benefit-description">Access to pre-vetted, highly skilled virtual assistants across multiple industries</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="eva-stats-section">
+              <h3 className="eva-stats-title">Our Impact in Numbers</h3>
+              <div className="eva-stats-grid">
+                <div className="eva-stat-card">
+                  <div className="eva-stat-number" data-target="1000">0</div>
+                  <div className="eva-stat-label">+ Virtual Assistants Placed</div>
+                </div>
+                <div className="eva-stat-card">
+                  <div className="eva-stat-number" data-target="95">0</div>
+                  <div className="eva-stat-label">% Client Satisfaction Rate</div>
+                </div>
+                <div className="eva-stat-card">
+                  <div className="eva-stat-number" data-target="200">0</div>
+                  <div className="eva-stat-label">+ Happy Business Partners</div>
+                </div>
+                <div className="eva-stat-card">
+                  <div className="eva-stat-number" data-target="50">0</div>
+                  <div className="eva-stat-label">Countries Served</div>
+                </div>
               </div>
             </div>
 
@@ -302,40 +503,137 @@ function Eva() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
+        {/* Client Success Stories Section */}
         <section className="eva-testimonials">
           <div className="eva-testimonials-container">
-            <div className="eva-testimonial-card">
-              <p className="eva-testimonial-quote">
-                "My virtual assistant handles everything from data entry to customer support seamlessly. Their skills and adaptability make them an invaluable part of my business operations!"
-              </p>
-              <p className="eva-testimonial-author">— Lisa T., CEO of a Startup</p>
+            <div className="eva-testimonials-header">
+              <h2 className="eva-testimonials-title">Client Success Stories</h2>
+              <p className="eva-testimonials-subtitle">See how E-VA virtual assistants transform businesses</p>
             </div>
 
-            <div className="eva-testimonial-card">
-              <p className="eva-testimonial-quote">
-                "Working with my virtual assistant has been a game-changer. They are proactive, communicate clearly, and always deliver on time. I can't imagine running my business without them!"
-              </p>
-              <p className="eva-testimonial-author">— Emily R., Entrepreneur</p>
-            </div>
+            <div className="eva-testimonials-grid">
+              <div className="eva-testimonial-card">
+                <div className="eva-testimonial-content">
+                  <p className="eva-testimonial-quote">
+                    "Since partnering with E-VA, we've reduced our operational costs by 65% while maintaining exceptional service quality. Our virtual assistants handle complex administrative tasks and customer support with professionalism that exceeds our expectations."
+                  </p>
+                  <div className="eva-testimonial-meta">
+                    <p className="eva-testimonial-author">Neil Tagawa</p>
+                    <p className="eva-testimonial-position">CEO, RedHammer LLC</p>
+                  </div>
+                </div>
+              </div>
 
-            <div className="eva-testimonial-card">
-              <p className="eva-testimonial-quote">
-                "I work in different time zones, and my VA is always available when I need them. Their flexibility and commitment make them an essential part of my business."
-              </p>
-              <p className="eva-testimonial-author">— Leo V., Digital Nomad & Consultant</p>
+              <div className="eva-testimonial-card">
+                <div className="eva-testimonial-content">
+                  <p className="eva-testimonial-quote">
+                    "The dedication and language proficiency of our E-VA virtual assistants are unmatched. They've become integral to our operations, handling everything from bookkeeping to client communications with remarkable efficiency."
+                  </p>
+                  <div className="eva-testimonial-meta">
+                    <p className="eva-testimonial-author">Ernest Sutton, CPA</p>
+                    <p className="eva-testimonial-position">Vice President, RediCarpet</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="eva-testimonial-card">
+                <div className="eva-testimonial-content">
+                  <p className="eva-testimonial-quote">
+                    "E-VA's commitment to employee development and retention shows in the quality of service we receive. Their human-centered approach to virtual assistance has been a game-changer for our business operations."
+                  </p>
+                  <div className="eva-testimonial-meta">
+                    <p className="eva-testimonial-author">Jamie Wiseman</p>
+                    <p className="eva-testimonial-position">Principal, Real Estate Development Firm</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="eva-testimonial-card">
+                <div className="eva-testimonial-content">
+                  <p className="eva-testimonial-quote">
+                    "The ROI we've achieved with E-VA virtual assistants is incredible. We've expanded our service offerings while maintaining profitability, all thanks to their reliable and skilled support team."
+                  </p>
+                  <div className="eva-testimonial-meta">
+                    <p className="eva-testimonial-author">Senior Business Strategist</p>
+                    <p className="eva-testimonial-position">Transportation Company</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="eva-pricing">
-          <div className="eva-pricing-container">
-            <div className="eva-pricing-logo">
-              <img src="/eva-logo-placeholder.png" alt="E-VA Logo" className="eva-logo-small" />
-              <p className="eva-pricing-tagline">ELEVATING LIVES</p>
-              <p className="eva-pricing-text">Get yours for only</p>
-              <p className="eva-pricing-amount">$2k/month</p>
+        {/* Trust Indicators Section */}
+        <section className="eva-trust">
+          <div className="eva-trust-container">
+            <div className="eva-trust-header">
+              <h2 className="eva-trust-title">Trusted by Industry Leaders</h2>
+              <p className="eva-trust-subtitle">Recognized for excellence in virtual assistance services</p>
+            </div>
+
+            <div className="eva-trust-grid">
+              <div className="eva-trust-item">
+                <div className="eva-trust-icon">
+                  <i className="fas fa-shield-alt"></i>
+                </div>
+                <h3 className="eva-trust-name">SOC 2 Type II Certified</h3>
+                <p className="eva-trust-description">Enterprise-grade security and compliance standards</p>
+              </div>
+              <div className="eva-trust-item">
+                <div className="eva-trust-icon">
+                  <i className="fas fa-users"></i>
+                </div>
+                <h3 className="eva-trust-name">98% Client Retention</h3>
+                <p className="eva-trust-description">Long-term partnerships built on trust and results</p>
+              </div>
+              <div className="eva-trust-item">
+                <div className="eva-trust-icon">
+                  <i className="fas fa-award"></i>
+                </div>
+                <h3 className="eva-trust-name">Top-Rated Service</h3>
+                <p className="eva-trust-description">Consistently rated 5-star by satisfied clients</p>
+              </div>
+              <div className="eva-trust-item">
+                <div className="eva-trust-icon">
+                  <i className="fas fa-clock"></i>
+                </div>
+                <h3 className="eva-trust-name">24/7 Support</h3>
+                <p className="eva-trust-description">Round-the-clock assistance for your business needs</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action Section */}
+        <section className="eva-cta-section">
+          <div className="eva-cta-container">
+            <div className="eva-cta-content">
+              <h2 className="eva-cta-heading">Ready to Elevate Your Business?</h2>
+              <p className="eva-cta-description">
+                Get started with a free consultation and discover how our virtual assistants can transform your operations. No upfront costs, no long-term commitments.
+              </p>
+              <div className="eva-cta-features">
+                <div className="eva-cta-feature">
+                  <i className="fas fa-check-circle"></i>
+                  <span>Free initial consultation</span>
+                </div>
+                <div className="eva-cta-feature">
+                  <i className="fas fa-check-circle"></i>
+                  <span>Customized staffing solutions</span>
+                </div>
+                <div className="eva-cta-feature">
+                  <i className="fas fa-check-circle"></i>
+                  <span>21-day average hiring time</span>
+                </div>
+                <div className="eva-cta-feature">
+                  <i className="fas fa-check-circle"></i>
+                  <span>98% client satisfaction rate</span>
+                </div>
+              </div>
+              <div className="eva-cta-buttons">
+                <Link to="/eva/inquiry" className="eva-cta-primary">Get Free Consultation</Link>
+                <Link to="#contact" className="eva-cta-secondary">Contact Us</Link>
+              </div>
             </div>
           </div>
         </section>
