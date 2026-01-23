@@ -644,13 +644,15 @@
 
 /* Vision Mission Values Section */
 .eva-vmv-section {
-  padding: 120px 40px;
+  padding: 80px 40px;        
   position: relative;
-  min-height: auto;
+  min-height: auto;         
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: #000;        
 }
+
 
 /* VMV Background Video */
 .eva-vmv-video {
@@ -660,7 +662,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
+  z-index: 0; 
   pointer-events: none;
 }
 
@@ -670,14 +672,14 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 40px;
   position: relative;
-  z-index: 1;
+  z-index: 2; 
   text-align: center;
 }
 
 .eva-vmv-item {
-  max-width: 800px;
+  max-width: 760px;
   margin: 0 auto;
   opacity: 0;
   transform: translateY(30px);
@@ -743,26 +745,22 @@
 
 /* Remove background glow overlay */
 .eva-value-benefits-section::before{
-  display: none;
+  display: block;
 }
 
-/* Combined Value Proposition & Benefits Section */
+/* Combined Value Proposition & Benefits Section (TRUE BLACK) */
 .eva-value-benefits-section {
+  background: #000 !important;
+  border: 1px solid rgba(255,255,255,0.35);
   padding: 120px 0;
   position: relative;
 }
 
 .eva-value-benefits-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(64, 180, 255, 0.05) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(157, 78, 221, 0.05) 0%, transparent 50%);
-  pointer-events: none;
+  content: none !important;
+  display: none !important;
 }
+
 
 .eva-value-benefits-container {
   max-width: 1400px;
@@ -1625,7 +1623,7 @@
 }
 
 .eva-hire-button:hover {
-  color: #000;
+  color: #9d4edd
 }
 
 .eva-elite-graphic {
@@ -2645,6 +2643,65 @@
     font-size: 1rem;
   }
 }
+/* Media protection (UX-level) */
+.eva-page img,
+.eva-page video{
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+/* CEO section layout fix (clean + balanced) */
+.eva-ceo-section{
+  padding: 90px 40px; /* less top/bottom bulk */
+}
+
+.eva-ceo-container{
+  max-width: 1200px;
+  grid-template-columns: 420px 1fr; /* fixed image column */
+  gap: 60px;
+  align-items: start; /* prevents awkward center float */
+}
+
+.eva-ceo-image{
+  display: flex;
+  justify-content: center;
+}
+
+.eva-ceo-photo{
+  width: 100%;
+  max-width: 420px;
+  border-radius: 28px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+
+  /* premium outlined look (no gray wash) */
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.55);
+}
+
+.eva-ceo-title{
+  margin-top: 0;
+  font-size: 3.1rem;
+  line-height: 1.05;
+}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .eva-ceo-container{
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .eva-ceo-content{
+    text-align: center;
+  }
+}
+
+/* Don’t let images capture clicks (cards still hover because the parent handles hover) */
+.eva-page img{
+  pointer-events: none;
+}
 
 .eva-ceo-section,
 .eva-vmv-section,
@@ -2652,3 +2709,185 @@
   padding-top: 80px;
   padding-bottom: 80px;
 }
+/* ===============================
+   CEO SECTION — MATCH REFERENCE
+   =============================== */
+
+   .eva-ceo-section{
+    background: #000 !important;
+    padding: 120px 40px !important;
+  }
+  
+  .eva-ceo-container{
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: 560px 1fr !important;
+    gap: 96px !important;
+    align-items: center !important;
+  }
+  
+  /* Left image */
+  .eva-ceo-image{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .eva-ceo-photo{
+    aspect-ratio: 3 / 4 !important;
+    height: auto !important;
+    object-fit: cover !important;
+  
+    border-radius: 60px !important;
+    border: 2px solid rgba(255,255,255,0.9) !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  
+  /* Right column: lock a clean text grid */
+  .eva-ceo-content{
+    max-width: 780px !important;     /* key: narrower text column */
+    justify-self: start !important;  /* prevents drifting */
+  }
+  
+  /* Headline: match size + position */
+  .eva-ceo-title{
+    color: #ec4899 !important;
+    font-size: 4.6rem !important;
+    line-height: 1.02 !important;
+    font-weight: 500 !important;
+    margin: 0 0 28px 0 !important;
+    letter-spacing: -0.01em !important;
+  }
+  
+  /* Paragraphs: spacing + width like reference */
+  .eva-ceo-text{
+    color: rgba(255,255,255,0.88) !important;
+    font-size: 1.15rem !important;
+    line-height: 1.5 !important;
+    margin: 0 0 26px 0 !important;
+    max-width: 740px !important;
+  }
+  
+  /* Quote marks (optional; remove if you don’t want them) */
+  .eva-ceo-content .eva-ceo-text:first-of-type::before{ content: "“"; }
+  .eva-ceo-content .eva-ceo-text:last-of-type::after{ content: "”"; }
+  
+  /* Signature block: lower + cleaner */
+  .eva-ceo-signature{
+    margin-top: 44px !important;
+  }
+  
+  .eva-signature-name{
+    color: #fff !important;
+    font-size: 1.55rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.52em !important;
+    text-transform: uppercase !important;
+    margin: 0 0 10px 0 !important;
+  }
+  
+  .eva-signature-title{
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 1.05rem !important;
+    letter-spacing: 0.38em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px){
+    .eva-ceo-container{
+      grid-template-columns: 1fr !important;
+      gap: 44px !important;
+    }
+    .eva-ceo-content{
+      max-width: 900px !important;
+      text-align: center !important;
+      justify-self: center !important;
+    }
+    .eva-ceo-title{
+      font-size: 3.2rem !important;
+    }
+    .eva-ceo-photo{
+      width: min(560px, 92vw) !important;
+      border-radius: 46px !important;
+    }
+    .eva-signature-name{
+      letter-spacing: 0.35em !important;
+    }
+  }
+  
+  /* Benefits mobile fix: prevent side-peek + keep cards centered */
+@media (max-width: 640px){
+  .eva-value-benefits-container{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .eva-benefits-grid{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .eva-benefit-card{
+    width: 100% !important;
+    max-width: 420px;           /* keeps it premium centered */
+    margin: 0 auto !important;  /* prevents the peek */
+    padding: 26px 18px !important;
+  }
+
+  /* scale down the big illustrations inside benefit cards */
+  .eva-benefit-illustration img{
+    width: 160px !important;
+    height: 160px !important;
+  }
+}
+.eva-positions-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eva-position-btn{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.8);
+  color: #fff;
+  padding: 22px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  cursor: default;
+  transition: border-color .25s ease;
+}
+
+.eva-position-btn:hover{
+  border-color: #9d4edd;
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .eva-positions-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .eva-positions-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.value-main-illustration{
+  width: 520px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+

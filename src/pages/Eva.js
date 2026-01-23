@@ -5,6 +5,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SEO from "../components/SEO";
 
+const blockMediaMenu = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+};
+
+
 // Illustration Component for numbered images (1.png to 10.png)
 const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
   return (
@@ -15,7 +22,7 @@ const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
         style={{ width: size, height: size, objectFit: 'contain' }}
         onError={(e) => {
           e.target.style.display = 'none';
-          e.target.nextSibling.style.display = 'flex';
+          e.currentTarget.style.display = 'flex';
         }}
       />
       <div className="illustration-placeholder" style={{ display: 'none' }}>
@@ -350,25 +357,25 @@ function Eva() {
 
         {/* Hero Section */}
         <section className="eva-hero" id="home">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            id="heroVideo"
-            aria-hidden="true"
-            onError={(e) => {
-              console.error('Video failed to load:', e);
-              e.target.style.display = 'none';
-            }}
-            onLoadStart={() => {
-              console.log('Video started loading');
-            }}
-            onCanPlay={() => {
-              console.log('Video can play');
-            }}
-          >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          id="heroVideo"
+          aria-hidden="true"
+          controls={false}
+          controlsList="nodownload noplaybackrate noremoteplayback"
+          disablePictureInPicture
+          disableRemotePlayback
+          onContextMenu={blockMediaMenu}
+          onError={(e) => {
+            console.error("Video failed to load:", e);
+            e.currentTarget.style.display = "none";
+          }}
+        >
+
             <source src="/hero-eva-bg.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -500,10 +507,13 @@ function Eva() {
 
       <div className="eva-value-visual" data-aos="fade-left">
         <div className="eva-value-illustration">
-          <IllustrationImage
-            imageNumber={1}
-            size={300}
+          <img
+            src="/eva-value.png"
+            alt="E-VA Value Illustration"
             className="value-main-illustration"
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
           />
         </div>
       </div>
@@ -667,25 +677,28 @@ function Eva() {
 
         {/* Vision Mission Values Section */}
         <section className="eva-vmv-section" id="about" ref={vmvRef}>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="eva-vmv-video"
-            aria-hidden="true"
-            onError={(e) => {
-              console.error('VMV Video failed to load:', e);
-              e.target.style.display = 'none';
-            }}
-            onLoadStart={() => {
-              console.log('VMV Video started loading');
-            }}
-            onCanPlay={() => {
-              console.log('VMV Video can play');
-            }}
-          >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="eva-vmv-video"
+          aria-hidden="true"
+          controls={false}
+          controlsList="nodownload noremoteplayback noplaybackrate"
+          disablePictureInPicture
+          disableRemotePlayback
+          tabIndex={-1}
+          onContextMenu={(e) => e.preventDefault()}
+          onError={(e) => {
+            console.error("VMV Video failed to load:", e);
+            e.target.style.display = "none";
+          }}
+          onLoadStart={() => console.log("VMV Video started loading")}
+          onCanPlay={() => console.log("VMV Video can play")}
+        >
+
             <source src="/eva-vmv-bg.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -710,27 +723,29 @@ function Eva() {
         </section>
 
 
-        {/* Apply Section - Ready to get hired & trained */}
+       {/* Apply Section - Ready to get hired & trained */}
         <section className="eva-apply-section" id="apply">
           <div className="eva-apply-content" data-aos="fade-in">
             <h2 className="eva-apply-heading">
               <span className="eva-apply-heading-line1">Ready to get</span>
               <span className="eva-apply-heading-line2">hired & trained?</span>
             </h2>
+
             <Link to="/career" className="eva-apply-button">APPLY NOW</Link>
+
             <div className="eva-categories">
-              <div className="eva-category-box">
-                <span>REAL ESTATE</span>
-              </div>
-              <div className="eva-category-box">
-                <span>DIGITAL MARKETING</span>
-              </div>
-              <div className="eva-category-box">
-                <span>CUSTOMER SERVICE</span>
-              </div>
+              <div className="eva-category-box"><span>REAL ESTATE</span></div>
+              <div className="eva-category-box"><span>DIGITAL MARKETING</span></div>
+              <div className="eva-category-box"><span>CUSTOMER SERVICE</span></div>
+              <div className="eva-category-box"><span>EXECUTIVE ASSISTANCE</span></div>
+              <div className="eva-category-box"><span>E-COMMERCE OPERATIONS</span></div>
+              <div className="eva-category-box"><span>FINANCIAL ADMINISTRATION</span></div>
+              <div className="eva-category-box"><span>PROPERTY MANAGEMENT</span></div>
+              <div className="eva-category-box"><span>GENERAL ADMIN SUPPORT</span></div>
             </div>
           </div>
         </section>
+
 
         {/* Contact Section */}
         <section className="eva-contact" id="contact">
