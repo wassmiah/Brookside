@@ -397,7 +397,7 @@ function Eva() {
                 <section className="eva-features grid-container" ref={featuresRef} data-aos="fade-in">
           <div className="eva-feature-card grid-item">
             <div className="eva-feature-icon">
-              <img src="/f1.PNG" alt="Feature 1" className="eva-feature-image" />
+              <img src="/f1.png" alt="Feature 1" className="eva-feature-image" />
             </div>
             <h3 className="eva-feature-title">Match-making is key</h3>
             <p className="eva-feature-description">
@@ -407,7 +407,7 @@ function Eva() {
 
           <div className="eva-feature-card grid-item">
             <div className="eva-feature-icon">
-              <img src="/f2.PNG" alt="Feature 2" className="eva-feature-image" />
+              <img src="/f2.png" alt="Feature 2" className="eva-feature-image" />
             </div>
             <h3 className="eva-feature-title">Skill meets competence</h3>
             <p className="eva-feature-description">
@@ -417,7 +417,7 @@ function Eva() {
 
           <div className="eva-feature-card grid-item">
             <div className="eva-feature-icon">
-              <img src="/f3.PNG" alt="Feature 3" className="eva-feature-image" />
+              <img src="/f3.png" alt="Feature 3" className="eva-feature-image" />
             </div>
             <h3 className="eva-feature-title">Your work-life balance redefined</h3>
             <p className="eva-feature-description">
