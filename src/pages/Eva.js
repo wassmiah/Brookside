@@ -268,25 +268,25 @@ function Eva() {
   return (
     <>
       <SEO
-        title="EVA Brookside | EVA Virtual Assistant Philippines | Elite Virtual Assistants"
-        description="EVA Brookside - Elite virtual assistant services in the Philippines. EVA virtual assistant by Brookside Manpower Services. Transform your business with top-tier Filipino virtual assistants. Save up to 70% on staffing costs. 98% client retention rate. Fast hiring in 21 days."
-        keywords="eva brookside, eva virtual assistant, eva ph, eva philippines, eva virtual assistant philippines, eva brooksidemps, virtual assistant philippines, filipino virtual assistant, philippines virtual assistant, remote staffing philippines, virtual assistant services philippines, eva brookside manpower, brookside eva, eva va philippines, virtual assistant ph, va services philippines, elite virtual assistant philippines, professional virtual assistant philippines"
+        title="E-VA Brookside | E-VA Virtual Assistant Philippines | Elite Virtual Assistants"
+        description="E-VA Brookside - Elite virtual assistant services in the Philippines. E-VA virtual assistant by Brookside Manpower Services. Transform your business with top-tier Filipino virtual assistants. Save up to 70% on staffing costs. 98% client retention rate. Fast hiring in 21 days."
+        keywords="eva brookside, eva virtual assistant, eva ph, eva philippines, eva virtual assistant philippines, eva brooksidemps, e-va brookside, e-va virtual assistant, e-va philippines, virtual assistant philippines, filipino virtual assistant, philippines virtual assistant, remote staffing philippines, virtual assistant services philippines, eva brookside manpower, brookside eva, eva va philippines, virtual assistant ph, va services philippines, elite virtual assistant philippines, professional virtual assistant philippines"
         ogImage="/eva-logo.png"
         ogImageWidth={1200}
         ogImageHeight={630}
-        ogImageAlt="EVA Brookside - Elite Virtual Assistant Services Philippines"
+        ogImageAlt="E-VA Brookside - Elite Virtual Assistant Services Philippines"
         canonicalUrl="/eva"
         structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "EVA Brookside - Elite Virtual Assistant Services Philippines",
-            "alternateName": ["EVA Virtual Assistant", "EVA PH", "EVA Philippines", "EVA Brookside Manpower"],
-            "description": "EVA Brookside offers elite virtual assistant services in the Philippines. EVA virtual assistant by Brookside Manpower Services provides top-tier Filipino virtual assistants for businesses worldwide. Save up to 70% on staffing costs with 98% client retention rate.",
+            "name": "E-VA Brookside - Elite Virtual Assistant Services Philippines",
+            "alternateName": ["E-VA Virtual Assistant", "E-VA PH", "E-VA Philippines", "E-VA Brookside Manpower", "EVA Virtual Assistant", "EVA PH", "EVA Philippines"],
+            "description": "E-VA Brookside offers elite virtual assistant services in the Philippines. E-VA virtual assistant by Brookside Manpower Services provides top-tier Filipino virtual assistants for businesses worldwide. Save up to 70% on staffing costs with 98% client retention rate.",
             "provider": {
               "@type": "Organization",
               "name": "Brookside Manpower Services",
-              "alternateName": "EVA Brookside",
+              "alternateName": "E-VA Brookside",
               "url": "https://brooksidemps.com/eva",
               "address": {
                 "@type": "PostalAddress",
@@ -312,14 +312,14 @@ function Eva() {
             },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
-              "name": "EVA Virtual Assistant Services",
+              "name": "E-VA Virtual Assistant Services",
               "itemListElement": [
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Property Management Support",
-                    "description": "EVA virtual assistant services for property management"
+                    "description": "E-VA virtual assistant services for property management"
                   }
                 },
                 {
@@ -327,7 +327,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "E-Commerce Operations",
-                    "description": "EVA Philippines virtual assistant for e-commerce support"
+                    "description": "E-VA Philippines virtual assistant for e-commerce support"
                   }
                 },
                 {
@@ -335,7 +335,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Digital Marketing Support",
-                    "description": "EVA Brookside virtual assistant for digital marketing"
+                    "description": "E-VA Brookside virtual assistant for digital marketing"
                   }
                 },
                 {
@@ -343,7 +343,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Financial Administration",
-                    "description": "EVA PH virtual assistant for financial administration"
+                    "description": "E-VA PH virtual assistant for financial administration"
                   }
                 },
                 {
@@ -351,7 +351,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Executive Assistance",
-                    "description": "EVA virtual assistant Philippines for executive support"
+                    "description": "E-VA virtual assistant Philippines for executive support"
                   }
                 }
               ]
@@ -363,50 +363,50 @@ function Eva() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "What is EVA Brookside?",
+                "name": "What is E-VA Brookside?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "EVA Brookside is the elite virtual assistant service division of Brookside Manpower Services, providing top-tier Filipino virtual assistants to businesses worldwide. EVA stands for Elite Virtual Assistants and offers professional remote staffing solutions."
+                  "text": "E-VA Brookside is the elite virtual assistant service division of Brookside Manpower Services, providing top-tier Filipino virtual assistants to businesses worldwide. E-VA stands for Elite Virtual Assistants and offers professional remote staffing solutions."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What is EVA virtual assistant?",
+                "name": "What is E-VA virtual assistant?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "EVA virtual assistant is a premium virtual assistant service offered by Brookside Manpower Services in the Philippines. EVA provides elite Filipino virtual assistants specializing in property management, e-commerce, digital marketing, financial administration, and executive assistance."
+                  "text": "E-VA virtual assistant is a premium virtual assistant service offered by Brookside Manpower Services in the Philippines. E-VA provides elite Filipino virtual assistants specializing in property management, e-commerce, digital marketing, financial administration, and executive assistance."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What is EVA PH?",
+                "name": "What is E-VA PH?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "EVA PH refers to EVA Virtual Assistant Philippines, the premier virtual assistant service provider based in Metro Manila, Philippines. EVA PH offers cost-effective remote staffing solutions with 98% client retention rate and average 21-day hiring time."
+                  "text": "E-VA PH refers to E-VA Virtual Assistant Philippines, the premier virtual assistant service provider based in Metro Manila, Philippines. E-VA PH offers cost-effective remote staffing solutions with 98% client retention rate and average 21-day hiring time."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How much does EVA Brookside virtual assistant cost?",
+                "name": "How much does E-VA Brookside virtual assistant cost?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "EVA Brookside virtual assistant services can save businesses up to 70% on staffing costs compared to traditional hiring. Contact EVA at eva@brooksidemanpower.com or visit eva.brooksidemps.com for a free consultation and customized pricing."
+                  "text": "E-VA Brookside virtual assistant services can save businesses up to 70% on staffing costs compared to traditional hiring. Contact E-VA at eva@brooksidemanpower.com or visit eva.brooksidemps.com for a free consultation and customized pricing."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Where is EVA virtual assistant Philippines located?",
+                "name": "Where is E-VA virtual assistant Philippines located?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "EVA virtual assistant Philippines is located at Unit 704C, Tower 3, PITX Building, 1 Kennedy Road, Paranaque City, Metro Manila, Philippines. EVA serves clients globally while operating from the Philippines."
+                  "text": "E-VA virtual assistant Philippines is located at Unit 704C, Tower 3, PITX Building, 1 Kennedy Road, Paranaque City, Metro Manila, Philippines. E-VA serves clients globally while operating from the Philippines."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How do I hire an EVA Brookside virtual assistant?",
+                "name": "How do I hire an E-VA Brookside virtual assistant?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "To hire an EVA Brookside virtual assistant, visit eva.brooksidemps.com and fill out the inquiry form. EVA offers free consultations, customized staffing solutions, and average 21-day hiring time. Contact EVA at eva@brooksidemanpower.com or call +63 917 157 8874."
+                  "text": "To hire an E-VA Brookside virtual assistant, visit eva.brooksidemps.com and fill out the inquiry form. E-VA offers free consultations, customized staffing solutions, and average 21-day hiring time. Contact E-VA at eva@brooksidemanpower.com or call +63 917 157 8874."
                 }
               }
             ]
@@ -424,7 +424,7 @@ function Eva() {
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "EVA Virtual Assistant",
+                "name": "E-VA Virtual Assistant",
                 "item": "https://brooksidemps.com/eva"
               }
             ]
@@ -432,8 +432,8 @@ function Eva() {
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "EVA Brookside - Elite Virtual Assistant Services Philippines",
-            "description": "EVA Brookside offers elite virtual assistant services in the Philippines. EVA virtual assistant by Brookside Manpower Services.",
+            "name": "E-VA Brookside - Elite Virtual Assistant Services Philippines",
+            "description": "E-VA Brookside offers elite virtual assistant services in the Philippines. E-VA virtual assistant by Brookside Manpower Services.",
             "url": "https://brooksidemps.com/eva",
             "inLanguage": "en-PH",
             "isPartOf": {
@@ -450,7 +450,7 @@ function Eva() {
         <nav className="eva-nav">
           <div className="eva-nav-container">
             <Link to="/">
-              <img src="/eva-nav-logo.png" alt="EVA Brookside - Virtual Assistant Philippines" className="eva-logo-small" />
+              <img src="/eva-nav-logo.png" alt="E-VA Brookside - Virtual Assistant Philippines" className="eva-logo-small" />
             </Link>
             <div className="eva-nav-links">
               <a href="#home">Home</a>
@@ -490,10 +490,10 @@ function Eva() {
           <div className="eva-hero-fallback"></div>
           <div className="eva-hero-content">
             <div className="eva-logo-container">
-              <img src="/eva-logo.png" alt="EVA Brookside - Elite Virtual Assistant Services Philippines" className="eva-logo-hero" />
+              <img src="/eva-logo.png" alt="E-VA Brookside - Elite Virtual Assistant Services Philippines" className="eva-logo-hero" />
             </div>
-            <h1 className="eva-hero-tagline">EVA Brookside: Elite Virtual Assistants<br />from the Philippines</h1>
-            <p className="eva-hero-subtitle">EVA virtual assistant Philippines - Save up to 70% on staffing costs while getting top-tier Filipino talent. Fast hiring in 21 days, no upfront fees. EVA PH delivers excellence.</p>
+            <h1 className="eva-hero-tagline">E-VA Brookside: Elite Virtual Assistants<br />from the Philippines</h1>
+            <p className="eva-hero-subtitle">E-VA virtual assistant Philippines - Save up to 70% on staffing costs while getting top-tier Filipino talent. Fast hiring in 21 days, no upfront fees. E-VA PH delivers excellence.</p>
 
             <div className="eva-hero-buttons">
               <Link to="/eva/inquiry" className="eva-cta-button-secondary">Get Started Today</Link>
@@ -538,8 +538,8 @@ function Eva() {
         <section className="eva-services-min" id="services" ref={servicesRef}>
           <div className="eva-services-min-container">
             <div className="eva-services-min-header">
-              <h2 className="eva-services-min-title">EVA Virtual Assistant Services</h2>
-              <p className="eva-services-min-subtitle">EVA Brookside offers comprehensive virtual assistant services in the Philippines, providing elite Filipino talent for your business needs.</p>
+              <h2 className="eva-services-min-title">E-VA Virtual Assistant Services</h2>
+              <p className="eva-services-min-subtitle">E-VA Brookside offers comprehensive virtual assistant services in the Philippines, providing elite Filipino talent for your business needs.</p>
             </div>
 
             <div className="eva-services-min-grid">
@@ -596,12 +596,12 @@ function Eva() {
     <div className="eva-value-proposition" data-aos="fade-up">
       <div className="eva-value-content">
         <h2 className="eva-value-heading">
-          EVA Brookside: Built for Businesses That Want<br />
+          E-VA Brookside: Built for Businesses That Want<br />
           <span className="eva-value-highlight">More Time and Better Focus</span>
         </h2>
 
         <p className="eva-value-description">
-          EVA virtual assistant Philippines provides reliable Filipino virtual assistants who integrate seamlessly into your operations — so you can focus on growth, strategy, and results without daily distractions. EVA PH delivers excellence.
+          E-VA virtual assistant Philippines provides reliable Filipino virtual assistants who integrate seamlessly into your operations — so you can focus on growth, strategy, and results without daily distractions. E-VA PH delivers excellence.
         </p>
 
         <Link
@@ -630,9 +630,9 @@ function Eva() {
 
     {/* Benefits Header */}
     <div className="eva-benefits-header" data-aos="fade-up">
-      <h2 className="eva-benefits-title">What You Gain with EVA Brookside</h2>
+      <h2 className="eva-benefits-title">What You Gain with E-VA Brookside</h2>
       <p className="eva-benefits-subtitle">
-        EVA virtual assistant Philippines delivers practical benefits designed to improve how your business runs every day. EVA PH excellence.
+        E-VA virtual assistant Philippines delivers practical benefits designed to improve how your business runs every day. E-VA PH excellence.
       </p>
     </div>
 
@@ -694,7 +694,7 @@ function Eva() {
   <div className="eva-testimonials-lux-container">
     {/* Left */}
     <div className="eva-testimonials-lux-left">
-      <img src="/eva-logo.png" alt="EVA Brookside - Virtual Assistant Philippines" className="eva-testimonials-lux-logo" />
+      <img src="/eva-logo.png" alt="E-VA Brookside - Virtual Assistant Philippines" className="eva-testimonials-lux-logo" />
       <div className="eva-testimonials-lux-tagline">ELEVATING LIVES</div>
     </div>
 
@@ -732,9 +732,9 @@ function Eva() {
         <section className="eva-cta-section" ref={ctaRef}>
           <div className="eva-cta-container" data-aos="fade-in">
             <div className="eva-cta-content">
-              <h2 className="eva-cta-heading">Ready to Elevate Your Business with EVA Brookside?</h2>
+              <h2 className="eva-cta-heading">Ready to Elevate Your Business with E-VA Brookside?</h2>
               <p className="eva-cta-description">
-                Get started with EVA virtual assistant Philippines - Free consultation and discover how our elite Filipino virtual assistants can transform your operations. EVA PH delivers excellence. No upfront costs, no long-term commitments.
+                Get started with E-VA virtual assistant Philippines - Free consultation and discover how our elite Filipino virtual assistants can transform your operations. E-VA PH delivers excellence. No upfront costs, no long-term commitments.
               </p>
               <div className="eva-cta-features">
                 <div className="eva-cta-feature">
@@ -769,12 +769,12 @@ function Eva() {
               <img src="/eva-ceo.jpeg" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
-              <h2 className="eva-ceo-title">Message from EVA Brookside CEO</h2>
+              <h2 className="eva-ceo-title">Message from E-VA Brookside CEO</h2>
               <p className="eva-ceo-text">
-                In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where EVA virtual assistant Philippines comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, EVA Brookside's team of dedicated Filipino professionals is here to ensure that you can focus on what truly matters—growing your business.
+                In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where E-VA virtual assistant Philippines comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, E-VA Brookside's team of dedicated Filipino professionals is here to ensure that you can focus on what truly matters—growing your business.
               </p>
               <p className="eva-ceo-text">
-                EVA PH takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA Brookside is here to make your work-life balance a reality.
+                E-VA PH takes pride in offering personalized solutions tailored to your unique needs. Our E-VA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, E-VA Brookside is here to make your work-life balance a reality.
               </p>
               <div className="eva-ceo-signature">
                 <p className="eva-signature-name">ETHEL ANN CABEZAS</p>
@@ -813,19 +813,19 @@ function Eva() {
           </video>
           <div className="eva-vmv-content" data-aos="fade-in">
             <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">EVA Brookside Vision</h3>
-              <p className="eva-vmv-text">EVA virtual assistant Philippines aims to provide elevated support through talent, grit, and passion for literally everything. EVA PH delivers excellence.</p>
+              <h3 className="eva-vmv-title">E-VA Brookside Vision</h3>
+              <p className="eva-vmv-text">E-VA virtual assistant Philippines aims to provide elevated support through talent, grit, and passion for literally everything. E-VA PH delivers excellence.</p>
             </div>
             <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">EVA Mission</h3>
-              <p className="eva-vmv-text">EVA Brookside: Happy clients meet exceptional service. EVA virtual assistant delivers results.</p>
+              <h3 className="eva-vmv-title">E-VA Mission</h3>
+              <p className="eva-vmv-text">E-VA Brookside: Happy clients meet exceptional service. E-VA virtual assistant delivers results.</p>
             </div>
             <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">EVA Values</h3>
+              <h3 className="eva-vmv-title">E-VA Values</h3>
               <ul className="eva-vmv-values-list">
-                <li>Bespoke excellence - EVA PH standard</li>
-                <li>Non-stop innovation - EVA Brookside commitment</li>
-                <li>Reliable efficiency - EVA virtual assistant promise</li>
+                <li>Bespoke excellence - E-VA PH standard</li>
+                <li>Non-stop innovation - E-VA Brookside commitment</li>
+                <li>Reliable efficiency - E-VA virtual assistant promise</li>
               </ul>
             </div>
           </div>
@@ -884,7 +884,7 @@ function Eva() {
                     {['eva', '@', 'brooksidemanpower.com'].join('')}
                   </a>
                   <br />
-                  <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>EVA Virtual Assistant Philippines</span>
+                  <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>E-VA Virtual Assistant Philippines</span>
                 </p>
               </div>
               <div className="eva-contact-item">

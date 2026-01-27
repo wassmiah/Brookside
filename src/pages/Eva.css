@@ -559,6 +559,54 @@
   text-align: center;
 }
 
+@media (max-width: 480px) {
+  .eva-apply-section {
+    padding: 40px 15px;
+  }
+  
+  .eva-apply-heading {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+  }
+  
+  .eva-apply-button {
+    font-size: 0.85rem;
+    padding: 11px 25px;
+    margin-bottom: 25px;
+  }
+  
+  .eva-categories {
+    gap: 12px;
+    margin-top: 25px;
+  }
+  
+  .eva-category-box {
+    padding: 15px 25px;
+  }
+  
+  .eva-category-box span {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .eva-apply-section {
+    padding: 50px 20px;
+  }
+  
+  .eva-apply-heading {
+    margin-bottom: 35px;
+  }
+  
+  .eva-apply-button {
+    margin-bottom: 40px;
+  }
+  
+  .eva-categories {
+    margin-top: 40px;
+  }
+}
+
 .eva-apply-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -672,6 +720,31 @@
   background: #000;        
 }
 
+@media (max-width: 768px) {
+  .eva-vmv-section {
+    padding: 50px 20px;
+  }
+  
+  .eva-vmv-content {
+    gap: 30px;
+  }
+  
+  .eva-vmv-item {
+    margin-bottom: 25px;
+  }
+  
+  .eva-vmv-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .eva-vmv-text,
+  .eva-vmv-values-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
 
 /* VMV Background Video */
 .eva-vmv-video {
@@ -773,6 +846,29 @@
   border: 1px solid rgba(255,255,255,0.35);
   padding: 120px 0;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .eva-value-benefits-section {
+    padding: 50px 0;
+  }
+  
+  .eva-value-proposition {
+    margin-bottom: 50px;
+  }
+  
+  .eva-benefits-header {
+    margin-bottom: 35px;
+  }
+  
+  .eva-benefits-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .eva-benefits-subtitle {
+    font-size: 1rem;
+  }
 }
 
 .eva-value-benefits-section::before {
@@ -893,13 +989,14 @@
 
 @media (max-width: 768px) {
   .eva-value-benefits-section {
-    padding: 80px 20px;
+    padding: 50px 20px;
   }
 
   .eva-value-proposition {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 35px;
     text-align: center;
+    margin-bottom: 50px;
   }
 
   .eva-value-content {
@@ -907,13 +1004,15 @@
   }
 
   .eva-value-heading {
-    font-size: 2.2rem;
+    font-size: 2rem;
     line-height: 1.2;
+    margin-bottom: 20px;
   }
 
   .eva-value-description {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
   }
 
   .eva-value-stats {
@@ -1076,40 +1175,40 @@
 /* Mobile Optimizations for Services */
 @media (max-width: 768px) {
   .eva-services-min {
-    padding: 80px 20px;
+    padding: 50px 20px;
   }
 
   .eva-services-min-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
   }
 
   .eva-services-min-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
   }
 
   .eva-services-min-grid {
-    gap: 20px;
+    gap: 18px;
   }
 
   .eva-service-hover {
-    padding: 30px 20px;
-    border-radius: 20px;
+    padding: 25px 18px;
+    border-radius: 18px;
   }
 
   .eva-service-hover h4 {
     font-size: 0.95rem;
-    margin-top: 15px;
+    margin-top: 12px;
   }
 
   .eva-service-hover p {
     font-size: 0.9rem;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
-
-
   .eva-services-min-cta {
-    margin-top: 50px;
+    margin-top: 35px;
   }
 }
 
@@ -1687,6 +1786,36 @@
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .eva-features {
+    padding: 50px 20px;
+    gap: 35px;
+  }
+  
+  .eva-feature-card {
+    padding: 25px 15px;
+  }
+  
+  .eva-feature-icon {
+    height: 100px;
+    margin-bottom: 15px;
+  }
+  
+  .eva-feature-image {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .eva-feature-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+  
+  .eva-feature-description {
+    font-size: 1rem;
+  }
+}
+
 .eva-feature-card {
   text-align: center;
   padding: 40px 20px;
@@ -1760,6 +1889,30 @@
 .eva-ceo-section {
   padding: 120px 40px;
   background: #000;
+}
+
+@media (max-width: 768px) {
+  .eva-ceo-section {
+    padding: 50px 20px;
+  }
+  
+  .eva-ceo-container {
+    gap: 30px;
+  }
+  
+  .eva-ceo-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .eva-ceo-text {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .eva-ceo-signature {
+    margin-top: 30px;
+  }
 }
 
 .eva-ceo-container {
@@ -2132,6 +2285,30 @@
   background: #000;
 }
 
+@media (max-width: 768px) {
+  .eva-testimonials-lux {
+    padding: 50px 20px;
+  }
+  
+  .eva-testimonials-lux-container {
+    gap: 30px;
+  }
+  
+  .eva-testimonials-lux-card {
+    padding: 25px 20px;
+  }
+  
+  .eva-testimonials-lux-quote {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .eva-testimonials-lux-author {
+    font-size: 0.95rem;
+  }
+}
+
 .eva-testimonials-lux-container{
   max-width: 1400px;
   margin: 0 auto;
@@ -2308,6 +2485,32 @@
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .eva-cta-section {
+    padding: 50px 20px;
+    min-height: auto;
+  }
+  
+  .eva-cta-content {
+    padding: 40px 25px;
+  }
+  
+  .eva-cta-heading {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .eva-cta-description {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  
+  .eva-cta-features {
+    margin-bottom: 35px;
+    gap: 12px;
+  }
+}
+
 .eva-cta-section::before {
   content: '';
   position: absolute;
@@ -2432,6 +2635,37 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 80px;
+}
+
+@media (max-width: 768px) {
+  .eva-contact-header {
+    height: 250px;
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: center;
+  }
+  
+  .eva-contact-content {
+    padding: 40px 20px;
+  }
+  
+  .eva-contact-title {
+    font-size: 2rem;
+    margin-bottom: 35px;
+  }
+  
+  .eva-contact-item {
+    margin-bottom: 25px;
+  }
+  
+  .eva-contact-label {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .eva-contact-value {
+    font-size: 1rem;
+  }
 }
 
 .eva-contact-header-text {
@@ -2577,32 +2811,44 @@
 
   .eva-hero {
     padding-top: 70px;
+    min-height: 85vh;
   }
 
   .eva-hero-tagline {
-    font-size: 2.2rem;
+    font-size: 2rem;
     line-height: 1.2;
     padding: 0 15px;
+    margin-bottom: 15px;
   }
 
   .eva-hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding: 0 15px;
+    margin-bottom: 25px;
+    line-height: 1.5;
   }
 
   .eva-hero-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     align-items: center;
     padding: 0 15px;
   }
 
   .eva-cta-button-secondary {
-    padding: 12px 30px;
-    font-size: 0.95rem;
+    padding: 12px 28px;
+    font-size: 0.9rem;
     width: 100%;
     max-width: 280px;
     text-align: center;
+  }
+  
+  .eva-logo-container {
+    margin-bottom: 25px;
+  }
+  
+  .eva-logo-hero {
+    width: 150px;
   }
 
   .eva-elite-heading {
@@ -2656,11 +2902,12 @@
   }
 
   .eva-apply-section {
-    padding: 80px 20px;
+    padding: 50px 20px;
   }
 
   .eva-apply-heading {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 25px;
   }
 
   .eva-apply-heading-line1,
@@ -2669,40 +2916,44 @@
   }
 
   .eva-apply-button {
-    padding: 14px 35px;
-    font-size: 0.95rem;
+    padding: 12px 30px;
+    font-size: 0.9rem;
     width: 100%;
     max-width: 280px;
+    margin-bottom: 30px;
   }
 
   .eva-categories {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    margin-top: 30px;
   }
 
   .eva-category-box {
     min-width: 200px;
-    padding: 20px 35px;
+    padding: 18px 30px;
     width: 100%;
     max-width: 300px;
   }
 
   .eva-category-box span {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .eva-vmv-section {
-    padding: 60px 20px;
+    padding: 50px 20px;
   }
 
   .eva-vmv-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
   }
 
   .eva-vmv-text,
   .eva-vmv-values-list li {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .eva-specializations-title {
@@ -2732,31 +2983,37 @@
   }
 
   .eva-cta-section {
-    padding: 80px 20px;
+    padding: 50px 20px;
   }
 
   .eva-cta-heading {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 15px;
   }
 
   .eva-cta-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
   }
 
   .eva-cta-features {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 12px;
+    margin-bottom: 30px;
   }
 
   .eva-cta-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
   }
 
   .eva-cta-primary,
   .eva-cta-secondary {
     width: 100%;
     max-width: 280px;
+    padding: 14px 28px;
+    font-size: 0.95rem;
   }
 }
 
@@ -2770,60 +3027,105 @@
     width: 90px;
   }
 
+  .eva-hero {
+    min-height: 80vh;
+    padding-top: 60px;
+  }
+
   .eva-hero-tagline {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
+    margin-bottom: 12px;
   }
 
   .eva-hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .eva-logo-hero {
+    width: 130px;
   }
 
   .eva-cta-button-secondary {
-    font-size: 0.9rem;
-    padding: 11px 25px;
+    font-size: 0.85rem;
+    padding: 11px 24px;
   }
 
-  .eva-contact-header-text {
-    font-size: 1.2rem;
-    letter-spacing: 2px;
+  .eva-services-min {
+    padding: 40px 15px;
   }
 
-  .eva-contact-title {
-    font-size: 2rem;
+  .eva-services-min-title {
+    font-size: 1.9rem;
   }
 
-  .eva-apply-heading {
+  .eva-features {
+    padding: 40px 15px;
+    gap: 30px;
+  }
+
+  .eva-value-benefits-section {
+    padding: 40px 15px;
+  }
+
+  .eva-value-heading {
+    font-size: 1.7rem;
+  }
+
+  .eva-benefits-title {
+    font-size: 1.7rem;
+  }
+
+  .eva-ceo-section {
+    padding: 40px 15px;
+  }
+
+  .eva-ceo-title {
     font-size: 1.8rem;
   }
 
-  .eva-apply-button {
-    font-size: 0.9rem;
-    padding: 12px 30px;
+  .eva-testimonials-lux {
+    padding: 40px 15px;
   }
 
-  .eva-category-box {
-    padding: 18px 25px;
+  .eva-cta-section {
+    padding: 40px 15px;
   }
 
-  .eva-category-box span {
-    font-size: 0.9rem;
+  .eva-cta-heading {
+    font-size: 1.8rem;
+  }
+
+  .eva-contact-header {
+    height: 200px;
+    padding: 20px 15px;
+  }
+
+  .eva-contact-header-text {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  .eva-contact-content {
+    padding: 35px 15px;
+  }
+
+  .eva-contact-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .eva-vmv-section {
+    padding: 40px 15px;
   }
 
   .eva-vmv-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .eva-vmv-text,
   .eva-vmv-values-list li {
-    font-size: 0.95rem;
-  }
-
-  .eva-cta-heading {
-    font-size: 2rem;
-  }
-
-  .eva-cta-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 /* Media protection (UX-level) */
@@ -3004,27 +3306,65 @@
   
   /* Benefits mobile fix: prevent side-peek + keep cards centered */
 @media (max-width: 640px){
+  .eva-value-benefits-section {
+    padding: 40px 15px;
+  }
+  
   .eva-value-benefits-container{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .eva-value-proposition {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .eva-value-heading {
+    font-size: 1.8rem;
+  }
+
+  .eva-benefits-header {
+    margin-bottom: 30px;
+  }
+
+  .eva-benefits-title {
+    font-size: 1.8rem;
   }
 
   .eva-benefits-grid{
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    gap: 15px !important;
+    margin-bottom: 40px !important;
   }
 
   .eva-benefit-card{
     width: 100% !important;
     max-width: 420px;           /* keeps it premium centered */
     margin: 0 auto !important;  /* prevents the peek */
-    padding: 26px 18px !important;
+    padding: 24px 16px !important;
+    min-height: auto !important;
   }
 
   /* scale down the big illustrations inside benefit cards */
+  .eva-benefit-illustration {
+    width: 150px !important;
+    height: 150px !important;
+    margin-bottom: 12px !important;
+  }
+  
   .eva-benefit-illustration img{
-    width: 160px !important;
-    height: 160px !important;
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  .eva-benefit-title {
+    font-size: 1.1rem;
+    margin-top: 15px;
+  }
+  
+  .eva-benefit-description {
+    font-size: 0.9rem;
   }
 }
 .eva-positions-grid{

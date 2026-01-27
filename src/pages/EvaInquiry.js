@@ -7,13 +7,13 @@ function EvaInquiry() {
   return (
     <>
       <SEO 
-        title="Hire EVA Brookside Virtual Assistant | EVA PH Inquiry Form"
-        description="Hire EVA Brookside virtual assistant Philippines. Get started with EVA's premium virtual assistant services. Fill out our inquiry form and join industry leaders. EVA PH - Fast hiring in 21 days average, 98% client satisfaction rate."
-        keywords="eva brookside, eva virtual assistant, eva ph, eva philippines, hire eva virtual assistant, eva brooksidemps, virtual assistant philippines, filipino virtual assistant, eva va philippines, hire virtual assistant philippines, eva inquiry, eva brookside inquiry"
+        title="Hire E-VA Brookside Virtual Assistant | E-VA PH Inquiry Form"
+        description="Hire E-VA Brookside virtual assistant Philippines. Get started with E-VA's premium virtual assistant services. Fill out our inquiry form and join industry leaders. E-VA PH - Fast hiring in 21 days average, 98% client satisfaction rate."
+        keywords="eva brookside, eva virtual assistant, eva ph, eva philippines, e-va brookside, e-va virtual assistant, e-va philippines, hire eva virtual assistant, eva brooksidemps, virtual assistant philippines, filipino virtual assistant, eva va philippines, hire virtual assistant philippines, eva inquiry, eva brookside inquiry"
         ogImage="/eva-logo.png"
         ogImageWidth={1200}
         ogImageHeight={630}
-        ogImageAlt="EVA Brookside Virtual Assistant - Inquiry Form Philippines"
+        ogImageAlt="E-VA Brookside Virtual Assistant - Inquiry Form Philippines"
         canonicalUrl="/eva/inquiry"
         structuredData={[
           {
@@ -84,7 +84,7 @@ function EvaInquiry() {
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "EVA",
+                "name": "E-VA",
                 "item": "https://brooksidemps.com/eva"
               },
               {
@@ -102,9 +102,9 @@ function EvaInquiry() {
         {/* Navigation */}
         <nav className="eva-inquiry-nav">
           <div className="eva-inquiry-nav-container">
-            <Link to="/eva" className="eva-inquiry-nav-logo">EVA</Link>
+            <Link to="/eva" className="eva-inquiry-nav-logo">E-VA</Link>
             <Link to="/eva" className="eva-inquiry-back-link">
-              <i className="fas fa-arrow-left"></i> Back to EVA
+              <i className="fas fa-arrow-left"></i> Back to E-VA
             </Link>
           </div>
         </nav>
@@ -113,7 +113,7 @@ function EvaInquiry() {
         <section className="eva-inquiry-hero">
           <div className="eva-inquiry-hero-content">
             <h1 className="eva-inquiry-hero-title">Elevate Your Business</h1>
-            <p className="eva-inquiry-hero-subtitle">Join industry leaders who trust EVA for elite virtual assistant services</p>
+            <p className="eva-inquiry-hero-subtitle">Join industry leaders who trust E-VA for elite virtual assistant services</p>
           </div>
         </section>
 
@@ -135,7 +135,7 @@ function EvaInquiry() {
                     frameBorder="0"
                     marginHeight="0"
                     marginWidth="0"
-                    title="EVA Inquiry Form"
+                    title="E-VA Inquiry Form"
                   >
                     Loading…
                   </iframe>
@@ -231,7 +231,7 @@ function EvaInquiry() {
 
                 {/* Why Choose EVA */}
                 <div className="eva-inquiry-benefits-card">
-                  <h3 className="eva-inquiry-benefits-title">Why Choose EVA?</h3>
+                  <h3 className="eva-inquiry-benefits-title">Why Choose E-VA?</h3>
                   <ul className="eva-inquiry-benefits-list">
                     <li className="eva-inquiry-benefit-item">
                       <i className="fas fa-check-circle"></i>
