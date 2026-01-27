@@ -492,8 +492,9 @@ function Eva() {
             <div className="eva-logo-container">
               <img src="/eva-logo.png" alt="E-VA Brookside - Elite Virtual Assistant Services Philippines" className="eva-logo-hero" />
             </div>
-            <h1 className="eva-hero-tagline">E-VA Brookside: Elite Virtual Assistants<br />from the Philippines</h1>
-            <p className="eva-hero-subtitle">E-VA virtual assistant Philippines - Save up to 70% on staffing costs while getting top-tier Filipino talent. Fast hiring in 21 days, no upfront fees. E-VA PH delivers excellence.</p>
+            <h1 className="eva-hero-tagline">Elevate Your Everything</h1>
+            <p className="eva-hero-subtitle">E-VA helps businesses cut staffing costs by up to 70% with skilled global talent. Fast hiring in 21 days, no upfront fees.
+            </p>
 
             <div className="eva-hero-buttons">
               <Link to="/eva/inquiry" className="eva-cta-button-secondary">Get Started Today</Link>
@@ -538,8 +539,9 @@ function Eva() {
         <section className="eva-services-min" id="services" ref={servicesRef}>
           <div className="eva-services-min-container">
             <div className="eva-services-min-header">
-              <h2 className="eva-services-min-title">E-VA Virtual Assistant Services</h2>
-              <p className="eva-services-min-subtitle">E-VA Brookside offers comprehensive virtual assistant services in the Philippines, providing elite Filipino talent for your business needs.</p>
+              <h2 className="eva-services-min-title">E-VA Services</h2>
+              <p className="eva-services-min-subtitle">E-VA provides professional virtual assistant services worldwide, connecting businesses with highly skilled professionals to support daily operations and business growth.
+              </p>
             </div>
 
             <div className="eva-services-min-grid">
@@ -596,12 +598,12 @@ function Eva() {
     <div className="eva-value-proposition" data-aos="fade-up">
       <div className="eva-value-content">
         <h2 className="eva-value-heading">
-          E-VA Brookside: Built for Businesses That Want<br />
-          <span className="eva-value-highlight">More Time and Better Focus</span>
+        E-VA: More Time.<br />
+          <span className="eva-value-highlight">Better Focus. Smarter Support.</span>
         </h2>
 
         <p className="eva-value-description">
-          E-VA virtual assistant Philippines provides reliable Filipino virtual assistants who integrate seamlessly into your operations — so you can focus on growth, strategy, and results without daily distractions. E-VA PH delivers excellence.
+        E-VA provides reliable virtual assistants who work smoothly within your operations, so you can focus on growth, strategy, and results without daily distractions.
         </p>
 
         <Link
@@ -630,9 +632,9 @@ function Eva() {
 
     {/* Benefits Header */}
     <div className="eva-benefits-header" data-aos="fade-up">
-      <h2 className="eva-benefits-title">What You Gain with E-VA Brookside</h2>
+      <h2 className="eva-benefits-title">What You Gain with E-VA</h2>
       <p className="eva-benefits-subtitle">
-        E-VA virtual assistant Philippines delivers practical benefits designed to improve how your business runs every day. E-VA PH excellence.
+        E-VA delivers practical benefits designed to improve how your business runs every day.
       </p>
     </div>
 
@@ -732,9 +734,9 @@ function Eva() {
         <section className="eva-cta-section" ref={ctaRef}>
           <div className="eva-cta-container" data-aos="fade-in">
             <div className="eva-cta-content">
-              <h2 className="eva-cta-heading">Ready to Elevate Your Business with E-VA Brookside?</h2>
+              <h2 className="eva-cta-heading">Ready to Elevate Your Business with E-VA?</h2>
               <p className="eva-cta-description">
-                Get started with E-VA virtual assistant Philippines - Free consultation and discover how our elite Filipino virtual assistants can transform your operations. E-VA PH delivers excellence. No upfront costs, no long-term commitments.
+                Get started with E-VA - Free consultation and discover how our elite Filipino virtual assistants can transform your operations. E-VA delivers excellence. No upfront costs, no long-term commitments.
               </p>
               <div className="eva-cta-features">
                 <div className="eva-cta-feature">
@@ -769,12 +771,12 @@ function Eva() {
               <img src="/eva-ceo.jpeg" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
-              <h2 className="eva-ceo-title">Message from E-VA Brookside CEO</h2>
+              <h2 className="eva-ceo-title">Message from E-VA CEO</h2>
               <p className="eva-ceo-text">
-                In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where E-VA virtual assistant Philippines comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, E-VA Brookside's team of dedicated Filipino professionals is here to ensure that you can focus on what truly matters—growing your business.
+                In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where E-VA comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, E-VA's team of dedicated Filipino professionals is here to ensure that you can focus on what truly matters—growing your business.
               </p>
               <p className="eva-ceo-text">
-                E-VA PH takes pride in offering personalized solutions tailored to your unique needs. Our E-VA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, E-VA Brookside is here to make your work-life balance a reality.
+                E-VA takes pride in offering personalized solutions tailored to your unique needs. Our E-VA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, E-VA is here to make your work-life balance a reality.
               </p>
               <div className="eva-ceo-signature">
                 <p className="eva-signature-name">ETHEL ANN CABEZAS</p>
@@ -813,19 +815,19 @@ function Eva() {
           </video>
           <div className="eva-vmv-content" data-aos="fade-in">
             <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">E-VA Brookside Vision</h3>
-              <p className="eva-vmv-text">E-VA virtual assistant Philippines aims to provide elevated support through talent, grit, and passion for literally everything. E-VA PH delivers excellence.</p>
+              <h3 className="eva-vmv-title">Vision</h3>
+              <p className="eva-vmv-text">E-VA aims to provide elevated support through talent, grit, and passion for literally everything.</p>
             </div>
             <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">E-VA Mission</h3>
-              <p className="eva-vmv-text">E-VA Brookside: Happy clients meet exceptional service. E-VA virtual assistant delivers results.</p>
+              <h3 className="eva-vmv-title">Mission</h3>
+              <p className="eva-vmv-text">Happy clients meet exceptional service.</p>
             </div>
             <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">E-VA Values</h3>
+              <h3 className="eva-vmv-title">Values</h3>
               <ul className="eva-vmv-values-list">
-                <li>Bespoke excellence - E-VA PH standard</li>
-                <li>Non-stop innovation - E-VA Brookside commitment</li>
-                <li>Reliable efficiency - E-VA virtual assistant promise</li>
+                <li>Bespoke excellence</li>
+                <li>Non-stop innovation</li>
+                <li>Reliable efficiency</li>
               </ul>
             </div>
           </div>
