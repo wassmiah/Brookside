@@ -7,11 +7,95 @@ function EvaInquiry() {
   return (
     <>
       <SEO 
-        title="Hire Elite Virtual Assistants | EVA Inquiry"
-        description="Get started with EVA's premium virtual assistant services. Fill out our inquiry form and join industry leaders."
-        keywords="hire virtual assistant, VA inquiry, virtual assistant services, business support"
-        ogImage="/eva-logo-placeholder.png"
+        title="Hire EVA Brookside Virtual Assistant | EVA PH Inquiry Form"
+        description="Hire EVA Brookside virtual assistant Philippines. Get started with EVA's premium virtual assistant services. Fill out our inquiry form and join industry leaders. EVA PH - Fast hiring in 21 days average, 98% client satisfaction rate."
+        keywords="eva brookside, eva virtual assistant, eva ph, eva philippines, hire eva virtual assistant, eva brooksidemps, virtual assistant philippines, filipino virtual assistant, eva va philippines, hire virtual assistant philippines, eva inquiry, eva brookside inquiry"
+        ogImage="/eva-logo.png"
+        ogImageWidth={1200}
+        ogImageHeight={630}
+        ogImageAlt="EVA Brookside Virtual Assistant - Inquiry Form Philippines"
         canonicalUrl="/eva/inquiry"
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Virtual Assistant Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "E-VA (Brookside Manpower Services)",
+              "url": "https://brooksidemps.com/eva"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Global"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Virtual Assistant Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Property Management Support"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "E-Commerce Operations"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Digital Marketing Support"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Financial Administration"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Executive Assistance"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://brooksidemps.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "EVA",
+                "item": "https://brooksidemps.com/eva"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Inquiry",
+                "item": "https://brooksidemps.com/eva/inquiry"
+              }
+            ]
+          }
+        ]}
       />
 
       <div className="eva-inquiry-page">

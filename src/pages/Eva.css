@@ -328,9 +328,28 @@
   font-size: 1rem;
   font-weight: 500;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .eva-nav-links a:hover {
+  color: #9d4edd;
+}
+
+/* Mobile Navigation Toggle */
+.eva-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.eva-nav-toggle:hover {
+  border-color: #9d4edd;
   color: #9d4edd;
 }
 
@@ -2520,25 +2539,70 @@
 }
 
 @media (max-width: 768px) {
+  .eva-nav-container {
+    padding: 0 20px;
+  }
+
+  .eva-nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    border-top: 1px solid rgba(157, 78, 221, 0.2);
+  }
+
+  .eva-nav-links.active {
+    display: flex;
+  }
+
+  .eva-nav-links a {
+    font-size: 0.95rem;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .eva-nav-toggle {
+    display: block;
+  }
+
+  .eva-logo-small {
+    width: 100px;
+  }
+
+  .eva-hero {
+    padding-top: 70px;
+  }
+
   .eva-hero-tagline {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 1.2;
+    padding: 0 15px;
   }
 
   .eva-hero-subtitle {
-    font-size: 1.1rem;
-    padding: 0 10px;
+    font-size: 1rem;
+    padding: 0 15px;
   }
 
   .eva-hero-buttons {
     flex-direction: column;
     gap: 15px;
     align-items: center;
+    padding: 0 15px;
   }
 
   .eva-cta-button-secondary {
     padding: 12px 30px;
     font-size: 0.95rem;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
   }
 
   .eva-elite-heading {
@@ -2566,25 +2630,37 @@
     font-size: 1.5rem;
   }
 
-  .eva-nav-links {
-    gap: 20px;
-  }
-
-  .eva-nav-links a {
-    font-size: 0.9rem;
-  }
-
   .eva-contact-header {
     padding-right: 20px;
+    height: 300px;
+    justify-content: center;
   }
 
   .eva-contact-header-text {
     font-size: 1.5rem;
     letter-spacing: 4px;
+    text-align: center;
+  }
+
+  .eva-contact-content {
+    padding: 60px 20px;
+  }
+
+  .eva-contact-title {
+    font-size: 2.5rem;
+  }
+
+  .eva-contact-info {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .eva-apply-section {
+    padding: 80px 20px;
   }
 
   .eva-apply-heading {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .eva-apply-heading-line1,
@@ -2593,28 +2669,40 @@
   }
 
   .eva-apply-button {
-    padding: 16px 40px;
-    font-size: 1rem;
+    padding: 14px 35px;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 280px;
   }
 
   .eva-categories {
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
   }
 
   .eva-category-box {
     min-width: 200px;
-    padding: 24px 40px;
+    padding: 20px 35px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .eva-category-box span {
+    font-size: 1rem;
+  }
+
+  .eva-vmv-section {
+    padding: 60px 20px;
   }
 
   .eva-vmv-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .eva-vmv-text,
   .eva-vmv-values-list li {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .eva-specializations-title {
@@ -2640,6 +2728,101 @@
 
   .eva-specializations-button {
     padding: 16px 40px;
+    font-size: 1rem;
+  }
+
+  .eva-cta-section {
+    padding: 80px 20px;
+  }
+
+  .eva-cta-heading {
+    font-size: 2.5rem;
+  }
+
+  .eva-cta-description {
+    font-size: 1.1rem;
+  }
+
+  .eva-cta-features {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .eva-cta-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .eva-cta-primary,
+  .eva-cta-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .eva-nav-container {
+    padding: 0 15px;
+  }
+
+  .eva-logo-small {
+    width: 90px;
+  }
+
+  .eva-hero-tagline {
+    font-size: 1.8rem;
+  }
+
+  .eva-hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .eva-cta-button-secondary {
+    font-size: 0.9rem;
+    padding: 11px 25px;
+  }
+
+  .eva-contact-header-text {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .eva-contact-title {
+    font-size: 2rem;
+  }
+
+  .eva-apply-heading {
+    font-size: 1.8rem;
+  }
+
+  .eva-apply-button {
+    font-size: 0.9rem;
+    padding: 12px 30px;
+  }
+
+  .eva-category-box {
+    padding: 18px 25px;
+  }
+
+  .eva-category-box span {
+    font-size: 0.9rem;
+  }
+
+  .eva-vmv-title {
+    font-size: 1.6rem;
+  }
+
+  .eva-vmv-text,
+  .eva-vmv-values-list li {
+    font-size: 0.95rem;
+  }
+
+  .eva-cta-heading {
+    font-size: 2rem;
+  }
+
+  .eva-cta-description {
     font-size: 1rem;
   }
 }

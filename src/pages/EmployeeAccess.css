@@ -225,38 +225,139 @@ body, .employee-access {
   line-height: 1.6;
 }
 
-@media (max-width: 900px) {
+/* Tablet Responsive */
+@media (max-width: 1024px) {
   .employee-hero {
-    height: 44vh;
-    min-height: 220px;
-    max-height: 340px;
-    padding: 0 4px;
-    margin-bottom: 0;
+    height: 55vh;
+    min-height: 400px;
+    max-height: 550px;
+    padding: 80px 20px;
   }
-  .hero-overlay {
-    max-width: 98vw;
-    gap: 10px;
-  }
-  .employee-access-title {
-    margin-top: 18px;
-    margin-bottom: 6px;
-  }
+
   .employee-access-title h1 {
-    font-size: 1.2rem;
+    font-size: 2.5rem;
   }
+
   .hero-logo {
-    max-width: 38vw;
+    max-width: 45vw;
   }
+
+  .employee-access-btn-group {
+    gap: 1rem;
+  }
+
+  .hero-btn {
+    min-width: 150px;
+    font-size: 1.1rem;
+  }
+
+  .login-container {
+    margin: 80px auto;
+    padding: 35px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .employee-hero {
+    height: 50vh;
+    min-height: 350px;
+    max-height: 450px;
+    padding: 60px 15px;
+  }
+
+  .hero-overlay {
+    max-width: 95vw;
+    gap: 12px;
+  }
+
+  .employee-access-title {
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  .employee-access-title h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-logo {
+    max-width: 50vw;
+  }
+
   .employee-access-btn-group {
     flex-direction: column;
     gap: 12px;
-    margin-top: 10px;
+    margin-top: 15px;
+    width: 100%;
   }
+
   .hero-btn {
-    min-width: 160px;
+    min-width: 180px;
     min-height: 48px;
     font-size: 1rem;
     padding: 0.8rem 1.2rem;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .login-container {
+    margin: 60px 20px;
+    padding: 30px 20px;
+    max-width: 100%;
+  }
+
+  .login-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .employee-access-login-form {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 30px 20px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .employee-hero {
+    height: 44vh;
+    min-height: 280px;
+    max-height: 380px;
+    padding: 40px 10px;
+  }
+
+  .employee-access-title h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-logo {
+    max-width: 60vw;
+  }
+
+  .hero-btn {
+    min-width: 160px;
+    min-height: 44px;
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .login-container {
+    margin: 40px 15px;
+    padding: 25px 15px;
+  }
+
+  .login-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .employee-access-login-form {
+    padding: 25px 15px;
+  }
+
+  .employee-access-login-form h2 {
+    font-size: 1.6rem;
   }
 }
 

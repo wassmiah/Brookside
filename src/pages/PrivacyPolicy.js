@@ -7,9 +7,45 @@ function PrivacyPolicy() {
     <>
       <SEO 
         title="Privacy Policy"
-        description="Learn about how Brookside Manpower Services collects, uses, and protects your personal information."
-        keywords="privacy policy, data protection, cookie policy, Brookside Manpower Services privacy"
+        description="Learn about how Brookside Manpower Services collects, uses, and protects your personal information. Our commitment to data protection and privacy compliance."
+        keywords="privacy policy, data protection, cookie policy, Brookside Manpower Services privacy, GDPR compliance, data security"
+        ogImage="/logo192.png"
+        ogImageWidth={1200}
+        ogImageHeight={630}
+        ogImageAlt="Privacy Policy - Brookside Manpower Services"
         canonicalUrl="/privacy-policy"
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Privacy Policy",
+            "description": "Privacy Policy for Brookside Manpower Services",
+            "datePublished": "2025-01-27",
+            "dateModified": new Date().toISOString().split('T')[0],
+            "publisher": {
+              "@type": "Organization",
+              "name": "Brookside Manpower Services"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://brooksidemps.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Privacy Policy",
+                "item": "https://brooksidemps.com/privacy-policy"
+              }
+            ]
+          }
+        ]}
       />
 
       <div className="privacy-policy-page">

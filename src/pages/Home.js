@@ -42,7 +42,21 @@ function Home() {
         description="Brookside Manpower Services - Your trusted partner in hospitality staffing solutions. We connect skilled talents to leading hotels, resorts, and restaurants in Metro Manila."
         keywords="hospitality staffing, hotel jobs, restaurant jobs, manpower services, job placement, Metro Manila, Philippines"
         ogImage="/logohero.webp"
+        ogImageWidth={1200}
+        ogImageHeight={630}
+        ogImageAlt="Brookside Manpower Services - Hospitality Staffing Experts"
         canonicalUrl="/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Brookside Manpower Services",
+          "url": "https://brooksidemps.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://brooksidemps.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }}
       />
 
       {/* Hero Section */}

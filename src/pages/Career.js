@@ -10,7 +10,71 @@ function Career() {
         description="Explore exciting career opportunities in hospitality with Brookside Manpower Services. We're hiring for various positions including Receptionist, Waitstaff, Barista, and more. No experience required for entry-level positions."
         keywords="hospitality jobs, restaurant jobs, hotel jobs, entry level jobs, no experience jobs, Metro Manila jobs, Brookside careers, manpower services jobs"
         ogImage="/how-to-resume.png"
+        ogImageWidth={1200}
+        ogImageHeight={630}
+        ogImageAlt="Career Opportunities at Brookside Manpower Services"
         canonicalUrl="/career"
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "JobPosting",
+            "title": "Hospitality Staff Positions",
+            "description": "Multiple positions available in hospitality industry including Receptionist, Waitstaff, Barista, Cashier, Bartender, Line Cook, Kitchen Helper, Kitchen Steward, Commissary, and Pastry Chef. No experience required for entry-level positions.",
+            "identifier": {
+              "@type": "PropertyValue",
+              "name": "Brookside Manpower Services",
+              "value": "HOSPITALITY-STAFF-2025"
+            },
+            "datePosted": "2025-01-27",
+            "validThrough": "2025-12-31",
+            "employmentType": "FULL_TIME,PART_TIME",
+            "hiringOrganization": {
+              "@type": "Organization",
+              "name": "Brookside Manpower Services",
+              "sameAs": "https://brooksidemps.com"
+            },
+            "jobLocation": {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Metro Manila",
+                "addressRegion": "Metro Manila",
+                "addressCountry": "PH"
+              }
+            },
+            "baseSalary": {
+              "@type": "MonetaryAmount",
+              "currency": "PHP",
+              "value": {
+                "@type": "QuantitativeValue",
+                "value": "Competitive",
+                "unitText": "MONTH"
+              }
+            },
+            "workHours": "Flexible",
+            "qualifications": "No experience required. Willing to learn and work in hospitality industry.",
+            "responsibilities": "Various roles in hospitality including customer service, food preparation, and administrative tasks.",
+            "skills": "Good communication skills, team player, customer-oriented"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://brooksidemps.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Career Opportunities",
+                "item": "https://brooksidemps.com/career"
+              }
+            ]
+          }
+        ]}
       />
 
       <div className="career-page">

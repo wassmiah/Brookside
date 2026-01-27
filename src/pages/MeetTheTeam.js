@@ -41,7 +41,24 @@ function MeetTheTeam() {
       image: "/team-images/payroll-manager.png", 
       linkedin: "https://www.linkedin.com/in/janet-cornejo-65739176/" 
     },
-  ];  
+  ];
+
+  const teamStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Meet Our Team",
+    "description": "Meet the dedicated team behind Brookside Manpower Services.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Brookside Manpower Services",
+      "employee": teamMembers.map((member) => ({
+        "@type": "Person",
+        "name": member.name,
+        "jobTitle": member.position,
+        ...(member.linkedin !== "#" && { "sameAs": member.linkedin })
+      }))
+    }
+  };
 
   return (
     <>
@@ -50,7 +67,31 @@ function MeetTheTeam() {
         description="Meet the dedicated team behind Brookside Manpower Services. Our experienced professionals are committed to connecting top talent with leading hospitality companies in Metro Manila."
         keywords="Brookside team, hospitality staffing team, HR professionals, manpower services team, Metro Manila"
         ogImage="/team-images/ceo.png"
+        ogImageWidth={1200}
+        ogImageHeight={630}
+        ogImageAlt="Meet the Team at Brookside Manpower Services"
         canonicalUrl="/meet-the-team"
+        structuredData={[
+          teamStructuredData,
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://brooksidemps.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Meet Our Team",
+                "item": "https://brooksidemps.com/meet-the-team"
+              }
+            ]
+          }
+        ]}
       />
       
       {/* CEO Section */}

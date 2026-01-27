@@ -81,7 +81,70 @@ function ContactUs() {
         description="Get in touch with Brookside Manpower Services for your hospitality staffing needs. We're here to help you find the perfect talent for your business in Metro Manila."
         keywords="contact Brookside, manpower services contact, hospitality staffing contact, Metro Manila recruitment, staffing solutions contact"
         ogImage="/PITX.png"
+        ogImageWidth={1200}
+        ogImageHeight={630}
+        ogImageAlt="Contact Brookside Manpower Services - Office Location"
         canonicalUrl="/contact"
+        structuredData={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Us",
+            "description": "Get in touch with Brookside Manpower Services for your hospitality staffing needs.",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Brookside Manpower Services",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Unit 704C, Tower 3, PITX Building, 1 Kennedy Road, Barangay Tambo",
+                "addressLocality": "Paranaque City",
+                "addressRegion": "Metro Manila",
+                "postalCode": "1701",
+                "addressCountry": "PH"
+              },
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+63-2-7001-9493",
+                  "contactType": "customer service",
+                  "areaServed": "PH",
+                  "availableLanguage": ["en", "fil"]
+                },
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+63-917-157-8874",
+                  "contactType": "customer service",
+                  "areaServed": "PH",
+                  "availableLanguage": ["en", "fil"]
+                },
+                {
+                  "@type": "ContactPoint",
+                  "email": "inquire@brooksidemanpower.com",
+                  "contactType": "customer service",
+                  "areaServed": "PH"
+                }
+              ]
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://brooksidemps.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact Us",
+                "item": "https://brooksidemps.com/contact"
+              }
+            ]
+          }
+        ]}
       />
 
       <div className="contact-page">

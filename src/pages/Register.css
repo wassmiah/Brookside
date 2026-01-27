@@ -110,18 +110,85 @@ body, .register-bg {
   color: #f5a623;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
+/* Tablet Responsive */
+@media (max-width: 1024px) {
   .register-container {
-    margin: 40px 10px;
-    padding: 24px 8px;
+    margin: 70px auto;
+    padding: 35px;
+    max-width: 450px;
   }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .register-container {
+    margin: 50px 20px;
+    padding: 30px 20px;
+    max-width: 100%;
+  }
+
   .register-container h2 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
+
+  .register-container form {
+    gap: 15px;
+  }
+
   .register-container input,
   .register-container button {
     font-size: 0.95rem;
-    padding: 12px;
+    padding: 12px 14px;
+  }
+
+  .register-container p {
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+
+  .register-container a {
+    font-size: 0.95rem;
+  }
+
+  .toggle-password {
+    font-size: 1.1rem;
+    right: 12px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .register-container {
+    margin: 40px 15px;
+    padding: 25px 15px;
+  }
+
+  .register-container h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .register-container form {
+    gap: 12px;
+  }
+
+  .register-container input,
+  .register-container button {
+    font-size: 0.9rem;
+    padding: 11px 12px;
+  }
+
+  .register-container p {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .register-container a {
+    font-size: 0.9rem;
+  }
+
+  .toggle-password {
+    font-size: 1rem;
+    right: 10px;
   }
 }
