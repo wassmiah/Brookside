@@ -655,7 +655,7 @@ function Eva() {
       <div className="eva-value-content">
         <h2 className="eva-value-heading">
         E-VA: More Time.<br />
-          <span className="eva-value-highlight">Better Focus. Smarter Support.</span>
+          <span className="eva-value-highlight">Better Focus. <br />Smarter Support.</span>
         </h2>
 
         <p className="eva-value-description">
@@ -688,7 +688,7 @@ function Eva() {
 
     {/* Benefits Header */}
     <div className="eva-benefits-header" data-aos="fade-up">
-      <h2 className="eva-benefits-title">What You Gain with E-VA</h2>
+      <h2 className="eva-benefits-title">What You Gain with <br />E-VA</h2>
       <p className="eva-benefits-subtitle">
         E-VA delivers practical benefits designed to improve how your business runs every day.
       </p>

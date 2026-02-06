@@ -108,7 +108,7 @@ function Navbar({ onLogout }) {
             <a href="/#commitment" onClick={closeMenu}>Our Commitment</a>
             <a href="/meet-the-team" onClick={closeMenu}>Meet the Team</a>
             <a href="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
-              <img src="/eva-logo.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+              <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
             </a>
             <a href="/career" className="apply-now-btn" onClick={closeMenu}>Apply Now</a>
           </div>

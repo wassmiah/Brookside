@@ -2321,24 +2321,94 @@ body.eva-overlay-open {
 @media (max-width: 768px) {
   .eva-ceo-section {
     padding: 50px 20px;
+    overflow-x: hidden;
   }
   
   .eva-ceo-container {
     gap: 30px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .eva-ceo-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    box-sizing: border-box;
   }
   
   .eva-ceo-title {
     font-size: 2rem;
     margin-bottom: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .eva-ceo-text {
     font-size: 1rem;
     margin-bottom: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
   }
-  
+
   .eva-ceo-signature {
     margin-top: 30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .eva-signature-name {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .eva-ceo-section {
+    padding: 40px 16px;
+    overflow-x: hidden;
+  }
+
+  .eva-ceo-container {
+    gap: 24px;
+    padding: 0;
+  }
+
+  .eva-ceo-content {
+    padding: 0 4px;
+  }
+
+  .eva-ceo-title {
+    font-size: 1.65rem;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .eva-ceo-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .eva-ceo-signature {
+    margin-top: 24px;
+  }
+
+  .eva-signature-name {
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+  }
+
+  .eva-signature-title {
+    font-size: 0.8rem;
   }
 }
 
@@ -3741,6 +3811,8 @@ body.eva-overlay-open {
    .eva-ceo-section{
     background: #000 !important;
     padding: 120px 40px !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
   }
   
   .eva-ceo-container{
@@ -3750,6 +3822,8 @@ body.eva-overlay-open {
     grid-template-columns: 560px 1fr !important;
     gap: 96px !important;
     align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   /* Left image */
@@ -3757,23 +3831,32 @@ body.eva-overlay-open {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .eva-ceo-photo{
     aspect-ratio: 3 / 4 !important;
     height: auto !important;
     object-fit: cover !important;
-  
+    width: 100% !important;
+    max-width: 100% !important;
     border-radius: 60px !important;
     border: 2px solid rgba(255,255,255,0.9) !important;
     box-shadow: none !important;
     background: transparent !important;
+    box-sizing: border-box !important;
   }
   
   /* Right column: lock a clean text grid */
   .eva-ceo-content{
     max-width: 780px !important;     /* key: narrower text column */
     justify-self: start !important;  /* prevents drifting */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
   }
   
   /* Headline: match size + position */
@@ -3784,6 +3867,12 @@ body.eva-overlay-open {
     font-weight: 500 !important;
     margin: 0 0 28px 0 !important;
     letter-spacing: -0.01em !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    hyphens: auto !important;
   }
   
   /* Paragraphs: spacing + width like reference */
@@ -3841,6 +3930,127 @@ body.eva-overlay-open {
     }
     .eva-signature-name{
       letter-spacing: 0.35em !important;
+    }
+  }
+
+  /* Mobile Responsive - Fix Overflow */
+  @media (max-width: 768px){
+    .eva-ceo-section{
+      padding: 60px 20px !important;
+      overflow-x: hidden !important;
+    }
+    .eva-ceo-container{
+      gap: 32px !important;
+      grid-template-columns: 1fr !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+    .eva-ceo-image{
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .eva-ceo-content{
+      padding: 0 10px !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      justify-self: center !important;
+      text-align: center !important;
+    }
+    .eva-ceo-title{
+      font-size: 2.2rem !important;
+      line-height: 1.1 !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      hyphens: auto !important;
+      padding: 0 !important;
+      margin: 0 0 24px 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .eva-ceo-text{
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      padding: 0 !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .eva-ceo-photo{
+      width: min(420px, 85vw) !important;
+      max-width: 100% !important;
+      border-radius: 32px !important;
+    }
+    .eva-ceo-signature{
+      margin-top: 32px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .eva-signature-name{
+      font-size: 1.2rem !important;
+      letter-spacing: 0.2em !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+    .eva-signature-title{
+      font-size: 0.9rem !important;
+      letter-spacing: 0.2em !important;
+      max-width: 100% !important;
+    }
+  }
+
+  @media (max-width: 480px){
+    .eva-ceo-section{
+      padding: 50px 16px !important;
+      overflow-x: hidden !important;
+    }
+    .eva-ceo-container{
+      gap: 28px !important;
+      padding: 0 !important;
+    }
+    .eva-ceo-content{
+      padding: 0 4px !important;
+    }
+    .eva-ceo-title{
+      font-size: 1.8rem !important;
+      line-height: 1.15 !important;
+      margin: 0 0 20px 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .eva-ceo-text{
+      font-size: 0.95rem !important;
+      line-height: 1.65 !important;
+      margin: 0 0 20px 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+    .eva-ceo-photo{
+      width: min(360px, 90vw) !important;
+      max-width: 100% !important;
+      border-radius: 24px !important;
+    }
+    .eva-ceo-signature{
+      margin-top: 32px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .eva-signature-name{
+      font-size: 1rem !important;
+      letter-spacing: 0.15em !important;
+      margin: 0 0 8px 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+    .eva-signature-title{
+      font-size: 0.85rem !important;
+      letter-spacing: 0.15em !important;
+      max-width: 100% !important;
     }
   }
   
