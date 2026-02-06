@@ -75,12 +75,12 @@ function Eva() {
   }, [menuOpen, closeEvaMenu]);
 
   useEffect(() => {
-    // Responsive AOS offset - trigger earlier on mobile
+    // Responsive AOS offset - trigger immediately on mobile
     const isMobile = window.innerWidth <= 768;
-    const offsetValue = isMobile ? 20 : 100; // Much earlier trigger on mobile
+    const offsetValue = isMobile ? -200 : 100; // Very negative offset on mobile triggers well before element enters viewport
     
     AOS.init({
-      duration: 600,
+      duration: isMobile ? 300 : 600, // Faster animations on mobile
       once: true,
       offset: offsetValue,
       easing: 'ease-out-cubic',
@@ -90,9 +90,34 @@ function Eva() {
       animatedClassName: 'aos-animate',
       useClassNames: false,
       disableMutationObserver: false,
-      debounceDelay: 50,
-      throttleDelay: 99,
+      debounceDelay: isMobile ? 10 : 50, // Faster debounce on mobile
+      throttleDelay: isMobile ? 50 : 99, // Faster throttle on mobile
     });
+
+    // On mobile, immediately make all sections visible and refresh AOS
+    if (isMobile) {
+      // Immediately add section-visible class to all sections on mobile
+      const allSections = document.querySelectorAll('.eva-services-min, .eva-features, .eva-value-benefits-section, .eva-ceo-section, .eva-testimonials-lux, .eva-cta-section');
+      allSections.forEach(section => {
+        // Check if section is in viewport or near viewport
+        const rect = section.getBoundingClientRect();
+        const isNearViewport = rect.top < window.innerHeight + 300; // 300px before viewport
+        if (isNearViewport) {
+          section.classList.add('section-visible');
+        }
+      });
+
+      // Force multiple AOS refreshes to ensure triggering
+      setTimeout(() => {
+        AOS.refresh();
+      }, 50);
+      setTimeout(() => {
+        AOS.refresh();
+      }, 200);
+      setTimeout(() => {
+        AOS.refresh();
+      }, 500);
+    }
 
     // Refresh AOS on resize to update offset for mobile/desktop
     const handleResize = () => {
@@ -125,17 +150,24 @@ function Eva() {
     });
 
 
-    // General section animation observer - trigger earlier on mobile
+    // General section animation observer - trigger immediately on mobile
     const isMobileDevice = window.innerWidth <= 768;
     const sectionObserverOptions = {
-      threshold: isMobileDevice ? 0.25 : 0.2, // Trigger at 25% visible on mobile (quarter), 20% on desktop
-      rootMargin: isMobileDevice ? '50px 0px 0px 0px' : '0px 0px -100px 0px' // Positive margin on mobile triggers even earlier
+      threshold: isMobileDevice ? 0 : 0.2, // Trigger immediately on mobile (0% = as soon as any part enters), 20% on desktop
+      rootMargin: isMobileDevice ? '400px 0px 0px 0px' : '0px 0px -100px 0px' // Very large positive margin on mobile triggers well before element enters viewport
     };
 
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('section-visible');
+          // On mobile, also trigger AOS animation immediately
+          if (isMobileDevice) {
+            const aosElements = entry.target.querySelectorAll('[data-aos]');
+            aosElements.forEach(el => {
+              el.classList.add('aos-animate');
+            });
+          }
           sectionObserver.unobserve(entry.target);
         }
       });
@@ -146,13 +178,27 @@ function Eva() {
     sections.forEach(ref => {
       if (ref.current) {
         sectionObserver.observe(ref.current);
+        
+        // On mobile, immediately check if section is visible and make it visible
+        if (isMobileDevice) {
+          const rect = ref.current.getBoundingClientRect();
+          const isInViewport = rect.top < window.innerHeight + 400;
+          if (isInViewport) {
+            ref.current.classList.add('section-visible');
+            // Also trigger AOS animations immediately
+            const aosElements = ref.current.querySelectorAll('[data-aos]');
+            aosElements.forEach(el => {
+              el.classList.add('aos-animate');
+            });
+          }
+        }
       }
     });
 
-    // VMV section scroll animations - trigger earlier on mobile
+    // VMV section scroll animations - trigger immediately on mobile
     const vmvObserverOptions = {
-      threshold: isMobileDevice ? 0.25 : 0.3, // Trigger at 25% visible on mobile (quarter), 30% on desktop
-      rootMargin: isMobileDevice ? '50px 0px 0px 0px' : '0px' // Positive margin on mobile triggers even earlier
+      threshold: isMobileDevice ? 0.01 : 0.3, // Trigger at 1% visible on mobile (almost immediately), 30% on desktop
+      rootMargin: isMobileDevice ? '200px 0px 0px 0px' : '0px' // Large positive margin on mobile triggers well before element enters viewport
     };
 
     const vmvObserver = new IntersectionObserver((entries) => {
@@ -173,10 +219,10 @@ function Eva() {
       vmvObserver.observe(vmvRef.current);
     }
 
-    // Staggered grid animations - trigger earlier on mobile
+    // Staggered grid animations - trigger immediately on mobile
     const gridObserverOptions = {
-      threshold: isMobileDevice ? 0.25 : 0.2, // Trigger at 25% visible on mobile (quarter)
-      rootMargin: isMobileDevice ? '50px 0px 0px 0px' : '0px' // Positive margin on mobile triggers even earlier
+      threshold: isMobileDevice ? 0.01 : 0.2, // Trigger at 1% visible on mobile (almost immediately)
+      rootMargin: isMobileDevice ? '200px 0px 0px 0px' : '0px' // Large positive margin on mobile triggers well before element enters viewport
     };
 
     const gridObserver = new IntersectionObserver((entries) => {
@@ -207,6 +253,26 @@ function Eva() {
       const scrolled = window.pageYOffset;
       const scrollDirection = scrolled > lastScrollY ? 'down' : 'up';
       lastScrollY = scrolled;
+
+      // On mobile, refresh AOS on scroll and immediately show sections
+      if (window.innerWidth <= 768) {
+        AOS.refresh();
+        
+        // Immediately show sections that are near viewport
+        const allSections = document.querySelectorAll('.eva-services-min:not(.section-visible), .eva-features:not(.section-visible), .eva-value-benefits-section:not(.section-visible), .eva-ceo-section:not(.section-visible), .eva-testimonials-lux:not(.section-visible), .eva-cta-section:not(.section-visible)');
+        allSections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          // Show section if it's within 400px of viewport
+          if (rect.top < window.innerHeight + 400) {
+            section.classList.add('section-visible');
+            // Also trigger AOS animations
+            const aosElements = section.querySelectorAll('[data-aos]');
+            aosElements.forEach(el => {
+              el.classList.add('aos-animate');
+            });
+          }
+        });
+      }
 
       if (!ticking) {
         requestAnimationFrame(() => {

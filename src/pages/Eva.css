@@ -270,6 +270,25 @@
   opacity: 1;
 }
 
+/* Mobile: Show sections immediately when they're near viewport */
+@media (max-width: 768px) {
+  .eva-services-min,
+  .eva-features,
+  .eva-value-benefits-section,
+  .eva-ceo-section,
+  .eva-testimonials-lux,
+  .eva-cta-section {
+    /* Faster transition on mobile */
+    transition: opacity 0.3s ease-out;
+  }
+  
+  /* On mobile, make sections visible faster - check via JS instead of CSS only */
+  [data-aos] {
+    /* Ensure AOS animations trigger immediately on mobile */
+    transition-duration: 0.3s !important;
+  }
+}
+
 
 /* Grid Item Animations */
 .grid-item {
