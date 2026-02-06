@@ -75,12 +75,32 @@ function Eva() {
   }, [menuOpen, closeEvaMenu]);
 
   useEffect(() => {
+    // Responsive AOS offset - trigger earlier on mobile
+    const isMobile = window.innerWidth <= 768;
+    const offsetValue = isMobile ? 20 : 100; // Much earlier trigger on mobile
+    
     AOS.init({
       duration: 600,
       once: true,
-      offset: 100,
-      easing: 'ease-out-cubic'
+      offset: offsetValue,
+      easing: 'ease-out-cubic',
+      // Mobile-specific settings
+      disable: false,
+      startEvent: 'DOMContentLoaded',
+      animatedClassName: 'aos-animate',
+      useClassNames: false,
+      disableMutationObserver: false,
+      debounceDelay: 50,
+      throttleDelay: 99,
     });
+
+    // Refresh AOS on resize to update offset for mobile/desktop
+    const handleResize = () => {
+      // Refresh AOS to recalculate positions based on current viewport
+      AOS.refresh();
+    };
+    
+    window.addEventListener('resize', handleResize);
 
     // Smooth scrolling for anchor links
     const handleAnchorClick = (e) => {
@@ -105,10 +125,11 @@ function Eva() {
     });
 
 
-    // General section animation observer
+    // General section animation observer - trigger earlier on mobile
+    const isMobileDevice = window.innerWidth <= 768;
     const sectionObserverOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: isMobileDevice ? 0.25 : 0.2, // Trigger at 25% visible on mobile (quarter), 20% on desktop
+      rootMargin: isMobileDevice ? '50px 0px 0px 0px' : '0px 0px -100px 0px' // Positive margin on mobile triggers even earlier
     };
 
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -128,10 +149,10 @@ function Eva() {
       }
     });
 
-    // VMV section scroll animations
+    // VMV section scroll animations - trigger earlier on mobile
     const vmvObserverOptions = {
-      threshold: 0.3,
-      rootMargin: '0px'
+      threshold: isMobileDevice ? 0.25 : 0.3, // Trigger at 25% visible on mobile (quarter), 30% on desktop
+      rootMargin: isMobileDevice ? '50px 0px 0px 0px' : '0px' // Positive margin on mobile triggers even earlier
     };
 
     const vmvObserver = new IntersectionObserver((entries) => {
@@ -152,10 +173,10 @@ function Eva() {
       vmvObserver.observe(vmvRef.current);
     }
 
-    // Staggered grid animations
+    // Staggered grid animations - trigger earlier on mobile
     const gridObserverOptions = {
-      threshold: 0.2,
-      rootMargin: '0px'
+      threshold: isMobileDevice ? 0.25 : 0.2, // Trigger at 25% visible on mobile (quarter)
+      rootMargin: isMobileDevice ? '50px 0px 0px 0px' : '0px' // Positive margin on mobile triggers even earlier
     };
 
     const gridObserver = new IntersectionObserver((entries) => {
@@ -293,6 +314,7 @@ function Eva() {
       vmvObserver.disconnect();
       gridObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
