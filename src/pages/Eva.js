@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import "./Eva.css";
 import AOS from "aos";
@@ -42,6 +43,36 @@ function Eva() {
   const ceoRef = useRef(null);
   const testimonialsRef = useRef(null);
   const ctaRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const evaMenuToggleRef = useRef(null);
+
+  const closeEvaMenu = useCallback(() => setMenuOpen(false), []);
+
+  // Body class and focus (overlay best practice)
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add("eva-overlay-open");
+      requestAnimationFrame(() => {
+        const firstLink = document.querySelector(".eva-nav-links a, .eva-nav-links .eva-nav-brookside-logo");
+        firstLink?.focus?.();
+      });
+    } else {
+      document.body.classList.remove("eva-overlay-open");
+      evaMenuToggleRef.current?.focus();
+    }
+    return () => document.body.classList.remove("eva-overlay-open");
+  }, [menuOpen]);
+
+  // Escape key closes overlay
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") closeEvaMenu();
+    };
+    if (menuOpen) {
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
+    }
+  }, [menuOpen, closeEvaMenu]);
 
   useEffect(() => {
     AOS.init({
@@ -449,18 +480,43 @@ function Eva() {
         {/* Navigation */}
         <nav className="eva-nav">
           <div className="eva-nav-container">
-            <Link to="/">
+            <Link to="/eva">
               <img src="/eva-nav-logo.png" alt="E-VA Brookside - Virtual Assistant Philippines" className="eva-logo-small" />
             </Link>
             <div className="eva-nav-links">
-              <a href="#home">Home</a>
-              <a href="#services">Services</a>
-              <a href="#clients">Clients</a>
-              <a href="#about">About</a>
-              <a href="#apply">Apply</a>
-              <a href="#contact">Contact</a>
+              <a href="#home" onClick={closeEvaMenu}>Home</a>
+              <a href="#services" onClick={closeEvaMenu}>Services</a>
+              <a href="#clients" onClick={closeEvaMenu}>Clients</a>
+              <a href="#about" onClick={closeEvaMenu}>About</a>
+              <a href="#course" onClick={closeEvaMenu}>Course</a>
+              <a href="#apply" onClick={closeEvaMenu}>Apply</a>
+              <a href="#contact" onClick={closeEvaMenu}>Contact</a>
+              <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+                <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
+              </Link>
             </div>
+            <button ref={evaMenuToggleRef} type="button" className="eva-nav-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
+              <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
+            </button>
           </div>
+          {/* E-VA overlay: portal to body so it covers full page (like Home/Navbar) */}
+          {menuOpen && createPortal(
+            <div className="eva-nav-overlay eva-nav-overlay-open" onClick={closeEvaMenu} aria-hidden="false" role="dialog" aria-modal="true" aria-label="Menu">
+              <div className="eva-nav-links eva-nav-links-overlay active" onClick={(e) => e.stopPropagation()}>
+                <a href="#home" onClick={closeEvaMenu}>Home</a>
+                <a href="#services" onClick={closeEvaMenu}>Services</a>
+                <a href="#clients" onClick={closeEvaMenu}>Clients</a>
+                <a href="#about" onClick={closeEvaMenu}>About</a>
+                <a href="#course" onClick={closeEvaMenu}>Course</a>
+                <a href="#apply" onClick={closeEvaMenu}>Apply</a>
+                <a href="#contact" onClick={closeEvaMenu}>Contact</a>
+                <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+                  <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
+                </Link>
+              </div>
+            </div>,
+            document.body
+          )}
         </nav>
 
         {/* Hero Section */}
@@ -771,7 +827,7 @@ function Eva() {
               <img src="/eva-ceo.jpeg" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
-              <h2 className="eva-ceo-title">Message from E-VA CEO</h2>
+              <h2 className="eva-ceo-title">Message from <br/> E-VA CEO</h2>
               <p className="eva-ceo-text">
                 In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where E-VA comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, E-VA's team of dedicated Filipino professionals is here to ensure that you can focus on what truly matters—growing your business.
               </p>
@@ -833,6 +889,86 @@ function Eva() {
           </div>
         </section>
 
+        {/* General Virtual Assistant Course - Promote & sell */}
+        <section className="eva-course-section" id="course">
+          <div className="eva-course-content" data-aos="fade-in">
+            <h2 className="eva-course-title">General Virtual Assistant Course</h2>
+            <p className="eva-course-tagline">Get started on your VA Journey!</p>
+            <div className="eva-course-price">
+              <span>Get certified for only <strong>P999!</strong></span>
+            </div>
+            <div className="eva-course-modules">
+              <div className="eva-course-module">
+                <h4>VA Foundation and Career Awareness</h4>
+                <ul>
+                  <li>VA Definition</li>
+                  <li>Understanding VA Realities</li>
+                  <li>Ethical Standards</li>
+                  <li>VA Career Paths & Niches</li>
+                </ul>
+              </div>
+              <div className="eva-course-module">
+                <h4>Tools, Niches, & Skill Positioning</h4>
+                <ul>
+                  <li>Common VA Tools Overview</li>
+                  <li>Social Media VA Overview</li>
+                  <li>Bookkeeping Basics</li>
+                  <li>Skill Mapping and Career Strategy</li>
+                </ul>
+              </div>
+              <div className="eva-course-module">
+                <h4>Admin Tasks and Daily VA Operations</h4>
+                <ul>
+                  <li>Admin Task and Workflows</li>
+                  <li>Email and Calendar Management</li>
+                  <li>Google Workspace Essentials</li>
+                  <li>Task and Productivity Tools</li>
+                </ul>
+              </div>
+              <div className="eva-course-module">
+                <h4>Resume, Interview, & Career Launch</h4>
+                <ul>
+                  <li>Resume Preparation</li>
+                  <li>Interview Preparation</li>
+                  <li>Job-Search</li>
+                  <li>30-day Action Plan</li>
+                </ul>
+              </div>
+              <div className="eva-course-module">
+                <h4>Communication and Client Handling</h4>
+                <ul>
+                  <li>Professional Communication</li>
+                  <li>Client Handling</li>
+                  <li>Reporting and Handling</li>
+                  <li>Accountability</li>
+                </ul>
+              </div>
+            </div>
+            <p className="eva-course-cta-text">Message us on Facebook to know more.</p>
+            <a
+              href="https://www.facebook.com/profile.php?id=61560528418956"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eva-course-cta-button"
+            >
+              Message on Facebook
+            </a>
+            <div className="eva-course-social">
+              <span className="eva-course-social-label">Follow Brookside Manpower:</span>
+              <div className="eva-course-social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-course-social-icon" aria-label="Brookside Manpower Facebook">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-course-social-icon" aria-label="Brookside Manpower LinkedIn">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-course-social-icon" aria-label="Brookside Manpower TikTok">
+                  <i className="fab fa-tiktok"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
        {/* Apply Section - Ready to get hired & trained */}
         <section className="eva-apply-section" id="apply">
@@ -892,17 +1028,32 @@ function Eva() {
               <div className="eva-contact-item">
                 <h3 className="eva-contact-label">Social</h3>
                 <div className="eva-social-icons">
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="eva-social-icon">
+                  <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-social-icon" aria-label="Brookside Manpower Facebook">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="eva-social-icon">
+                  <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-social-icon" aria-label="Brookside Manpower LinkedIn">
                     <i className="fab fa-linkedin-in"></i>
+                  </a>
+                  <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-social-icon" aria-label="Brookside Manpower TikTok">
+                    <i className="fab fa-tiktok"></i>
                   </a>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Footer Section */}
+        <footer className="eva-footer">
+          <div className="eva-footer-content">
+            <p className="eva-footer-text">
+              &copy; {new Date().getFullYear()} E-VA by Brookside Manpower Services. All Rights Reserved.
+            </p>
+            <div className="eva-footer-links">
+              <Link to="/privacy-policy" className="eva-footer-link">Privacy Policy</Link>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );

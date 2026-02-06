@@ -1,3 +1,15 @@
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -58,7 +70,7 @@
   border-radius: 999px;
   text-decoration: none;
   border: 2px solid rgba(255, 255, 255, 0.6);
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow:
     0 0 4px #fff,
     0 0 8px #ffae00,
@@ -73,7 +85,7 @@
     0 0 12px #ffae00,
     0 0 24px #ffae00,
     0 0 48px #ffae00;
-  transform: scale(1.08);
+  transform: scale(1.03);
 }
 
 /* About Section */
@@ -161,23 +173,65 @@
   text-align: center;
 }
 
+/* Cleaner, gentler AOS animations (not dizzying) - smooth easing, reduced movement */
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+[data-aos="fade-right"] {
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-aos="fade-right"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+  will-change: auto;
+}
+
+[data-aos="fade-left"] {
+  opacity: 0;
+  transform: translateX(15px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-aos="fade-left"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+  will-change: auto;
+}
+
 .what-we-do-section.in-view .service-item {
   animation: none;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .what-we-do-section.in-view .service-item[data-aos="fade-right"] {
-  transform: translateX(-20px);
+  transform: translateX(-12px);
 }
 
 .what-we-do-section.in-view .service-item[data-aos="fade-left"] {
-  transform: translateX(20px);
+  transform: translateX(12px);
 }
 
 .what-we-do-section.in-view .service-item[data-aos="fade-up"] {
-  transform: translateY(20px);
+  transform: translateY(12px);
 }
 
 .what-we-do-section.in-view .service-item.aos-animate {
@@ -216,12 +270,12 @@
   font-size: 14px;
   text-shadow: 0 0 6px #fff;
   box-shadow: 0 0 15px #f78f3f, 0 0 25px #f78f3f44;
-  transition: 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .get-quoted-btn:hover {
   background-color: rgba(255, 255, 255, 0.05);
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 0 30px #f78f3f, 0 0 60px #f78f3f66;
 }
 

@@ -148,13 +148,13 @@ function ContactUs() {
       />
 
       <div className="contact-page">
-        <section className="contact-hero" aria-label="Contact header">
+        <section className="contact-hero section-partition" aria-label="Contact header">
           <h1>Get in Touch</h1>
           <p>Let's discuss how we can help your business grow</p>
         </section>
 
         <div className="contact-container">
-          <section className="contact-info" aria-label="Contact information">
+          <section className="contact-info section-partition" aria-label="Contact information">
             <div className="info-block">
               <h2>Contact Information</h2>
               <div className="info-item">
@@ -201,7 +201,7 @@ function ContactUs() {
             </div>
           </section>
 
-          <section className="contact-form" aria-label="Contact form">
+          <section className="contact-form section-partition" aria-label="Contact form">
             <h2>Get a Quote</h2>
             {message && (
               <div className="success-message" role="alert">

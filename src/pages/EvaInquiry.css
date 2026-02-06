@@ -4,6 +4,7 @@
   background: #000;
   color: #fff;
   font-family: 'Questrial', sans-serif;
+  overflow-x: hidden;
 }
 
 /* Navigation */

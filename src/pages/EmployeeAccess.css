@@ -1,5 +1,6 @@
 .employee-access {
   min-height: 88vh;
+  overflow-x: hidden;
 }
 
 .employee-hero {

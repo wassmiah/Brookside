@@ -37,6 +37,11 @@ function Footer() {
               <i className="fas fa-user-lock"></i> Employee Access
             </Link>
           </div>
+          <div className="footer-contact-block">
+            <div className="footer-legal-links">
+              <Link to="/privacy-policy" className="footer-legal-link">Privacy Policy</Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

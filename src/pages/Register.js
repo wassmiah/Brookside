@@ -74,7 +74,7 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
+    <div className="register-container section-partition">
       <h2>Register to Brookside</h2>
       <form onSubmit={handleRegister}>
         <input

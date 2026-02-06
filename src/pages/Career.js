@@ -82,7 +82,7 @@ function Career() {
         <main className="career-content">
           <h1 className="current-job-offers">Current Job Offers</h1>
 
-          <section className="job-section" aria-label="Available Positions">
+          <section className="job-section section-partition" aria-label="Available Positions">
             {/* Job List */}
             <div className="job-list-container">
               <article className="job-list-card">
@@ -124,7 +124,7 @@ function Career() {
           </section>
           
           {/* Job Descriptions */}
-          <section className="job-descriptions" aria-label="Job Requirements">
+          <section className="job-descriptions section-partition" aria-label="Job Requirements">
             <h2>Job Descriptions & Requirements</h2>
             <div className="table-responsive">
               <table className="job-table">

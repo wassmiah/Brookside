@@ -82,7 +82,7 @@ function EmployeeAccess() {
 
   if (!user) {
     return (
-      <div className="login-container">
+      <div className="login-container section-partition">
         <h2>Login to Brookside</h2>
         <form onSubmit={handleLogin}>
           <input type="text" placeholder="Email or Username" value={identifier} onChange={(e) => setIdentifier(e.target.value)} required />
@@ -103,7 +103,7 @@ function EmployeeAccess() {
 
   return (
     <div className="employee-access">
-      <section className="hero employee-hero">
+      <section className="hero employee-hero section-partition">
         <video autoPlay muted loop playsInline preload="auto" id="heroVideo" aria-hidden="true">
           <source src="/herobg.mp4" type="video/mp4" />
           Your browser does not support the video tag.

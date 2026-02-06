@@ -4,6 +4,14 @@
   color: #fff;
   font-family: 'Questrial', sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.eva-page *,
+.eva-page *::before,
+.eva-page *::after {
+  box-sizing: border-box;
 }
 
 /* Performance optimizations for animations */
@@ -307,6 +315,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 52px;
+}
+
+/* Left E-VA logo: flex so image is vertically centered */
+.eva-nav-container > a:first-child {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.eva-nav-container > a:first-child .eva-logo-small {
+  transition: filter 0.35s ease;
+}
+
+.eva-nav-container > a:first-child:hover .eva-logo-small {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.2));
 }
 
 .eva-nav-logo {
@@ -319,6 +343,7 @@
 
 .eva-nav-links {
   display: flex;
+  align-items: center;
   gap: 32px;
 }
 
@@ -329,10 +354,49 @@
   font-weight: 500;
   transition: color 0.3s;
   white-space: nowrap;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .eva-nav-links a:hover {
   color: #9d4edd;
+}
+
+/* Brookside logo link – same size as E-VA nav logo, vertically aligned */
+.eva-nav-brookside-logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.eva-nav-brookside-logo img {
+  width: 120px;
+  height: auto;
+  max-height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  transition: filter 0.35s ease;
+  vertical-align: middle;
+}
+
+.eva-nav-brookside-logo:hover img {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.2));
+}
+
+/* Privacy Policy Link in Navigation */
+.eva-nav-privacy-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  opacity: 0.85;
+}
+
+.eva-nav-privacy-link:hover {
+  color: #9d4edd;
+  opacity: 1;
 }
 
 /* Mobile Navigation Toggle */
@@ -346,11 +410,79 @@
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.3s;
+  line-height: 1;
 }
 
 .eva-nav-toggle:hover {
   border-color: #9d4edd;
   color: #9d4edd;
+}
+
+/* Body: scroll lock when E-VA overlay is open */
+body.eva-overlay-open {
+  overflow: hidden;
+}
+
+/* E-VA overlay – full page; delayed z-index on close so overlay doesn’t block clicks */
+.eva-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    z-index 0s 0.35s;
+}
+
+.eva-nav-overlay.eva-nav-overlay-open {
+  display: block;
+  z-index: 1100;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Portaled overlay panel (same look as in-nav mobile panel) */
+.eva-nav-links-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  z-index: 1101;
+  background: rgba(0, 0, 0, 0.98);
+  backdrop-filter: blur(20px);
+  flex-direction: column;
+  padding: 80px 24px 24px;
+  gap: 0;
+  border-left: 1px solid rgba(157, 78, 221, 0.2);
+  overflow-y: auto;
+  display: flex;
+}
+
+.eva-nav-links-overlay a {
+  font-size: 1rem;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+.eva-nav-links-overlay .eva-nav-brookside-logo {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Hero Section */
@@ -401,6 +533,15 @@
   text-align: center;
   z-index: 1;
   position: relative;
+  padding: 0 24px;
+  max-width: 100%;
+}
+
+.eva-hero-tagline,
+.eva-hero-subtitle {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .eva-logo-container {
@@ -416,9 +557,10 @@
 .eva-logo-small {
   width: 120px;
   height: auto;
-  aspect-ratio: 421 / 237;
+  max-height: 40px;
   object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  display: block;
 }
 
 .eva-logo-hero {
@@ -552,11 +694,242 @@
   box-shadow: 0 8px 24px rgba(64, 180, 255, 0.3);
 }
 
+/* General Virtual Assistant Course Section */
+.eva-course-section {
+  background: #000;
+  padding: 100px 40px 120px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.eva-course-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
+}
+
+.eva-course-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eva-course-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.eva-course-tagline {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
+}
+
+.eva-course-price {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(157, 78, 221, 0.25));
+  border: 2px solid rgba(236, 72, 153, 0.6);
+  color: #fff;
+  font-size: 1.35rem;
+  padding: 14px 32px;
+  margin-bottom: 48px;
+  border-radius: 8px;
+}
+
+.eva-course-price strong {
+  color: #ec4899;
+}
+
+.eva-course-modules {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 48px;
+  text-align: center;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eva-course-module {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(157, 78, 221, 0.25);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  min-width: 260px;
+  box-sizing: border-box;
+}
+
+.eva-course-module:hover {
+  border-color: rgba(157, 78, 221, 0.5);
+  box-shadow: 0 8px 24px rgba(157, 78, 221, 0.15);
+}
+
+.eva-course-module h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #9d4edd;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.eva-course-module ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.eva-course-module li {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 4px 0;
+  padding-left: 0;
+  position: relative;
+  text-align: center;
+}
+
+.eva-course-module li::before {
+  content: '• ';
+  position: static;
+  color: #ec4899;
+}
+
+.eva-course-cta-text {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+}
+
+.eva-course-cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #ec4899, #9d4edd);
+  color: #fff;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 40px;
+}
+
+.eva-course-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4), 0 8px 24px rgba(157, 78, 221, 0.3);
+  color: #fff;
+}
+
+.eva-course-social {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.eva-course-social-label {
+  display: block;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12px;
+}
+
+.eva-course-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.eva-course-social-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.25rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.eva-course-social-icon:hover {
+  background: #9d4edd;
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .eva-course-section {
+    padding: 60px 20px 80px;
+  }
+
+  .eva-course-title {
+    font-size: 2rem;
+  }
+
+  .eva-course-modules {
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .eva-course-module {
+    padding: 20px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .eva-course-section {
+    padding: 40px 16px 60px;
+  }
+
+  .eva-course-title {
+    font-size: 1.65rem;
+  }
+
+  .eva-course-price {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+  }
+
+  .eva-course-cta-button {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+}
+
 /* Apply Section - Ready to get hired & trained */
 .eva-apply-section {
   padding: 120px 40px;
   background: #000;
   text-align: center;
+  position: relative;
+}
+
+.eva-apply-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
 }
 
 @media (max-width: 480px) {
@@ -610,6 +983,9 @@
 .eva-apply-content {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .eva-apply-heading {
@@ -720,6 +1096,17 @@
   background: #000;        
 }
 
+.eva-vmv-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
+  z-index: 1;
+}
+
 @media (max-width: 768px) {
   .eva-vmv-section {
     padding: 50px 20px;
@@ -740,7 +1127,7 @@
   
   .eva-vmv-text,
   .eva-vmv-values-list li {
-    font-size: 1rem;
+    font-size: 1.15rem;
     line-height: 1.6;
   }
 }
@@ -801,8 +1188,8 @@
 }
 
 .eva-vmv-text {
-  font-size: 1.5rem;
-  line-height: 1.1;
+  font-size: 1.75rem;
+  line-height: 1.4;
   color: #fff;
   margin: 0;
   transition: all 0.3s ease;
@@ -819,7 +1206,7 @@
 }
 
 .eva-vmv-values-list li {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.8;
   color: #fff;
   margin-bottom: 16px;
@@ -872,8 +1259,14 @@
 }
 
 .eva-value-benefits-section::before {
-  content: none !important;
-  display: none !important;
+  content: '' !important;
+  display: block !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
 }
 
 
@@ -1103,8 +1496,19 @@
 .eva-services-min{
   padding: 120px 40px;
   background: #000;
+  position: relative;
+  overflow-x: hidden;
 }
 
+.eva-services-min::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
+}
 
 .eva-services-min-container{
   max-width: 1200px;
@@ -1784,6 +2188,18 @@
   gap: 60px;
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.eva-features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
 }
 
 @media (max-width: 768px) {
@@ -1889,6 +2305,17 @@
 .eva-ceo-section {
   padding: 120px 40px;
   background: #000;
+  position: relative;
+}
+
+.eva-ceo-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
 }
 
 @media (max-width: 768px) {
@@ -2283,6 +2710,17 @@
 .eva-testimonials-lux{
   padding: 120px 40px;
   background: #000;
+  position: relative;
+}
+
+.eva-testimonials-lux::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
 }
 
 @media (max-width: 768px) {
@@ -2483,6 +2921,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 @media (max-width: 768px) {
@@ -2491,8 +2930,13 @@
     min-height: auto;
   }
   
+  .eva-cta-container {
+    padding: 0 8px;
+    width: 100%;
+  }
+  
   .eva-cta-content {
-    padding: 40px 25px;
+    padding: 40px 20px;
   }
   
   .eva-cta-heading {
@@ -2508,6 +2952,20 @@
   .eva-cta-features {
     margin-bottom: 35px;
     gap: 12px;
+  }
+  
+  .eva-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 8px;
+  }
+  
+  .eva-cta-primary,
+  .eva-cta-secondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    box-sizing: border-box;
   }
 }
 
@@ -2532,6 +2990,9 @@
   border-radius: 20px;
   padding: 60px 40px;
   backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
 }
 
 .eva-cta-heading {
@@ -2546,6 +3007,8 @@
   background-clip: text;
   text-shadow: 0 0 40px rgba(157, 78, 221, 0.5);
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .eva-cta-description {
@@ -2556,13 +3019,16 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .eva-cta-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   margin-bottom: 50px;
+  justify-items: center;
 }
 
 .eva-cta-feature {
@@ -2582,6 +3048,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -2625,6 +3092,17 @@
 /* Contact Section */
 .eva-contact {
   background: #000;
+  position: relative;
+}
+
+.eva-contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
 }
 
 .eva-contact-header {
@@ -2778,27 +3256,52 @@
   }
 
   .eva-nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: fixed;
+    top: 0;
     right: 0;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    z-index: 1101;
     background: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 20px;
-    gap: 15px;
-    border-top: 1px solid rgba(157, 78, 221, 0.2);
+    padding: 80px 24px 24px;
+    gap: 0;
+    border-left: 1px solid rgba(157, 78, 221, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
   }
 
   .eva-nav-links.active {
-    display: flex;
+    transform: translateX(0);
   }
 
   .eva-nav-links a {
-    font-size: 0.95rem;
-    padding: 10px 0;
+    font-size: 1rem;
+    padding: 14px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .eva-nav-privacy-link {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+  }
+
+  .eva-nav-brookside-logo {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .eva-nav-brookside-logo img {
+    width: 100px;
+  }
+
+  .eva-nav-overlay {
+    display: block;
   }
 
   .eva-nav-toggle {
@@ -2952,7 +3455,7 @@
 
   .eva-vmv-text,
   .eva-vmv-values-list li {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     line-height: 1.6;
   }
 
@@ -3005,6 +3508,7 @@
 
   .eva-cta-buttons {
     flex-direction: column;
+    align-items: center;
     gap: 12px;
   }
 
@@ -3032,6 +3536,10 @@
     padding-top: 60px;
   }
 
+  .eva-hero-content {
+    padding: 0 16px;
+  }
+
   .eva-hero-tagline {
     font-size: 1.7rem;
     margin-bottom: 12px;
@@ -3049,6 +3557,38 @@
   .eva-cta-button-secondary {
     font-size: 0.85rem;
     padding: 11px 24px;
+  }
+
+  .eva-cta-section {
+    padding: 40px 16px;
+  }
+
+  .eva-cta-container {
+    padding: 0 4px;
+  }
+
+  .eva-cta-content {
+    padding: 32px 16px;
+  }
+
+  .eva-cta-heading {
+    font-size: 1.6rem;
+    line-height: 1.25;
+  }
+
+  .eva-cta-description {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+
+  .eva-cta-primary,
+  .eva-cta-secondary {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .eva-apply-content {
+    padding: 0 16px;
   }
 
   .eva-services-min {
@@ -3125,7 +3665,7 @@
 
   .eva-vmv-text,
   .eva-vmv-values-list li {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
 /* Media protection (UX-level) */
@@ -3410,6 +3950,83 @@
   height: auto;
   object-fit: contain;
   display: block;
+}
+
+/* E-VA Footer */
+.eva-footer {
+  background: rgba(0, 0, 0, 0.95);
+  border-top: 1px solid rgba(157, 78, 221, 0.2);
+  padding: 2rem 0;
+  margin-top: 0;
+}
+
+.eva-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.eva-footer-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.eva-footer-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.eva-footer-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.eva-footer-link:hover {
+  color: #9d4edd;
+}
+
+/* Mobile Footer */
+@media (max-width: 768px) {
+  .eva-footer-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .eva-footer-text {
+    font-size: 0.85rem;
+  }
+
+  .eva-footer-link {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .eva-footer {
+    padding: 1.5rem 0;
+  }
+
+  .eva-footer-content {
+    padding: 0 1rem;
+  }
+
+  .eva-footer-text {
+    font-size: 0.8rem;
+  }
+
+  .eva-footer-link {
+    font-size: 0.8rem;
+  }
 }
 
 

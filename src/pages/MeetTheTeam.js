@@ -95,7 +95,7 @@ function MeetTheTeam() {
       />
       
       {/* CEO Section */}
-      <section className="ceo-section" aria-label="CEO Profile">
+      <section className="ceo-section section-partition" aria-label="CEO Profile">
         <div className="ceo-container">
           <div className="ceo-image">
             <img 
@@ -117,7 +117,7 @@ function MeetTheTeam() {
       </section>
 
       {/* Team Section */}
-      <section className="team-section" aria-label="Our Team">
+      <section className="team-section section-partition" aria-label="Our Team">
         <h2 className="team-title">
           MEET OUR TEAM <span className="dot" style={{ background: "#f5a623" }}></span>{" "}
           <span className="dot" style={{ background: "#2d9cdb" }}></span>

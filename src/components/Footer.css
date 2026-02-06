@@ -90,6 +90,23 @@
 .footer-email-link:hover {
   color: #40b4ff;
 }
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+.footer-legal-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.98rem;
+  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+}
+.footer-legal-link:hover {
+  color: #40b4ff;
+  border-bottom-color: #40b4ff;
+}
 @media (max-width: 900px) {
   .footer-contact-container {
     margin-left: 18px;

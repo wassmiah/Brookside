@@ -1,6 +1,7 @@
 .privacy-policy-page {
   min-height: 100vh;
   background-color: #f8f9fa;
+  overflow-x: hidden;
 }
 
 .privacy-hero {
@@ -76,6 +77,76 @@
   left: -1.5rem;
 }
 
+/* Table of Contents */
+.privacy-toc {
+  background-color: #f8f9fa;
+  border-left: 4px solid #f7a61a;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+}
+
+.privacy-toc h2 {
+  color: #333;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f7a61a;
+}
+
+.privacy-toc ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.privacy-toc ul li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.privacy-toc ul li a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+  padding-left: 0.5rem;
+}
+
+.privacy-toc ul li a:hover {
+  color: #f7a61a;
+  padding-left: 0.8rem;
+}
+
+/* Anchor link styling */
+.privacy-section {
+  scroll-margin-top: 100px;
+}
+
+.privacy-section h2 {
+  scroll-margin-top: 100px;
+}
+
+/* Links within privacy sections */
+.privacy-section a {
+  color: #f7a61a;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.privacy-section a:hover {
+  color: #dd8f10;
+}
+
+.contact-info a {
+  color: #f7a61a;
+  text-decoration: underline;
+}
+
+.contact-info a:hover {
+  color: #dd8f10;
+}
+
 .contact-info {
   background-color: #f8f9fa;
   padding: 1.5rem;
@@ -103,6 +174,14 @@
 
   .privacy-container {
     padding: 2.5rem 2rem;
+  }
+
+  .privacy-toc {
+    padding: 1.8rem;
+  }
+
+  .privacy-toc h2 {
+    font-size: 1.5rem;
   }
 
   .privacy-section {
@@ -134,6 +213,21 @@
 
   .privacy-container {
     padding: 2rem 1.5rem;
+  }
+
+  .privacy-toc {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .privacy-toc h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .privacy-toc ul li {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
   }
 
   .privacy-section {
@@ -190,6 +284,21 @@
 
   .privacy-container {
     padding: 1.5rem 1rem;
+  }
+
+  .privacy-toc {
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .privacy-toc h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .privacy-toc ul li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
   }
 
   .privacy-section {

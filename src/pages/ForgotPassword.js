@@ -25,7 +25,7 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="forgot-password-container">
+    <div className="forgot-password-container section-partition">
       <h2>Forgot Password?</h2>
       <p>Enter your email address and we'll send you a link to reset your password.</p>
       <form onSubmit={handleSubmit}>

@@ -110,7 +110,7 @@ function EvaInquiry() {
         </nav>
 
         {/* Hero Section */}
-        <section className="eva-inquiry-hero">
+        <section className="eva-inquiry-hero section-partition">
           <div className="eva-inquiry-hero-content">
             <h1 className="eva-inquiry-hero-title">Elevate Your Business</h1>
             <p className="eva-inquiry-hero-subtitle">Join industry leaders who trust E-VA for elite virtual assistant services</p>
@@ -118,7 +118,7 @@ function EvaInquiry() {
         </section>
 
         {/* Main Content */}
-        <section className="eva-inquiry-main">
+        <section className="eva-inquiry-main section-partition">
           <div className="eva-inquiry-container">
             <div className="eva-inquiry-grid">
               {/* Inquiry Form Section */}

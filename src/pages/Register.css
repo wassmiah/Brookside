@@ -12,6 +12,8 @@ body, .register-bg {
   box-shadow: 0 4px 24px rgba(64,180,255,0.10);
   border-radius: 16px;
   font-family: 'Questrial', sans-serif;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .register-container h2 {

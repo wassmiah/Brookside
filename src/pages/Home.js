@@ -8,31 +8,15 @@ import SEO from "../components/SEO";
 function Home() {
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
-
-    const sections = [
-      document.getElementById('services'),
-      document.getElementById('about'),
-      document.getElementById('commitment'),
-    ];
-    const observers = [];
-    sections.forEach(section => {
-      if (section) {
-        const observer = new window.IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                AOS.refresh();
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
-        observer.observe(section);
-        observers.push(observer);
-      }
+    AOS.init({ 
+      duration: 600,
+      once: true,
+      easing: 'ease-out-cubic',
+      offset: 100,
+      delay: 0
     });
-    return () => observers.forEach(observer => observer.disconnect());
+
+    // AOS handles animations automatically with once: true, no need for manual observers
   }, []);
 
   return (
@@ -85,7 +69,7 @@ function Home() {
       </section>
 
       {/* About Section */}
-      <section className="about-new" id="about" aria-label="About us">
+      <section className="about-new section-partition" id="about" aria-label="About us">
         <h1 className="about-main-heading">
           <span className="orange">Brookside Manpower Services</span> – Hospitality Staffing in <span className="blue">Metro Manila</span>
         </h1>
@@ -126,7 +110,7 @@ function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="what-we-do-section" id="services" aria-label="Our services">
+      <section className="what-we-do-section section-partition" id="services" aria-label="Our services">
         <h2 className="neon-section-title" data-aos="fade-up">
           <span className="orange">Bridging</span> & <span className="blue">building</span><br />are our thing
         </h2>
@@ -152,7 +136,7 @@ function Home() {
       </section>
 
       {/* Commitment Section */}
-      <section className="commitment-section" id="commitment" aria-label="Our commitment">
+      <section className="commitment-section section-partition" id="commitment" aria-label="Our commitment">
         <img 
           src="/commitment-bg.png" 
           alt="Modern city background" 
