@@ -12,6 +12,9 @@ const blockMediaMenu = (e) => {
   return false;
 };
 
+/** E-VA Course Enrollment Form (Google Forms) – public viewform URL */
+const EVA_COURSE_ENROLLMENT_FORM_URL = "https://docs.google.com/forms/d/1XUtZKtciUOggybHo6zSpsrH8o5sUf4RXaXNo4CJj9Pk/viewform";
+
 
 // Illustration Component for numbered images (1.png to 10.png)
 const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
@@ -648,6 +651,7 @@ function Eva() {
 
                 {/* Features Section */}
                 <section className="eva-features grid-container" ref={featuresRef} data-aos="fade-in">
+          <div className="eva-features-inner">
           <div className="eva-feature-card grid-item">
             <div className="eva-feature-icon">
               <img src="/f1.png" alt="Feature 1" className="eva-feature-image" />
@@ -676,6 +680,7 @@ function Eva() {
             <p className="eva-feature-description">
               Time is life's greatest commodity and we help to give you more of it!
             </p>
+          </div>
           </div>
         </section>
 
@@ -851,7 +856,7 @@ function Eva() {
           "My virtual assistant handles everything from data entry to customer support seamlessly.
           Their range, speed, and discretion have become essential to how we operate."
         </p>
-        <div className="eva-testimonials-lux-author">– Lisa T., CEO of a Startup</div>
+        <div className="eva-testimonials-lux-author">– Lisa T., CEO of a startup</div>
       </div>
 
       <div className="eva-testimonials-lux-card">
@@ -867,7 +872,7 @@ function Eva() {
           "I work across time zones, and my VA is dependable when it counts.
           Their flexibility, accountability, and professionalism make them a core part of our workflow."
         </p>
-        <div className="eva-testimonials-lux-author">– Leo V., Digital Nomad & Consultant</div>
+        <div className="eva-testimonials-lux-author">– Leo V., Consultant</div>
       </div>
     </div>
   </div>
@@ -902,7 +907,7 @@ function Eva() {
               </div>
               <div className="eva-cta-buttons">
                 <Link to="/eva/inquiry" className="eva-cta-primary">Get Free Consultation</Link>
-                <Link to="#contact" className="eva-cta-secondary">Contact Us</Link>
+                <Link to="/eva/inquiry" className="eva-cta-secondary">Contact Us</Link>
               </div>
             </div>
           </div>
@@ -1032,12 +1037,21 @@ function Eva() {
                 </ul>
               </div>
             </div>
-            <p className="eva-course-cta-text">Message us on Facebook to know more.</p>
+            <p className="eva-course-cta-text">Secure your spot in the E-VA Course Program. Complete the enrollment form and our team will be in touch.</p>
+            <a
+              href={EVA_COURSE_ENROLLMENT_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eva-course-cta-button"
+            >
+              Enroll Now
+            </a>
+            <p className="eva-course-cta-text eva-course-cta-secondary">Have questions? Message us on Facebook.</p>
             <a
               href="https://www.facebook.com/profile.php?id=61560528418956"
               target="_blank"
               rel="noopener noreferrer"
-              className="eva-course-cta-button"
+              className="eva-course-cta-button eva-course-cta-button-outline"
             >
               Message on Facebook
             </a>
@@ -1063,10 +1077,17 @@ function Eva() {
           <div className="eva-apply-content" data-aos="fade-in">
             <h2 className="eva-apply-heading">
               <span className="eva-apply-heading-line1">Ready to get</span>
-              <span className="eva-apply-heading-line2">hired & trained?</span>
+              <span className="eva-apply-heading-line2">trained & hired?</span>
             </h2>
 
-            <Link to="/career" className="eva-apply-button">APPLY NOW</Link>
+            <a
+              href={EVA_COURSE_ENROLLMENT_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eva-apply-button"
+            >
+              Apply Now
+            </a>
 
             <div className="eva-categories">
               <div className="eva-category-box"><span>REAL ESTATE</span></div>

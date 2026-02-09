@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
+import "./Eva.css";
 import "./EvaInquiry.css";
 import SEO from "../components/SEO";
 
 function EvaInquiry() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const evaMenuToggleRef = useRef(null);
+  const closeEvaMenu = useCallback(() => setMenuOpen(false), []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add("eva-overlay-open");
+      requestAnimationFrame(() => {
+        const firstLink = document.querySelector(".eva-nav-links a, .eva-nav-links .eva-nav-brookside-logo");
+        firstLink?.focus?.();
+      });
+    } else {
+      document.body.classList.remove("eva-overlay-open");
+      evaMenuToggleRef.current?.focus();
+    }
+    return () => document.body.classList.remove("eva-overlay-open");
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") closeEvaMenu();
+    };
+    if (menuOpen) {
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
+    }
+  }, [menuOpen, closeEvaMenu]);
+
   return (
     <>
       <SEO 
@@ -99,19 +129,53 @@ function EvaInquiry() {
       />
 
       <div className="eva-inquiry-page">
-        {/* Navigation */}
-        <nav className="eva-inquiry-nav">
-          <div className="eva-inquiry-nav-container">
-            <Link to="/eva" className="eva-inquiry-nav-logo">E-VA</Link>
-            <Link to="/eva" className="eva-inquiry-back-link">
-              <i className="fas fa-arrow-left"></i> Back to E-VA
+        {/* Navigation – same as Eva.js */}
+        <nav className="eva-nav">
+          <div className="eva-nav-container">
+            <Link to="/eva">
+              <img src="/eva-nav-logo.png" alt="E-VA Brookside - Virtual Assistant Philippines" className="eva-logo-small" />
             </Link>
+            <div className="eva-nav-links">
+              <Link to="/eva#home" onClick={closeEvaMenu}>Home</Link>
+              <Link to="/eva#services" onClick={closeEvaMenu}>Services</Link>
+              <Link to="/eva#clients" onClick={closeEvaMenu}>Clients</Link>
+              <Link to="/eva#about" onClick={closeEvaMenu}>About</Link>
+              <Link to="/eva#course" onClick={closeEvaMenu}>Course</Link>
+              <Link to="/eva#apply" onClick={closeEvaMenu}>Apply</Link>
+              <Link to="/eva#contact" onClick={closeEvaMenu}>Contact</Link>
+              <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+                <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
+              </Link>
+            </div>
+            <button ref={evaMenuToggleRef} type="button" className="eva-nav-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
+              <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
+            </button>
           </div>
+          {menuOpen && createPortal(
+            <div className="eva-nav-overlay eva-nav-overlay-open" onClick={closeEvaMenu} aria-hidden="false" role="dialog" aria-modal="true" aria-label="Menu">
+              <div className="eva-nav-links eva-nav-links-overlay active" onClick={(e) => e.stopPropagation()}>
+                <Link to="/eva#home" onClick={closeEvaMenu}>Home</Link>
+                <Link to="/eva#services" onClick={closeEvaMenu}>Services</Link>
+                <Link to="/eva#clients" onClick={closeEvaMenu}>Clients</Link>
+                <Link to="/eva#about" onClick={closeEvaMenu}>About</Link>
+                <Link to="/eva#course" onClick={closeEvaMenu}>Course</Link>
+                <Link to="/eva#apply" onClick={closeEvaMenu}>Apply</Link>
+                <Link to="/eva#contact" onClick={closeEvaMenu}>Contact</Link>
+                <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+                  <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
+                </Link>
+              </div>
+            </div>,
+            document.body
+          )}
         </nav>
 
         {/* Hero Section */}
         <section className="eva-inquiry-hero section-partition">
           <div className="eva-inquiry-hero-content">
+            <div className="eva-inquiry-hero-logo-wrap">
+              <img src="/eva-logo.png" alt="E-VA Brookside - Elite Virtual Assistant Services" className="eva-inquiry-hero-logo" />
+            </div>
             <h1 className="eva-inquiry-hero-title">Elevate Your Business</h1>
             <p className="eva-inquiry-hero-subtitle">Join industry leaders who trust E-VA for elite virtual assistant services</p>
           </div>
@@ -130,19 +194,19 @@ function EvaInquiry() {
                 
                 <div className="eva-google-form-container">
                   <iframe
-                    src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSeAojAZEzTNJObfhkjQ_h4jPM0SPHrhhanHEXrbmH5dR3aiYg/viewform?embedded=true"
                     className="eva-google-form"
                     frameBorder="0"
                     marginHeight="0"
                     marginWidth="0"
-                    title="E-VA Inquiry Form"
+                    title="E-VA Course Enrollment Form"
                   >
                     Loading…
                   </iframe>
                   <div className="eva-form-fallback">
                     <p className="eva-form-fallback-text">Having trouble viewing the form?</p>
                     <a 
-                      href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" 
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSeAojAZEzTNJObfhkjQ_h4jPM0SPHrhhanHEXrbmH5dR3aiYg/viewform" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="eva-form-link-button"
@@ -219,11 +283,14 @@ function EvaInquiry() {
                   <div className="eva-inquiry-social-section">
                     <h3 className="eva-inquiry-social-title">Follow Us</h3>
                     <div className="eva-inquiry-social-icons">
-                      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon">
+                      <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon" aria-label="Brookside Manpower Facebook">
                         <i className="fab fa-facebook-f"></i>
                       </a>
-                      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon">
+                      <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon" aria-label="Brookside Manpower LinkedIn">
                         <i className="fab fa-linkedin-in"></i>
+                      </a>
+                      <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon" aria-label="Brookside Manpower TikTok">
+                        <i className="fab fa-tiktok"></i>
                       </a>
                     </div>
                   </div>
@@ -235,23 +302,19 @@ function EvaInquiry() {
                   <ul className="eva-inquiry-benefits-list">
                     <li className="eva-inquiry-benefit-item">
                       <i className="fas fa-check-circle"></i>
-                      <span>1000+ successful placements in top restaurants</span>
+                      <span>98% client retention rate</span>
                     </li>
                     <li className="eva-inquiry-benefit-item">
                       <i className="fas fa-check-circle"></i>
-                      <span>95% client satisfaction rate</span>
+                      <span>Fast hiring in 21 days average</span>
                     </li>
                     <li className="eva-inquiry-benefit-item">
                       <i className="fas fa-check-circle"></i>
-                      <span>45% increase in quality applicants</span>
+                      <span>Save up to 70% on staffing costs</span>
                     </li>
                     <li className="eva-inquiry-benefit-item">
                       <i className="fas fa-check-circle"></i>
-                      <span>150+ premium F&B partners</span>
-                    </li>
-                    <li className="eva-inquiry-benefit-item">
-                      <i className="fas fa-check-circle"></i>
-                      <span>24/7 support and dedicated account managers</span>
+                      <span>Elite Filipino virtual assistants, vetted and trained</span>
                     </li>
                   </ul>
                 </div>
