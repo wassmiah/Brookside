@@ -1380,8 +1380,8 @@ body.eva-overlay-open {
 
 .eva-value-illustration {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 700px;
+  height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1464,6 +1464,10 @@ body.eva-overlay-open {
   .eva-value-illustration {
     width: 250px;
     height: 250px;
+  }
+
+  .value-main-illustration {
+    width: 250px;
   }
 
   .eva-benefits-header {
@@ -3861,24 +3865,28 @@ body.eva-overlay-open {
   }
   
   .eva-ceo-container{
-    max-width: 1440px !important;
+    max-width: 1200px !important;
     margin: 0 auto !important;
+    padding: 0 !important; /* keep image away from section edge so border isn’t clipped */
     display: grid !important;
-    grid-template-columns: 560px 1fr !important;
-    gap: 96px !important;
+    grid-template-columns: 380px 1fr !important;
+    gap: 24px !important;
     align-items: center !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
   
-  /* Left image */
+  /* Left image – contained so border is never clipped */
   .eva-ceo-image{
     display: flex !important;
-    justify-content: center !important;
+    justify-content: flex-start !important; /* align image to start of column */
     align-items: center !important;
+    justify-self: start !important; /* align column to start */
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 380px !important;
+    min-width: 0 !important; /* allow grid item to shrink and stay in column */
     box-sizing: border-box !important;
+    overflow: visible !important;
   }
   
   .eva-ceo-photo{
@@ -3886,7 +3894,9 @@ body.eva-overlay-open {
     height: auto !important;
     object-fit: cover !important;
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 100% !important; /* stay within .eva-ceo-image */
+    margin: 0 auto !important;
+    display: block !important;
     border-radius: 60px !important;
     border: 2px solid rgba(255,255,255,0.9) !important;
     box-shadow: none !important;
@@ -3894,10 +3904,11 @@ body.eva-overlay-open {
     box-sizing: border-box !important;
   }
   
-  /* Right column: lock a clean text grid */
+  /* Right column: centered message content */
   .eva-ceo-content{
-    max-width: 780px !important;     /* key: narrower text column */
-    justify-self: start !important;  /* prevents drifting */
+    max-width: 780px !important;
+    justify-self: start !important; /* align content to start for tighter layout */
+    text-align: center !important;
     width: 100% !important;
     box-sizing: border-box !important;
     overflow-wrap: break-word !important;
@@ -3920,12 +3931,12 @@ body.eva-overlay-open {
     hyphens: auto !important;
   }
   
-  /* Paragraphs: spacing + width like reference */
+  /* Paragraphs: spacing + width, centered */
   .eva-ceo-text{
     color: rgba(255,255,255,0.88) !important;
     font-size: 1.15rem !important;
     line-height: 1.5 !important;
-    margin: 0 0 26px 0 !important;
+    margin: 0 auto 26px !important;
     max-width: 740px !important;
   }
   
@@ -3960,6 +3971,10 @@ body.eva-overlay-open {
     .eva-ceo-container{
       grid-template-columns: 1fr !important;
       gap: 44px !important;
+      padding: 0 24px !important;
+    }
+    .eva-ceo-image{
+      min-width: 0 !important;
     }
     .eva-ceo-content{
       max-width: 900px !important;
@@ -3969,8 +3984,12 @@ body.eva-overlay-open {
     .eva-ceo-title{
       font-size: 3.2rem !important;
     }
+    .eva-ceo-image{
+      justify-self: center !important;
+    }
     .eva-ceo-photo{
       width: min(560px, 92vw) !important;
+      margin: 0 auto !important;
       border-radius: 46px !important;
     }
     .eva-signature-name{
@@ -3989,11 +4008,12 @@ body.eva-overlay-open {
       grid-template-columns: 1fr !important;
       width: 100% !important;
       max-width: 100% !important;
-      padding: 0 !important;
+      padding: 0 20px !important;
     }
     .eva-ceo-image{
       width: 100% !important;
       max-width: 100% !important;
+      min-width: 0 !important;
     }
     .eva-ceo-content{
       padding: 0 10px !important;
@@ -4024,9 +4044,13 @@ body.eva-overlay-open {
       width: 100% !important;
       box-sizing: border-box !important;
     }
+    .eva-ceo-image{
+      justify-self: center !important;
+    }
     .eva-ceo-photo{
       width: min(420px, 85vw) !important;
       max-width: 100% !important;
+      margin: 0 auto !important;
       border-radius: 32px !important;
     }
     .eva-ceo-signature{
@@ -4056,7 +4080,11 @@ body.eva-overlay-open {
     }
     .eva-ceo-container{
       gap: 28px !important;
-      padding: 0 !important;
+      padding: 0 16px !important;
+    }
+    .eva-ceo-image{
+      justify-self: center !important;
+      min-width: 0 !important;
     }
     .eva-ceo-content{
       padding: 0 4px !important;
@@ -4078,6 +4106,7 @@ body.eva-overlay-open {
     .eva-ceo-photo{
       width: min(360px, 90vw) !important;
       max-width: 100% !important;
+      margin: 0 auto !important;
       border-radius: 24px !important;
     }
     .eva-ceo-signature{
@@ -4200,9 +4229,10 @@ body.eva-overlay-open {
   }
 }
 
-.value-main-illustration{
-  width: 520px;
+.value-main-illustration {
+  width: 1000px;
   height: auto;
+  max-width: 100%;
   object-fit: contain;
   display: block;
 }
