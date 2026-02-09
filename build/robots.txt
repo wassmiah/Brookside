@@ -1,3 +1,33 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt for brooksidemps.com
+# Updated: 2025-01-27
+
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /admin-dashboard/
+Disallow: /employee-access/
+Disallow: /learn-here/
+Disallow: /verify-email/
+
+# Allow important pages
+Allow: /
+Allow: /career
+Allow: /contact
+Allow: /meet-the-team
+Allow: /eva
+Allow: /eva/inquiry
+Allow: /privacy-policy
+
+# EVA subdomain support
+User-agent: *
+Allow: https://eva.brooksidemps.com/
+Allow: https://eva.brooksidemps.com/eva
+Allow: https://eva.brooksidemps.com/eva/inquiry
+
+# Sitemap location
+Sitemap: https://brooksidemps.com/sitemap.xml
+
+# Crawl-delay (optional, adjust as needed)
+Crawl-delay: 1
