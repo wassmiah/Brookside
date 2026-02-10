@@ -751,19 +751,13 @@ body.eva-overlay-open {
   margin-bottom: 24px;
 }
 
-.eva-course-price {
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(157, 78, 221, 0.25));
-  border: 2px solid rgba(236, 72, 153, 0.6);
-  color: #fff;
-  font-size: 1.35rem;
-  padding: 14px 32px;
-  margin-bottom: 48px;
-  border-radius: 8px;
-}
-
-.eva-course-price strong {
-  color: #ec4899;
+.eva-course-intro {
+  max-width: 640px;
+  margin: 0 auto 48px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
 }
 
 .eva-course-modules {
@@ -938,9 +932,10 @@ body.eva-overlay-open {
     font-size: 1.65rem;
   }
 
-  .eva-course-price {
-    font-size: 1.1rem;
-    padding: 12px 24px;
+  .eva-course-intro {
+    font-size: 1rem;
+    margin-bottom: 36px;
+    padding: 0 16px;
   }
 
   .eva-course-cta-button {

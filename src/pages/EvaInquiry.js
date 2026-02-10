@@ -132,7 +132,7 @@ function EvaInquiry() {
         {/* Navigation – same as Eva.js */}
         <nav className="eva-nav">
           <div className="eva-nav-container">
-            <Link to="/eva">
+            <Link to={typeof window !== "undefined" && window.location.hostname === "eva.brooksidemps.com" ? "/" : "/eva"}>
               <img src="/eva-nav-logo.png" alt="E-VA Brookside - Virtual Assistant Philippines" className="eva-logo-small" />
             </Link>
             <div className="eva-nav-links">
@@ -143,9 +143,9 @@ function EvaInquiry() {
               <Link to="/eva#course" onClick={closeEvaMenu}>Course</Link>
               <Link to="/eva#apply" onClick={closeEvaMenu}>Apply</Link>
               <Link to="/eva#contact" onClick={closeEvaMenu}>Contact</Link>
-              <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+              <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
                 <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-              </Link>
+              </a>
             </div>
             <button ref={evaMenuToggleRef} type="button" className="eva-nav-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
               <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
@@ -161,9 +161,9 @@ function EvaInquiry() {
                 <Link to="/eva#course" onClick={closeEvaMenu}>Course</Link>
                 <Link to="/eva#apply" onClick={closeEvaMenu}>Apply</Link>
                 <Link to="/eva#contact" onClick={closeEvaMenu}>Contact</Link>
-                <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+                <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
                   <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-                </Link>
+                </a>
               </div>
             </div>,
             document.body

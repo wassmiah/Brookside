@@ -29,6 +29,19 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### Production deployment (brooksidemps.com)
+
+**If you see "MIME type ('text/html')" for CSS/JS:**  
+The server is returning the HTML page instead of the built static files. Fix by deploying the **entire contents** of the `build` folder to the site root so that:
+
+- `build/static/css/main.*.css` is available at `https://yoursite.com/static/css/main.xxx.css`
+- `build/static/js/main.*.js` is available at `https://yoursite.com/static/js/main.xxx.js`
+- `build/index.html` is at the root
+
+Do **not** deploy only `index.html`; the `.htaccess` SPA fallback will then serve HTML for every request and cause the MIME type errors. Upload the full `build` output (including the `static` folder) and keep `index.html` and `.htaccess` at the root.
+
+**For eva.brooksidemps.com:** The subdomain must serve the **same** build from the same document root as the main site. If the subdomain has its own folder or different files, ensure the full `build` (including `static/`) is there too; otherwise you’ll get the same MIME type errors on the subdomain.
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**

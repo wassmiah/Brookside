@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "./logo.png";
 import "./Navbar.css";
 
@@ -14,6 +14,9 @@ function Navbar({ onLogout }) {
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
+
+  // On localhost use in-app /eva route; on production send to subdomain
+  const isProduction = typeof window !== "undefined" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1";
 
   useEffect(() => {
     setMenuOpen(false);
@@ -72,7 +75,11 @@ function Navbar({ onLogout }) {
     <nav className="navbar">
       <div className="navbar-content">
         <div className="navbar-left">
-          {showLogo && <img src={logo} alt="Brookside Logo" className="navbar-logo visible" />}
+          {showLogo && (
+            <Link to="/" className="navbar-logo-link" onClick={closeMenu} aria-label="Brookside Manpower Services home">
+              <img src={logo} alt="Brookside Logo" className="navbar-logo visible" />
+            </Link>
+          )}
           <button ref={menuToggleRef} type="button" className="menu-toggle" onClick={toggleMenu} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
             <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
           </button>
@@ -84,9 +91,15 @@ function Navbar({ onLogout }) {
           <a href="/#services" onClick={closeMenu}>Services</a>
           <a href="/#commitment" onClick={closeMenu}>Our Commitment</a>
           <a href="/meet-the-team" onClick={closeMenu}>Meet the Team</a>
-          <a href="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
-            <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
-          </a>
+          {isProduction ? (
+            <a href="https://eva.brooksidemps.com" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
+              <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+            </a>
+          ) : (
+            <Link to="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
+              <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+            </Link>
+          )}
           {/* <a href="/LearnHere">Learn Here</a> */}
         </div>
 
@@ -107,9 +120,15 @@ function Navbar({ onLogout }) {
             <a href="/#services" onClick={closeMenu}>Services</a>
             <a href="/#commitment" onClick={closeMenu}>Our Commitment</a>
             <a href="/meet-the-team" onClick={closeMenu}>Meet the Team</a>
-            <a href="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
-              <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
-            </a>
+            {isProduction ? (
+              <a href="https://eva.brooksidemps.com" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
+                <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+              </a>
+            ) : (
+              <Link to="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
+                <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+              </Link>
+            )}
             <a href="/career" className="apply-now-btn" onClick={closeMenu}>Apply Now</a>
           </div>
         </div>

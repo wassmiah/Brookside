@@ -23,8 +23,8 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env NODE_OPTIONS=--disable-warning=DEP0176 react-scripts start",
+    "build": "cross-env NODE_OPTIONS=--disable-warning=DEP0176 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^7.0.2"
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "cross-env": "^7.0.3"
   }
 }

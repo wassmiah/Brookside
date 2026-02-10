@@ -1,5 +1,5 @@
 // App.js
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from './components/Navbar';
@@ -22,9 +22,28 @@ import Eva from './pages/Eva';
 import EvaInquiry from './pages/EvaInquiry';
 import './App.css';
 
+const isEvaSubdomain = () =>
+  typeof window !== 'undefined' && window.location.hostname === 'eva.brooksidemps.com';
+
 function AppContent() {
   const location = useLocation();
-  const isEvaPage = location.pathname === '/eva';
+  const navigate = useNavigate();
+  const onEvaSubdomain = isEvaSubdomain();
+  const isEvaPage =
+    location.pathname === '/eva' ||
+    location.pathname.startsWith('/eva/') ||
+    location.pathname === '/inquiry' ||
+    (onEvaSubdomain && (location.pathname === '/' || location.pathname === ''));
+
+  // On eva subdomain: redirect /eva and /eva/inquiry to clean URLs
+  useEffect(() => {
+    if (!onEvaSubdomain) return;
+    if (location.pathname === '/eva') {
+      navigate('/', { replace: true });
+    } else if (location.pathname === '/eva/inquiry') {
+      navigate('/inquiry', { replace: true });
+    }
+  }, [location.pathname, navigate, onEvaSubdomain]);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -80,7 +99,7 @@ function AppContent() {
         {!isEvaPage && <Navbar />}
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={onEvaSubdomain ? <Eva /> : <Home />} />
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/meet-the-team" element={<MeetTheTeam />} />
@@ -93,6 +112,7 @@ function AppContent() {
             <Route path="/learn-here" element={<ProtectedRoute><LearnHere /></ProtectedRoute>} />
             <Route path="/eva" element={<Eva />} />
             <Route path="/eva/inquiry" element={<EvaInquiry />} />
+            <Route path="/inquiry" element={<EvaInquiry />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
