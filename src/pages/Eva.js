@@ -12,9 +12,76 @@ const blockMediaMenu = (e) => {
   return false;
 };
 
-/** E-VA Course Enrollment Form (Google Forms) – public viewform URL */
+/** EVA Course Enrollment Form (Google Forms) – public viewform URL */
 const EVA_COURSE_ENROLLMENT_FORM_URL = "https://docs.google.com/forms/d/1XUtZKtciUOggybHo6zSpsrH8o5sUf4RXaXNo4CJj9Pk/viewform";
 
+/** Partners by category. Use logo placeholder paths; replace with actual images in /public/partners/ */
+const EVA_PARTNER_CATEGORIES = [
+  {
+    id: "michelin",
+    title: "Michelin Selected Restaurants",
+    shortLabel: "Michelin",
+    featured: true,
+    partners: [
+      { name: "Osteria Antica", description: "Italian trattoria", logo: "/partners/osteria-antica.png" },
+      { name: "Kei Maki", description: "Japanese sushi bar", logo: "/partners/kei-maki.png" },
+    ],
+  },
+  {
+    id: "dining",
+    title: "Wildflour Hospitality Group",
+    shortLabel: "Upscale Dining",
+    subtitle: "Upscale dining",
+    partners: [
+      { name: "Wildflour Restaurant", description: "Upscale dining", logo: "/partners/wild-flour.png" },
+      { name: "George and Onnie's", description: "Filipino comfort food", logo: "/partners/george-onnies.png" },
+      { name: "Farmacy", description: "American diner", logo: "/partners/farmacy.png" },
+      { name: "Pizza Sisters", description: "Neapolitan pizzeria", logo: "/partners/pizza-sisters.png" },
+      { name: "Pink's", description: "Gourmet hotdogs", logo: "/partners/pinks.png" },
+    ],
+  },
+  {
+    id: "combined-row",
+    title: "",
+    singleRow: true,
+    categories: [
+      {
+        id: "resorts",
+        title: "Integrated Hotels & Resorts",
+        shortLabel: "Hotels & Resorts",
+        partners: [
+          { name: "West Side City", description: "Integrated hotel and resort", logo: "/partners/west-side-city.png" },
+        ],
+      },
+      {
+        id: "catering",
+        title: "Catering & Events",
+        shortLabel: "Catering",
+        partners: [
+          { name: "Josiah Catering", description: "Wedding and catering events", logo: "/partners/josiah-catering.png" },
+        ],
+      },
+      {
+        id: "sports-gaming",
+        title: "Sports & Gaming",
+        shortLabel: "Sports & Gaming",
+        partners: [
+          { name: "Play Padel Greenfield", description: "Indoor padel club", logo: "/partners/play-padel.png" },
+          { name: "Digiplus", description: "Philippine inland gaming operations", logo: "/partners/digiplus.png" },
+          { name: "Pink Dolphin", description: "Premium hospitality and gaming", logo: "/partners/pink-dolphin.png" },
+        ],
+      },
+    ],
+  },
+];
+
+/** Employee carousel images – add images to /public (eva-team-1.jpg, etc.) */
+const EVA_EMPLOYEE_IMAGES = [
+  { src: "/eva-team-1.jpg", alt: "EVA team member" },
+  { src: "/eva-team-2.jpg", alt: "EVA team member" },
+  { src: "/eva-team-3.jpg", alt: "EVA team member" },
+  { src: "/eva-team-4.jpg", alt: "EVA team member" },
+];
 
 // Illustration Component for numbered images (1.png to 10.png)
 const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
@@ -46,7 +113,10 @@ function Eva() {
   const ceoRef = useRef(null);
   const testimonialsRef = useRef(null);
   const ctaRef = useRef(null);
+  const contactVideoRef = useRef(null);
+  const partnersRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
   const evaMenuToggleRef = useRef(null);
 
   const closeEvaMenu = useCallback(() => setMenuOpen(false), []);
@@ -77,6 +147,34 @@ function Eva() {
     }
   }, [menuOpen, closeEvaMenu]);
 
+  // Carousel autoplay
+  useEffect(() => {
+    if (EVA_EMPLOYEE_IMAGES.length <= 1) return;
+    const interval = setInterval(() => {
+      setCarouselIndex((prev) => (prev + 1) % EVA_EMPLOYEE_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Restart contact video when it comes into view on scroll
+  useEffect(() => {
+    const video = contactVideoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     // Responsive AOS offset - trigger immediately on mobile
     const isMobile = window.innerWidth <= 768;
@@ -100,7 +198,7 @@ function Eva() {
     // On mobile, immediately make all sections visible and refresh AOS
     if (isMobile) {
       // Immediately add section-visible class to all sections on mobile
-      const allSections = document.querySelectorAll('.eva-services-min, .eva-features, .eva-value-benefits-section, .eva-ceo-section, .eva-testimonials-lux, .eva-cta-section');
+      const allSections = document.querySelectorAll('.eva-services-min, .eva-features, .eva-value-benefits-section, .eva-partners-section, .eva-ceo-section, .eva-testimonials-lux, .eva-cta-section');
       allSections.forEach(section => {
         // Check if section is in viewport or near viewport
         const rect = section.getBoundingClientRect();
@@ -177,7 +275,7 @@ function Eva() {
     }, sectionObserverOptions);
 
     // Observe all sections
-    const sections = [servicesRef, featuresRef, valueBenefitsRef, ceoRef, testimonialsRef, ctaRef];
+    const sections = [servicesRef, featuresRef, valueBenefitsRef, partnersRef, ceoRef, testimonialsRef, ctaRef];
     sections.forEach(ref => {
       if (ref.current) {
         sectionObserver.observe(ref.current);
@@ -262,7 +360,7 @@ function Eva() {
         AOS.refresh();
         
         // Immediately show sections that are near viewport
-        const allSections = document.querySelectorAll('.eva-services-min:not(.section-visible), .eva-features:not(.section-visible), .eva-value-benefits-section:not(.section-visible), .eva-ceo-section:not(.section-visible), .eva-testimonials-lux:not(.section-visible), .eva-cta-section:not(.section-visible)');
+        const allSections = document.querySelectorAll('.eva-services-min:not(.section-visible), .eva-features:not(.section-visible), .eva-value-benefits-section:not(.section-visible), .eva-partners-section:not(.section-visible), .eva-ceo-section:not(.section-visible), .eva-testimonials-lux:not(.section-visible), .eva-cta-section:not(.section-visible)');
         allSections.forEach(section => {
           const rect = section.getBoundingClientRect();
           // Show section if it's within 400px of viewport
@@ -317,7 +415,7 @@ function Eva() {
 
       // Subtle parallax for decorative elements
       const sections = document.querySelectorAll(
-        '.eva-services-min, .eva-features, .eva-value-benefits-section, .eva-testimonials-lux, .eva-cta-section'
+        '.eva-services-min, .eva-features, .eva-value-benefits-section, .eva-partners-section, .eva-testimonials-lux, .eva-cta-section'
       );
             sections.forEach(section => {
         const rect = section.getBoundingClientRect();
@@ -390,25 +488,25 @@ function Eva() {
   return (
     <>
       <SEO
-        title="E-VA by Brookside Manpower Services | Elite Virtual Assistant"
-        description="E-VA Brookside provides elite virtual assistant services from the Philippines, helping businesses scale with reliable remote support and fast hiring."
-        keywords="eva brookside, eva virtual assistant, eva ph, eva philippines, eva virtual assistant philippines, eva brooksidemps, e-va brookside, e-va virtual assistant, e-va philippines, virtual assistant philippines, philippines virtual assistant, remote staffing philippines, virtual assistant services philippines, eva brookside manpower, brookside eva, eva va philippines, virtual assistant ph, va services philippines, elite virtual assistant philippines, professional virtual assistant philippines"
+        title="EVA by Brookside Manpower Services | Executive Virtual Assistant"
+        description="EVA Brookside provides executive virtual assistant services from the Philippines, helping businesses scale with reliable remote support and fast hiring."
+        keywords="eva brookside, eva virtual assistant, eva ph, eva philippines, eva virtual assistant philippines, eva brooksidemps, eva brookside, eva virtual assistant, eva philippines, virtual assistant philippines, philippines virtual assistant, remote staffing philippines, virtual assistant services philippines, eva brookside manpower, brookside eva, eva va philippines, virtual assistant ph, va services philippines, executive virtual assistant philippines, professional virtual assistant philippines"
         ogImage="/eva-logo.png"
         ogImageWidth={1200}
         ogImageHeight={630}
-        ogImageAlt="E-VA Brookside - Elite Virtual Assistant Services"
+        ogImageAlt="EVA Brookside - Managed Virtual Assistant Solutions"
         canonicalUrl="/eva"
         structuredData={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "E-VA Brookside - Elite Virtual Assistant Services",
-            "alternateName": ["E-VA Virtual Assistant", "E-VA PH", "E-VA Philippines", "E-VA Brookside Manpower", "EVA Virtual Assistant", "EVA PH", "EVA Philippines"],
-            "description": "E-VA Brookside offers elite virtual assistant services in the Philippines. E-VA virtual assistant by Brookside Manpower Services provides top-tier virtual assistants for businesses worldwide. Save up to 70% on staffing costs with 98% client retention rate.",
+            "name": "EVA Brookside - Executive Virtual Assistant Services",
+            "alternateName": ["EVA PH", "EVA Philippines", "EVA Brookside Manpower"],
+            "description": "EVA by Brookside Manpower Services is a managed virtual assistant solutions provider dedicated to reducing operational costs, improving efficiency, and creating scalable support systems for growing businesses. As labor expenses rise, businesses need structured, cost-effective support without sacrificing quality. EVA delivers reliable support that reduces overhead, manages customer communication, and frees business owners to focus on growth. Services include managed VA placement, team support solutions, scalable workforce options, training and development, and performance monitoring.",
             "provider": {
               "@type": "Organization",
               "name": "Brookside Manpower Services",
-              "alternateName": "E-VA Brookside",
+              "alternateName": "EVA Brookside",
               "url": "https://brooksidemps.com/eva",
               "address": {
                 "@type": "PostalAddress",
@@ -434,14 +532,14 @@ function Eva() {
             },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
-              "name": "E-VA Virtual Assistant Services",
+              "name": "EVA Services",
               "itemListElement": [
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Property Management Support",
-                    "description": "E-VA virtual assistant services for property management"
+                    "description": "EVA services for property management"
                   }
                 },
                 {
@@ -449,7 +547,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "E-Commerce Operations",
-                    "description": "E-VA Philippines virtual assistant for e-commerce support"
+                    "description": "EVA Philippines virtual assistant for e-commerce support"
                   }
                 },
                 {
@@ -457,7 +555,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Digital Marketing Support",
-                    "description": "E-VA Brookside virtual assistant for digital marketing"
+                    "description": "EVA Brookside virtual assistant for digital marketing"
                   }
                 },
                 {
@@ -465,7 +563,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Financial Administration",
-                    "description": "E-VA PH virtual assistant for financial administration"
+                    "description": "EVA PH virtual assistant for financial administration"
                   }
                 },
                 {
@@ -473,7 +571,7 @@ function Eva() {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Executive Assistance",
-                    "description": "E-VA virtual assistant Philippines for executive support"
+                    "description": "EVA Philippines for executive support"
                   }
                 }
               ]
@@ -485,50 +583,50 @@ function Eva() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "What is E-VA Brookside?",
+                "name": "What is EVA Brookside?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "E-VA Brookside is the elite virtual assistant service division of Brookside Manpower Services, providing top-tier virtual assistants to businesses worldwide. E-VA stands for Elite Virtual Assistants and offers professional remote staffing solutions."
+                  "text": "EVA by Brookside Manpower Services is a managed virtual assistant solutions provider dedicated to reducing operational costs, improving efficiency, and creating scalable support for growing businesses. EVA delivers structured, reliable support systems that enhance productivity and drive success."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What is E-VA virtual assistant?",
+                "name": "What is EVA?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "E-VA virtual assistant is a premium virtual assistant service offered by Brookside Manpower Services in the Philippines. E-VA provides elite virtual assistants specializing in property management, e-commerce, digital marketing, financial administration, and executive assistance."
+                  "text": "EVA is a managed virtual assistant service by Brookside Manpower Services. With rising compensation costs and operational overload, businesses need virtual assistants to reduce overhead, manage customer communication, and free owners to focus on growth. EVA provides structured, reliable support with skills-based matching, managed team solutions, and scalable workforce options."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What is E-VA PH?",
+                "name": "What is EVA PH?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "E-VA PH refers to E-VA Virtual Assistant Philippines, the premier virtual assistant service provider based in Metro Manila, Philippines. E-VA PH offers cost-effective remote staffing solutions with 98% client retention rate and average 21-day hiring time."
+                  "text": "EVA PH is EVA Philippines, a managed virtual assistant solutions provider based in Metro Manila. EVA PH offers cost-effective remote staffing to help businesses reduce overhead and scale operations without sacrificing quality."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How much does E-VA Brookside virtual assistant cost?",
+                "name": "How much does EVA Brookside virtual assistant cost?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "E-VA Brookside virtual assistant services can save businesses up to 70% on staffing costs compared to traditional hiring. Contact E-VA at eva@brooksidemanpower.com or visit eva.brooksidemps.com for a free consultation and customized pricing."
+                  "text": "EVA offers cost-effective virtual assistant services designed to reduce operational costs for growing businesses. Contact EVA at eva@brooksidemanpower.com or visit eva.brooksidemps.com for a free consultation and customized pricing."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Where is E-VA virtual assistant Philippines located?",
+                "name": "Where is EVA Philippines located?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "E-VA virtual assistant Philippines is located at Unit 704C, Tower 3, PITX Building, 1 Kennedy Road, Paranaque City, Metro Manila, Philippines. E-VA serves clients globally while operating from the Philippines."
+                  "text": "EVA Philippines is located at Unit 704C, Tower 3, PITX Building, 1 Kennedy Road, Paranaque City, Metro Manila, Philippines. EVA serves clients globally while operating from the Philippines."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How do I hire an E-VA Brookside virtual assistant?",
+                "name": "How do I hire an EVA Brookside virtual assistant?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "To hire an E-VA Brookside virtual assistant, visit eva.brooksidemps.com and fill out the inquiry form. E-VA offers free consultations, customized staffing solutions, and average 21-day hiring time. Contact E-VA at eva@brooksidemanpower.com or call +63 917 157 8874."
+                  "text": "To hire an EVA Brookside virtual assistant, visit eva.brooksidemps.com and fill out the inquiry form. EVA offers free consultations and customized staffing solutions. Contact eva@brooksidemanpower.com or call +63 917 157 8874."
                 }
               }
             ]
@@ -546,7 +644,7 @@ function Eva() {
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "E-VA Virtual Assistant",
+                "name": "EVA",
                 "item": "https://brooksidemps.com/eva"
               }
             ]
@@ -554,8 +652,8 @@ function Eva() {
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "E-VA Brookside - Elite Virtual Assistant Services Philippines",
-            "description": "E-VA Brookside offers elite virtual assistant services in the Philippines. E-VA virtual assistant by Brookside Manpower Services.",
+            "name": "EVA Brookside - Executive Virtual Assistant Services Philippines",
+            "description": "EVA by Brookside provides managed virtual assistant solutions that reduce operational costs, improve efficiency, and create scalable support for growing businesses.",
             "url": "https://brooksidemps.com/eva",
             "inLanguage": "en-PH",
             "isPartOf": {
@@ -572,38 +670,40 @@ function Eva() {
         <nav className="eva-nav">
           <div className="eva-nav-container">
             <Link to="/eva">
-              <img src="/eva-nav-logo.png" alt="E-VA Brookside - Virtual Assistant Philippines" className="eva-logo-small" />
+              <img src="/eva-nav-logo.png" alt="EVA Brookside - Executive Virtual Assistant Philippines" className="eva-logo-small" />
             </Link>
             <div className="eva-nav-links">
               <a href="#home" onClick={closeEvaMenu}>Home</a>
+              <a href="#about" onClick={closeEvaMenu}>About</a>
+              <a href="#partners" onClick={closeEvaMenu}>Partners</a>
               <a href="#services" onClick={closeEvaMenu}>Services</a>
               <a href="#clients" onClick={closeEvaMenu}>Clients</a>
-              <a href="#about" onClick={closeEvaMenu}>About</a>
               <a href="#course" onClick={closeEvaMenu}>Course</a>
               <a href="#apply" onClick={closeEvaMenu}>Apply</a>
               <a href="#contact" onClick={closeEvaMenu}>Contact</a>
-              <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+              <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
                 <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-              </Link>
+              </a>
             </div>
             <button ref={evaMenuToggleRef} type="button" className="eva-nav-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
               <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
             </button>
           </div>
-          {/* E-VA overlay: portal to body so it covers full page (like Home/Navbar) */}
+          {/* EVA overlay: portal to body so it covers full page (like Home/Navbar) */}
           {menuOpen && createPortal(
             <div className="eva-nav-overlay eva-nav-overlay-open" onClick={closeEvaMenu} aria-hidden="false" role="dialog" aria-modal="true" aria-label="Menu">
               <div className="eva-nav-links eva-nav-links-overlay active" onClick={(e) => e.stopPropagation()}>
                 <a href="#home" onClick={closeEvaMenu}>Home</a>
+                <a href="#about" onClick={closeEvaMenu}>About</a>
+                <a href="#partners" onClick={closeEvaMenu}>Partners</a>
                 <a href="#services" onClick={closeEvaMenu}>Services</a>
                 <a href="#clients" onClick={closeEvaMenu}>Clients</a>
-                <a href="#about" onClick={closeEvaMenu}>About</a>
                 <a href="#course" onClick={closeEvaMenu}>Course</a>
                 <a href="#apply" onClick={closeEvaMenu}>Apply</a>
                 <a href="#contact" onClick={closeEvaMenu}>Contact</a>
-                <Link to="/" className="eva-nav-brookside-logo" aria-label="Back to Brookside Manpower home" onClick={closeEvaMenu}>
+                <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
                   <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-                </Link>
+                </a>
               </div>
             </div>,
             document.body
@@ -637,10 +737,10 @@ function Eva() {
           <div className="eva-hero-fallback"></div>
           <div className="eva-hero-content">
             <div className="eva-logo-container">
-              <img src="/eva-logo.png" alt="E-VA Brookside - Elite Virtual Assistant Services Philippines" className="eva-logo-hero" />
+              <img src="/eva-logo.png" alt="EVA Brookside - Executive Virtual Assistant Services" className="eva-logo-hero" />
             </div>
             <h1 className="eva-hero-tagline">Elevate Your Everything</h1>
-            <p className="eva-hero-subtitle">E-VA helps businesses cut staffing costs by up to 70% with skilled global talent. Fast hiring in 21 days, no upfront fees.
+            <p className="eva-hero-subtitle">Scale smarter with EVA, access top global talent that lowers <br/> operational costs by up to 70% without compromising quality and performance.
             </p>
 
             <div className="eva-hero-buttons">
@@ -684,12 +784,244 @@ function Eva() {
           </div>
         </section>
 
+        {/* Vision Mission Values Section */}
+        <section className="eva-vmv-section" id="about" ref={vmvRef}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="eva-vmv-video"
+          aria-hidden="true"
+          controls={false}
+          controlsList="nodownload noremoteplayback noplaybackrate"
+          disablePictureInPicture
+          disableRemotePlayback
+          tabIndex={-1}
+          onContextMenu={(e) => e.preventDefault()}
+          onError={(e) => {
+            console.error("VMV Video failed to load:", e);
+            e.target.style.display = "none";
+          }}
+          onLoadStart={() => console.log("VMV Video started loading")}
+          onCanPlay={() => console.log("VMV Video can play")}
+        >
+
+            <source src="/eva-vmv-bg.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="eva-vmv-content" data-aos="fade-in">
+            <div className="eva-vmv-item">
+              <h3 className="eva-vmv-title">Vision</h3>
+              <p className="eva-vmv-text">A hub for 5-star talents to elevate your everything.</p>
+            </div>
+            <div className="eva-vmv-item">
+              <h3 className="eva-vmv-title">Mission</h3>
+              <p className="eva-vmv-text">Happy clients meet exceptional service.</p>
+            </div>
+            <div className="eva-vmv-item">
+              <h3 className="eva-vmv-title">Values</h3>
+              <ul className="eva-vmv-values-list">
+                <li>Bespoke excellence</li>
+                <li>Non-stop innovation</li>
+                <li>Reliable efficiency</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Partners Section */}
+        <section className="eva-partners-section" id="partners" ref={partnersRef}>
+          <div className="eva-partners-container">
+            <div className="eva-partners-header">
+              <h2 className="eva-partners-title">Our Partners</h2>
+              <p className="eva-partners-intro"> Trusted by leading hospitality and service-driven brands.  <br />  Scale your operations, reduce costs, and focus on growth with our proven support across dining, hospitality, and gaming. </p>
+              <div className="eva-partners-trust-bar">
+                <span className="eva-partners-trust-item">
+                  <strong>{EVA_PARTNER_CATEGORIES.reduce((n, c) => n + (c.partners?.length ?? (c.categories?.reduce((s, sub) => s + sub.partners.length, 0) ?? 0)), 0)}</strong> Trusted Partners
+                </span>
+                <span className="eva-partners-trust-divider" aria-hidden>|</span>
+                <span className="eva-partners-trust-item">
+                  <strong>5</strong> Industries
+                </span>
+              </div>
+            </div>
+
+            {/* Michelin Featured Row */}
+            {EVA_PARTNER_CATEGORIES.filter((c) => c.featured).map((cat) => (
+              <div key={cat.id} className="eva-partners-michelin-section">
+                <div className="eva-partners-michelin-grid">
+                  {cat.partners.map((partner, idx) => (
+                    <div key={idx} className="eva-partner-card eva-partner-card-featured" title={partner.description}>
+                      <div className="eva-partner-card-logo">
+                        <img
+                          src={partner.logo}
+                          alt={partner.name}
+                          onError={(e) => {
+                            e.target.style.display = "none";
+                            e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
+                          }}
+                        />
+                        <div className="eva-partner-logo-placeholder">
+                          <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
+                        </div>
+                      </div>
+                      <h4 className="eva-partner-card-name">{partner.name}</h4>
+                      {partner.description && <span className="eva-partner-card-cat">{partner.description}</span>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            {EVA_PARTNER_CATEGORIES.filter((c) => !c.featured).map((cat) =>
+              cat.singleRow ? (
+                <div key={cat.id} className="eva-partners-single-row">
+                  {cat.categories.map((sub) => (
+                    <div key={sub.id} className="eva-partners-category-cell">
+                      <h3 className="eva-partners-category-heading">{sub.title}</h3>
+                      <div className="eva-partners-bento eva-partners-inline">
+                        {sub.partners.map((partner, idx) => (
+                          <div key={idx} className="eva-partner-card" title={partner.description}>
+                            <div className="eva-partner-card-logo">
+                              <img
+                                src={partner.logo}
+                                alt={partner.name}
+                                onError={(e) => {
+                                  e.target.style.display = "none";
+                                  e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
+                                }}
+                              />
+                              <div className="eva-partner-logo-placeholder">
+                                <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
+                              </div>
+                            </div>
+                            <h4 className="eva-partner-card-name">{partner.name}</h4>
+                            <span className="eva-partner-card-cat">{partner.description || sub.shortLabel || sub.title}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div key={cat.id} className="eva-partners-category-block" data-partners={cat.partners?.length}>
+                  <h3 className="eva-partners-category-heading">{cat.title}</h3>
+                  <div className="eva-partners-bento">
+                    {cat.partners.map((partner, idx) => (
+                      <div key={idx} className="eva-partner-card" title={partner.description}>
+                        <div className="eva-partner-card-logo">
+                          <img
+                            src={partner.logo}
+                            alt={partner.name}
+                            onError={(e) => {
+                              e.target.style.display = "none";
+                              e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
+                            }}
+                          />
+                          <div className="eva-partner-logo-placeholder">
+                            <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
+                          </div>
+                        </div>
+                        <h4 className="eva-partner-card-name">{partner.name}</h4>
+                        <span className="eva-partner-card-cat">{partner.description || cat.shortLabel || cat.title}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            )}
+            {/* CTA and Social Block */}
+            <div className="eva-partners-cta-block">
+              <div className="eva-partners-cta-content">
+                <h3 className="eva-partners-cta-title">Ready to Elevate Your Operations?</h3>
+                <p className="eva-partners-cta-text">Get a free consultation and discover how EVA can scale your business.</p>
+                <Link to="/eva/inquiry" className="eva-partners-cta-button">Get Free Consultation</Link>
+              </div>
+              <div className="eva-partners-social-block">
+                <h4 className="eva-partners-social-title">Follow Us on our Socials!</h4>
+                <div className="eva-partners-social-links">
+                  <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-partners-social-link" aria-label="EVA on Facebook">
+                    <i className="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                  </a>
+                  <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-partners-social-link" aria-label="EVA on LinkedIn">
+                    <i className="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                  </a>
+                  <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-partners-social-link" aria-label="EVA on TikTok">
+                    <i className="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <br />
+
+            {/* Employee Carousel */}
+            <div className="eva-partners-carousel-wrap">
+              <div className="eva-partners-carousel">
+                <div className="eva-partners-carousel-track" style={{ transform: `translateX(-${carouselIndex * 100}%)` }}>
+                  {EVA_EMPLOYEE_IMAGES.map((img, idx) => (
+                    <div key={idx} className="eva-partners-carousel-slide">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="eva-partners-carousel-img"
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                          const slide = e.target.closest(".eva-partners-carousel-slide");
+                          if (slide) slide.classList.add("eva-partners-slide-fallback");
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="eva-partners-carousel-dots">
+                {EVA_EMPLOYEE_IMAGES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`eva-partners-dot ${carouselIndex === idx ? "active" : ""}`}
+                    onClick={() => setCarouselIndex(idx)}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+                {/* CEO Message Section */}
+                <section className="eva-ceo-section" ref={ceoRef}>
+          <div className="eva-ceo-container" data-aos="fade-in">
+            <div className="eva-ceo-image">
+              <img src="/eva-ceo.jpeg" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
+            </div>
+            <div className="eva-ceo-content">
+              <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
+              <p className="eva-ceo-text">
+                In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where EVA comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, EVA's team of dedicated professionals is here to ensure that you can focus on what truly matters: growing your business.
+              </p>
+              <p className="eva-ceo-text">
+                EVA takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA is here to make your work-life balance a reality.
+              </p>
+              <div className="eva-ceo-signature">
+                <p className="eva-signature-name">ETHEL ANN CABEZAS</p>
+                <p className="eva-signature-title">CEO, EVA</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Services Overview Section */}
         <section className="eva-services-min" id="services" ref={servicesRef}>
           <div className="eva-services-min-container">
             <div className="eva-services-min-header">
-              <h2 className="eva-services-min-title">E-VA Services</h2>
-              <p className="eva-services-min-subtitle">E-VA provides professional virtual assistant services worldwide, connecting businesses with highly skilled professionals to support daily operations and business growth.
+              <h2 className="eva-services-min-title">EVA Services</h2>
+              <p className="eva-services-min-subtitle">EVA provides professional virtual assistant services worldwide, connecting businesses with highly skilled professionals to support daily operations and business growth.
               </p>
             </div>
 
@@ -747,14 +1079,13 @@ function Eva() {
     <div className="eva-value-proposition" data-aos="fade-up">
       <div className="eva-value-content">
         <h2 className="eva-value-heading">
-        E-VA: More Time.<br />
+      More Time.<br />
           <span className="eva-value-highlight">Better Focus. <br />Smarter Support.</span>
         </h2>
 
         <p className="eva-value-description">
-        E-VA provides reliable virtual assistants who work smoothly within your operations, so you can focus on growth, strategy, and results without daily distractions.
+        With EVA, we provide reliable virtual assistants to support your operations in helping your business develop and achieve results without interruption.       
         </p>
-
         <Link
           to="/eva/inquiry"
           className="eva-cta-button-primary"
@@ -769,7 +1100,7 @@ function Eva() {
         <div className="eva-value-illustration">
           <img
             src="/eva-value.png"
-            alt="E-VA Value Illustration"
+            alt="EVA Value Illustration"
             className="value-main-illustration"
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
@@ -781,9 +1112,9 @@ function Eva() {
 
     {/* Benefits Header */}
     <div className="eva-benefits-header" data-aos="fade-up">
-      <h2 className="eva-benefits-title">What You Gain with <br />E-VA</h2>
+      <h2 className="eva-benefits-title">What You Gain with <br />EVA</h2>
       <p className="eva-benefits-subtitle">
-        E-VA delivers practical benefits designed to improve how your business runs every day.
+        EVA delivers practical benefits designed to improve how your business runs every day.
       </p>
     </div>
 
@@ -840,144 +1171,18 @@ function Eva() {
   </div>
 </section>
 
-{/* Testimonials (Luxury / Corporate) */}
-<section className="eva-testimonials-lux" ref={testimonialsRef}>
-  <div className="eva-testimonials-lux-container">
-    {/* Left */}
-    <div className="eva-testimonials-lux-left">
-      <img src="/eva-logo.png" alt="E-VA Brookside - Virtual Assistant Philippines" className="eva-testimonials-lux-logo" />
-      <div className="eva-testimonials-lux-tagline">ELEVATING LIVES</div>
-    </div>
-
-    {/* Right */}
-    <div className="eva-testimonials-lux-right">
-      <div className="eva-testimonials-lux-card">
-        <p className="eva-testimonials-lux-quote">
-          "My virtual assistant handles everything from data entry to customer support seamlessly.
-          Their range, speed, and discretion have become essential to how we operate."
-        </p>
-        <div className="eva-testimonials-lux-author">– Lisa T., CEO of a startup</div>
-      </div>
-
-      <div className="eva-testimonials-lux-card">
-        <p className="eva-testimonials-lux-quote">
-          "Working with my virtual assistant has been a genuine upgrade.
-          They’re proactive, communicate clearly, and consistently deliver on time without constant follow-ups."
-        </p>
-        <div className="eva-testimonials-lux-author">– Emily R., Entrepreneur</div>
-      </div>
-
-      <div className="eva-testimonials-lux-card">
-        <p className="eva-testimonials-lux-quote">
-          "I work across time zones, and my VA is dependable when it counts.
-          Their flexibility, accountability, and professionalism make them a core part of our workflow."
-        </p>
-        <div className="eva-testimonials-lux-author">– Leo V., Consultant</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
         {/* Call to Action Section */}
         <section className="eva-cta-section" ref={ctaRef}>
           <div className="eva-cta-container" data-aos="fade-in">
             <div className="eva-cta-content">
-              <h2 className="eva-cta-heading">Ready to Elevate Your Business with E-VA?</h2>
+              <h2 className="eva-cta-heading">Ready to Elevate Your <br/> Business with EVA?</h2>
               <p className="eva-cta-description">
-                Get started with E-VA - Free consultation and discover how our elite Filipino virtual assistants can transform your operations. E-VA delivers excellence. No upfront costs, no long-term commitments.
+              EVA delivers excellence. <br/> Contact us for a free consultation and discover how our elite virtual assistants can transform your operations.
               </p>
-              <div className="eva-cta-features">
-                <div className="eva-cta-feature">
-                  <i className="fas fa-check-circle"></i>
-                  <span>Free initial consultation</span>
-                </div>
-                <div className="eva-cta-feature">
-                  <i className="fas fa-check-circle"></i>
-                  <span>Customized staffing solutions</span>
-                </div>
-                <div className="eva-cta-feature">
-                  <i className="fas fa-check-circle"></i>
-                  <span>21-day average hiring time</span>
-                </div>
-                <div className="eva-cta-feature">
-                  <i className="fas fa-check-circle"></i>
-                  <span>98% client satisfaction rate</span>
-                </div>
-              </div>
               <div className="eva-cta-buttons">
-                <Link to="/eva/inquiry" className="eva-cta-primary">Get Free Consultation</Link>
-                <Link to="/eva/inquiry" className="eva-cta-secondary">Contact Us</Link>
+                <Link to="/eva/inquiry" className="eva-cta-primary eva-cta-single">Get Free Consultation</Link>
               </div>
-            </div>
-          </div>
-        </section>
-
-                {/* CEO Message Section */}
-                <section className="eva-ceo-section" ref={ceoRef}>
-          <div className="eva-ceo-container" data-aos="fade-in">
-            <div className="eva-ceo-image">
-              <img src="/eva-ceo.jpeg" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
-            </div>
-            <div className="eva-ceo-content">
-              <h2 className="eva-ceo-title">Message from <br/> E-VA CEO</h2>
-              <p className="eva-ceo-text">
-                In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where E-VA comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, E-VA's team of dedicated professionals is here to ensure that you can focus on what truly matters: growing your business.
-              </p>
-              <p className="eva-ceo-text">
-                E-VA takes pride in offering personalized solutions tailored to your unique needs. Our E-VA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, E-VA is here to make your work-life balance a reality.
-              </p>
-              <div className="eva-ceo-signature">
-                <p className="eva-signature-name">ETHEL ANN CABEZAS</p>
-                <p className="eva-signature-title">CEO, E-VA</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Vision Mission Values Section */}
-        <section className="eva-vmv-section" id="about" ref={vmvRef}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="eva-vmv-video"
-          aria-hidden="true"
-          controls={false}
-          controlsList="nodownload noremoteplayback noplaybackrate"
-          disablePictureInPicture
-          disableRemotePlayback
-          tabIndex={-1}
-          onContextMenu={(e) => e.preventDefault()}
-          onError={(e) => {
-            console.error("VMV Video failed to load:", e);
-            e.target.style.display = "none";
-          }}
-          onLoadStart={() => console.log("VMV Video started loading")}
-          onCanPlay={() => console.log("VMV Video can play")}
-        >
-
-            <source src="/eva-vmv-bg.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="eva-vmv-content" data-aos="fade-in">
-            <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">Vision</h3>
-              <p className="eva-vmv-text">A hub for 5-star talents to elevate your everything.</p>
-            </div>
-            <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">Mission</h3>
-              <p className="eva-vmv-text">Happy clients meet exceptional service.</p>
-            </div>
-            <div className="eva-vmv-item">
-              <h3 className="eva-vmv-title">Values</h3>
-              <ul className="eva-vmv-values-list">
-                <li>Bespoke excellence</li>
-                <li>Non-stop innovation</li>
-                <li>Reliable efficiency</li>
-              </ul>
             </div>
           </div>
         </section>
@@ -1035,7 +1240,7 @@ function Eva() {
                 </ul>
               </div>
             </div>
-            <p className="eva-course-cta-text">Secure your spot in the E-VA Course Program. <br/> Complete the enrollment form and our team will be in touch.</p>
+            <p className="eva-course-cta-text">Secure your spot in the EVA Course Program. <br/> Complete the enrollment form and our team will be in touch.</p>
             <a
               href={EVA_COURSE_ENROLLMENT_FORM_URL}
               target="_blank"
@@ -1104,9 +1309,27 @@ function Eva() {
         {/* Contact Section */}
         <section className="eva-contact" id="contact">
           <div className="eva-contact-header" data-aos="fade-in">
-            <div className="eva-contact-header-bg">
-              <p className="eva-contact-header-text">ELEVATING LIVES</p>
-            </div>
+            <video
+              ref={contactVideoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="eva-contact-header-video"
+              aria-hidden="true"
+              tabIndex={-1}
+              controls={false}
+              controlsList="nodownload noplaybackrate noremoteplayback"
+              disablePictureInPicture
+              disableRemotePlayback
+              onContextMenu={blockMediaMenu}
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            >
+              <source src="/eva-footer-video.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className="eva-contact-content">
             <h2 className="eva-contact-title">Contact Us</h2>
@@ -1128,8 +1351,6 @@ function Eva() {
                   <a href={`mailto:${`eva@brooksidemanpower.com`}`} className="eva-contact-link" aria-label="Contact EVA Brookside at eva@brooksidemanpower.com">
                     {['eva', '@', 'brooksidemanpower.com'].join('')}
                   </a>
-                  <br />
-                  <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>E-VA Virtual Assistant</span>
                 </p>
               </div>
               <div className="eva-contact-item">
@@ -1154,7 +1375,7 @@ function Eva() {
         <footer className="eva-footer">
           <div className="eva-footer-content">
             <p className="eva-footer-text">
-              &copy; {new Date().getFullYear()} E-VA by Brookside Manpower Services. All Rights Reserved.
+              &copy; {new Date().getFullYear()} EVA by Brookside Manpower Services. All Rights Reserved.
             </p>
             <div className="eva-footer-links">
               <Link to="/privacy-policy" className="eva-footer-link">Privacy Policy</Link>

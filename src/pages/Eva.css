@@ -39,6 +39,8 @@
   .eva-services-section,
   .eva-features,
   .eva-ceo-section,
+  .eva-partners-section,
+  .eva-partner-card,
   .eva-testimonials,
   .eva-trust,
   .eva-cta-section,
@@ -50,6 +52,10 @@
 
   .grid-item {
     opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .eva-partner-card:hover {
     transform: none !important;
   }
 }
@@ -261,9 +267,14 @@
   transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.eva-partners-section {
+  opacity: 1;
+}
+
 .eva-services-min.section-visible,
 .eva-features.section-visible,
 .eva-value-benefits-section.section-visible,
+.eva-partners-section.section-visible,
 .eva-ceo-section.section-visible,
 .eva-testimonials-lux.section-visible,
 .eva-cta-section.section-visible{
@@ -337,7 +348,7 @@
   min-height: 52px;
 }
 
-/* Left E-VA logo: flex so image is vertically centered */
+/* Left EVA logo: flex so image is vertically centered */
 .eva-nav-container > a:first-child {
   display: flex;
   align-items: center;
@@ -382,7 +393,7 @@
   color: #9d4edd;
 }
 
-/* Brookside logo link – same size as E-VA nav logo, vertically aligned */
+/* Brookside logo link – same size as EVA nav logo, vertically aligned */
 .eva-nav-brookside-logo {
   display: inline-flex;
   align-items: center;
@@ -437,12 +448,12 @@
   color: #9d4edd;
 }
 
-/* Body: scroll lock when E-VA overlay is open */
+/* Body: scroll lock when EVA overlay is open */
 body.eva-overlay-open {
   overflow: hidden;
 }
 
-/* E-VA overlay – full page; delayed z-index on close so overlay doesn’t block clicks */
+/* EVA overlay – full page; delayed z-index on close so overlay doesn’t block clicks */
 .eva-nav-overlay {
   display: none;
   position: fixed;
@@ -2342,6 +2353,695 @@ body.eva-overlay-open {
   line-height: 1.8;
 }
 
+/* Partners Section - Professional, Large-scale, Captivating */
+.eva-partners-section {
+  padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 64px) clamp(80px, 12vw, 140px);
+  background: linear-gradient(180deg, #08080a 0%, #0f0f14 25%, #12121a 50%, #0d0d12 75%, #08080a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.eva-partners-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(157, 78, 221, 0.7) 30%, rgba(236, 72, 153, 0.7) 70%, transparent 100%);
+}
+
+.eva-partners-section::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -20%;
+  width: 140%;
+  height: 80%;
+  background: radial-gradient(ellipse at 40% 20%, rgba(157, 78, 221, 0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.eva-partners-container {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 40px);
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.eva-partners-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.eva-partners-title {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.04em;
+  margin: 0 0 16px 0;
+  line-height: 1.15;
+}
+
+.eva-partners-intro {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: #9ca3af;
+  line-height: 1.65;
+  margin: 0 auto 24px;
+  max-width: 620px;
+}
+
+.eva-partners-trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  margin-top: 8px;
+}
+
+.eva-partners-trust-item {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.eva-partners-trust-item strong {
+  color: #c4b5fd;
+  font-weight: 600;
+}
+
+.eva-partners-trust-divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+}
+
+/* Michelin Featured Section */
+.eva-partners-michelin-section {
+  margin-bottom: 40px;
+}
+
+.eva-partners-michelin-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.eva-partners-michelin-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 48px;
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.3) 0%, rgba(236, 72, 153, 0.2) 50%, rgba(157, 78, 221, 0.25) 100%);
+  border: 2px solid rgba(157, 78, 221, 0.55);
+  border-radius: 24px;
+  box-shadow: 0 0 80px rgba(157, 78, 221, 0.35), 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.eva-partners-michelin-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.eva-partners-michelin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.eva-partner-card-featured {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 20px;
+  transition: opacity 0.3s ease;
+}
+
+.eva-partner-card-featured:hover {
+  opacity: 0.9;
+}
+
+.eva-partner-card-featured .eva-partner-card-logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.eva-partner-card-featured .eva-partner-card-name {
+  font-size: 1.75rem;
+  margin-bottom: 0;
+}
+
+.eva-partner-card-michelin-overlay {
+  position: absolute;
+  bottom: 85px;
+  right: 195px;
+  height: 120px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  z-index: 2;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+}
+
+/* Category Blocks */
+.eva-partners-category-block {
+  margin-bottom: 56px;
+}
+
+.eva-partners-category-block:last-of-type {
+  margin-bottom: 48px;
+}
+
+.eva-partners-category-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 24px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.eva-partners-bento {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 32px 24px;
+}
+
+.eva-partners-category-block[data-partners="4"] .eva-partners-bento {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Wildflour Hospitality Group (5 partners) - centered layout */
+.eva-partners-category-block[data-partners="5"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eva-partners-category-block[data-partners="5"] .eva-partners-category-heading {
+  width: 100%;
+}
+
+.eva-partners-category-block[data-partners="5"] .eva-partners-bento {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px 24px;
+  max-width: 100%;
+}
+
+/* Single row: Hotels, Catering, Sports & Gaming */
+.eva-partners-single-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 4vw, 40px);
+  margin-bottom: 56px;
+}
+
+.eva-partners-category-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.eva-partners-category-cell .eva-partners-category-heading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.eva-partners-inline {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+}
+
+.eva-partners-inline .eva-partner-card {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.eva-partners-inline .eva-partner-card-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 12px;
+}
+
+/* Partner Cards (Regular) - no outer boxes */
+.eva-partner-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 16px;
+  transition: opacity 0.3s ease;
+}
+
+.eva-partner-card:hover {
+  opacity: 0.9;
+}
+
+.eva-partner-card-logo {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.eva-partner-card-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eva-partner-logo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.eva-partner-logo-placeholder.eva-partner-logo-placeholder-active,
+.eva-partner-logo-placeholder-active {
+  display: flex;
+}
+
+.eva-partner-logo-placeholder span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.eva-partner-card-featured .eva-partner-logo-placeholder span {
+  font-size: 2rem;
+}
+
+.eva-partner-card-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.eva-partner-card-cat {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .eva-partners-category-block[data-partners="4"] .eva-partners-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eva-partners-single-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .eva-partners-single-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+}
+
+@media (max-width: 1024px) {
+  .eva-partners-bento {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 20px;
+  }
+
+  .eva-partners-category-block[data-partners="4"] .eva-partners-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eva-partner-card-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .eva-partner-card-featured .eva-partner-card-logo {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 900px) {
+  .eva-partners-michelin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eva-partner-card-featured .eva-partner-card-logo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .eva-partners-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eva-partners-category-block[data-partners="4"] .eva-partners-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .eva-partners-single-row {
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .eva-partners-inline {
+    gap: 12px;
+  }
+
+  .eva-partners-bento {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+
+  .eva-partner-card-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .eva-partner-card-featured .eva-partner-card-logo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .eva-partner-card-featured .eva-partner-card-name {
+    font-size: 1.5rem;
+  }
+}
+
+.eva-partners-carousel-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.eva-partners-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: min(640px, calc(100vw - 48px));
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+.eva-partners-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.eva-partners-carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eva-partners-carousel-img {
+  width: 100%;
+  height: clamp(280px, 50vw, 380px);
+  object-fit: cover;
+  display: block;
+}
+
+.eva-partners-carousel-slide.eva-partners-slide-fallback {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.9rem;
+}
+
+.eva-partners-carousel-slide.eva-partners-slide-fallback::after {
+  content: 'Team member';
+}
+
+.eva-partners-carousel-slide.eva-partners-slide-fallback .eva-partners-carousel-img {
+  display: none;
+}
+
+.eva-partners-carousel-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.eva-partners-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.eva-partners-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.eva-partners-dot.active {
+  background: #9d4edd;
+  transform: scale(1.2);
+}
+
+/* CTA and Social Block */
+.eva-partners-cta-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+  margin-top: 56px;
+  padding: 40px 48px;
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.15) 0%, rgba(236, 72, 153, 0.08) 100%);
+  border: 1px solid rgba(157, 78, 221, 0.35);
+  border-radius: 20px;
+}
+
+.eva-partners-cta-content {
+  max-width: 400px;
+}
+
+.eva-partners-cta-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px 0;
+}
+
+.eva-partners-cta-text {
+  font-size: 1rem;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+.eva-partners-cta-button {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #9d4edd, #ec4899);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.eva-partners-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(157, 78, 221, 0.4);
+}
+
+.eva-partners-social-block {
+  text-align: center;
+}
+
+.eva-partners-social-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 16px 0;
+}
+
+.eva-partners-social-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.eva-partners-social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.eva-partners-social-link:hover {
+  background: rgba(157, 78, 221, 0.2);
+  border-color: rgba(157, 78, 221, 0.4);
+  color: #fff;
+}
+
+.eva-partners-social-link i {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .eva-partners-header {
+    margin-bottom: 48px;
+  }
+
+  .eva-partners-michelin-section {
+    margin-bottom: 32px;
+  }
+
+  .eva-partners-michelin-badge-wrap {
+    padding: 16px 36px;
+  }
+
+  .eva-partners-michelin-title {
+    font-size: 1.75rem;
+  }
+
+  .eva-partner-card-michelin-overlay {
+    height: 120px;
+    max-width: 120px;
+    bottom: 80px;
+    right: 40px;
+  }
+
+  .eva-partners-michelin-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .eva-partners-cta-block {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+
+  .eva-partners-cta-content {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .eva-partners-single-row {
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .eva-partners-category-cell .eva-partners-category-heading {
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+  }
+
+  .eva-partners-inline {
+    gap: 10px;
+  }
+
+  .eva-partners-michelin-badge-wrap {
+    padding: 14px 24px;
+  }
+
+  .eva-partners-michelin-title {
+    font-size: 1.4rem;
+  }
+
+  .eva-partner-card-michelin-overlay {
+    height: 95px;
+    max-width: 95px;
+    bottom: 70px;
+    right: 28px;
+  }
+
+  .eva-partners-cta-block {
+    padding: 28px 20px;
+    margin-top: 40px;
+  }
+
+  .eva-partners-social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .eva-partners-carousel-wrap {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 375px) {
+  .eva-partners-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .eva-partner-card-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.3;
+  }
+}
+
 /* CEO Section */
 .eva-ceo-section {
   padding: 120px 40px;
@@ -2512,7 +3212,7 @@ body.eva-overlay-open {
   color: #9d4edd;
 }
 
-/* Why Choose E-VA Section */
+/* Why Choose EVA Section */
 .eva-why-choose {
   padding: 80px 40px;
   background:
@@ -3181,6 +3881,17 @@ body.eva-overlay-open {
   box-shadow: 0 8px 32px rgba(64, 180, 255, 0.5);
 }
 
+.eva-cta-single {
+  padding: 18px 56px;
+  font-size: 1.15rem;
+  box-shadow: 0 6px 24px rgba(64, 180, 255, 0.35);
+}
+
+.eva-cta-single:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(157, 78, 221, 0.45);
+}
+
 .eva-cta-secondary {
   background: transparent;
   border: 2px solid #40b4ff;
@@ -3214,28 +3925,49 @@ body.eva-overlay-open {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.8), rgba(236, 72, 153, 0.8), transparent);
+  z-index: 10;
 }
 
 .eva-contact-header {
   position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #000;
+  z-index: 0;
+}
+
+.eva-contact-header-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   height: 400px;
-  background: linear-gradient(135deg, #1a0033 0%, #4a0080 50%, #000000 100%);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 80px;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  user-select: none;
 }
 
 @media (max-width: 768px) {
   .eva-contact-header {
-    height: 250px;
-    padding-right: 20px;
-    padding-left: 20px;
-    justify-content: center;
+    height: auto;
+    aspect-ratio: 1920 / 1080;
+  }
+
+  .eva-contact-header-video {
+    object-fit: contain;
+    min-width: auto;
+    min-height: auto;
+    width: 100%;
+    height: 100%;
   }
   
   .eva-contact-content {
-    padding: 40px 20px;
+    padding: 24px 20px 40px;
   }
   
   .eva-contact-title {
@@ -3266,7 +3998,7 @@ body.eva-overlay-open {
 }
 
 .eva-contact-content {
-  padding: 80px 40px;
+  padding: 32px 40px 80px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -3491,9 +4223,8 @@ body.eva-overlay-open {
   }
 
   .eva-contact-header {
-    padding-right: 20px;
-    height: 300px;
-    justify-content: center;
+    height: auto;
+    aspect-ratio: 1920 / 1080;
   }
 
   .eva-contact-header-text {
@@ -3503,7 +4234,7 @@ body.eva-overlay-open {
   }
 
   .eva-contact-content {
-    padding: 60px 20px;
+    padding: 24px 20px 60px;
   }
 
   .eva-contact-title {
@@ -3751,8 +4482,8 @@ body.eva-overlay-open {
   }
 
   .eva-contact-header {
-    height: 200px;
-    padding: 20px 15px;
+    height: auto;
+    aspect-ratio: 1920 / 1080;
   }
 
   .eva-contact-header-text {
@@ -3761,7 +4492,7 @@ body.eva-overlay-open {
   }
 
   .eva-contact-content {
-    padding: 35px 15px;
+    padding: 20px 15px 35px;
   }
 
   .eva-contact-title {
@@ -4232,7 +4963,7 @@ body.eva-overlay-open {
   display: block;
 }
 
-/* E-VA Footer */
+/* EVA Footer */
 .eva-footer {
   background: rgba(0, 0, 0, 0.95);
   border-top: 1px solid rgba(157, 78, 221, 0.2);

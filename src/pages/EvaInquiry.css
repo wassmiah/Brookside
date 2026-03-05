@@ -192,6 +192,134 @@
   line-height: 1.6;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.eva-inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eva-inquiry-form-group {
+  margin-bottom: 0;
+}
+
+.eva-inquiry-form-group input,
+.eva-inquiry-form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid rgba(157, 78, 221, 0.3);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Questrial', sans-serif;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.eva-inquiry-form-group input::placeholder,
+.eva-inquiry-form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.eva-inquiry-form-group input:focus,
+.eva-inquiry-form-group textarea:focus {
+  outline: none;
+  border-color: #9d4edd;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.eva-inquiry-form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.eva-inquiry-submit-btn {
+  background: linear-gradient(135deg, #9d4edd 0%, #40b4ff 100%);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 10px;
+  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.4);
+}
+
+.eva-inquiry-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(157, 78, 221, 0.5);
+}
+
+.eva-inquiry-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.eva-inquiry-success-message {
+  position: relative;
+  padding: 16px 48px 16px 20px;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: 12px;
+  color: #4ade80;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eva-inquiry-success-message i {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.eva-inquiry-error-message {
+  padding: 16px 20px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 12px;
+  color: #f87171;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eva-inquiry-error-message i {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.eva-inquiry-close-message {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.eva-inquiry-close-message:hover {
+  opacity: 1;
+}
+
 .eva-google-form-container {
   position: relative;
   width: 100%;

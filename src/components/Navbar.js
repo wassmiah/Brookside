@@ -92,12 +92,12 @@ function Navbar({ onLogout }) {
           <a href="/#commitment" onClick={closeMenu}>Our Commitment</a>
           <a href="/meet-the-team" onClick={closeMenu}>Meet the Team</a>
           {isProduction ? (
-            <a href="https://eva.brooksidemps.com" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
-              <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+            <a href="https://eva.brooksidemps.com" className="eva-nav-link" onClick={closeMenu} aria-label="EVA by Brookside - Executive Virtual Assistant Services">
+              <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
             </a>
           ) : (
-            <Link to="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
-              <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+            <Link to="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="EVA by Brookside - Executive Virtual Assistant Services">
+              <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
             </Link>
           )}
           {/* <a href="/LearnHere">Learn Here</a> */}
@@ -121,12 +121,12 @@ function Navbar({ onLogout }) {
             <a href="/#commitment" onClick={closeMenu}>Our Commitment</a>
             <a href="/meet-the-team" onClick={closeMenu}>Meet the Team</a>
             {isProduction ? (
-              <a href="https://eva.brooksidemps.com" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
-                <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+              <a href="https://eva.brooksidemps.com" className="eva-nav-link" onClick={closeMenu} aria-label="EVA by Brookside - Executive Virtual Assistant Services">
+                <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
               </a>
             ) : (
-              <Link to="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="E-VA by Brookside - Virtual Assistant Services">
-                <img src="/eva-logo-white-bg.png" alt="E-VA by Brookside" className="eva-nav-logo-img" />
+              <Link to="/eva" className="eva-nav-link" onClick={closeMenu} aria-label="EVA by Brookside - Executive Virtual Assistant Services">
+                <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
               </Link>
             )}
             <a href="/career" className="apply-now-btn" onClick={closeMenu}>Apply Now</a>
