@@ -2359,6 +2359,7 @@ body.eva-overlay-open {
   background: linear-gradient(180deg, #08080a 0%, #0f0f14 25%, #12121a 50%, #0d0d12 75%, #08080a 100%);
   position: relative;
   overflow: hidden;
+  overflow-x: clip;
 }
 
 .eva-partners-section::before {
@@ -2390,6 +2391,7 @@ body.eva-overlay-open {
   position: relative;
   z-index: 1;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .eva-partners-header {
@@ -3026,13 +3028,13 @@ body.eva-overlay-open {
   flex-direction: column;
   align-items: center;
   gap: 0;
-  width: 100vw;
+  width: auto;
+  max-width: none;
   height: auto;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  /* stable full-bleed without shifting parent layout on mobile */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: 0 !important;
 }
 

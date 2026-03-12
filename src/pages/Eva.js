@@ -186,6 +186,7 @@ const MarqueeLane = ({ title, partners }) => {
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+    if (typeof ResizeObserver === "undefined") return;
     const ro = new ResizeObserver(() => {
       if (isDragging) return;
       requestAnimationFrame(() => {
@@ -230,9 +231,33 @@ const MarqueeLane = ({ title, partners }) => {
     setIsDragging(false);
   };
 
+  // Mobile safety: if touch/mouse ends outside the viewport, release drag state so autoplay resumes.
+  useEffect(() => {
+    if (!isDragging) return;
+    const forceRelease = () => {
+      const track = trackRef.current;
+      if (!track) {
+        setIsDragging(false);
+        return;
+      }
+      const currentTranslate = getTranslateX(track);
+      applyAnimationAtPosition(currentTranslate);
+      setIsDragging(false);
+    };
+    window.addEventListener("mouseup", forceRelease);
+    window.addEventListener("touchend", forceRelease);
+    window.addEventListener("touchcancel", forceRelease);
+    return () => {
+      window.removeEventListener("mouseup", forceRelease);
+      window.removeEventListener("touchend", forceRelease);
+      window.removeEventListener("touchcancel", forceRelease);
+    };
+  }, [isDragging, applyAnimationAtPosition, getTranslateX]);
+
   const nudge = (dir) => {
     const track = trackRef.current;
     if (!track) return;
+    if (isDragging) setIsDragging(false);
     const currentTranslate = getTranslateX(track);
     const nextTranslate = currentTranslate - (dir * 120);
     applyAnimationAtPosition(nextTranslate);
