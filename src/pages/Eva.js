@@ -139,7 +139,11 @@ const MarqueeLane = ({ title, partners }) => {
   const offsetRef = useRef(0);
   const dragStartRef = useRef({ x: 0, offset: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const speed = 0.45; // px per frame
+  const [isSmallViewport, setIsSmallViewport] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth <= 1024 : false
+  );
+  const desktopSpeed = 0.45; // px per frame
+  const mobileTabletSpeed = 0.65; // faster on mobile/tablet
 
   const getLoopDistance = useCallback(() => {
     const firstSet = firstSetRef.current;
@@ -166,19 +170,28 @@ const MarqueeLane = ({ title, partners }) => {
   }, [partners.length, applyOffset]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsSmallViewport(window.innerWidth <= 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     let rafId;
     const tick = () => {
       if (!isDragging) {
-        applyOffset(offsetRef.current + speed);
+        const currentSpeed = isSmallViewport ? mobileTabletSpeed : desktopSpeed;
+        applyOffset(offsetRef.current + currentSpeed);
       }
       rafId = requestAnimationFrame(tick);
     };
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, [isDragging, applyOffset]);
+  }, [isDragging, isSmallViewport, applyOffset]);
 
   useEffect(() => {
     if (typeof ResizeObserver === "undefined") return;
