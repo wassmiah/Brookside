@@ -82,7 +82,7 @@ const EVA_EMPLOYEE_IMAGES = [
 ];
 
 const ONE_SECOND = 1000;
-const AUTO_DELAY = ONE_SECOND * 4;
+const AUTO_DELAY = ONE_SECOND * 10;
 const DRAG_BUFFER = 50;
 const CAROUSEL_SPRING_OPTIONS = {
   type: "spring",
@@ -133,6 +133,163 @@ const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
   );
 };
 
+const MarqueeLane = ({ title, partners }) => {
+  const trackRef = useRef(null);
+  const dragStartRef = useRef({ x: 0, offset: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const animationDurationSec = 40;
+
+  const getTranslateX = useCallback((el) => {
+    const transform = window.getComputedStyle(el).transform;
+    if (!transform || transform === "none") return 0;
+    if (transform.startsWith("matrix3d(")) {
+      const values = transform.slice(9, -1).split(",").map((v) => Number(v.trim()));
+      return values[12] || 0;
+    }
+    if (transform.startsWith("matrix(")) {
+      const values = transform.slice(7, -1).split(",").map((v) => Number(v.trim()));
+      return values[4] || 0;
+    }
+    return 0;
+  }, []);
+
+  const getLoopDistance = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return 0;
+    const total = track.scrollWidth || track.offsetWidth || 0;
+    return total > 0 ? total / 2 : 0;
+  }, []);
+
+  const applyAnimationAtPosition = useCallback((translateX) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const loop = getLoopDistance();
+    if (loop <= 0) return;
+
+    let wrapped = ((translateX % loop) + loop) % loop; // [0, loop)
+    wrapped = wrapped === 0 ? 0 : wrapped - loop; // (-loop, 0]
+    if (wrapped <= -loop) wrapped = 0;
+
+    const progress = Math.abs(wrapped) / loop;
+    track.style.setProperty("--animation-duration", `${animationDurationSec}s`);
+    track.style.setProperty("--animation-delay", `${-progress * animationDurationSec}s`);
+    track.style.setProperty("--drag-offset", "0px");
+  }, [animationDurationSec, getLoopDistance]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const init = () => applyAnimationAtPosition(0);
+    requestAnimationFrame(init);
+  }, [partners, applyAnimationAtPosition]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const ro = new ResizeObserver(() => {
+      if (isDragging) return;
+      requestAnimationFrame(() => {
+        applyAnimationAtPosition(getTranslateX(track));
+      });
+    });
+    ro.observe(track);
+    return () => ro.disconnect();
+  }, [isDragging, applyAnimationAtPosition, getTranslateX]);
+
+  const handlePointerDown = (e) => {
+    e.preventDefault();
+    const track = trackRef.current;
+    if (!track) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const currentTranslate = getTranslateX(track);
+    track.style.setProperty("--drag-offset", `${currentTranslate}px`);
+    dragStartRef.current = { x, offset: currentTranslate };
+    setIsDragging(true);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const track = trackRef.current;
+    if (!track) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const delta = x - dragStartRef.current.x;
+    const nextOffset = dragStartRef.current.offset + delta;
+    track.style.setProperty("--drag-offset", `${nextOffset}px`);
+  };
+
+  const handlePointerUp = () => {
+    if (!isDragging) return;
+    const track = trackRef.current;
+    if (!track) {
+      setIsDragging(false);
+      return;
+    }
+    const currentTranslate = getTranslateX(track);
+    applyAnimationAtPosition(currentTranslate);
+    setIsDragging(false);
+  };
+
+  const nudge = (dir) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const currentTranslate = getTranslateX(track);
+    const nextTranslate = currentTranslate - (dir * 120);
+    applyAnimationAtPosition(nextTranslate);
+  };
+
+  if (!partners || partners.length === 0) return null;
+
+  return (
+    <div className="eva-partners-marquee">
+      {title ? <h3 className="eva-partners-category-heading">{title}</h3> : null}
+
+      <div className="eva-partners-marquee-nav">
+        <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-left" onClick={() => nudge(-1)} aria-label="Scroll partners left">
+          ‹
+        </button>
+        <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-right" onClick={() => nudge(1)} aria-label="Scroll partners right">
+          ›
+        </button>
+      </div>
+
+      <div
+        className="eva-partners-marquee-viewport"
+        onMouseDown={handlePointerDown}
+        onMouseMove={handlePointerMove}
+        onMouseUp={handlePointerUp}
+        onMouseLeave={handlePointerUp}
+        onTouchStart={handlePointerDown}
+        onTouchMove={handlePointerMove}
+        onTouchEnd={handlePointerUp}
+        onTouchCancel={handlePointerUp}
+        style={{ cursor: isDragging ? "grabbing" : "grab" }}
+      >
+        <div
+          ref={trackRef}
+          className={`eva-partners-marquee-track ${isDragging ? "is-dragging" : ""}`}
+          style={{ "--animation-direction": "forwards" }}
+        >
+          <div className="eva-partners-marquee-set">
+            {partners.map((partner, idx) => (
+              <div key={`${partner.name}-a-${idx}`} className="eva-partners-marquee-item">
+                <PartnerCard partner={partner} labelFallback={partner.industry} />
+              </div>
+            ))}
+          </div>
+          <div className="eva-partners-marquee-set" aria-hidden>
+            {partners.map((partner, idx) => (
+              <div key={`${partner.name}-b-${idx}`} className="eva-partners-marquee-item">
+                <PartnerCard partner={partner} labelFallback={partner.industry} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 function Eva() {
   const vmvRef = useRef(null);
@@ -146,7 +303,6 @@ function Eva() {
   const partnersRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [isEmployeeDragging, setIsEmployeeDragging] = useState(false);
   const dragX = useMotionValue(0);
   const evaMenuToggleRef = useRef(null);
 
@@ -178,16 +334,17 @@ function Eva() {
     }
   }, [menuOpen, closeEvaMenu]);
 
-  // Employee carousel autoplay
+  // Employee carousel autoplay (Aceternity swipe logic)
   useEffect(() => {
     if (EVA_EMPLOYEE_IMAGES.length <= 1) return;
     const interval = setInterval(() => {
-      if (!isEmployeeDragging) {
+      const x = dragX.get();
+      if (Math.abs(x) < 0.5) {
         setCarouselIndex((prev) => (prev + 1) % EVA_EMPLOYEE_IMAGES.length);
       }
     }, AUTO_DELAY);
     return () => clearInterval(interval);
-  }, [isEmployeeDragging]);
+  }, [dragX]);
 
   // Restart contact video when it comes into view on scroll
   useEffect(() => {
@@ -526,163 +683,6 @@ function Eva() {
     }
     return (cat.partners || []).map((p) => ({ ...p, industry: cat.title }));
   });
-
-  const MarqueeLane = ({ title, partners }) => {
-    const trackRef = useRef(null);
-    const dragStartRef = useRef({ x: 0, offset: 0 });
-    const [isDragging, setIsDragging] = useState(false);
-    const animationDurationSec = 40;
-
-    const getTranslateX = useCallback((el) => {
-      const transform = window.getComputedStyle(el).transform;
-      if (!transform || transform === "none") return 0;
-      if (transform.startsWith("matrix3d(")) {
-        const values = transform.slice(9, -1).split(",").map((v) => Number(v.trim()));
-        return values[12] || 0;
-      }
-      if (transform.startsWith("matrix(")) {
-        const values = transform.slice(7, -1).split(",").map((v) => Number(v.trim()));
-        return values[4] || 0;
-      }
-      return 0;
-    }, []);
-
-    const getLoopDistance = useCallback(() => {
-      const track = trackRef.current;
-      if (!track) return 0;
-      const total = track.scrollWidth || track.offsetWidth || 0;
-      return total > 0 ? total / 2 : 0;
-    }, []);
-
-    const applyAnimationAtPosition = useCallback((translateX) => {
-      const track = trackRef.current;
-      if (!track) return;
-      const loop = getLoopDistance();
-      if (loop <= 0) return;
-
-      let wrapped = ((translateX % loop) + loop) % loop; // [0, loop)
-      wrapped = wrapped === 0 ? 0 : wrapped - loop; // (-loop, 0]
-      if (wrapped <= -loop) wrapped = 0;
-
-      const progress = Math.abs(wrapped) / loop;
-      track.style.setProperty("--animation-duration", `${animationDurationSec}s`);
-      track.style.setProperty("--animation-delay", `${-progress * animationDurationSec}s`);
-      track.style.setProperty("--drag-offset", "0px");
-    }, [animationDurationSec, getLoopDistance]);
-
-    useEffect(() => {
-      const track = trackRef.current;
-      if (!track) return;
-      const init = () => applyAnimationAtPosition(0);
-      requestAnimationFrame(init);
-    }, [partners, applyAnimationAtPosition]);
-
-    useEffect(() => {
-      const track = trackRef.current;
-      if (!track) return;
-      const ro = new ResizeObserver(() => {
-        if (isDragging) return;
-        requestAnimationFrame(() => {
-          applyAnimationAtPosition(getTranslateX(track));
-        });
-      });
-      ro.observe(track);
-      return () => ro.disconnect();
-    }, [isDragging, applyAnimationAtPosition, getTranslateX]);
-
-    const handlePointerDown = (e) => {
-      e.preventDefault();
-      const track = trackRef.current;
-      if (!track) return;
-      const x = e.touches ? e.touches[0].clientX : e.clientX;
-      const currentTranslate = getTranslateX(track);
-      track.style.setProperty("--drag-offset", `${currentTranslate}px`);
-      dragStartRef.current = { x, offset: currentTranslate };
-      setIsDragging(true);
-    };
-
-    const handlePointerMove = (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const track = trackRef.current;
-      if (!track) return;
-      const x = e.touches ? e.touches[0].clientX : e.clientX;
-      const delta = x - dragStartRef.current.x;
-      const nextOffset = dragStartRef.current.offset + delta;
-      track.style.setProperty("--drag-offset", `${nextOffset}px`);
-    };
-
-    const handlePointerUp = () => {
-      if (!isDragging) return;
-      const track = trackRef.current;
-      if (!track) {
-        setIsDragging(false);
-        return;
-      }
-      const currentTranslate = getTranslateX(track);
-      applyAnimationAtPosition(currentTranslate);
-      setIsDragging(false);
-    };
-
-    const nudge = (dir) => {
-      const track = trackRef.current;
-      if (!track) return;
-      const currentTranslate = getTranslateX(track);
-      const nextTranslate = currentTranslate - (dir * 120);
-      applyAnimationAtPosition(nextTranslate);
-    };
-
-    if (!partners || partners.length === 0) return null;
-
-    return (
-      <div className="eva-partners-marquee">
-        {title ? <h3 className="eva-partners-category-heading">{title}</h3> : null}
-
-        <div className="eva-partners-marquee-nav">
-          <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-left" onClick={() => nudge(-1)} aria-label="Scroll partners left">
-            ‹
-          </button>
-          <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-right" onClick={() => nudge(1)} aria-label="Scroll partners right">
-            ›
-          </button>
-        </div>
-
-        <div
-          className="eva-partners-marquee-viewport"
-          onMouseDown={handlePointerDown}
-          onMouseMove={handlePointerMove}
-          onMouseUp={handlePointerUp}
-          onMouseLeave={handlePointerUp}
-          onTouchStart={handlePointerDown}
-          onTouchMove={handlePointerMove}
-          onTouchEnd={handlePointerUp}
-          onTouchCancel={handlePointerUp}
-          style={{ cursor: isDragging ? "grabbing" : "grab" }}
-        >
-          <div
-            ref={trackRef}
-            className={`eva-partners-marquee-track ${isDragging ? "is-dragging" : ""}`}
-            style={{ "--animation-direction": "forwards" }}
-          >
-            <div className="eva-partners-marquee-set">
-              {partners.map((partner, idx) => (
-                <div key={`${partner.name}-a-${idx}`} className="eva-partners-marquee-item">
-                  <PartnerCard partner={partner} labelFallback={partner.industry} />
-                </div>
-              ))}
-            </div>
-            <div className="eva-partners-marquee-set" aria-hidden>
-              {partners.map((partner, idx) => (
-                <div key={`${partner.name}-b-${idx}`} className="eva-partners-marquee-item">
-                  <PartnerCard partner={partner} labelFallback={partner.industry} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   const showPrevEmployee = () => {
     if (EVA_EMPLOYEE_IMAGES.length <= 1) return;
@@ -1111,11 +1111,7 @@ function Eva() {
                   style={{ x: dragX }}
                   animate={{ translateX: `-${carouselIndex * 100}%` }}
                   transition={CAROUSEL_SPRING_OPTIONS}
-                  onDragStart={() => setIsEmployeeDragging(true)}
-                  onDragEnd={() => {
-                    onEmployeeDragEnd();
-                    setIsEmployeeDragging(false);
-                  }}
+                  onDragEnd={onEmployeeDragEnd}
                   className="eva-partners-carousel-track"
                 >
                   {EVA_EMPLOYEE_IMAGES.map((img, idx) => (

@@ -3126,7 +3126,7 @@ body.eva-overlay-open {
 .eva-partners-carousel-dots {
   position: absolute;
   left: 50%;
-  bottom: 28px;
+  bottom: 26px;
   transform: translateX(-50%);
   z-index: 3;
   display: flex;
