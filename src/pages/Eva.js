@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -181,7 +181,7 @@ const MarqueeLane = ({ title, partners }) => {
     if (!track) return;
     const init = () => applyAnimationAtPosition(0);
     requestAnimationFrame(init);
-  }, [partners, applyAnimationAtPosition]);
+  }, [partners.length, applyAnimationAtPosition]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -700,14 +700,18 @@ function Eva() {
     };
   }, []);
 
-  const allIndustryPartners = EVA_PARTNER_CATEGORIES.flatMap((cat) => {
-    if (cat.singleRow) {
-      return (cat.categories || []).flatMap((sub) =>
-        (sub.partners || []).map((p) => ({ ...p, industry: sub.title }))
-      );
-    }
-    return (cat.partners || []).map((p) => ({ ...p, industry: cat.title }));
-  });
+  const allIndustryPartners = useMemo(
+    () =>
+      EVA_PARTNER_CATEGORIES.flatMap((cat) => {
+        if (cat.singleRow) {
+          return (cat.categories || []).flatMap((sub) =>
+            (sub.partners || []).map((p) => ({ ...p, industry: sub.title }))
+          );
+        }
+        return (cat.partners || []).map((p) => ({ ...p, industry: cat.title }));
+      }),
+    []
+  );
 
   const showPrevEmployee = () => {
     if (EVA_EMPLOYEE_IMAGES.length <= 1) return;
