@@ -2595,26 +2595,7 @@ body.eva-overlay-open {
   display: inline-flex;
   white-space: nowrap;
   will-change: transform;
-  --animation-duration: 40s;
-  --animation-direction: forwards;
-  --animation-delay: 0s;
-  --drag-offset: 0px;
-  animation: eva-partners-scroll var(--animation-duration) var(--animation-direction) linear infinite;
-  animation-delay: var(--animation-delay);
-}
-
-.eva-partners-marquee-track.is-dragging {
-  animation: none;
-  transform: translate3d(var(--drag-offset), 0, 0);
-}
-
-@keyframes eva-partners-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
+  transform: translate3d(0, 0, 0);
 }
 
 .eva-partners-marquee-set {

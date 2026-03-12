@@ -135,115 +135,91 @@ const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
 
 const MarqueeLane = ({ title, partners }) => {
   const trackRef = useRef(null);
+  const firstSetRef = useRef(null);
+  const offsetRef = useRef(0);
   const dragStartRef = useRef({ x: 0, offset: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const animationDurationSec = 40;
-
-  const getTranslateX = useCallback((el) => {
-    const transform = window.getComputedStyle(el).transform;
-    if (!transform || transform === "none") return 0;
-    if (transform.startsWith("matrix3d(")) {
-      const values = transform.slice(9, -1).split(",").map((v) => Number(v.trim()));
-      return values[12] || 0;
-    }
-    if (transform.startsWith("matrix(")) {
-      const values = transform.slice(7, -1).split(",").map((v) => Number(v.trim()));
-      return values[4] || 0;
-    }
-    return 0;
-  }, []);
+  const speed = 0.45; // px per frame
 
   const getLoopDistance = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return 0;
-    const total = track.scrollWidth || track.offsetWidth || 0;
-    return total > 0 ? total / 2 : 0;
+    const firstSet = firstSetRef.current;
+    if (!firstSet) return 0;
+    return firstSet.scrollWidth || firstSet.getBoundingClientRect().width || 0;
   }, []);
 
-  const applyAnimationAtPosition = useCallback((translateX) => {
-    const track = trackRef.current;
-    if (!track) return;
+  const normalizeOffset = useCallback((raw) => {
     const loop = getLoopDistance();
-    if (loop <= 0) return;
+    if (loop <= 0) return 0;
+    return ((raw % loop) + loop) % loop;
+  }, [getLoopDistance]);
 
-    let wrapped = ((translateX % loop) + loop) % loop; // [0, loop)
-    wrapped = wrapped === 0 ? 0 : wrapped - loop; // (-loop, 0]
-    if (wrapped <= -loop) wrapped = 0;
+  const applyOffset = useCallback((raw) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const next = normalizeOffset(raw);
+    offsetRef.current = next;
+    track.style.transform = `translate3d(-${next}px, 0, 0)`;
+  }, [normalizeOffset]);
 
-    const progress = Math.abs(wrapped) / loop;
-    track.style.setProperty("--animation-duration", `${animationDurationSec}s`);
-    track.style.setProperty("--animation-delay", `${-progress * animationDurationSec}s`);
-    track.style.setProperty("--drag-offset", "0px");
-  }, [animationDurationSec, getLoopDistance]);
+  useEffect(() => {
+    applyOffset(offsetRef.current);
+  }, [partners.length, applyOffset]);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    const init = () => applyAnimationAtPosition(0);
-    requestAnimationFrame(init);
-  }, [partners.length, applyAnimationAtPosition]);
+
+    let rafId;
+    const tick = () => {
+      if (!isDragging) {
+        applyOffset(offsetRef.current + speed);
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [isDragging, applyOffset]);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
     if (typeof ResizeObserver === "undefined") return;
+    const observed = firstSetRef.current;
+    if (!observed) return;
     const ro = new ResizeObserver(() => {
       if (isDragging) return;
       requestAnimationFrame(() => {
-        applyAnimationAtPosition(getTranslateX(track));
+        applyOffset(offsetRef.current);
       });
     });
-    ro.observe(track);
+    ro.observe(observed);
     return () => ro.disconnect();
-  }, [isDragging, applyAnimationAtPosition, getTranslateX]);
+  }, [isDragging, applyOffset]);
 
   const handlePointerDown = (e) => {
-    e.preventDefault();
+    if (!trackRef.current) return;
     const track = trackRef.current;
-    if (!track) return;
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const currentTranslate = getTranslateX(track);
-    track.style.setProperty("--drag-offset", `${currentTranslate}px`);
-    dragStartRef.current = { x, offset: currentTranslate };
     setIsDragging(true);
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    dragStartRef.current = { x, offset: offsetRef.current };
+    track.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
   };
 
   const handlePointerMove = (e) => {
     if (!isDragging) return;
-    e.preventDefault();
-    const track = trackRef.current;
-    if (!track) return;
+    if (e.cancelable) e.preventDefault();
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     const delta = x - dragStartRef.current.x;
-    const nextOffset = dragStartRef.current.offset + delta;
-    track.style.setProperty("--drag-offset", `${nextOffset}px`);
+    const nextOffset = dragStartRef.current.offset - delta;
+    applyOffset(nextOffset);
   };
 
   const handlePointerUp = () => {
     if (!isDragging) return;
-    const track = trackRef.current;
-    if (!track) {
-      setIsDragging(false);
-      return;
-    }
-    const currentTranslate = getTranslateX(track);
-    applyAnimationAtPosition(currentTranslate);
     setIsDragging(false);
   };
 
-  // Mobile safety: if touch/mouse ends outside the viewport, release drag state so autoplay resumes.
   useEffect(() => {
     if (!isDragging) return;
-    const forceRelease = () => {
-      const track = trackRef.current;
-      if (!track) {
-        setIsDragging(false);
-        return;
-      }
-      const currentTranslate = getTranslateX(track);
-      applyAnimationAtPosition(currentTranslate);
-      setIsDragging(false);
-    };
+    const forceRelease = () => setIsDragging(false);
     window.addEventListener("mouseup", forceRelease);
     window.addEventListener("touchend", forceRelease);
     window.addEventListener("touchcancel", forceRelease);
@@ -252,15 +228,10 @@ const MarqueeLane = ({ title, partners }) => {
       window.removeEventListener("touchend", forceRelease);
       window.removeEventListener("touchcancel", forceRelease);
     };
-  }, [isDragging, applyAnimationAtPosition, getTranslateX]);
+  }, [isDragging]);
 
   const nudge = (dir) => {
-    const track = trackRef.current;
-    if (!track) return;
-    if (isDragging) setIsDragging(false);
-    const currentTranslate = getTranslateX(track);
-    const nextTranslate = currentTranslate - (dir * 120);
-    applyAnimationAtPosition(nextTranslate);
+    applyOffset(offsetRef.current + (dir * 120));
   };
 
   if (!partners || partners.length === 0) return null;
@@ -292,10 +263,9 @@ const MarqueeLane = ({ title, partners }) => {
       >
         <div
           ref={trackRef}
-          className={`eva-partners-marquee-track ${isDragging ? "is-dragging" : ""}`}
-          style={{ "--animation-direction": "forwards" }}
+          className="eva-partners-marquee-track"
         >
-          <div className="eva-partners-marquee-set">
+          <div ref={firstSetRef} className="eva-partners-marquee-set">
             {partners.map((partner, idx) => (
               <div key={`${partner.name}-a-${idx}`} className="eva-partners-marquee-item">
                 <PartnerCard partner={partner} labelFallback={partner.industry} />
