@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import "./Eva.css";
@@ -18,22 +18,12 @@ const EVA_COURSE_ENROLLMENT_FORM_URL = "https://docs.google.com/forms/d/1XUtZKtc
 /** Partners by category. Use logo placeholder paths; replace with actual images in /public/partners/ */
 const EVA_PARTNER_CATEGORIES = [
   {
-    id: "michelin",
-    title: "Michelin Selected Restaurants",
-    shortLabel: "Michelin",
-    featured: true,
+    id: "dining",
+    title: "Upscale Restaurants",
     partners: [
       { name: "Osteria Antica", description: "Italian trattoria", logo: "/partners/osteria-antica.png" },
       { name: "Kei Maki", description: "Japanese sushi bar", logo: "/partners/kei-maki.png" },
-    ],
-  },
-  {
-    id: "dining",
-    title: "Wildflour Hospitality Group",
-    shortLabel: "Upscale Dining",
-    subtitle: "Upscale dining",
-    partners: [
-      { name: "Wildflour Restaurant", description: "Upscale dining", logo: "/partners/wild-flour.png" },
+      { name: "Wildflour Restaurant", description: "Upscale restaurant", logo: "/partners/wild-flour.png" },
       { name: "George and Onnie's", description: "Filipino comfort food", logo: "/partners/george-onnies.png" },
       { name: "Farmacy", description: "American diner", logo: "/partners/farmacy.png" },
       { name: "Pizza Sisters", description: "Neapolitan pizzeria", logo: "/partners/pizza-sisters.png" },
@@ -82,6 +72,28 @@ const EVA_EMPLOYEE_IMAGES = [
   { src: "/eva-team-3.jpg", alt: "EVA team member" },
   { src: "/eva-team-4.jpg", alt: "EVA team member" },
 ];
+
+const PartnerCard = ({ partner, labelFallback }) => {
+  return (
+    <div className="eva-partner-card" title={partner.description || labelFallback}>
+      <div className="eva-partner-card-logo">
+        <img
+          src={partner.logo}
+          alt={partner.name}
+          onError={(e) => {
+            e.target.style.display = "none";
+            e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
+          }}
+        />
+        <div className="eva-partner-logo-placeholder">
+          <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
+        </div>
+      </div>
+      <h4 className="eva-partner-card-name">{partner.name}</h4>
+      <span className="eva-partner-card-cat">{partner.description || labelFallback}</span>
+    </div>
+  );
+};
 
 // Illustration Component for numbered images (1.png to 10.png)
 const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
@@ -485,6 +497,137 @@ function Eva() {
     };
   }, []);
 
+  const allIndustryPartners = EVA_PARTNER_CATEGORIES.flatMap((cat) => {
+    if (cat.singleRow) {
+      return (cat.categories || []).flatMap((sub) =>
+        (sub.partners || []).map((p) => ({ ...p, industry: sub.title }))
+      );
+    }
+    return (cat.partners || []).map((p) => ({ ...p, industry: cat.title }));
+  });
+
+  const MarqueeLane = ({ title, partners }) => {
+    const trackRef = useRef(null);
+    const firstSetRef = useRef(null);
+    const scrollOffsetRef = useRef(0);
+    const setWidthRef = useRef(0);
+    const dragStartRef = useRef({ x: 0, offset: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+    const speed = 0.4; /* px per frame ~24px/s */
+
+    useLayoutEffect(() => {
+      const setEl = firstSetRef.current;
+      if (!setEl) return;
+      setWidthRef.current = setEl.offsetWidth || 1;
+    }, [partners]);
+
+    useEffect(() => {
+      const track = trackRef.current;
+      if (!track) return;
+
+      let rafId;
+      const tick = () => {
+        const setWidth = setWidthRef.current;
+        if (setWidth > 0 && !isDragging) {
+          scrollOffsetRef.current += speed;
+          if (scrollOffsetRef.current >= setWidth) {
+            scrollOffsetRef.current -= setWidth;
+          }
+        }
+        track.style.transform = `translate3d(-${scrollOffsetRef.current}px, 0, 0)`;
+        rafId = requestAnimationFrame(tick);
+      };
+      rafId = requestAnimationFrame(tick);
+      return () => cancelAnimationFrame(rafId);
+    }, [isDragging]);
+
+    const normalizeOffset = () => {
+      const setWidth = setWidthRef.current;
+      if (setWidth <= 0) return;
+      let o = scrollOffsetRef.current;
+      o = ((o % setWidth) + setWidth) % setWidth;
+      scrollOffsetRef.current = o;
+    };
+
+    const handlePointerDown = (e) => {
+      e.preventDefault();
+      setIsDragging(true);
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      dragStartRef.current = { x, offset: scrollOffsetRef.current };
+    };
+
+    const handlePointerMove = (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      const delta = x - dragStartRef.current.x;
+      scrollOffsetRef.current = dragStartRef.current.offset - delta;
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate3d(-${scrollOffsetRef.current}px, 0, 0)`;
+      }
+    };
+
+    const handlePointerUp = () => {
+      if (!isDragging) return;
+      setIsDragging(false);
+      normalizeOffset();
+    };
+
+    const nudge = (dir) => {
+      const setWidth = setWidthRef.current;
+      if (setWidth <= 0) return;
+      scrollOffsetRef.current += dir * 120;
+      normalizeOffset();
+    };
+
+    if (!partners || partners.length === 0) return null;
+
+    return (
+      <div className="eva-partners-marquee">
+        {title ? <h3 className="eva-partners-category-heading">{title}</h3> : null}
+
+        <div className="eva-partners-marquee-nav">
+          <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-left" onClick={() => nudge(-1)} aria-label="Scroll partners left">
+            ‹
+          </button>
+          <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-right" onClick={() => nudge(1)} aria-label="Scroll partners right">
+            ›
+          </button>
+        </div>
+
+        <div
+          className="eva-partners-marquee-viewport"
+          onMouseDown={handlePointerDown}
+          onMouseMove={handlePointerMove}
+          onMouseUp={handlePointerUp}
+          onMouseLeave={handlePointerUp}
+          onTouchStart={handlePointerDown}
+          onTouchMove={handlePointerMove}
+          onTouchEnd={handlePointerUp}
+          onTouchCancel={handlePointerUp}
+          style={{ cursor: isDragging ? "grabbing" : "grab" }}
+        >
+          <div ref={trackRef} className="eva-partners-marquee-track">
+            <div ref={firstSetRef} className="eva-partners-marquee-set">
+              {partners.map((partner, idx) => (
+                <div key={`${partner.name}-a-${idx}`} className="eva-partners-marquee-item">
+                  <PartnerCard partner={partner} labelFallback={partner.industry} />
+                </div>
+              ))}
+            </div>
+            <div className="eva-partners-marquee-set" aria-hidden>
+              {partners.map((partner, idx) => (
+                <div key={`${partner.name}-b-${idx}`} className="eva-partners-marquee-item">
+                  <PartnerCard partner={partner} labelFallback={partner.industry} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <SEO
@@ -843,94 +986,12 @@ function Eva() {
                 </span>
                 <span className="eva-partners-trust-divider" aria-hidden>|</span>
                 <span className="eva-partners-trust-item">
-                  <strong>5</strong> Industries
+                  <strong>5 </strong> Industries
                 </span>
               </div>
             </div>
 
-            {/* Michelin Featured Row */}
-            {EVA_PARTNER_CATEGORIES.filter((c) => c.featured).map((cat) => (
-              <div key={cat.id} className="eva-partners-michelin-section">
-                <div className="eva-partners-michelin-grid">
-                  {cat.partners.map((partner, idx) => (
-                    <div key={idx} className="eva-partner-card eva-partner-card-featured" title={partner.description}>
-                      <div className="eva-partner-card-logo">
-                        <img
-                          src={partner.logo}
-                          alt={partner.name}
-                          onError={(e) => {
-                            e.target.style.display = "none";
-                            e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
-                          }}
-                        />
-                        <div className="eva-partner-logo-placeholder">
-                          <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
-                        </div>
-                      </div>
-                      <h4 className="eva-partner-card-name">{partner.name}</h4>
-                      {partner.description && <span className="eva-partner-card-cat">{partner.description}</span>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-            {EVA_PARTNER_CATEGORIES.filter((c) => !c.featured).map((cat) =>
-              cat.singleRow ? (
-                <div key={cat.id} className="eva-partners-single-row">
-                  {cat.categories.map((sub) => (
-                    <div key={sub.id} className="eva-partners-category-cell">
-                      <h3 className="eva-partners-category-heading">{sub.title}</h3>
-                      <div className="eva-partners-bento eva-partners-inline">
-                        {sub.partners.map((partner, idx) => (
-                          <div key={idx} className="eva-partner-card" title={partner.description}>
-                            <div className="eva-partner-card-logo">
-                              <img
-                                src={partner.logo}
-                                alt={partner.name}
-                                onError={(e) => {
-                                  e.target.style.display = "none";
-                                  e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
-                                }}
-                              />
-                              <div className="eva-partner-logo-placeholder">
-                                <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
-                              </div>
-                            </div>
-                            <h4 className="eva-partner-card-name">{partner.name}</h4>
-                            <span className="eva-partner-card-cat">{partner.description || sub.shortLabel || sub.title}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div key={cat.id} className="eva-partners-category-block" data-partners={cat.partners?.length}>
-                  <h3 className="eva-partners-category-heading">{cat.title}</h3>
-                  <div className="eva-partners-bento">
-                    {cat.partners.map((partner, idx) => (
-                      <div key={idx} className="eva-partner-card" title={partner.description}>
-                        <div className="eva-partner-card-logo">
-                          <img
-                            src={partner.logo}
-                            alt={partner.name}
-                            onError={(e) => {
-                              e.target.style.display = "none";
-                              e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
-                            }}
-                          />
-                          <div className="eva-partner-logo-placeholder">
-                            <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
-                          </div>
-                        </div>
-                        <h4 className="eva-partner-card-name">{partner.name}</h4>
-                        <span className="eva-partner-card-cat">{partner.description || cat.shortLabel || cat.title}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
-            )}
+            <MarqueeLane partners={allIndustryPartners} />
             {/* CTA and Social Block */}
             <div className="eva-partners-cta-block">
               <div className="eva-partners-cta-content">

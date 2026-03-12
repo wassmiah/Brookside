@@ -2571,6 +2571,214 @@ body.eva-overlay-open {
   max-width: 100%;
 }
 
+/* Continuous scrolling marquee for partners */
+.eva-partners-marquee {
+  width: 100%;
+  margin: 8px auto 52px;
+  overflow: hidden;
+  position: relative;
+}
+
+.eva-partners-marquee-viewport {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.eva-partners-marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.eva-partners-marquee-set {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  flex-shrink: 0;
+}
+
+.eva-partners-marquee-item {
+  flex: 0 0 auto;
+  width: 260px;
+  display: inline-block;
+}
+
+.eva-partners-marquee-item .eva-partner-card {
+  width: 100%;
+}
+
+.eva-partners-marquee-viewport img {
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Marquee left/right nav buttons */
+.eva-partners-marquee-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 clamp(8px, 2vw, 24px);
+}
+
+.eva-partners-marquee-btn {
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(157, 78, 221, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.eva-partners-marquee-btn:hover {
+  background: rgba(157, 78, 221, 0.35);
+  border-color: rgba(157, 78, 221, 0.8);
+}
+
+.eva-partners-marquee-btn:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 768px) {
+  .eva-partners-marquee-item {
+    width: 230px;
+  }
+  .eva-partners-marquee-set {
+    animation-duration: 25s;
+  }
+}
+
+@media (max-width: 480px) {
+  .eva-partners-marquee-item {
+    width: 210px;
+  }
+  .eva-partners-marquee-set {
+    animation-duration: 20s;
+  }
+}
+
+/* Category carousel (per title) */
+.eva-partners-category-carousel {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.eva-partners-category-block .eva-partners-category-carousel {
+  max-width: 980px;
+}
+
+.eva-partners-category-carousel-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.eva-partners-category-subtitle {
+  margin: 10px 0 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.eva-partners-category-carousel-shell {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 12px;
+}
+
+.eva-partners-category-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.eva-partners-category-carousel-track {
+  display: flex;
+  transition: transform 0.45s ease;
+  will-change: transform;
+  gap: 24px;
+  padding: 8px 0;
+}
+
+.eva-partners-category-carousel-slide {
+  min-width: calc(100% / var(--eva-visible, 1));
+  display: flex;
+  justify-content: center;
+}
+
+.eva-partners-category-carousel-slide .eva-partner-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.eva-partners-carousel-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.eva-partners-carousel-arrow:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.eva-partners-carousel-arrow:active {
+  transform: translateY(0);
+}
+
+.eva-partners-category-carousel-dots {
+  margin-top: 14px;
+}
+
+.eva-partners-category-carousel-dots .eva-partners-dot {
+  width: 7px;
+  height: 7px;
+}
+
+@media (max-width: 720px) {
+  .eva-partners-category-carousel-shell {
+    grid-template-columns: 38px 1fr 38px;
+    gap: 8px;
+  }
+
+  .eva-partners-carousel-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .eva-partners-category-carousel-track {
+    gap: 16px;
+  }
+}
+
 /* Single row: Hotels, Catering, Sports & Gaming */
 .eva-partners-single-row {
   display: grid;
@@ -2848,6 +3056,106 @@ body.eva-overlay-open {
 .eva-partners-dot.active {
   background: #9d4edd;
   transform: scale(1.2);
+}
+
+/* Horizontal draggable tabs (partners section) */
+.eva-partners-tabs-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.eva-partners-tabs-wrapper .eva-partners-tab-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(157, 78, 221, 0.4);
+  border-radius: 50%;
+  z-index: 2;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.eva-partners-tabs-wrapper .eva-partners-tab-icon .left-arrow,
+.eva-partners-tabs-wrapper .eva-partners-tab-icon .right-arrow {
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.eva-partners-tabs-wrapper .eva-partners-tab-icon:hover {
+  background: rgba(157, 78, 221, 0.35);
+  border-color: #9d4edd;
+}
+
+.eva-partners-tabs-wrapper .eva-partners-tab-icon:first-child {
+  display: none; /* shown by JS when scrollable left */
+}
+
+.eva-partners-tabs-wrapper .tab-box {
+  display: flex;
+  list-style: none;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 12px 15px;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.eva-partners-tabs-wrapper .tab-box::-webkit-scrollbar {
+  display: none;
+}
+
+.eva-partners-tabs-wrapper .tab-box.dragging {
+  scroll-behavior: auto;
+  cursor: grab;
+}
+
+.eva-partners-tabs-wrapper .tab-box.dragging li {
+  pointer-events: none;
+  user-select: none;
+}
+
+.eva-partners-tabs-wrapper .tab-box .tab {
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 13px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.eva-partners-tabs-wrapper .tab-box .tab:hover {
+  background: rgba(157, 78, 221, 0.2);
+  border-color: rgba(157, 78, 221, 0.4);
+}
+
+.eva-partners-tabs-wrapper .tab-box .tab.active {
+  background: rgba(157, 78, 221, 0.4);
+  border-color: #9d4edd;
+  color: #fff;
 }
 
 /* CTA and Social Block */
