@@ -3294,6 +3294,11 @@ body.eva-overlay-open {
 
 .eva-partners-cta-content {
   max-width: 400px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .eva-partners-cta-title {
