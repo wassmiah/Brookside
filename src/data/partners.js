@@ -18,6 +18,6 @@ export const PARTNERS = [
   { name: "Pink's", logo: "/partners/pinks.png" },
   { name: "Josiah Catering", logo: "/partners/josiah-catering.png" },
   { name: "Easy Buddy", logo: "/partners/easy-buddy.jpg" },
-  { name: "HR Avatar", logo: "/partners/hr-avatar.jpg" },
-  { name: "Aseametrics", logo: "/partners/aseametrics.png" },
+  { name: "HR Avatar", logo: "/partners/hr-avatar-removebg-preview.png" },
+  { name: "Aseametrics", logo: "/partners/aseametrics-removebg-preview.png" },
 ];

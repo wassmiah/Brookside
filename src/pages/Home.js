@@ -13,13 +13,13 @@ const TESTIMONIALS = [
     quote: "Brookside sends people who already understand the standard we hold. The fit is cultural, not just operational.",
     name: "Partner operations lead",
     role: "Hospitality group",
-    image: "/partners/wild-flour.png",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80",
   },
   {
     quote: "What stood out was how carefully they matched talent to the role. We spent less time retraining and more time performing.",
     name: "People manager",
     role: "Integrated resort partner",
-    image: "/partners/west-side-city.png",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80",
   },
 ];
 
@@ -28,28 +28,37 @@ const LOCATIONS = [
     city: "Baguio",
     description: "A highland hub for sourcing and developing talent across Northern Luzon.",
     detail: "Regional operations and candidate engagement.",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    city: "Cebu",
-    description: "Our Visayas presence for workforce support and client operations.",
-    detail: "Island talent network and growing business partnerships.",
-    image: "https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&w=1400&q=80",
+    image: "/baguio.jpg",
   },
   {
     city: "Clark",
     description: "A Central Luzon base close to a fast-growing business corridor.",
     detail: "Operational staffing and specialized placement support.",
-    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1400&q=80",
+    image: "/clark.webp",
+  },
+  {
+    city: "Manila",
+    description: "Our Metro Manila hub for partner operations and talent deployment.",
+    detail: "Headquarters presence serving hospitality and enterprise partners.",
+    image: "/manila.jpg",
+  },
+  {
+    city: "Cebu",
+    description: "Our Visayas presence for workforce support and client operations.",
+    detail: "Island talent network and growing business partnerships.",
+    image: "/cebu.jpg",
   },
   {
     city: "Nevada, USA",
     poweredByEva: true,
     description: "International online staffing, powered through EVA.",
     detail: "Remote talent deployment for global partners.",
-    image: "https://images.unsplash.com/photo-1605833556294-ea5e0305b09f?auto=format&fit=crop&w=1400&q=80",
+    image: "/nevada.jpg",
   },
 ];
+
+const TALENT_LEAD =
+  "5-star talent, selected to your standard and prepared to represent your brand through disciplined hiring, training, and performance management.";
 
 const blockMediaMenu = (e) => {
   e.preventDefault();
@@ -89,12 +98,12 @@ function Home() {
     <>
       <SEO
         title="Home"
-        description="Brookside matches quality talent to businesses that need the right fit — workforce solutions, specialized professionals, and online staffing through EVA."
+        description="Brookside matches quality talent to businesses that need the right fit: workforce solutions, specialized professionals, and online staffing through EVA."
         keywords="talent solutions, workforce solutions, staffing solutions, specialized talent, online staffing, Philippines, EVA"
         ogImage="/logohero.webp"
         ogImageWidth={1200}
         ogImageHeight={630}
-        ogImageAlt="Brookside — The Right People. The Right Fit."
+        ogImageAlt="Brookside. The Right People. The Right Fit."
         canonicalUrl="/"
         structuredData={{
           "@context": "https://schema.org",
@@ -122,45 +131,85 @@ function Home() {
               decoding="async"
             />
           </picture>
-          <Link to="/contact" className="contact-us-btn" aria-label="Contact us">
-            <span>Contact Us</span>
-          </Link>
+          <div className="hero-actions">
+            <Link to="/contact" className="contact-us-btn" aria-label="Contact us">
+              <span>Contact Us</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       <section className="about-new section-partition" id="about" aria-label="About Brookside">
-        <div className="about-intro">
-          <h2 className="section-eyebrow">About Brookside</h2>
-          <h3 className="about-heading">
-            Quality talent,<br />matched with care.
-          </h3>
-          <p>
-            Brookside helps businesses build teams they can trust. We source, screen, and deploy people who fit the work and the culture — across large-scale operations, specialized roles, and remote staffing.
-          </p>
-          <p>
-            Through our relationship with EVA and Aseametrics, we combine human judgment with stronger selection. The result is talent that performs, stays, and represents your brand well.
-          </p>
-        </div>
-        <div className="about-media" data-aos="fade-left">
-          <div className="about-video-frame">
-            <video
-              ref={teamVideoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="/about-bms1.png"
-              aria-hidden="true"
-              tabIndex={-1}
-              controls={false}
-              controlsList="nodownload noplaybackrate noremoteplayback"
-              disablePictureInPicture
-              disableRemotePlayback
-              onContextMenu={blockMediaMenu}
+        <video
+          ref={teamVideoRef}
+          className="about-full-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/about-bms1.png"
+          aria-hidden="true"
+          tabIndex={-1}
+          controls={false}
+          controlsList="nodownload noplaybackrate noremoteplayback"
+          disablePictureInPicture
+          disableRemotePlayback
+          onContextMenu={blockMediaMenu}
+        >
+          <source src="/brookside-team-vid.mp4" type="video/mp4" />
+        </video>
+        <div className="about-overlay-copy">
+          <div className="about-overlay-top">
+            <p className="about-eyebrow">
+              <span>People</span>
+              <span className="about-eyebrow-dot" aria-hidden="true">•</span>
+              <span>Purpose</span>
+              <span className="about-eyebrow-dot" aria-hidden="true">•</span>
+              <span>Possibilities</span>
+            </p>
+            <span className="about-eyebrow-line" aria-hidden="true"></span>
+            <h2 className="neon-section-title">
+              <span className="orange">About</span> <span className="blue">Us</span>
+            </h2>
+            <p className="about-overlay-lead">
+              Brookside delivers 5-star talent through sourcing that aligns with each client’s needs, brand standards, culture, and values.
+            </p>
+          </div>
+          <div className="about-overlay-bottom">
+            <Link to="/contact#quote" className="contact-us-btn" aria-label="Get quoted">
+              <span>Get Quoted</span>
+            </Link>
+            <div className="about-follow">
+            <span>Follow us:</span>
+            <a
+              href="https://www.facebook.com/profile.php?id=61560528418956"
+              target="_blank"
+              rel="noreferrer"
+              className="about-social facebook"
+              aria-label="Brookside on Facebook"
             >
-              <source src="/brookside-team-vid.mp4" type="video/mp4" />
-            </video>
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/brookside-manpower-services"
+              target="_blank"
+              rel="noreferrer"
+              className="about-social linkedin"
+              aria-label="Brookside on LinkedIn"
+            >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://www.tiktok.com/@brooksidemps"
+              target="_blank"
+              rel="noreferrer"
+              className="about-social tiktok"
+              aria-label="Brookside on TikTok"
+            >
+              <i className="fab fa-tiktok"></i>
+            </a>
+          </div>
           </div>
         </div>
       </section>
@@ -203,64 +252,41 @@ function Home() {
               height="500"
               loading="lazy"
             />
-            <p className="commitment-ceo-name">TIMOTHY JUSTIN ZETA<br /><span>CHIEF EXECUTIVE OFFICER</span></p>
           </div>
         </div>
       </section>
 
       <section className="offer-section section-partition" id="offer" aria-label="What we offer">
-        <div className="offer-blob offer-blob-left" aria-hidden="true"></div>
-        <div className="offer-blob offer-blob-right" aria-hidden="true"></div>
         <h2 className="neon-section-title">
-          <span className="orange">What</span> We <span className="blue">Offer</span>
+          <span className="orange">What</span> <span className="blue">We Offer</span>
         </h2>
-        <p className="section-lead">Three ways we help you build the right team.</p>
+        <p className="section-lead offer-lead">{TALENT_LEAD}</p>
         <div className="offer-grid">
           <article className="offer-card" data-aos="fade-up">
-            <img src="/about-bms1.png" alt="" className="offer-card-photo" loading="lazy" />
+            <img src="/A7406576.jpg" alt="" className="offer-card-photo" loading="lazy" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
-              <div className="offer-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none">
-                  <circle cx="16" cy="16" r="6" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="32" cy="16" r="6" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="24" cy="34" r="6" stroke="currentColor" strokeWidth="2" />
-                  <path d="M8 38c1.2-5 5-8 8-8s6.8 3 8 8M24 38c1.2-5 5-8 8-8s6.8 3 8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
               <h3>General Manpower</h3>
               <p>Reliable manpower matched to your operational needs.</p>
             </div>
           </article>
           <article className="offer-card offer-card-featured" data-aos="fade-up" data-aos-delay="80">
-            <img src="/eva-team-2.jpg" alt="" className="offer-card-photo" loading="lazy" />
+            <img src="/A7404803.JPG" alt="" className="offer-card-photo" loading="lazy" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
-              <div className="offer-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none">
-                  <rect x="8" y="12" width="32" height="22" rx="3" stroke="currentColor" strokeWidth="2" />
-                  <path d="M16 40h16M24 34v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="24" cy="23" r="5" stroke="currentColor" strokeWidth="2" />
-                </svg>
-              </div>
               <h3>Online Staffing</h3>
               <p>Remote and virtual staffing solutions for teams that work from anywhere.</p>
-              <a href={evaHref} className="explore-eva-cta">
+              <a href={evaHref} className="brand-cta brand-cta-eva" aria-label="Explore EVA">
                 <span>Explore</span>
-                <img src="/eva-logo-white-bg.png" alt="EVA" className="explore-eva-logo" />
+                <img src="/eva-logo-white-bg-removebg-preview.png" alt="EVA" />
                 <span className="explore-eva-arrow" aria-hidden="true">→</span>
               </a>
             </div>
           </article>
           <article className="offer-card" data-aos="fade-up" data-aos-delay="160">
-            <img src="/about-bms3.png" alt="" className="offer-card-photo" loading="lazy" />
+            <img src="/A7405688.JPG" alt="" className="offer-card-photo" loading="lazy" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
-              <div className="offer-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none">
-                  <path d="M24 8l4.5 9.2L39 18.5 30.8 25l2.2 11L24 30.8 15 36l2.2-11L9 18.5l10.5-1.3L24 8z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                </svg>
-              </div>
               <h3>Specialized Talent</h3>
               <p>Carefully selected professionals for specialized business requirements.</p>
             </div>
@@ -268,35 +294,92 @@ function Home() {
         </div>
       </section>
 
-      <section className="asia-section section-partition" id="asiametrics" aria-label="Talent selection powered by Aseametrics">
-        <div className="asia-inner">
-          <img src="/partners/aseametrics.png" alt="Aseametrics" className="asia-logo" />
-          <h2 className="section-eyebrow">Talent Selection Powered by Aseametrics</h2>
-          <p className="asia-headline">Brookside understands people.<br />Aseametrics strengthens the selection process.</p>
-          <p className="asia-body">
-            Every candidate is screened for skill, character, and fit. Aseametrics adds structured assessment and matching so we can place people with more confidence — a clearer picture of who will thrive in your environment, not just who looks good on paper.
-          </p>
+      <section className="asia-section section-partition" id="asiametrics" aria-label="Why us, talent selection powered by Aseametrics">
+        <div className="asia-glow asia-glow-left" aria-hidden="true"></div>
+        <div className="asia-glow asia-glow-right" aria-hidden="true"></div>
+        <h2 className="neon-section-title asia-title">
+          <span className="orange">Why</span> <span className="blue asia-title-us">Us</span>
+        </h2>
+        <p className="section-lead asia-lead">Science-backed screening, matched to Brookside talent standards before anyone is deployed.</p>
+        <div className="asia-layout">
+          <div className="asia-pyramid">
+            <p className="asia-cap">Quality Obsessed</p>
+            <div className="asia-logo-card asia-card-brookside">
+              <img src="/logo.png" alt="Brookside" />
+            </div>
+            <div className="asia-graph" aria-hidden="true">
+              <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+                <defs>
+                  <filter id="asiaLineGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <g filter="url(#asiaLineGlow)" stroke="#f78f3f" strokeWidth="6" strokeLinecap="round" fill="none">
+                  <line x1="200" y1="8" x2="70" y2="188" />
+                  <line x1="200" y1="8" x2="330" y2="188" />
+                  <line x1="70" y1="188" x2="330" y2="188" />
+                </g>
+                <circle cx="200" cy="8" r="7" fill="#f78f3f" />
+                <circle cx="70" cy="188" r="7" fill="#f78f3f" />
+                <circle cx="330" cy="188" r="7" fill="#f78f3f" />
+              </svg>
+            </div>
+            <div className="asia-base">
+              <div className="asia-base-item">
+                <div className="asia-logo-card asia-card-asea">
+                  <img src="/partners/aseametrics-removebg-preview.png" alt="Aseametrics" />
+                </div>
+                <p>Unmatched Expertise</p>
+              </div>
+              <div className="asia-base-item">
+                <div className="asia-logo-card asia-card-hr">
+                  <img src="/partners/hr-avatar.jpg" alt="HR Avatar" />
+                </div>
+                <p>Client Focused</p>
+              </div>
+            </div>
+          </div>
+          <div className="asia-copy">
+            <p className="asia-powered">Powered by Aseametrics</p>
+            <p>
+              <strong>What it does:</strong> Aseametrics screens candidates before you hire through tests, job simulations, video interviews, and reference checks. Not résumés alone.
+            </p>
+            <p>
+              <strong>How it works:</strong> They are the exclusive Southeast Asia partner of HR Avatar. Brookside uses those scores to match people to the right role, worksite, and brand before deployment.
+            </p>
+            <p>
+              <strong>Why us:</strong> Faster screening, fewer mismatches, and teams that stay and perform.
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="partners-section section-partition" id="partners" aria-label="Partners">
-        <div className="section-heading-row">
-          <div>
-            <h2 className="section-eyebrow">Partners</h2>
-            <p className="section-lead left">Recognizable brands who trust Brookside with their people.</p>
-          </div>
-        </div>
+        <h2 className="neon-section-title partners-title">
+          <span className="orange">Part</span><span className="blue">ners</span>
+        </h2>
+        <p className="section-lead">Trusted Talent Behind Leading Brands.</p>
         <PartnerMarquee partners={PARTNERS} />
       </section>
 
       <section className="testimonials-section section-partition" id="testimonials" aria-label="Testimonials">
-        <h2 className="section-eyebrow">Testimonials</h2>
-        <p className="section-lead">What partners notice when the fit is right.</p>
+        <h2 className="neon-section-title">
+          <span className="orange">Testi</span><span className="blue">monials</span>
+        </h2>
+        <p className="section-lead">What partners say about Brookside talent.</p>
         <div className="testimonial-grid">
           {TESTIMONIALS.map((item) => (
             <article className="testimonial-card" key={item.name} data-aos="fade-up">
-              <img src={item.image} alt="" className="testimonial-logo" loading="lazy" />
-              <blockquote>{item.quote}</blockquote>
+              <img src={item.image} alt="" className="testimonial-photo" loading="lazy" />
+              <blockquote>
+                <span className="testimonial-quote-mark" aria-hidden="true">“</span>
+                {item.quote}
+                <span className="testimonial-quote-mark-end" aria-hidden="true">”</span>
+              </blockquote>
               <p className="testimonial-name">{item.name}</p>
               <p className="testimonial-role">{item.role}</p>
             </article>
@@ -307,8 +390,10 @@ function Home() {
 
       <section className="locations-section" id="locations" aria-label="Locations">
         <div className="locations-intro">
-          <h2 className="section-eyebrow light">Locations</h2>
-          <p className="section-lead light">Where Brookside operates.</p>
+          <h2 className="neon-section-title">
+            <span className="orange">Loca</span><span className="blue">tions</span>
+          </h2>
+          <p className="section-lead light">Brookside operations across Baguio, Clark, Manila, Cebu, and Nevada.</p>
         </div>
         <div className="location-grid">
           {LOCATIONS.map((place) => (
@@ -319,11 +404,19 @@ function Home() {
             >
               <div className="location-card-inner">
                 <h3>{place.city}</h3>
-                {place.poweredByEva && <p className="location-flag">Powered through EVA</p>}
+                {place.poweredByEva && (
+                  <p className="location-flag">
+                    Powered through EVA
+                  </p>
+                )}
                 <p>{place.description}</p>
                 <p className="location-detail">{place.detail}</p>
                 {place.poweredByEva && (
-                  <a href={evaHref} className="text-cta light">Visit EVA →</a>
+                  <a href={evaHref} className="brand-cta brand-cta-eva">
+                    <span>Visit</span>
+                    <img src="/eva-logo-white-bg-removebg-preview.png" alt="EVA" />
+                    <span className="explore-eva-arrow" aria-hidden="true">→</span>
+                  </a>
                 )}
               </div>
             </article>
@@ -336,7 +429,9 @@ function Home() {
         <p>Apply if you are talent. Partner with us if you need people who fit.</p>
         <div className="hero-actions">
           <Link to="/career" className="apply-now-btn hero-apply">Apply Now</Link>
-          <Link to="/contact" className="hero-secondary dark">Talk to Brookside</Link>
+          <Link to="/contact#quote" className="apply-now-btn hero-apply" aria-label="Get quoted">
+            <span>Get Quoted</span>
+          </Link>
         </div>
       </section>
     </>

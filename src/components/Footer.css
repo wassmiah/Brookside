@@ -90,6 +90,23 @@
 .footer-email-link:hover {
   color: #40b4ff;
 }
+.footer-brand-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+.footer-brand-cta img {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+  background: transparent;
+}
+.footer-brand-cta:hover {
+  color: #40b4ff;
+}
 .footer-legal-links {
   display: flex;
   flex-wrap: wrap;

@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import "./Eva.css";
 import AOS from "aos";
@@ -19,15 +18,15 @@ const EVA_COURSE_ENROLLMENT_FORM_URL = "https://docs.google.com/forms/d/1XUtZKtc
 
 /** Employee carousel images – add images to /public (eva-team-1.jpg, etc.) */
 const EVA_EMPLOYEE_IMAGES = [
-  { src: "/eva-team-1.jpg", alt: "Executive Virtual Assistant", title: "Executive Virtual Assistant", caption: "Administrative support, scheduling and business coordination." },
-  { src: "/eva-team-2.jpg", alt: "Marketing Virtual Assistant", title: "Marketing Virtual Assistant", caption: "Social media, content and digital marketing support." },
-  { src: "/eva-team-3.jpg", alt: "Finance Virtual Assistant", title: "Finance Virtual Assistant", caption: "Bookkeeping, reporting and financial administration." },
-  { src: "/eva-team-4.jpg", alt: "EVA team collaboration", title: "Team collaboration", caption: "Professionals working together across time zones." },
-  { src: "/eva-team-5.jpg", alt: "Remote-work environment", title: "Remote-ready talent", caption: "Dedicated setups for focused virtual support." },
-  { src: "/eva-team-6.jpg", alt: "EVA team member", title: "Professional lifestyle", caption: "Human, international, and ready to represent your brand." },
-  { src: "/eva-team-7.jpg", alt: "EVA team member", title: "Operations support", caption: "Day-to-day coordination that keeps businesses moving." },
-  { src: "/eva-team-10.jpg", alt: "EVA team member", title: "Client-facing support", caption: "Communication and follow-through with a 5-star standard." },
-  { src: "/eva-team-11.jpg", alt: "EVA team member", title: "Specialized assistance", caption: "Skills matched to the work, not a generic seat." },
+  { src: "/A7406397.jpg", alt: "Executive Virtual Assistant", title: "Executive Virtual Assistant", caption: "Administrative support, scheduling and business coordination." },
+  { src: "/A7407707.jpg", alt: "Marketing Virtual Assistant", title: "Marketing Virtual Assistant", caption: "Social media, content and digital marketing support." },
+  { src: "/A7405901.jpg", alt: "Finance Virtual Assistant", title: "Finance Virtual Assistant", caption: "Bookkeeping, reporting and financial administration." },
+  { src: "/A7405770.jpg", alt: "EVA team collaboration", title: "Team collaboration", caption: "Professionals working together across time zones." },
+  { src: "/A7406858.jpg", alt: "Remote-work environment", title: "Remote-ready talent", caption: "Dedicated setups for focused virtual support." },
+  { src: "/A7407768.jpg", alt: "EVA team member", title: "Professional lifestyle", caption: "Human, international, and ready to represent your brand." },
+  { src: "/A7406756.jpg", alt: "EVA team member", title: "Operations support", caption: "Day-to-day coordination that keeps businesses moving." },
+  { src: "/A7405901.jpg", alt: "EVA team member", title: "Client-facing support", caption: "Communication and follow-through with a 5-star standard." },
+  { src: "/A7407815.jpg", alt: "EVA team member", title: "Specialized assistance", caption: "Skills matched to the work, not a generic seat." },
 ];
 
 const ONE_SECOND = 1000;
@@ -72,38 +71,8 @@ function Eva() {
   const ctaRef = useRef(null);
   const contactVideoRef = useRef(null);
   const partnersRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const dragX = useMotionValue(0);
-  const evaMenuToggleRef = useRef(null);
-
-  const closeEvaMenu = useCallback(() => setMenuOpen(false), []);
-
-  // Body class and focus (overlay best practice)
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add("eva-overlay-open");
-      requestAnimationFrame(() => {
-        const firstLink = document.querySelector(".eva-nav-links a, .eva-nav-links .eva-nav-brookside-logo");
-        firstLink?.focus?.();
-      });
-    } else {
-      document.body.classList.remove("eva-overlay-open");
-      evaMenuToggleRef.current?.focus();
-    }
-    return () => document.body.classList.remove("eva-overlay-open");
-  }, [menuOpen]);
-
-  // Escape key closes overlay
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") closeEvaMenu();
-    };
-    if (menuOpen) {
-      document.addEventListener("keydown", handleEscape);
-      return () => document.removeEventListener("keydown", handleEscape);
-    }
-  }, [menuOpen, closeEvaMenu]);
 
   // Employee carousel autoplay (Aceternity swipe logic)
   useEffect(() => {
@@ -646,48 +615,6 @@ function Eva() {
       />
 
       <div className="eva-page">
-        {/* Navigation */}
-        <nav className="eva-nav">
-          <div className="eva-nav-container">
-            <Link to="/eva">
-              <img src="/eva-nav-logo.png" alt="EVA Brookside - Executive Virtual Assistant Philippines" className="eva-logo-small" />
-            </Link>
-            <div className="eva-nav-links">
-              <a href="#home" onClick={closeEvaMenu}>Home</a>
-              <a href="#about" onClick={closeEvaMenu}>About</a>
-              <a href="#talent" onClick={closeEvaMenu}>Talent</a>
-              <a href="#how-it-works" onClick={closeEvaMenu}>How It Works</a>
-              <Link to={getEvaUrl("/the-ceo")} onClick={closeEvaMenu}>The CEO</Link>
-              <a href="#brookside-partnership" onClick={closeEvaMenu}>Brookside Partnership</a>
-              <a href="#contact" onClick={closeEvaMenu}>Contact</a>
-              <a href={brooksideHome} className="eva-nav-brookside-logo" aria-label="Meet Brookside" onClick={closeEvaMenu}>
-                <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-              </a>
-            </div>
-            <button ref={evaMenuToggleRef} type="button" className="eva-nav-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
-              <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
-            </button>
-          </div>
-          {/* EVA overlay: portal to body so it covers full page (like Home/Navbar) */}
-          {menuOpen && createPortal(
-            <div className="eva-nav-overlay eva-nav-overlay-open" onClick={closeEvaMenu} aria-hidden="false" role="dialog" aria-modal="true" aria-label="Menu">
-              <div className="eva-nav-links eva-nav-links-overlay active" onClick={(e) => e.stopPropagation()}>
-                <a href="#home" onClick={closeEvaMenu}>Home</a>
-                <a href="#about" onClick={closeEvaMenu}>About</a>
-                <a href="#talent" onClick={closeEvaMenu}>Talent</a>
-                <a href="#how-it-works" onClick={closeEvaMenu}>How It Works</a>
-                <Link to={getEvaUrl("/the-ceo")} onClick={closeEvaMenu}>The CEO</Link>
-                <a href="#brookside-partnership" onClick={closeEvaMenu}>Brookside Partnership</a>
-                <a href="#contact" onClick={closeEvaMenu}>Contact</a>
-                <a href={brooksideHome} className="eva-nav-brookside-logo" aria-label="Meet Brookside" onClick={closeEvaMenu}>
-                  <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-                </a>
-              </div>
-            </div>,
-            document.body
-          )}
-        </nav>
-
         {/* Hero Section */}
         <section className="eva-hero" id="home">
         <video
@@ -812,12 +739,26 @@ function Eva() {
         {/* Partners Section */}
         <section className="eva-partners-section" id="brookside-partnership" ref={partnersRef}>
           <div className="eva-partners-container">
-            <div className="eva-partners-header">
-              <h2 className="eva-partners-title">Brookside — Our Philippine Partner</h2>
+              <h2 className="eva-partners-title">              <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-partners-brookside-mark" />
+              Our Philippine Partner</h2>
               <p className="eva-partners-intro">
                 EVA partners with Brookside Manpower Services, one of the Philippines&apos; trusted workforce providers, to support talent sourcing, screening and workforce management.
               </p>
-              <a href={brooksidePartners} className="eva-partners-cta-button">View Brookside&apos;s Clients →</a>
+
+            <div className="eva-partners-group">
+              <p className="eva-partners-group-label">Partners</p>
+              <div className="eva-partners-group-frame">
+                <img
+                  src="/partners-group.png"
+                  alt="Brookside partners"
+                  className="eva-partners-group-img"
+                  loading="lazy"
+                />
+              </div>
+              <a href={brooksidePartners} className="eva-partners-view-btn" aria-label="View Brookside partners">
+                View Brookside Partners
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
 
             {/* CTA and Social Block */}
@@ -874,16 +815,18 @@ function Eva() {
                       animate={{ scale: carouselIndex === idx ? 0.95 : 0.85 }}
                       transition={CAROUSEL_SPRING_OPTIONS}
                     >
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        className="eva-partners-carousel-img"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                          const slide = e.target.closest(".eva-partners-carousel-slide");
-                          if (slide) slide.classList.add("eva-partners-slide-fallback");
-                        }}
-                      />
+                      <div className="eva-partners-carousel-frame">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="eva-partners-carousel-img"
+                          onError={(e) => {
+                            e.target.style.display = "none";
+                            const slide = e.target.closest(".eva-partners-carousel-slide");
+                            if (slide) slide.classList.add("eva-partners-slide-fallback");
+                          }}
+                        />
+                      </div>
                       {img.title && (
                         <div className="eva-va-caption">
                           <strong>{img.title}</strong>
@@ -901,7 +844,10 @@ function Eva() {
                 >
                   ›
                 </button>
-                <div className="eva-partners-carousel-dots">
+                <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-left" />
+                <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-right" />
+              </div>
+              <div className="eva-partners-carousel-dots">
                   {EVA_EMPLOYEE_IMAGES.map((_, idx) => (
                     <button
                       key={idx}
@@ -911,9 +857,6 @@ function Eva() {
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
-                </div>
-                <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-left" />
-                <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-right" />
               </div>
             </div>
           </div>
@@ -923,7 +866,7 @@ function Eva() {
                 <section className="eva-ceo-section" ref={ceoRef}>
           <div className="eva-ceo-container" data-aos="fade-in">
             <div className="eva-ceo-image">
-              <img src="/eva-ceo-marc.jpg" alt="CEO Marc Catubay" className="eva-ceo-photo" />
+              <img src="/A7406164.jpg" alt="CEO Marc Catubay" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
               <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
@@ -1304,9 +1247,16 @@ function Eva() {
               &copy; {new Date().getFullYear()} EVA by Brookside Manpower Services. All Rights Reserved.
             </p>
             <div className="eva-footer-links">
-              <a href={brooksideHome} className="eva-footer-link">Meet Brookside</a>
+              <a href={brooksideHome} className="eva-footer-link eva-footer-brand" aria-label="Meet Brookside">
+                Meet
+                <img src="/logo-white.png" alt="Brookside" />
+              </a>
               <a href={getEvaUrl("/the-ceo")} className="eva-footer-link">The CEO</a>
-              <a href={brooksidePartners} className="eva-footer-link">View Brookside&apos;s Clients</a>
+              <a href={brooksidePartners} className="eva-footer-link eva-footer-brand" aria-label="View Brookside partners">
+                View
+                <img src="/logo-white.png" alt="Brookside" />
+                Partners
+              </a>
               <Link to="/privacy-policy" className="eva-footer-link">Privacy Policy</Link>
             </div>
           </div>

@@ -30,7 +30,10 @@ function Footer() {
           <div className="footer-contact-block">
             <div className="footer-contact-label">Explore</div>
             <div>
-              <a href={evaHref} className="footer-email-link">Explore EVA</a>
+              <a href={evaHref} className="footer-brand-cta" aria-label="Explore EVA">
+                Explore
+                <img src="/eva-logo-white-bg-removebg-preview.png" alt="EVA" />
+              </a>
               <span> · </span>
               <a href="/#partners" className="footer-email-link">Partners</a>
             </div>

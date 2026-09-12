@@ -21,6 +21,7 @@ import NotFound from './NotFound';
 import Eva from './pages/Eva';
 import EvaInquiry from './pages/EvaInquiry';
 import TheCEO from './pages/TheCEO';
+import EvaNavbar from './components/EvaNavbar';
 import './App.css';
 
 const isEvaSubdomain = () =>
@@ -115,6 +116,7 @@ function AppContent() {
 
       <div className="App">
         {!isEvaPage && <Navbar />}
+        {isEvaPage && <EvaNavbar />}
         <main>
           <Routes>
             <Route path="/" element={onEvaSubdomain ? <Eva /> : <Home />} />
