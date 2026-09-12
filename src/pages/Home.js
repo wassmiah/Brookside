@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import AOS from "aos";
@@ -51,8 +51,15 @@ const LOCATIONS = [
   },
 ];
 
+const blockMediaMenu = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+};
+
 function Home() {
   const evaHref = getEvaUrl();
+  const teamVideoRef = useRef(null);
 
   useEffect(() => {
     AOS.init({
@@ -62,6 +69,12 @@ function Home() {
       offset: 100,
       delay: 0,
     });
+
+    const video = teamVideoRef.current;
+    if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      video.removeAttribute("autoplay");
+    }
 
     const hash = window.location.hash;
     if (hash) {
@@ -129,61 +142,128 @@ function Home() {
           </p>
         </div>
         <div className="about-media" data-aos="fade-left">
-          <img
-            src="/about-bms1.png"
-            alt="Brookside team"
-            className="about-photo"
-            width="600"
-            height="400"
-            loading="lazy"
-          />
           <div className="about-video-frame">
             <video
-              controls
+              ref={teamVideoRef}
+              autoPlay
+              muted
+              loop
               playsInline
               preload="metadata"
               poster="/about-bms1.png"
-              aria-label="About Brookside video"
+              aria-hidden="true"
+              tabIndex={-1}
+              controls={false}
+              controlsList="nodownload noplaybackrate noremoteplayback"
+              disablePictureInPicture
+              disableRemotePlayback
+              onContextMenu={blockMediaMenu}
             >
-              <source src="/brookside-about.mp4" type="video/mp4" />
+              <source src="/brookside-team-vid.mp4" type="video/mp4" />
             </video>
-            <p className="media-note">Company video placeholder — 30–60s about film will play here.</p>
           </div>
         </div>
       </section>
 
-      <section className="mission-section section-partition" id="mission" aria-label="Mission and vision">
-        <h2 className="section-eyebrow">Mission &amp; Vision</h2>
-        <div className="mission-grid">
-          <article className="mission-card" data-aos="fade-up">
-            <h3>Mission</h3>
-            <p>Match exceptional people with organizations that need them — across operations, specialized roles, and remote work.</p>
-          </article>
-          <article className="mission-card" data-aos="fade-up" data-aos-delay="80">
-            <h3>Vision</h3>
-            <p>To be a leading hub for 5-star talent and workforce solutions, known for fit, trust, and people who elevate every brand they join.</p>
-          </article>
+      <section className="commitment-section section-partition" id="mission" aria-label="Vision, mission, and values">
+        <img
+          src="/commitment-bg.png"
+          alt=""
+          className="commitment-bg-img"
+          loading="lazy"
+        />
+        <div className="commitment-overlay"></div>
+        <div className="commitment-content">
+          <div className="commitment-left">
+            <article className="commitment-block" data-aos="fade-up" data-aos-delay="0">
+              <h2 className="commitment-title blue">Vision</h2>
+              <div className="commitment-desc">To be a hub for 5–Star premium professionals.</div>
+            </article>
+            <article className="commitment-block" data-aos="fade-up" data-aos-delay="100">
+              <h2 className="commitment-title blue">Mission</h2>
+              <div className="commitment-desc">For all professionals to be trained by industry practitioners &amp; be given fulfilling careers.</div>
+            </article>
+            <article className="commitment-block" data-aos="fade-up" data-aos-delay="200">
+              <h2 className="commitment-title blue">Values</h2>
+              <div className="commitment-desc">
+                <ul>
+                  <li>Innovative and revolutionary</li>
+                  <li>Constant progression and results-driven</li>
+                  <li>Empathetic collaborator</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+          <div className="commitment-right" data-aos="fade-left">
+            <img
+              src="/ceo.png"
+              alt="Timothy Justin Zeta - Chief Executive Officer"
+              className="commitment-ceo-img"
+              width="400"
+              height="500"
+              loading="lazy"
+            />
+            <p className="commitment-ceo-name">TIMOTHY JUSTIN ZETA<br /><span>CHIEF EXECUTIVE OFFICER</span></p>
+          </div>
         </div>
       </section>
 
       <section className="offer-section section-partition" id="offer" aria-label="What we offer">
+        <div className="offer-blob offer-blob-left" aria-hidden="true"></div>
+        <div className="offer-blob offer-blob-right" aria-hidden="true"></div>
         <h2 className="neon-section-title">
           <span className="orange">What</span> We <span className="blue">Offer</span>
         </h2>
         <p className="section-lead">Three ways we help you build the right team.</p>
         <div className="offer-grid">
           <article className="offer-card" data-aos="fade-up">
-            <h3>General Manpower</h3>
-            <p>Reliable manpower matched to your operational needs.</p>
+            <img src="/about-bms1.png" alt="" className="offer-card-photo" loading="lazy" />
+            <div className="offer-card-shade"></div>
+            <div className="offer-card-body">
+              <div className="offer-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="16" cy="16" r="6" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="32" cy="16" r="6" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="24" cy="34" r="6" stroke="currentColor" strokeWidth="2" />
+                  <path d="M8 38c1.2-5 5-8 8-8s6.8 3 8 8M24 38c1.2-5 5-8 8-8s6.8 3 8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <h3>General Manpower</h3>
+              <p>Reliable manpower matched to your operational needs.</p>
+            </div>
           </article>
           <article className="offer-card offer-card-featured" data-aos="fade-up" data-aos-delay="80">
-            <h3>Online Staffing</h3>
-            <p>Remote and virtual staffing solutions for teams that work from anywhere.</p>
-            <a href={evaHref} className="text-cta">Explore EVA →</a>
+            <img src="/eva-team-2.jpg" alt="" className="offer-card-photo" loading="lazy" />
+            <div className="offer-card-shade"></div>
+            <div className="offer-card-body">
+              <div className="offer-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <rect x="8" y="12" width="32" height="22" rx="3" stroke="currentColor" strokeWidth="2" />
+                  <path d="M16 40h16M24 34v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="24" cy="23" r="5" stroke="currentColor" strokeWidth="2" />
+                </svg>
+              </div>
+              <h3>Online Staffing</h3>
+              <p>Remote and virtual staffing solutions for teams that work from anywhere.</p>
+              <a href={evaHref} className="explore-eva-cta">
+                <span>Explore</span>
+                <img src="/eva-logo-white-bg.png" alt="EVA" className="explore-eva-logo" />
+                <span className="explore-eva-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
           </article>
           <article className="offer-card" data-aos="fade-up" data-aos-delay="160">
-            <h3>Specialized Talent</h3>
-            <p>Carefully selected professionals for specialized business requirements.</p>
+            <img src="/about-bms3.png" alt="" className="offer-card-photo" loading="lazy" />
+            <div className="offer-card-shade"></div>
+            <div className="offer-card-body">
+              <div className="offer-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M24 8l4.5 9.2L39 18.5 30.8 25l2.2 11L24 30.8 15 36l2.2-11L9 18.5l10.5-1.3L24 8z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <h3>Specialized Talent</h3>
+              <p>Carefully selected professionals for specialized business requirements.</p>
+            </div>
           </article>
         </div>
       </section>
