@@ -32,7 +32,7 @@ function Footer() {
             <div>
               <a href={evaHref} className="footer-brand-cta" aria-label="Explore EVA">
                 Explore
-                <img src="/eva-logo-white-bg-removebg-preview.png" alt="EVA" />
+                <img src="/eva-nav-logo.png" alt="EVA" />
               </a>
               <span> · </span>
               <a href="/#partners" className="footer-email-link">Partners</a>

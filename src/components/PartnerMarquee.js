@@ -7,6 +7,9 @@ const PartnerCard = ({ partner }) => (
       <img
         src={partner.logo}
         alt={partner.name}
+        width="140"
+        height="140"
+        loading="lazy"
         onError={(e) => {
           e.target.style.display = "none";
           e.target.nextElementSibling?.classList.add("is-active");
