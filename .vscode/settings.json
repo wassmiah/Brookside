@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "**/build/**": "plaintext"
+  },
+  "search.exclude": {
+    "**/build": true
+  }
+}

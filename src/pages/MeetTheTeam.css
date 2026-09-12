@@ -1,4 +1,78 @@
 /* CEO Section */
+.story-section,
+.founders-section,
+.story-video-section {
+  background: #181c23;
+  color: #fff;
+  padding: 72px 10%;
+}
+
+.story-wrap {
+  max-width: 760px;
+}
+
+.story-kicker {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f7a61a;
+  margin: 0 0 10px;
+}
+
+.story-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 20px;
+}
+
+.story-wrap p {
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+}
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.founder-card {
+  background: #11161d;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: left;
+}
+
+.founder-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.founder-role {
+  color: #40b4ff;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.story-video {
+  width: 100%;
+  max-width: 860px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+.story-note {
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  margin-top: 12px;
+}
+
 .ceo-section {
   background: #181c23;
   padding: 60px 10%;

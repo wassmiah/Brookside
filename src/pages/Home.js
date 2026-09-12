@@ -4,46 +4,93 @@ import "./Home.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SEO from "../components/SEO";
+import { getEvaUrl } from "../utils/siteLinks";
+import { PARTNERS } from "../data/partners";
+import PartnerMarquee from "../components/PartnerMarquee";
+
+const TESTIMONIALS = [
+  {
+    quote: "Brookside sends people who already understand the standard we hold. The fit is cultural, not just operational.",
+    name: "Partner operations lead",
+    role: "Hospitality group",
+    image: "/partners/wild-flour.png",
+  },
+  {
+    quote: "What stood out was how carefully they matched talent to the role. We spent less time retraining and more time performing.",
+    name: "People manager",
+    role: "Integrated resort partner",
+    image: "/partners/west-side-city.png",
+  },
+];
+
+const LOCATIONS = [
+  {
+    city: "Baguio",
+    description: "A highland hub for sourcing and developing talent across Northern Luzon.",
+    detail: "Regional operations and candidate engagement.",
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    city: "Cebu",
+    description: "Our Visayas presence for workforce support and client operations.",
+    detail: "Island talent network and growing business partnerships.",
+    image: "https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    city: "Clark",
+    description: "A Central Luzon base close to a fast-growing business corridor.",
+    detail: "Operational staffing and specialized placement support.",
+    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    city: "Nevada, USA",
+    poweredByEva: true,
+    description: "International online staffing, powered through EVA.",
+    detail: "Remote talent deployment for global partners.",
+    image: "https://images.unsplash.com/photo-1605833556294-ea5e0305b09f?auto=format&fit=crop&w=1400&q=80",
+  },
+];
 
 function Home() {
+  const evaHref = getEvaUrl();
 
   useEffect(() => {
-    AOS.init({ 
+    AOS.init({
       duration: 600,
       once: true,
-      easing: 'ease-out-cubic',
+      easing: "ease-out-cubic",
       offset: 100,
-      delay: 0
+      delay: 0,
     });
 
-    // AOS handles animations automatically with once: true, no need for manual observers
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+      }
+    }
   }, []);
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Home"
-        description="Brookside Manpower Services - Your trusted partner in hospitality staffing solutions. We connect skilled talents to leading hotels, resorts, and restaurants in Metro Manila."
-        keywords="hospitality staffing, hotel jobs, restaurant jobs, manpower services, job placement, Metro Manila, Philippines"
+        description="Brookside matches quality talent to businesses that need the right fit — workforce solutions, specialized professionals, and online staffing through EVA."
+        keywords="talent solutions, workforce solutions, staffing solutions, specialized talent, online staffing, Philippines, EVA"
         ogImage="/logohero.webp"
         ogImageWidth={1200}
         ogImageHeight={630}
-        ogImageAlt="Brookside Manpower Services - Hospitality Staffing Experts"
+        ogImageAlt="Brookside — The Right People. The Right Fit."
         canonicalUrl="/"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": "Brookside Manpower Services",
-          "url": "https://brooksidemps.com",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://brooksidemps.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
+          name: "Brookside",
+          url: "https://brooksidemps.com",
         }}
       />
 
-      {/* Hero Section */}
       <section className="hero" id="home" aria-label="Hero section">
         <video autoPlay muted loop playsInline preload="auto" id="heroVideo" aria-hidden="true">
           <source src="/herobg.mp4" type="video/mp4" />
@@ -52,14 +99,14 @@ function Home() {
         <div className="hero-overlay">
           <picture>
             <source srcSet="/logohero.webp" type="image/webp" />
-            <img 
-              src="/logohero.png" 
-              alt="Brookside Manpower Services Logo" 
-              className="hero-logo" 
-              width="500" 
-              height="200" 
-              loading="eager" 
-              decoding="async" 
+            <img
+              src="/logohero.png"
+              alt="Brookside Manpower Services Logo"
+              className="hero-logo"
+              width="500"
+              height="200"
+              loading="eager"
+              decoding="async"
             />
           </picture>
           <Link to="/contact" className="contact-us-btn" aria-label="Contact us">
@@ -68,113 +115,148 @@ function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="about-new section-partition" id="about" aria-label="About us">
-        <h1 className="about-main-heading">
-          <span className="orange">Brookside Manpower Services</span> – Hospitality Staffing in <span className="blue">Metro Manila</span>
-        </h1>
-        <div className="about-left" data-aos="fade-right">
-          <h2 className="about-heading">
-            Leave your <span className="highlight">staffing</span><br />problem to us.
-          </h2>
+      <section className="about-new section-partition" id="about" aria-label="About Brookside">
+        <div className="about-intro">
+          <h2 className="section-eyebrow">About Brookside</h2>
+          <h3 className="about-heading">
+            Quality talent,<br />matched with care.
+          </h3>
           <p>
-            Brookside is a job placement company dedicated to connecting skilled talents to the leading
-            hospitality businesses in Metro Manila. We are committed to bridge opportunities and build
-            futures of our talents and partners.
+            Brookside helps businesses build teams they can trust. We source, screen, and deploy people who fit the work and the culture — across large-scale operations, specialized roles, and remote staffing.
           </p>
           <p>
-            Our partners are mainly from hospitality business segments such as but not limited to integrated
-            resorts, 5-star hotels, BPO, and high-end restaurant chains. 
+            Through our relationship with EVA and Aseametrics, we combine human judgment with stronger selection. The result is talent that performs, stays, and represents your brand well.
           </p>
-          <p>
-            Brookside explores potentials from different parts of the Philippines by engaging local government
-            units and more. 
-          </p>
-          <div className="social-share">
-            <span className="social-share-label">Follow us:</span>
-            <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook"><i className="fab fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-            <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" aria-label="Visit our TikTok"><i className="fab fa-tiktok"></i></a>
-          </div>
         </div>
-        <div className="about-right" data-aos="fade-left">
-          <img 
-            src="/about-bms1.png" 
-            alt="Brookside Manpower Services team working together" 
+        <div className="about-media" data-aos="fade-left">
+          <img
+            src="/about-bms1.png"
+            alt="Brookside team"
             className="about-photo"
             width="600"
             height="400"
             loading="lazy"
           />
+          <div className="about-video-frame">
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="/about-bms1.png"
+              aria-label="About Brookside video"
+            >
+              <source src="/brookside-about.mp4" type="video/mp4" />
+            </video>
+            <p className="media-note">Company video placeholder — 30–60s about film will play here.</p>
+          </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="what-we-do-section section-partition" id="services" aria-label="Our services">
-        <h2 className="neon-section-title" data-aos="fade-up">
-          <span className="orange">Bridging</span> & <span className="blue">building</span><br />are our thing
+      <section className="mission-section section-partition" id="mission" aria-label="Mission and vision">
+        <h2 className="section-eyebrow">Mission &amp; Vision</h2>
+        <div className="mission-grid">
+          <article className="mission-card" data-aos="fade-up">
+            <h3>Mission</h3>
+            <p>Match exceptional people with organizations that need them — across operations, specialized roles, and remote work.</p>
+          </article>
+          <article className="mission-card" data-aos="fade-up" data-aos-delay="80">
+            <h3>Vision</h3>
+            <p>To be a leading hub for 5-star talent and workforce solutions, known for fit, trust, and people who elevate every brand they join.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="offer-section section-partition" id="offer" aria-label="What we offer">
+        <h2 className="neon-section-title">
+          <span className="orange">What</span> We <span className="blue">Offer</span>
         </h2>
-
-        <div className="get-quoted-btn-wrapper" data-aos="fade-up" data-aos-delay="100">
-          <Link to="/contact" className="get-quoted-btn" aria-label="Get a quote">GET QUOTED</Link>
-        </div>
-
-        <div className="service-row">
-          <article className="service-item" data-aos="fade-right">
-            <h3 className="service-label">MANPOWER SERVICES</h3>
-            <p>We attract, acquire, and retain the top talents for you; strengthening your brand's workforce.</p>
+        <p className="section-lead">Three ways we help you build the right team.</p>
+        <div className="offer-grid">
+          <article className="offer-card" data-aos="fade-up">
+            <h3>General Manpower</h3>
+            <p>Reliable manpower matched to your operational needs.</p>
           </article>
-          <article className="service-item" data-aos="fade-left">
-            <h3 className="service-label">TALENT DEVELOPMENT</h3>
-            <p>We specialize in the training and development of our candidates prior deployment.</p>
+          <article className="offer-card offer-card-featured" data-aos="fade-up" data-aos-delay="80">
+            <h3>Online Staffing</h3>
+            <p>Remote and virtual staffing solutions for teams that work from anywhere.</p>
+            <a href={evaHref} className="text-cta">Explore EVA →</a>
           </article>
-          <article className="service-item" data-aos="fade-up">
-            <h3 className="service-label">CONSULTATION SERVICES</h3>
-            <p>We advise businesses on workforce planning and achieve the best manpower solutions.</p>
+          <article className="offer-card" data-aos="fade-up" data-aos-delay="160">
+            <h3>Specialized Talent</h3>
+            <p>Carefully selected professionals for specialized business requirements.</p>
           </article>
         </div>
       </section>
 
-      {/* Commitment Section */}
-      <section className="commitment-section section-partition" id="commitment" aria-label="Our commitment">
-        <img 
-          src="/commitment-bg.png" 
-          alt="Modern city background" 
-          className="commitment-bg-img"
-          loading="lazy"
-        />
-        <div className="commitment-overlay"></div>
-        <div className="commitment-content">
-          <div className="commitment-left">
-            <article className="commitment-block" data-aos="fade-up" data-aos-delay="0">
-              <h2 className="commitment-title blue">Vision</h2>
-              <div className="commitment-desc">To be a hub for 5–Star premium professionals.</div>
+      <section className="asia-section section-partition" id="asiametrics" aria-label="Talent selection powered by Aseametrics">
+        <div className="asia-inner">
+          <img src="/partners/aseametrics.png" alt="Aseametrics" className="asia-logo" />
+          <h2 className="section-eyebrow">Talent Selection Powered by Aseametrics</h2>
+          <p className="asia-headline">Brookside understands people.<br />Aseametrics strengthens the selection process.</p>
+          <p className="asia-body">
+            Every candidate is screened for skill, character, and fit. Aseametrics adds structured assessment and matching so we can place people with more confidence — a clearer picture of who will thrive in your environment, not just who looks good on paper.
+          </p>
+        </div>
+      </section>
+
+      <section className="partners-section section-partition" id="partners" aria-label="Partners">
+        <div className="section-heading-row">
+          <div>
+            <h2 className="section-eyebrow">Partners</h2>
+            <p className="section-lead left">Recognizable brands who trust Brookside with their people.</p>
+          </div>
+        </div>
+        <PartnerMarquee partners={PARTNERS} />
+      </section>
+
+      <section className="testimonials-section section-partition" id="testimonials" aria-label="Testimonials">
+        <h2 className="section-eyebrow">Testimonials</h2>
+        <p className="section-lead">What partners notice when the fit is right.</p>
+        <div className="testimonial-grid">
+          {TESTIMONIALS.map((item) => (
+            <article className="testimonial-card" key={item.name} data-aos="fade-up">
+              <img src={item.image} alt="" className="testimonial-logo" loading="lazy" />
+              <blockquote>{item.quote}</blockquote>
+              <p className="testimonial-name">{item.name}</p>
+              <p className="testimonial-role">{item.role}</p>
             </article>
-            <article className="commitment-block" data-aos="fade-up" data-aos-delay="100">
-              <h2 className="commitment-title blue">Mission</h2>
-              <div className="commitment-desc">For all professionals to be trained by industry practitioners & be given fulfilling careers.</div>
-            </article>
-            <article className="commitment-block" data-aos="fade-up" data-aos-delay="200">
-              <h2 className="commitment-title blue">Values</h2>
-              <div className="commitment-desc">
-                <ul>
-                  <li>Innovative and revolutionary</li>
-                  <li>Constant progression and results-driven</li>
-                  <li>Empathetic collaborator</li>
-                </ul>
+          ))}
+        </div>
+        <p className="media-note">Final client names, photos, and quotes will replace these placeholders once approved.</p>
+      </section>
+
+      <section className="locations-section" id="locations" aria-label="Locations">
+        <div className="locations-intro">
+          <h2 className="section-eyebrow light">Locations</h2>
+          <p className="section-lead light">Where Brookside operates.</p>
+        </div>
+        <div className="location-grid">
+          {LOCATIONS.map((place) => (
+            <article
+              className="location-card"
+              key={place.city}
+              style={{ backgroundImage: `url(${place.image})` }}
+            >
+              <div className="location-card-inner">
+                <h3>{place.city}</h3>
+                {place.poweredByEva && <p className="location-flag">Powered through EVA</p>}
+                <p>{place.description}</p>
+                <p className="location-detail">{place.detail}</p>
+                {place.poweredByEva && (
+                  <a href={evaHref} className="text-cta light">Visit EVA →</a>
+                )}
               </div>
             </article>
-          </div>
-          <div className="commitment-right" data-aos="fade-left">
-            <img 
-              src="/ceo.png" 
-              alt="Timothy Justin Zeta - CEO of Brookside Manpower Services" 
-              className="commitment-ceo-img"
-              width="400"
-              height="500"
-              loading="lazy"
-            />
-          </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="final-cta-section" id="apply" aria-label="Apply now">
+        <h2>Ready to join, or to build your team?</h2>
+        <p>Apply if you are talent. Partner with us if you need people who fit.</p>
+        <div className="hero-actions">
+          <Link to="/career" className="apply-now-btn hero-apply">Apply Now</Link>
+          <Link to="/contact" className="hero-secondary dark">Talk to Brookside</Link>
         </div>
       </section>
     </>

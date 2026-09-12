@@ -20,6 +20,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFound from './NotFound';
 import Eva from './pages/Eva';
 import EvaInquiry from './pages/EvaInquiry';
+import TheCEO from './pages/TheCEO';
 import './App.css';
 
 const isEvaSubdomain = () =>
@@ -29,36 +30,53 @@ function AppContent() {
   const location = useLocation();
   const navigate = useNavigate();
   const onEvaSubdomain = isEvaSubdomain();
+  const isCeoPage =
+    location.pathname === "/the-ceo" || location.pathname === "/eva/the-ceo";
   const isEvaPage =
     location.pathname === '/eva' ||
     location.pathname.startsWith('/eva/') ||
     location.pathname === '/inquiry' ||
+    isCeoPage ||
     (onEvaSubdomain && (location.pathname === '/' || location.pathname === ''));
 
   // On eva subdomain: redirect /eva and /eva/inquiry to clean URLs
   useEffect(() => {
-    if (!onEvaSubdomain) return;
-    if (location.pathname === '/eva') {
-      navigate('/', { replace: true });
-    } else if (location.pathname === '/eva/inquiry') {
-      navigate('/inquiry', { replace: true });
+    if (onEvaSubdomain) {
+      if (location.pathname === '/eva') {
+        navigate('/', { replace: true });
+      } else if (location.pathname === '/eva/inquiry') {
+        navigate('/inquiry', { replace: true });
+      } else if (location.pathname === '/eva/the-ceo') {
+        navigate('/the-ceo', { replace: true });
+      }
+      return;
+    }
+    if (location.pathname === '/the-ceo') {
+      navigate('/eva/the-ceo', { replace: true });
     }
   }, [location.pathname, navigate, onEvaSubdomain]);
 
   // Scroll to top on route change
   useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   return (
     <>
       {/* SEO / meta tags */}
       <Helmet>
-        <title>Brookside Manpower Services Inc. | Top Hospitality Staffing Solutions in Philippines</title>
-        <meta name="description" content="Brookside Manpower Services connects skilled talents to leading hospitality companies in Metro Manila. Find your next career opportunity in hotels, resorts, and restaurants." />
-        <meta name="keywords" content="Brookside Manpower, hospitality staffing, hotel jobs, restaurant jobs, manpower services, job placement, career opportunities, Metro Manila, Philippines" />
-        <meta property="og:title" content="Brookside Manpower Services | Hospitality Staffing Experts" />
-        <meta property="og:description" content="Connecting skilled talents to top hospitality companies in Metro Manila. Find your next career opportunity with us." />
+        <title>Brookside | Talent and Workforce Solutions</title>
+        <meta name="description" content="Brookside matches quality talent to businesses that need the right fit — workforce solutions, specialized professionals, and online staffing through EVA." />
+        <meta name="keywords" content="Brookside, talent solutions, workforce solutions, staffing solutions, specialized talent, EVA, Philippines" />
+        <meta property="og:title" content="Brookside | The Right People. The Right Fit." />
+        <meta property="og:description" content="A modern talent and workforce company. Quality people matched to your brand, operations, and culture." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://brooksidemps.com" />
         <meta property="og:image" content="https://brooksidemps.com/logo192.png" />
@@ -71,7 +89,7 @@ function AppContent() {
             "name": "Brookside Manpower Services",
             "url": "https://brooksidemps.com",
             "logo": "https://brooksidemps.com/logo192.png",
-            "description": "Connecting skilled talents to top hospitality companies in Metro Manila.",
+            "description": "Talent and workforce solutions. Matching quality people to the right fit.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Unit 604, Tower 2, PITX Building, 1 Kennedy Road, Barangay Tambo",
@@ -111,6 +129,8 @@ function AppContent() {
             <Route path="/admin-dashboard" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
             <Route path="/learn-here" element={<ProtectedRoute><LearnHere /></ProtectedRoute>} />
             <Route path="/eva" element={<Eva />} />
+            <Route path="/eva/the-ceo" element={<TheCEO />} />
+            <Route path="/the-ceo" element={<TheCEO />} />
             <Route path="/eva/inquiry" element={<EvaInquiry />} />
             <Route path="/inquiry" element={<EvaInquiry />} />
             <Route path="*" element={<NotFound />} />

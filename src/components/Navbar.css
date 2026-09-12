@@ -53,21 +53,79 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 50px;
+  align-items: center;
+  gap: 22px;
   min-width: 0;
 }
 
-.navbar-center a {
+.navbar-center a,
+.nav-dropdown-toggle {
   text-decoration: none;
   color: #222;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   padding: 6px 8px;
   transition: color 0.5s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-.navbar-center a:hover {
+.navbar-center a:hover,
+.nav-dropdown-toggle:hover {
   color: #f7a61a;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle i {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 200px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 1100;
+}
+
+.nav-dropdown.open .nav-dropdown-menu,
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.overlay-group-label {
+  margin: 12px 0 4px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #888;
 }
 
 /* EVA Logo Link - Special Styling */
@@ -119,15 +177,15 @@
 }
 
 .apply-now-btn {
-  background: linear-gradient(135deg, #9d4edd 0%, #ec4899 100%);
-  color: #fff;
+  background: #f7a61a;
+  color: #111;
   padding: 12px 32px;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 2px;
+  font-size: 15px;
+  letter-spacing: 1.5px;
   border: none;
-  box-shadow: 0 2px 12px rgba(157, 78, 221, 0.4);
+  box-shadow: 0 2px 12px rgba(247, 166, 26, 0.4);
   text-transform: uppercase;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
@@ -137,9 +195,9 @@
 }
 
 .apply-now-btn:hover, .apply-now-btn:focus {
-  background: linear-gradient(135deg, #ec4899 0%, #9d4edd 100%);
-  color: #fff;
-  box-shadow: 0 4px 24px rgba(157, 78, 221, 0.6), 0 4px 24px rgba(236, 72, 153, 0.4);
+  background: #ffb830;
+  color: #111;
+  box-shadow: 0 4px 24px rgba(247, 166, 26, 0.55);
   transform: translateY(-2px) scale(1.02);
   text-decoration: none;
 }

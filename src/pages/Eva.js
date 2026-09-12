@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import "./Eva.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SEO from "../components/SEO";
+import { getBrooksideUrl, getEvaUrl } from "../utils/siteLinks";
 
 const blockMediaMenu = (e) => {
   e.preventDefault();
@@ -16,69 +17,17 @@ const blockMediaMenu = (e) => {
 /** EVA Course Enrollment Form (Google Forms) – public viewform URL */
 const EVA_COURSE_ENROLLMENT_FORM_URL = "https://docs.google.com/forms/d/1XUtZKtciUOggybHo6zSpsrH8o5sUf4RXaXNo4CJj9Pk/viewform";
 
-/** Partners by category. Use logo placeholder paths; replace with actual images in /public/partners/ */
-const EVA_PARTNER_CATEGORIES = [
-  {
-    id: "dining",
-    title: "Upscale Restaurants",
-    partners: [
-      { name: "Osteria Antica", description: "Italian trattoria", logo: "/partners/osteria-antica.png" },
-      { name: "Kei Maki", description: "Japanese sushi bar", logo: "/partners/kei-maki.png" },
-      { name: "Wildflour Restaurant", description: "Upscale restaurant", logo: "/partners/wild-flour.png" },
-      { name: "George and Onnie's", description: "Filipino comfort food", logo: "/partners/george-onnies.png" },
-      { name: "Farmacy", description: "American diner", logo: "/partners/farmacy.png" },
-      { name: "Pizza Sisters", description: "Neapolitan pizzeria", logo: "/partners/pizza-sisters.png" },
-      { name: "Pink's", description: "Gourmet hotdogs", logo: "/partners/pinks.png" },
-    ],
-  },
-  {
-    id: "combined-row",
-    title: "",
-    singleRow: true,
-    categories: [
-      {
-        id: "resorts",
-        title: "Integrated Hotels & Resorts",
-        shortLabel: "Hotels & Resorts",
-        partners: [
-          { name: "West Side City", description: "Integrated hotel and resort", logo: "/partners/west-side-city.png" },
-        ],
-      },
-      {
-        id: "catering",
-        title: "Catering & Events",
-        shortLabel: "Catering",
-        partners: [
-          { name: "Josiah Catering", description: "Wedding and catering events", logo: "/partners/josiah-catering.png" },
-        ],
-      },
-      {
-        id: "sports-gaming",
-        title: "Sports & Gaming",
-        shortLabel: "Sports & Gaming",
-        partners: [
-          { name: "Play Padel Greenfield", description: "Indoor padel club", logo: "/partners/play-padel.png" },
-          { name: "Digiplus", description: "Philippine inland gaming operations", logo: "/partners/digiplus.png" },
-          { name: "Pink Dolphin", description: "Premium hospitality and gaming", logo: "/partners/pink-dolphin.png" },
-        ],
-      },
-    ],
-  },
-];
-
 /** Employee carousel images – add images to /public (eva-team-1.jpg, etc.) */
 const EVA_EMPLOYEE_IMAGES = [
-  { src: "/eva-team-1.jpg", alt: "EVA team member" },
-  { src: "/eva-team-2.jpg", alt: "EVA team member" },
-  { src: "/eva-team-3.jpg", alt: "EVA team member" },
-  { src: "/eva-team-4.jpg", alt: "EVA team member" },
-  { src: "/eva-team-5.jpg", alt: "EVA team member" },
-  { src: "/eva-team-6.jpg", alt: "EVA team member" },
-  { src: "/eva-team-7.jpg", alt: "EVA team member" },
-  { src: "/eva-team-8.jpg", alt: "EVA team member" },
-  { src: "/eva-team-9.jpg", alt: "EVA team member" },
-  { src: "/eva-team-10.jpg", alt: "EVA team member" },
-  { src: "/eva-team-11.jpg", alt: "EVA team member" },
+  { src: "/eva-team-1.jpg", alt: "Executive Virtual Assistant", title: "Executive Virtual Assistant", caption: "Administrative support, scheduling and business coordination." },
+  { src: "/eva-team-2.jpg", alt: "Marketing Virtual Assistant", title: "Marketing Virtual Assistant", caption: "Social media, content and digital marketing support." },
+  { src: "/eva-team-3.jpg", alt: "Finance Virtual Assistant", title: "Finance Virtual Assistant", caption: "Bookkeeping, reporting and financial administration." },
+  { src: "/eva-team-4.jpg", alt: "EVA team collaboration", title: "Team collaboration", caption: "Professionals working together across time zones." },
+  { src: "/eva-team-5.jpg", alt: "Remote-work environment", title: "Remote-ready talent", caption: "Dedicated setups for focused virtual support." },
+  { src: "/eva-team-6.jpg", alt: "EVA team member", title: "Professional lifestyle", caption: "Human, international, and ready to represent your brand." },
+  { src: "/eva-team-7.jpg", alt: "EVA team member", title: "Operations support", caption: "Day-to-day coordination that keeps businesses moving." },
+  { src: "/eva-team-10.jpg", alt: "EVA team member", title: "Client-facing support", caption: "Communication and follow-through with a 5-star standard." },
+  { src: "/eva-team-11.jpg", alt: "EVA team member", title: "Specialized assistance", caption: "Skills matched to the work, not a generic seat." },
 ];
 
 const ONE_SECOND = 1000;
@@ -88,28 +37,6 @@ const CAROUSEL_SPRING_OPTIONS = {
   type: "spring",
   mass: 3,
   damping: 50,
-};
-
-const PartnerCard = ({ partner, labelFallback }) => {
-  return (
-    <div className="eva-partner-card" title={partner.description || labelFallback}>
-      <div className="eva-partner-card-logo">
-        <img
-          src={partner.logo}
-          alt={partner.name}
-          onError={(e) => {
-            e.target.style.display = "none";
-            e.target.nextElementSibling?.classList.add("eva-partner-logo-placeholder-active");
-          }}
-        />
-        <div className="eva-partner-logo-placeholder">
-          <span>{partner.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}</span>
-        </div>
-      </div>
-      <h4 className="eva-partner-card-name">{partner.name}</h4>
-      <span className="eva-partner-card-cat">{partner.description || labelFallback}</span>
-    </div>
-  );
 };
 
 // Illustration Component for numbered images (1.png to 10.png)
@@ -133,173 +60,9 @@ const IllustrationImage = ({ imageNumber, size = 180, className = "" }) => {
   );
 };
 
-const MarqueeLane = ({ title, partners }) => {
-  const trackRef = useRef(null);
-  const firstSetRef = useRef(null);
-  const offsetRef = useRef(0);
-  const dragStartRef = useRef({ x: 0, offset: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [isSmallViewport, setIsSmallViewport] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth <= 1024 : false
-  );
-  const desktopSpeed = 0.45; // px per frame
-  const mobileTabletSpeed = 0.65; // faster on mobile/tablet
-
-  const getLoopDistance = useCallback(() => {
-    const firstSet = firstSetRef.current;
-    if (!firstSet) return 0;
-    return firstSet.scrollWidth || firstSet.getBoundingClientRect().width || 0;
-  }, []);
-
-  const normalizeOffset = useCallback((raw) => {
-    const loop = getLoopDistance();
-    if (loop <= 0) return 0;
-    return ((raw % loop) + loop) % loop;
-  }, [getLoopDistance]);
-
-  const applyOffset = useCallback((raw) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const next = normalizeOffset(raw);
-    offsetRef.current = next;
-    track.style.transform = `translate3d(-${next}px, 0, 0)`;
-  }, [normalizeOffset]);
-
-  useEffect(() => {
-    applyOffset(offsetRef.current);
-  }, [partners.length, applyOffset]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallViewport(window.innerWidth <= 1024);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    let rafId;
-    const tick = () => {
-      if (!isDragging) {
-        const currentSpeed = isSmallViewport ? mobileTabletSpeed : desktopSpeed;
-        applyOffset(offsetRef.current + currentSpeed);
-      }
-      rafId = requestAnimationFrame(tick);
-    };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [isDragging, isSmallViewport, applyOffset]);
-
-  useEffect(() => {
-    if (typeof ResizeObserver === "undefined") return;
-    const observed = firstSetRef.current;
-    if (!observed) return;
-    const ro = new ResizeObserver(() => {
-      if (isDragging) return;
-      requestAnimationFrame(() => {
-        applyOffset(offsetRef.current);
-      });
-    });
-    ro.observe(observed);
-    return () => ro.disconnect();
-  }, [isDragging, applyOffset]);
-
-  const handlePointerDown = (e) => {
-    if (!trackRef.current) return;
-    const track = trackRef.current;
-    setIsDragging(true);
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    dragStartRef.current = { x, offset: offsetRef.current };
-    track.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
-  };
-
-  const handlePointerMove = (e) => {
-    if (!isDragging) return;
-    if (e.cancelable) e.preventDefault();
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const delta = x - dragStartRef.current.x;
-    const nextOffset = dragStartRef.current.offset - delta;
-    applyOffset(nextOffset);
-  };
-
-  const handlePointerUp = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-  };
-
-  useEffect(() => {
-    if (!isDragging) return;
-    const forceRelease = () => setIsDragging(false);
-    window.addEventListener("mouseup", forceRelease);
-    window.addEventListener("touchend", forceRelease);
-    window.addEventListener("touchcancel", forceRelease);
-    return () => {
-      window.removeEventListener("mouseup", forceRelease);
-      window.removeEventListener("touchend", forceRelease);
-      window.removeEventListener("touchcancel", forceRelease);
-    };
-  }, [isDragging]);
-
-  const nudge = (dir) => {
-    applyOffset(offsetRef.current + (dir * 120));
-  };
-
-  if (!partners || partners.length === 0) return null;
-
-  return (
-    <div className="eva-partners-marquee">
-      {title ? <h3 className="eva-partners-category-heading">{title}</h3> : null}
-
-      <div className="eva-partners-marquee-nav">
-        <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-left" onClick={() => nudge(-1)} aria-label="Scroll partners left">
-          ‹
-        </button>
-        <button type="button" className="eva-partners-marquee-btn eva-partners-marquee-btn-right" onClick={() => nudge(1)} aria-label="Scroll partners right">
-          ›
-        </button>
-      </div>
-
-      <div
-        className="eva-partners-marquee-viewport"
-        onMouseDown={handlePointerDown}
-        onMouseMove={handlePointerMove}
-        onMouseUp={handlePointerUp}
-        onMouseLeave={handlePointerUp}
-        onTouchStart={handlePointerDown}
-        onTouchMove={handlePointerMove}
-        onTouchEnd={handlePointerUp}
-        onTouchCancel={handlePointerUp}
-        style={{ cursor: isDragging ? "grabbing" : "grab" }}
-      >
-        <div
-          ref={trackRef}
-          className="eva-partners-marquee-track"
-        >
-          <div ref={firstSetRef} className="eva-partners-marquee-set">
-            {partners.map((partner, idx) => (
-              <div key={`${partner.name}-a-${idx}`} className="eva-partners-marquee-item">
-                <PartnerCard partner={partner} labelFallback={partner.industry} />
-              </div>
-            ))}
-          </div>
-          <div className="eva-partners-marquee-set" aria-hidden>
-            {partners.map((partner, idx) => (
-              <div key={`${partner.name}-b-${idx}`} className="eva-partners-marquee-item">
-                <PartnerCard partner={partner} labelFallback={partner.industry} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-
 function Eva() {
+  const brooksideHome = getBrooksideUrl("/");
+  const brooksidePartners = getBrooksideUrl("/#partners");
   const vmvRef = useRef(null);
   const servicesRef = useRef(null);
   const featuresRef = useRef(null);
@@ -683,19 +446,6 @@ function Eva() {
     };
   }, []);
 
-  const allIndustryPartners = useMemo(
-    () =>
-      EVA_PARTNER_CATEGORIES.flatMap((cat) => {
-        if (cat.singleRow) {
-          return (cat.categories || []).flatMap((sub) =>
-            (sub.partners || []).map((p) => ({ ...p, industry: sub.title }))
-          );
-        }
-        return (cat.partners || []).map((p) => ({ ...p, industry: cat.title }));
-      }),
-    []
-  );
-
   const showPrevEmployee = () => {
     if (EVA_EMPLOYEE_IMAGES.length <= 1) return;
     setCarouselIndex((prev) => (prev - 1 + EVA_EMPLOYEE_IMAGES.length) % EVA_EMPLOYEE_IMAGES.length);
@@ -905,13 +655,12 @@ function Eva() {
             <div className="eva-nav-links">
               <a href="#home" onClick={closeEvaMenu}>Home</a>
               <a href="#about" onClick={closeEvaMenu}>About</a>
-              <a href="#partners" onClick={closeEvaMenu}>Partners</a>
-              <a href="#services" onClick={closeEvaMenu}>Services</a>
-              <a href="#clients" onClick={closeEvaMenu}>Clients</a>
-              <a href="#course" onClick={closeEvaMenu}>Course</a>
-              <a href="#apply" onClick={closeEvaMenu}>Apply</a>
+              <a href="#talent" onClick={closeEvaMenu}>Talent</a>
+              <a href="#how-it-works" onClick={closeEvaMenu}>How It Works</a>
+              <Link to={getEvaUrl("/the-ceo")} onClick={closeEvaMenu}>The CEO</Link>
+              <a href="#brookside-partnership" onClick={closeEvaMenu}>Brookside Partnership</a>
               <a href="#contact" onClick={closeEvaMenu}>Contact</a>
-              <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
+              <a href={brooksideHome} className="eva-nav-brookside-logo" aria-label="Meet Brookside" onClick={closeEvaMenu}>
                 <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
               </a>
             </div>
@@ -925,13 +674,12 @@ function Eva() {
               <div className="eva-nav-links eva-nav-links-overlay active" onClick={(e) => e.stopPropagation()}>
                 <a href="#home" onClick={closeEvaMenu}>Home</a>
                 <a href="#about" onClick={closeEvaMenu}>About</a>
-                <a href="#partners" onClick={closeEvaMenu}>Partners</a>
-                <a href="#services" onClick={closeEvaMenu}>Services</a>
-                <a href="#clients" onClick={closeEvaMenu}>Clients</a>
-                <a href="#course" onClick={closeEvaMenu}>Course</a>
-                <a href="#apply" onClick={closeEvaMenu}>Apply</a>
+                <a href="#talent" onClick={closeEvaMenu}>Talent</a>
+                <a href="#how-it-works" onClick={closeEvaMenu}>How It Works</a>
+                <Link to={getEvaUrl("/the-ceo")} onClick={closeEvaMenu}>The CEO</Link>
+                <a href="#brookside-partnership" onClick={closeEvaMenu}>Brookside Partnership</a>
                 <a href="#contact" onClick={closeEvaMenu}>Contact</a>
-                <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
+                <a href={brooksideHome} className="eva-nav-brookside-logo" aria-label="Meet Brookside" onClick={closeEvaMenu}>
                   <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
                 </a>
               </div>
@@ -980,7 +728,7 @@ function Eva() {
         </section>
 
                 {/* Features Section */}
-                <section className="eva-features grid-container" ref={featuresRef} data-aos="fade-in">
+                <section className="eva-features grid-container" id="how-it-works" ref={featuresRef} data-aos="fade-in">
           <div className="eva-features-inner">
           <div className="eva-feature-card grid-item">
             <div className="eva-feature-icon">
@@ -1062,23 +810,16 @@ function Eva() {
         </section>
 
         {/* Partners Section */}
-        <section className="eva-partners-section" id="partners" ref={partnersRef}>
+        <section className="eva-partners-section" id="brookside-partnership" ref={partnersRef}>
           <div className="eva-partners-container">
             <div className="eva-partners-header">
-              <h2 className="eva-partners-title">Our Partners</h2>
-              <p className="eva-partners-intro"> Trusted by leading hospitality and service-driven brands.  <br />  Scale your operations, reduce costs, and focus on growth with our proven support across dining, hospitality, and gaming. </p>
-              <div className="eva-partners-trust-bar">
-                <span className="eva-partners-trust-item">
-                  <strong>{EVA_PARTNER_CATEGORIES.reduce((n, c) => n + (c.partners?.length ?? (c.categories?.reduce((s, sub) => s + sub.partners.length, 0) ?? 0)), 0)}</strong> Trusted Partners
-                </span>
-                <span className="eva-partners-trust-divider" aria-hidden>|</span>
-                <span className="eva-partners-trust-item">
-                  <strong>5 </strong> Industries
-                </span>
-              </div>
+              <h2 className="eva-partners-title">Brookside — Our Philippine Partner</h2>
+              <p className="eva-partners-intro">
+                EVA partners with Brookside Manpower Services, one of the Philippines&apos; trusted workforce providers, to support talent sourcing, screening and workforce management.
+              </p>
+              <a href={brooksidePartners} className="eva-partners-cta-button">View Brookside&apos;s Clients →</a>
             </div>
 
-            <MarqueeLane partners={allIndustryPartners} />
             {/* CTA and Social Block */}
             <div className="eva-partners-cta-block">
               <div className="eva-partners-cta-content">
@@ -1143,6 +884,12 @@ function Eva() {
                           if (slide) slide.classList.add("eva-partners-slide-fallback");
                         }}
                       />
+                      {img.title && (
+                        <div className="eva-va-caption">
+                          <strong>{img.title}</strong>
+                          <span>{img.caption}</span>
+                        </div>
+                      )}
                     </motion.div>
                   ))}
                 </motion.div>
@@ -1176,7 +923,7 @@ function Eva() {
                 <section className="eva-ceo-section" ref={ceoRef}>
           <div className="eva-ceo-container" data-aos="fade-in">
             <div className="eva-ceo-image">
-              <img src="/eva-ceo.jpeg" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
+              <img src="/eva-ceo-marc.jpg" alt="CEO Marc Catubay" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
               <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
@@ -1187,15 +934,16 @@ function Eva() {
                 EVA takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA is here to make your work-life balance a reality.
               </p>
               <div className="eva-ceo-signature">
-                <p className="eva-signature-name">ETHEL ANN CABEZAS</p>
+                <p className="eva-signature-name">MARC CATUBAY</p>
                 <p className="eva-signature-title">CEO, EVA</p>
+                <Link to={getEvaUrl("/the-ceo")} className="eva-ceo-more">The CEO →</Link>
               </div>
             </div>
           </div>
         </section>
 
         {/* Services Overview Section */}
-        <section className="eva-services-min" id="services" ref={servicesRef}>
+        <section className="eva-services-min" id="talent" ref={servicesRef}>
           <div className="eva-services-min-container">
             <div className="eva-services-min-header">
               <h2 className="eva-services-min-title">EVA Services</h2>
@@ -1556,6 +1304,9 @@ function Eva() {
               &copy; {new Date().getFullYear()} EVA by Brookside Manpower Services. All Rights Reserved.
             </p>
             <div className="eva-footer-links">
+              <a href={brooksideHome} className="eva-footer-link">Meet Brookside</a>
+              <a href={getEvaUrl("/the-ceo")} className="eva-footer-link">The CEO</a>
+              <a href={brooksidePartners} className="eva-footer-link">View Brookside&apos;s Clients</a>
               <Link to="/privacy-policy" className="eva-footer-link">Privacy Policy</Link>
             </div>
           </div>

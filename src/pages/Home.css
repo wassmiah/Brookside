@@ -13,7 +13,7 @@
 /* Hero Section */
 .hero {
   position: relative;
-  height: 80vh; 
+  height: 80vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-apply {
+  box-shadow: 0 8px 28px rgba(247, 166, 26, 0.45);
+}
+
+.hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.55);
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hero-secondary:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.hero-secondary.dark {
+  color: #111;
+  border-color: #111;
 }
 
 .hero-logo {
@@ -90,14 +122,13 @@
 
 /* About Section */
 .about-new {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 80px 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  padding: 100px 8%;
   background-color: #000;
   color: white;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 56px;
 }
 
 .about-left {
@@ -878,4 +909,299 @@
   color: #fff;
   margin-right: 8px;
   font-size: 1.1rem;
+}
+
+.section-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f7a61a;
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.section-eyebrow.light {
+  color: #f7a61a;
+}
+
+.section-lead {
+  color: rgba(255,255,255,0.72);
+  font-size: 1.05rem;
+  margin: 0 auto 40px;
+  max-width: 560px;
+  text-align: center;
+}
+
+.section-lead.left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-lead.light {
+  color: rgba(255,255,255,0.85);
+}
+
+.about-intro p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.86);
+}
+
+.about-media {
+  display: grid;
+  gap: 20px;
+}
+
+.about-photo {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-video-frame video {
+  width: 100%;
+  border-radius: 12px;
+  background: #111;
+}
+
+.media-note {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 8px;
+}
+
+.mission-section,
+.offer-section,
+.asia-section,
+.partners-section,
+.testimonials-section {
+  background: #000;
+  color: #fff;
+  padding: 90px 8%;
+}
+
+.mission-grid,
+.offer-grid,
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.mission-card,
+.offer-card,
+.testimonial-card {
+  background: #141414;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+
+.mission-card h3,
+.offer-card h3 {
+  font-size: 1.6rem;
+  margin: 0 0 12px;
+  color: #40b4ff;
+}
+
+.mission-card p,
+.offer-card p {
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.offer-section .neon-section-title {
+  margin-bottom: 8px;
+}
+
+.offer-card-featured {
+  border-color: rgba(247, 166, 26, 0.45);
+}
+
+.text-cta {
+  display: inline-block;
+  margin-top: 18px;
+  color: #f7a61a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-cta.light {
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+.asia-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.asia-headline {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.25;
+  margin: 12px 0 20px;
+}
+
+.asia-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.78);
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+.partner-cell {
+  background: #fff;
+  border-radius: 12px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  gap: 8px;
+}
+
+.partner-cell img {
+  max-height: 56px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.partner-cell--dark {
+  background: #0b0b0b;
+}
+
+.partner-cell--dark span {
+  color: #fff;
+}
+
+.asia-logo {
+  max-width: 280px;
+  width: 100%;
+  margin: 0 auto 20px;
+  display: block;
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 12px;
+}
+
+.testimonial-logo {
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.testimonial-card blockquote {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 20px;
+  color: #fff;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.testimonial-role {
+  margin: 4px 0 0;
+  color: rgba(255,255,255,0.55);
+  font-size: 14px;
+}
+
+.locations-section {
+  background: #0a0a0a;
+  padding: 90px 0 0;
+}
+
+.locations-intro {
+  padding: 0 8% 28px;
+  text-align: center;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.location-card {
+  min-height: 360px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.location-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.78) 100%);
+}
+
+.location-card-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  color: #fff;
+}
+
+.location-card h3 {
+  font-size: 2rem;
+  margin: 0 0 8px;
+}
+
+.location-flag {
+  color: #f7a61a;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.location-detail {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+
+.final-cta-section {
+  background: #f7a61a;
+  color: #111;
+  text-align: center;
+  padding: 80px 8%;
+}
+
+.final-cta-section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 12px;
+}
+
+@media (max-width: 900px) {
+  .about-new {
+    grid-template-columns: 1fr;
+    padding: 60px 6%;
+  }
+
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-section,
+  .offer-section,
+  .asia-section,
+  .partners-section,
+  .testimonials-section {
+    padding: 64px 6%;
+  }
 }
