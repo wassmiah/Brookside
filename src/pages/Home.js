@@ -220,7 +220,7 @@ function Home() {
         <p className="section-lead offer-lead">{TALENT_LEAD}</p>
         <div className="offer-grid">
           <article className="offer-card" data-aos="fade-up">
-            <img src="/A7406576.JPG" alt="" className="offer-card-photo" width="1200" height="800" loading="lazy" />
+            <img src="/A7406576.jpg" alt="" className="offer-card-photo" width="1200" height="800" loading="lazy" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
               <h3>General Manpower</h3>
@@ -241,7 +241,7 @@ function Home() {
             </div>
           </article>
           <article className="offer-card" data-aos="fade-up" data-aos-delay="160">
-            <img src="/A7405688.JPG" alt="" className="offer-card-photo" width="1200" height="800" loading="lazy" />
+            <img src="/A7405688.jpg" alt="" className="offer-card-photo" width="1200" height="800" loading="lazy" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
               <h3>Specialized Talent</h3>

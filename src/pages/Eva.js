@@ -19,15 +19,15 @@ const EVA_COURSE_ENROLLMENT_FORM_URL = "https://docs.google.com/forms/d/1XUtZKtc
 
 /** Employee carousel images – add images to /public (eva-team-1.jpg, etc.) */
 const EVA_EMPLOYEE_IMAGES = [
-  { src: "/A7406397.JPG", alt: "Executive Virtual Assistant", title: "Executive Virtual Assistant", caption: "Administrative support, scheduling and business coordination." },
-  { src: "/A7407707.JPG", alt: "Marketing Virtual Assistant", title: "Marketing Virtual Assistant", caption: "Social media, content and digital marketing support." },
-  { src: "/A7405901.JPG", alt: "Finance Virtual Assistant", title: "Finance Virtual Assistant", caption: "Bookkeeping, reporting and financial administration." },
-  { src: "/A7405770.JPG", alt: "EVA team collaboration", title: "Team collaboration", caption: "Professionals working together across time zones." },
-  { src: "/A7406858.JPG", alt: "Remote-work environment", title: "Remote-ready talent", caption: "Dedicated setups for focused virtual support." },
-  { src: "/A7407768.JPG", alt: "EVA team member", title: "Professional lifestyle", caption: "Human, international, and ready to represent your brand." },
-  { src: "/A7406756.JPG", alt: "EVA team member", title: "Operations support", caption: "Day-to-day coordination that keeps businesses moving." },
+  { src: "/A7406397.jpg", alt: "Executive Virtual Assistant", title: "Executive Virtual Assistant", caption: "Administrative support, scheduling and business coordination." },
+  { src: "/A7407707.jpg", alt: "Marketing Virtual Assistant", title: "Marketing Virtual Assistant", caption: "Social media, content and digital marketing support." },
+  { src: "/A7405901.jpg", alt: "Finance Virtual Assistant", title: "Finance Virtual Assistant", caption: "Bookkeeping, reporting and financial administration." },
+  { src: "/A7405770.jpg", alt: "EVA team collaboration", title: "Team collaboration", caption: "Professionals working together across time zones." },
+  { src: "/A7406858.jpg", alt: "Remote-work environment", title: "Remote-ready talent", caption: "Dedicated setups for focused virtual support." },
+  { src: "/A7407768.jpg", alt: "EVA team member", title: "Professional lifestyle", caption: "Human, international, and ready to represent your brand." },
+  { src: "/A7406756.jpg", alt: "EVA team member", title: "Operations support", caption: "Day-to-day coordination that keeps businesses moving." },
   { src: "/A7404803.JPG", alt: "EVA team member", title: "Client-facing support", caption: "Communication and follow-through with a 5-star standard." },
-  { src: "/A7407815.JPG", alt: "EVA team member", title: "Specialized assistance", caption: "Skills matched to the work, not a generic seat." },
+  { src: "/A7407815.jpg", alt: "EVA team member", title: "Specialized assistance", caption: "Skills matched to the work, not a generic seat." },
 ];
 
 const ONE_SECOND = 1000;
@@ -740,7 +740,7 @@ function Eva() {
         <section className="eva-ceo-section" ref={ceoRef} id="eva-ceo">
           <div className="eva-ceo-container" data-aos="fade-in">
             <div className="eva-ceo-image">
-              <img src="/A7406164.JPG" alt="CEO Marc Catubay" className="eva-ceo-photo" />
+              <img src="/A7406164.jpg" alt="CEO Marc Catubay" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
               <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
