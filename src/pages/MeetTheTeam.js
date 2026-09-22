@@ -12,36 +12,18 @@ function MeetTheTeam() {
   }, []);
 
   const teamMembers = [
-    { 
-      name: "Keith Biñas", 
-      position: "HR Officer", 
-      image: "/team-images/hr-officer.png", 
-      linkedin: "https://www.linkedin.com/in/clarisse-keith-biñas-174b1421a/" 
-    },
-    { 
-      name: "Lady Joy Torres", 
-      position: "HR Generalist", 
-      image: "/team-images/hr-generalist.png", 
-      linkedin: "https://www.linkedin.com/in/lady-joy-torres-116847233/" 
-    },
-    { 
-      name: "Rhice Domingo", 
-      position: "General Coordinator", 
-      image: "/team-images/general-coordinator.png", 
-      linkedin: "https://www.linkedin.com/in/rhice-domingo-9bb103185" 
-    },
-    { 
-      name: "Jofil Duhaylongsod", 
-      position: "Payroll Associate", 
-      image: "/team-images/payroll-associate.png", 
-      linkedin: "https://www.linkedin.com/in/jofil-duhaylongsod-561538232/" 
-    },
-    { 
-      name: "Janet Cornejo", 
-      position: "Payroll Manager", 
-      image: "/team-images/payroll-manager.png", 
-      linkedin: "https://www.linkedin.com/in/janet-cornejo-65739176/" 
-    },
+    { name: "Timothy Justin Zeta", role: "Chief Executive Officer", image: "/team-images/placeholders/chief-executive-officer.jpg" },
+    { name: "Clarisse Keith Biñas", role: "HR Asst. Manager", image: "/team-images/placeholders/hr-asst-manager.jpg" },
+    { name: "Lady Joy Torres", role: "Recruitment Officer", image: "/team-images/placeholders/recruitment-officer.jpg" },
+    { name: "Jofil Duhaylongsod", role: "Payroll Officer", image: "/team-images/placeholders/payroll-officer.jpg" },
+    { name: "Jeffrey Carmen", role: "General Coordinator", image: "/team-images/placeholders/general-coordinator.jpg" },
+    { name: "Adrianna Tandoc", role: "Jr. Coordinator", image: "/team-images/placeholders/jr-coordinator-1.jpg" },
+    { name: "Karen Claire Bacsarza", role: "Jr. Coordinator", image: "/team-images/placeholders/jr-coordinator-2.jpg" },
+    { name: "Nerissa Mae Rosario", role: "Payroll Associate", image: "/team-images/placeholders/payroll-associate-1.jpg" },
+    { name: "Ferdinand Gomez", role: "HR Generalist", image: "/team-images/placeholders/hr-generalist.jpg" },
+    { name: "Princess Wassmiah Al Salihi", role: "Payroll Associate", image: "/team-images/placeholders/payroll-associate-2.jpg" },
+    { name: "Rona Mariz Cortez", role: "Payroll Associate", image: "/team-images/placeholders/payroll-associate-3.jpg" },
+    { name: "Janet Cornejo", role: "Internal Auditor", image: "/team-images/placeholders/internal-auditor.jpg" },
   ];
 
   const teamStructuredData = {
@@ -55,8 +37,7 @@ function MeetTheTeam() {
       "employee": teamMembers.map((member) => ({
         "@type": "Person",
         "name": member.name,
-        "jobTitle": member.position,
-        ...(member.linkedin !== "#" && { "sameAs": member.linkedin })
+        "jobTitle": member.role
       }))
     }
   };
@@ -96,85 +77,76 @@ function MeetTheTeam() {
       />
       
       <section className="story-section section-partition" id="story" aria-label="Brookside's Story">
-        <div className="story-layout">
-          <div className="story-wrap">
-            <h2 className="story-kicker">Our Story</h2>
-            <h1 className="story-title">Built around people who fit.</h1>
-            <p>
-              Brookside began with a clear idea: businesses deserve talent that represents them well, and professionals deserve work that matches their ability. What started as a hospitality-focused workforce partner has grown into a modern talent company, serving operations, specialized roles, and online staffing through EVA.
-            </p>
-            <p>
-              The company was created to raise the standard of matching. Not faster filling of seats, but the right people, prepared and proud to show up for the brand they join.
-            </p>
-          </div>
-          <div className="story-visuals">
-            <img src="/team-images/ceo.png" alt="Timothy Justin Zeta, Brookside leadership" />
-            <img src="/manila.jpg" alt="Brookside operations in Manila" />
+        <div className="story-wrap">
+          <p className="story-kicker">Our Story</p>
+          <h1 className="story-title">Built around people who fit.</h1>
+          <p className="story-lead">
+            Brookside began with a clear idea: businesses deserve talent that represents them well, and professionals deserve work that matches their ability. What started as a hospitality-focused workforce partner has grown into a modern talent company, serving operations, specialized roles, and online staffing through EVA.
+          </p>
+        </div>
+
+        <div className="story-gallery">
+          <figure className="story-figure story-figure-wide">
+            <img src="/manila.jpg" alt="Brookside operations in Manila" width="5298" height="3124" />
+          </figure>
+          <figure className="story-figure story-figure-baguio">
+            <img src="/baguio.jpg" alt="Brookside team in Baguio" width="4928" height="3264" />
+          </figure>
+          <figure className="story-figure story-figure-cebu">
+            <img src="/cebu.jpg" alt="Brookside team in Cebu" width="3968" height="2976" />
+          </figure>
+        </div>
+
+        <div className="story-message">
+          <img
+            src="/brookside-72.jpg"
+            alt="Timothy Justin Zeta, Chief Executive Officer"
+            className="story-ceo-photo"
+            width="3375"
+            height="4219"
+          />
+          <div className="story-message-copy">
+            <p className="story-kicker">Message from the CEO</p>
+            <blockquote>
+              We believe in excellence, grit, and consistency. Brookside does more than fill a seat. It builds futures, and guides people toward work that meets a 5-star standard.
+            </blockquote>
+            <p className="story-ceo-name">Timothy Justin Zeta</p>
+            <p className="story-ceo-role">Chief Executive Officer</p>
           </div>
         </div>
-        <div className="story-principles" id="mission-vision">
-          <article>
-            <h2>Vision</h2>
-            <p>To be the hub partners trust for 5-star professionals, where the standard of the person matters as much as the role.</p>
-          </article>
-          <article>
-            <h2>Mission</h2>
-            <p>Train professionals with industry practitioners, then place them in careers they can be proud to carry.</p>
-          </article>
-          <article>
-            <h2>How we hold the standard</h2>
-            <p>Source for the brand, screen before the hire, and stay with the placement so the fit lasts after day one.</p>
-          </article>
-        </div>
+
+        <p className="story-follow">
+          The company was created to raise the standard of matching. The work is the right people, prepared and proud to show up for the brand they join.
+        </p>
       </section>
 
-      <section className="founders-section section-partition" id="founders" aria-label="Our Founders">
-        <h2 className="team-title">Our Founders</h2>
-        <div className="founders-grid">
-          <article className="founder-card">
-            <img src="/team-images/ceo.png" alt="Timothy Justin Zeta" />
-            <h3>Timothy Justin Zeta</h3>
-            <p className="founder-role">Leadership</p>
-            <p>We believe in excellence, grit, and consistency. Brookside not only bridges opportunities, but also builds futures — guiding people toward work that meets a 5-star standard.</p>
-          </article>
-        </div>
-      </section>
-
-      <section className="story-video-section" id="story-video" aria-label="Company video">
+      <section className="story-video-section" id="story-video" aria-label="The people behind Brookside">
         <h2 className="team-title">The people behind Brookside</h2>
-        <video controls playsInline preload="metadata" poster="/about-bms1.png" className="story-video">
-          <source src="/brookside-about.mp4" type="video/mp4" />
-        </video>
-        <p className="story-note">Founder/company video placeholder.</p>
+        <img
+          src="/brookside-286.jpg"
+          alt="The Brookside team"
+          className="story-video"
+          width="2048"
+          height="1365"
+        />
       </section>
 
       <section className="team-section section-partition" id="team" aria-label="Our Team">
-        <h2 className="team-title">
-          MEET OUR TEAM <span className="dot" style={{ background: "#f5a623" }}></span>{" "}
-          <span className="dot" style={{ background: "#2d9cdb" }}></span>
-        </h2>
+        <p className="story-kicker team-kicker">The Team</p>
+        <h2 className="team-title">Meet the Team</h2>
         <div className="team-container">
-          {teamMembers.map((member, index) => (
-            <article className="team-card" key={index}>
-              <img 
-                src={member.image} 
-                alt={`${member.name} - ${member.position} at Brookside Manpower Services`} 
+          {teamMembers.map((member) => (
+            <article className="team-card" key={member.name}>
+              <img
+                src={member.image}
+                alt={`${member.name}, ${member.role} at Brookside Manpower Services`}
                 className="team-image"
-                width="300"
-                height="300"
+                width="800"
+                height="1000"
                 loading="lazy"
               />
               <h3>{member.name}</h3>
-              <p>{member.position}</p>
-              <a 
-                href={member.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="linkedin-button"
-                aria-label={`Connect with ${member.name} on LinkedIn`}
-              >
-                Connect with us on LinkedIn
-              </a>
+              <p>{member.role}</p>
             </article>
           ))}
         </div>

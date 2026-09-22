@@ -200,23 +200,6 @@ function Home() {
               </div>
             </article>
           </div>
-          <div className="commitment-right" data-aos="fade-left">
-            <div className="commitment-ceo-copy">
-              <p className="commitment-kicker">Message from the CEO</p>
-              <p>
-                We believe in excellence, grit, and consistency. Brookside does more than fill a seat. It builds futures, and guides people toward work that meets a 5-star standard.
-              </p>
-              <p className="commitment-ceo-sign">Timothy Justin Zeta <span>Chief Executive Officer</span></p>
-            </div>
-            <img
-              src="/ceo.png"
-              alt="Timothy Justin Zeta, Chief Executive Officer"
-              className="commitment-ceo-img"
-              width="400"
-              height="500"
-              loading="lazy"
-            />
-          </div>
         </div>
       </section>
 

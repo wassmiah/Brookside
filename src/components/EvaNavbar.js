@@ -59,12 +59,11 @@ function EvaNavbar() {
   const navLinks = (
     <>
       <SectionLink href={sectionHref("home")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Home</SectionLink>
-      <SectionLink href={sectionHref("about")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>About</SectionLink>
-      <SectionLink href={sectionHref("talent")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Talent</SectionLink>
       <SectionLink href={sectionHref("how-it-works")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>How It Works</SectionLink>
-      <Link to={getEvaUrl("/the-ceo")} onClick={closeEvaMenu}>The CEO</Link>
+      <SectionLink href={sectionHref("about")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>About</SectionLink>
       <SectionLink href={sectionHref("brookside-partnership")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Brookside Partnership</SectionLink>
-      <SectionLink href={sectionHref("contact")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Contact</SectionLink>
+      <SectionLink href={sectionHref("talent")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Talent</SectionLink>
+      <Link to={getEvaUrl("/inquiry")} onClick={closeEvaMenu}>Contact</Link>
       <a href={brooksideHome} className="eva-nav-brookside-logo" aria-label="Meet Brookside" onClick={closeEvaMenu}>
         <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
       </a>

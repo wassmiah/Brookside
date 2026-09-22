@@ -26,7 +26,7 @@ const EVA_EMPLOYEE_IMAGES = [
   { src: "/A7406858.JPG", alt: "Remote-work environment", title: "Remote-ready talent", caption: "Dedicated setups for focused virtual support." },
   { src: "/A7407768.JPG", alt: "EVA team member", title: "Professional lifestyle", caption: "Human, international, and ready to represent your brand." },
   { src: "/A7406756.JPG", alt: "EVA team member", title: "Operations support", caption: "Day-to-day coordination that keeps businesses moving." },
-  { src: "/A7405901.JPG", alt: "EVA team member", title: "Client-facing support", caption: "Communication and follow-through with a 5-star standard." },
+  { src: "/A7404803.JPG", alt: "EVA team member", title: "Client-facing support", caption: "Communication and follow-through with a 5-star standard." },
   { src: "/A7407815.JPG", alt: "EVA team member", title: "Specialized assistance", caption: "Skills matched to the work, not a generic seat." },
 ];
 
@@ -753,7 +753,6 @@ function Eva() {
               <div className="eva-ceo-signature">
                 <p className="eva-signature-name">MARC CATUBAY</p>
                 <p className="eva-signature-title">CEO, EVA</p>
-                <Link to={getEvaUrl("/the-ceo")} className="eva-ceo-more">The CEO →</Link>
               </div>
             </div>
           </div>
@@ -1220,7 +1219,6 @@ function Eva() {
                 Meet
                 <img src="/logo-white.png" alt="Brookside" />
               </a>
-              <a href={getEvaUrl("/the-ceo")} className="eva-footer-link">The CEO</a>
               <a href={brooksidePartners} className="eva-footer-link eva-footer-brand" aria-label="View Brookside partners">
                 View
                 <img src="/logo-white.png" alt="Brookside" />

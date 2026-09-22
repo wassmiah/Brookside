@@ -86,9 +86,9 @@ function Navbar() {
 
   const aboutLinks = (
     <>
+      <a href="/#mission" onClick={closeMenu}>Mission &amp; Vision</a>
       <a href="/meet-the-team#story" onClick={closeMenu}>Our Story</a>
       <a href="/meet-the-team#team" onClick={closeMenu}>Meet the Team</a>
-      <a href="/#mission" onClick={closeMenu}>Mission &amp; Vision</a>
     </>
   );
 
@@ -125,6 +125,7 @@ function Navbar() {
             <div className="nav-dropdown-menu">{aboutLinks}</div>
           </div>
           <a href="/#offer" onClick={closeMenu}>What We Offer</a>
+          <a href="/#asiametrics" onClick={closeMenu}>Why Us</a>
           <a href="/#partners" onClick={closeMenu}>Our Partners</a>
           <a href="/#locations" onClick={closeMenu}>Locations</a>
           <a href={evaHref} className="eva-nav-link" onClick={closeMenu} aria-label="Explore EVA">
@@ -147,6 +148,7 @@ function Navbar() {
             <p className="overlay-group-label">About</p>
             {aboutLinks}
             <a href="/#offer" onClick={closeMenu}>What We Offer</a>
+            <a href="/#asiametrics" onClick={closeMenu}>Why Us</a>
             <a href="/#partners" onClick={closeMenu}>Our Partners</a>
             <a href="/#locations" onClick={closeMenu}>Locations</a>
             <a href={evaHref} className="eva-nav-link" onClick={closeMenu} aria-label="Explore EVA">

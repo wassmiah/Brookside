@@ -20,7 +20,6 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFound from './NotFound';
 import Eva from './pages/Eva';
 import EvaInquiry from './pages/EvaInquiry';
-import TheCEO from './pages/TheCEO';
 import EvaNavbar from './components/EvaNavbar';
 import { NewsList, NewsArticle } from './pages/News';
 import { captureAttribution } from './utils/attribution';
@@ -49,13 +48,13 @@ function AppContent() {
         navigate('/', { replace: true });
       } else if (location.pathname === '/eva/inquiry') {
         navigate('/inquiry', { replace: true });
-      } else if (location.pathname === '/eva/the-ceo') {
-        navigate('/the-ceo', { replace: true });
+      } else if (location.pathname === '/the-ceo' || location.pathname === '/eva/the-ceo') {
+        navigate('/', { replace: true });
       }
       return;
     }
-    if (location.pathname === '/the-ceo') {
-      navigate('/eva/the-ceo', { replace: true });
+    if (location.pathname === '/the-ceo' || location.pathname === '/eva/the-ceo') {
+      navigate('/eva', { replace: true });
     }
   }, [location.pathname, navigate, onEvaSubdomain]);
 
@@ -140,8 +139,6 @@ function AppContent() {
             <Route path="/admin-dashboard" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
             <Route path="/learn-here" element={<ProtectedRoute><LearnHere /></ProtectedRoute>} />
             <Route path="/eva" element={<Eva />} />
-            <Route path="/eva/the-ceo" element={<TheCEO />} />
-            <Route path="/the-ceo" element={<TheCEO />} />
             <Route path="/eva/inquiry" element={<EvaInquiry />} />
             <Route path="/inquiry" element={<EvaInquiry />} />
             <Route path="*" element={<NotFound />} />

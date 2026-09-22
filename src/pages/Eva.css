@@ -5665,13 +5665,13 @@ body.eva-overlay-open {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   border-radius: 999px;
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(192, 132, 252, 0.9);
   text-decoration: none;
   box-shadow:
-    0 0 4px #fff,
-    0 0 8px #ffae00,
-    0 0 16px #ffae00,
-    0 0 32px #ffae00;
+    0 0 4px rgba(255, 255, 255, 0.7),
+    0 0 10px #c084fc,
+    0 0 18px #9d4edd,
+    0 0 36px #7c3aed;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, color 0.3s ease;
 }
 
@@ -5683,10 +5683,10 @@ body.eva-overlay-open {
   color: #fff;
   transform: translateY(-2px) scale(1.03);
   box-shadow:
-    0 0 6px #fff,
-    0 0 12px #ffae00,
-    0 0 24px #ffae00,
-    0 0 48px #ffae00;
+    0 0 6px rgba(255, 255, 255, 0.75),
+    0 0 14px #d8b4fe,
+    0 0 28px #9d4edd,
+    0 0 52px #7c3aed;
 }
 
 .eva-cta-button-secondary:active,
@@ -5725,6 +5725,37 @@ body.eva-overlay-open {
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
+}
+
+.eva-cta-button-primary,
+.eva-cta-primary,
+.eva-cta-single,
+.eva-apply-button,
+.eva-hire-button,
+.eva-course-cta-button,
+.eva-partners-view-btn {
+  box-shadow:
+    0 0 10px rgba(192, 132, 252, 0.45),
+    0 0 22px rgba(157, 78, 221, 0.4);
+}
+
+.eva-cta-button-primary:hover,
+.eva-cta-button-primary:focus,
+.eva-cta-primary:hover,
+.eva-cta-primary:focus,
+.eva-cta-single:hover,
+.eva-cta-single:focus,
+.eva-apply-button:hover,
+.eva-apply-button:focus,
+.eva-hire-button:hover,
+.eva-hire-button:focus,
+.eva-course-cta-button:hover,
+.eva-course-cta-button:focus,
+.eva-partners-view-btn:hover,
+.eva-partners-view-btn:focus {
+  box-shadow:
+    0 0 14px rgba(216, 180, 254, 0.7),
+    0 0 32px rgba(124, 58, 237, 0.55);
 }
 
 
