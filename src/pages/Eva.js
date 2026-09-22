@@ -5,7 +5,7 @@ import "./Eva.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SEO from "../components/SEO";
-import { getBrooksideUrl, getEvaUrl } from "../utils/siteLinks";
+import { getBrooksideUrl } from "../utils/siteLinks";
 import SocialLinks from "../components/SocialLinks";
 
 const blockMediaMenu = (e) => {
