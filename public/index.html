@@ -131,15 +131,13 @@
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61560528418956",
       "https://www.linkedin.com/company/brookside-manpower-services",
+      "https://www.instagram.com/brookside_manpower/",
       "https://www.tiktok.com/@brooksidemps"
     ]
   }
   </script>
 
-  <!-- ==================================================
-       GOOGLE ANALYTICS / GOOGLE CONSENT MODE
-       ================================================== -->
-
+  <!-- Consent defaults run before GTM. GA4 and Meta are loaded from GTM, not here. -->
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -147,11 +145,6 @@
       window.dataLayer.push(arguments);
     };
 
-    /*
-     * Consent is denied before Google Analytics loads.
-     * ConsentManager.jsx will update this after the
-     * visitor makes a choice.
-     */
     window.gtag("consent", "default", {
       analytics_storage: "denied",
       ad_storage: "denied",
@@ -159,76 +152,45 @@
       ad_personalization: "denied",
       wait_for_update: 500
     });
-  </script>
 
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-VKVV35VZJJ">
-  </script>
-
-  <script>
-    window.gtag("js", new Date());
-
-    window.gtag("config", "G-VKVV35VZJJ", {
-      anonymize_ip: true,
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false
-    });
-  </script>
-
-  <!-- ==================================================
-       META PIXEL
-       ================================================== -->
-
-  <script>
-    !(function (f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-
-      n = f.fbq = function () {
-        n.callMethod
-          ? n.callMethod.apply(n, arguments)
-          : n.queue.push(arguments);
-      };
-
-      if (!f._fbq) {
-        f._fbq = n;
+    try {
+      var savedConsent = localStorage.getItem("brookside_cookie_consent");
+      if (savedConsent === "accepted" || savedConsent === "rejected") {
+        var consentGranted = savedConsent === "accepted";
+        window.gtag("consent", "update", {
+          analytics_storage: consentGranted ? "granted" : "denied",
+          ad_storage: consentGranted ? "granted" : "denied",
+          ad_user_data: consentGranted ? "granted" : "denied",
+          ad_personalization: consentGranted ? "granted" : "denied"
+        });
       }
-
-      n.push = n;
-      n.loaded = true;
-      n.version = "2.0";
-      n.queue = [];
-
-      t = b.createElement(e);
-      t.async = true;
-      t.src = v;
-
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(
-      window,
-      document,
-      "script",
-      "https://connect.facebook.net/en_US/fbevents.js"
-    );
-
-    fbq("init", "1934733070529878");
-    fbq("track", "PageView");
+    } catch (e) {}
   </script>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      if (!i || i.indexOf("%") !== -1) return;
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l !== "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "%REACT_APP_GTM_ID%");
+  </script>
+  <!-- End Google Tag Manager -->
 
 </head>
 
 <body>
 
-  <noscript>
-    <img
-      height="1"
-      width="1"
-      style="display:none"
-      src="https://www.facebook.com/tr?id=1934733070529878&ev=PageView&noscript=1"
-      alt=""
-    />
-  </noscript>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%REACT_APP_GTM_ID%"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <div id="root"></div>
 

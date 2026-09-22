@@ -73,6 +73,7 @@ const SEO = ({
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61560528418956",
       "https://www.linkedin.com/company/brookside-manpower-services",
+      "https://www.instagram.com/brookside_manpower/",
       "https://www.tiktok.com/@brooksidemps"
     ]
   };

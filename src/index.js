@@ -6,6 +6,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { captureAttribution } from "./utils/attribution";
+
+captureAttribution();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

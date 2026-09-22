@@ -96,15 +96,35 @@ function MeetTheTeam() {
       />
       
       <section className="story-section section-partition" id="story" aria-label="Brookside's Story">
-        <div className="story-wrap">
-          <h2 className="story-kicker">Brookside&apos;s Story</h2>
-          <h1 className="story-title">Built around people who fit.</h1>
-          <p>
-            Brookside began with a clear idea: businesses deserve talent that represents them well, and professionals deserve work that matches their ability. What started as a hospitality-focused workforce partner has grown into a modern talent company — serving operations, specialized roles, and online staffing through EVA.
-          </p>
-          <p>
-            The company was created to raise the standard of matching. Not faster filling of seats, but the right people, prepared and proud to show up for the brand they join.
-          </p>
+        <div className="story-layout">
+          <div className="story-wrap">
+            <h2 className="story-kicker">Our Story</h2>
+            <h1 className="story-title">Built around people who fit.</h1>
+            <p>
+              Brookside began with a clear idea: businesses deserve talent that represents them well, and professionals deserve work that matches their ability. What started as a hospitality-focused workforce partner has grown into a modern talent company, serving operations, specialized roles, and online staffing through EVA.
+            </p>
+            <p>
+              The company was created to raise the standard of matching. Not faster filling of seats, but the right people, prepared and proud to show up for the brand they join.
+            </p>
+          </div>
+          <div className="story-visuals">
+            <img src="/team-images/ceo.png" alt="Timothy Justin Zeta, Brookside leadership" />
+            <img src="/manila.jpg" alt="Brookside operations in Manila" />
+          </div>
+        </div>
+        <div className="story-principles" id="mission-vision">
+          <article>
+            <h2>Vision</h2>
+            <p>To be the hub partners trust for 5-star professionals, where the standard of the person matters as much as the role.</p>
+          </article>
+          <article>
+            <h2>Mission</h2>
+            <p>Train professionals with industry practitioners, then place them in careers they can be proud to carry.</p>
+          </article>
+          <article>
+            <h2>How we hold the standard</h2>
+            <p>Source for the brand, screen before the hire, and stay with the placement so the fit lasts after day one.</p>
+          </article>
         </div>
       </section>
 

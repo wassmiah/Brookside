@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import { getEvaUrl } from "../utils/siteLinks";
+import SocialLinks from "./SocialLinks";
 
 function Footer() {
   const evaHref = getEvaUrl();
@@ -35,16 +36,12 @@ function Footer() {
                 <img src="/eva-nav-logo.png" alt="EVA" />
               </a>
               <span> · </span>
-              <a href="/#partners" className="footer-email-link">Partners</a>
+              <a href="/#partners" className="footer-email-link">Our Partners</a>
             </div>
           </div>
           <div className="footer-contact-block">
             <div className="footer-contact-label">Social</div>
-            <div className="footer-social-links">
-              <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noreferrer" className="footer-social-icon"><i className="fab fa-facebook-f"></i></a>
-              <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noreferrer" className="footer-social-icon"><i className="fab fa-linkedin-in"></i></a>
-              <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noreferrer" className="footer-social-icon"><i className="fab fa-tiktok"></i></a>
-            </div>
+            <SocialLinks className="footer-social-links" linkClassName="footer-social-icon" />
           </div>
           <div className="footer-contact-block">
             <Link to="/employee-access" className="employee-access-link">

@@ -398,7 +398,7 @@
 }
 
 .neon-section-title {
-  font-size: 64px;
+  font-size: clamp(2.2rem, 6vw, 4rem);
   font-weight: 700;
   color: #40b4ff;
   line-height: 1.15;
@@ -954,11 +954,48 @@
 }
 
 .commitment-desc {
-  font-size: 22px;
+  font-size: 1.125rem;
   color: #fff;
   font-family: 'Questrial', 'Poppins', Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.7;
   margin-left: 4px;
+}
+
+.commitment-ceo-copy {
+  max-width: 360px;
+  margin: 0 24px 16px 0;
+  color: #fff;
+  text-align: left;
+}
+
+.commitment-kicker {
+  margin: 0 0 8px;
+  color: #f7a61a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.commitment-ceo-copy p {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.commitment-ceo-sign {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.commitment-ceo-sign span {
+  display: block;
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .commitment-block:last-child .commitment-desc div {
@@ -1034,6 +1071,14 @@
   }
   .commitment-title {
     font-size: 32px;
+  }
+  .commitment-ceo-copy {
+    max-width: none;
+    margin: 12px 6vw 0;
+    text-align: center;
+  }
+  .commitment-right {
+    align-items: center;
   }
   .commitment-desc {
     font-size: 16px;
@@ -1471,6 +1516,11 @@ a.brand-cta.brand-cta-eva:hover {
   z-index: 1;
 }
 
+.asia-title,
+.asia-title-us {
+  text-transform: none;
+}
+
 .asia-title-us {
   display: inline-block;
 }
@@ -1530,25 +1580,29 @@ a.brand-cta.brand-cta-eva:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 18px;
+  width: 180px;
+  height: 96px;
+  padding: 12px 16px;
+  box-sizing: border-box;
 }
 
 .asia-logo-card img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 68px;
   height: auto;
   object-fit: contain;
 }
 
 .asia-card-brookside {
-  width: min(260px, 58%);
+  width: 200px;
   box-shadow: 0 0 0 2px rgba(247, 143, 63, 0.35), 0 0 28px rgba(247, 143, 63, 0.45);
   z-index: 2;
 }
 
 .asia-card-asea,
 .asia-card-hr {
-  width: 100%;
-  min-height: 92px;
+  width: 180px;
   box-shadow: 0 0 0 2px rgba(64, 180, 255, 0.45), 0 0 28px rgba(64, 180, 255, 0.4);
 }
 
@@ -1793,10 +1847,22 @@ a.brand-cta.brand-cta-eva:hover {
 
 .location-card {
   grid-column: span 2;
-  min-height: 360px;
+  min-height: 380px;
+  position: relative;
+  overflow: hidden;
+}
+
+.location-card-photo {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  position: relative;
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.location-card:hover .location-card-photo {
+  transform: scale(1.08);
 }
 
 .location-card:nth-child(4) {
@@ -1811,7 +1877,7 @@ a.brand-cta.brand-cta-eva:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.78) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.08) 20%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.82) 100%);
 }
 
 .location-card-inner {
@@ -1831,13 +1897,21 @@ a.brand-cta.brand-cta-eva:hover {
   margin-top: 20px;
 }
 
+.location-card h3,
+.location-card-inner p {
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 8px rgba(0, 0, 0, 0.9),
+    0 0 18px rgba(0, 0, 0, 0.85);
+}
+
 .location-card h3 {
   font-size: 2rem;
   margin: 0 0 8px;
 }
 
 .location-detail {
-  color: rgba(255,255,255,0.7);
+  color: #fff;
   font-size: 14px;
 }
 
@@ -1890,6 +1964,16 @@ a.brand-cta.brand-cta-eva:hover {
   color: #111;
   background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #40b4ff, #f78f3f);
   box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  transform: translateY(-2px);
+}
+
+.final-cta-section .apply-now-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+.contact-us-btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 @media (max-width: 900px) {
@@ -1914,7 +1998,7 @@ a.brand-cta.brand-cta-eva:hover {
   }
 
   .location-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .location-card,
@@ -1964,5 +2048,20 @@ a.brand-cta.brand-cta-eva:hover {
 
   .offer-card {
     min-height: 380px;
+  }
+}
+
+@media (max-width: 640px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .final-cta-section .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .final-cta-section .apply-now-btn {
+    width: 100%;
   }
 }

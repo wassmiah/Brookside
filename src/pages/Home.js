@@ -8,21 +8,6 @@ import { getEvaUrl } from "../utils/siteLinks";
 import { PARTNERS } from "../data/partners";
 import PartnerMarquee from "../components/PartnerMarquee";
 
-const TESTIMONIALS = [
-  {
-    quote: "Brookside sends people who already understand the standard we hold. The fit is cultural, not just operational.",
-    name: "Partner operations lead",
-    role: "Hospitality group",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80",
-  },
-  {
-    quote: "What stood out was how carefully they matched talent to the role. We spent less time retraining and more time performing.",
-    name: "People manager",
-    role: "Integrated resort partner",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80",
-  },
-];
-
 const LOCATIONS = [
   {
     city: "Baguio",
@@ -177,39 +162,9 @@ function Home() {
             </p>
           </div>
           <div className="about-overlay-bottom">
-            <Link to="/contact#quote" className="contact-us-btn" aria-label="Get quoted">
-              <span>Get Quoted</span>
+            <Link to="/contact#quote" className="contact-us-btn" aria-label="Partner with us">
+              <span>Partner With Us</span>
             </Link>
-            <div className="about-follow">
-            <span>Follow us:</span>
-            <a
-              href="https://www.facebook.com/profile.php?id=61560528418956"
-              target="_blank"
-              rel="noreferrer"
-              className="about-social facebook"
-              aria-label="Brookside on Facebook"
-            >
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/brookside-manpower-services"
-              target="_blank"
-              rel="noreferrer"
-              className="about-social linkedin"
-              aria-label="Brookside on LinkedIn"
-            >
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a
-              href="https://www.tiktok.com/@brooksidemps"
-              target="_blank"
-              rel="noreferrer"
-              className="about-social tiktok"
-              aria-label="Brookside on TikTok"
-            >
-              <i className="fab fa-tiktok"></i>
-            </a>
-          </div>
           </div>
         </div>
       </section>
@@ -226,13 +181,13 @@ function Home() {
         <div className="commitment-overlay"></div>
         <div className="commitment-content">
           <div className="commitment-left">
-            <article className="commitment-block" data-aos="fade-up" data-aos-delay="0">
+            <article className="commitment-block" id="vision" data-aos="fade-up" data-aos-delay="0">
               <h2 className="commitment-title blue">Vision</h2>
-              <div className="commitment-desc">To be a hub for 5–Star premium professionals.</div>
+              <div className="commitment-desc">To be the hub partners trust for 5-star professionals, where the standard of the person matters as much as the role.</div>
             </article>
             <article className="commitment-block" data-aos="fade-up" data-aos-delay="100">
               <h2 className="commitment-title blue">Mission</h2>
-              <div className="commitment-desc">For all professionals to be trained by industry practitioners &amp; be given fulfilling careers.</div>
+              <div className="commitment-desc">Train professionals with industry practitioners, then place them in careers they can be proud to carry.</div>
             </article>
             <article className="commitment-block" data-aos="fade-up" data-aos-delay="200">
               <h2 className="commitment-title blue">Values</h2>
@@ -246,9 +201,16 @@ function Home() {
             </article>
           </div>
           <div className="commitment-right" data-aos="fade-left">
+            <div className="commitment-ceo-copy">
+              <p className="commitment-kicker">Message from the CEO</p>
+              <p>
+                We believe in excellence, grit, and consistency. Brookside does more than fill a seat. It builds futures, and guides people toward work that meets a 5-star standard.
+              </p>
+              <p className="commitment-ceo-sign">Timothy Justin Zeta <span>Chief Executive Officer</span></p>
+            </div>
             <img
               src="/ceo.png"
-              alt="Timothy Justin Zeta - Chief Executive Officer"
+              alt="Timothy Justin Zeta, Chief Executive Officer"
               className="commitment-ceo-img"
               width="400"
               height="500"
@@ -305,7 +267,7 @@ function Home() {
         <p className="section-lead asia-lead">Science-backed screening, matched to Brookside talent standards before anyone is deployed.</p>
         <div className="asia-layout">
           <div className="asia-pyramid">
-            <p className="asia-cap">Quality Obsessed</p>
+            <p className="asia-cap">Driven by Quality</p>
             <div className="asia-logo-card asia-card-brookside">
               <img src="/logo.png" alt="Brookside" />
             </div>
@@ -360,34 +322,12 @@ function Home() {
         </div>
       </section>
 
-      <section className="partners-section section-partition" id="partners" aria-label="Partners">
+      <section className="partners-section section-partition" id="partners" aria-label="Our Partners">
         <h2 className="neon-section-title partners-title">
-          <span className="orange">Part</span><span className="blue">ners</span>
+          <span className="orange">Our</span> <span className="blue">Partners</span>
         </h2>
         <p className="section-lead">Trusted Talent Behind Leading Brands.</p>
         <PartnerMarquee partners={PARTNERS} />
-      </section>
-
-      <section className="testimonials-section section-partition" id="testimonials" aria-label="Testimonials">
-        <h2 className="neon-section-title">
-          <span className="orange">Testi</span><span className="blue">monials</span>
-        </h2>
-        <p className="section-lead">What partners say about Brookside talent.</p>
-        <div className="testimonial-grid">
-          {TESTIMONIALS.map((item) => (
-            <article className="testimonial-card" key={item.name} data-aos="fade-up">
-              <img src={item.image} alt="" className="testimonial-photo" width="132" height="132" loading="lazy" />
-              <blockquote>
-                <span className="testimonial-quote-mark" aria-hidden="true">“</span>
-                {item.quote}
-                <span className="testimonial-quote-mark-end" aria-hidden="true">”</span>
-              </blockquote>
-              <p className="testimonial-name">{item.name}</p>
-              <p className="testimonial-role">{item.role}</p>
-            </article>
-          ))}
-        </div>
-        <p className="media-note">Final client names, photos, and quotes will replace these placeholders once approved.</p>
       </section>
 
       <section className="locations-section" id="locations" aria-label="Locations">
@@ -399,11 +339,12 @@ function Home() {
         </div>
         <div className="location-grid">
           {LOCATIONS.map((place) => (
-            <article
-              className="location-card"
-              key={place.city}
-              style={{ backgroundImage: `url(${place.image})` }}
-            >
+            <article className="location-card" key={place.city}>
+              <div
+                className="location-card-photo"
+                style={{ backgroundImage: `url(${place.image})` }}
+                aria-hidden="true"
+              ></div>
               <div className="location-card-inner">
                 <h3>{place.city}</h3>
                 {place.poweredByEva && (
@@ -431,8 +372,8 @@ function Home() {
         <p>Apply if you are talent. Partner with us if you need people who fit.</p>
         <div className="hero-actions">
           <Link to="/career" className="apply-now-btn hero-apply">Apply Now</Link>
-          <Link to="/contact#quote" className="apply-now-btn hero-apply" aria-label="Get quoted">
-            <span>Get Quoted</span>
+          <Link to="/contact#quote" className="apply-now-btn hero-apply" aria-label="Partner with us">
+            <span>Partner With Us</span>
           </Link>
         </div>
       </section>

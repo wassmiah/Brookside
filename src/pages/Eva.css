@@ -5638,5 +5638,94 @@ body.eva-overlay-open {
   }
 }
 
+.eva-partners-carousel-slide {
+  align-items: center;
+  text-align: center;
+}
+
+.eva-va-caption,
+.eva-va-caption strong,
+.eva-va-caption span {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eva-cta-button-secondary,
+.eva-partners-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 14px 40px;
+  min-height: 52px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  box-shadow:
+    0 0 4px #fff,
+    0 0 8px #ffae00,
+    0 0 16px #ffae00,
+    0 0 32px #ffae00;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.eva-cta-button-secondary:hover,
+.eva-cta-button-secondary:focus,
+.eva-partners-cta-button:hover,
+.eva-partners-cta-button:focus {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 0 6px #fff,
+    0 0 12px #ffae00,
+    0 0 24px #ffae00,
+    0 0 48px #ffae00;
+}
+
+.eva-cta-button-secondary:active,
+.eva-partners-cta-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.eva-feature-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+}
+
+.eva-feature-image {
+  width: 120px;
+  height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+.eva-category-box {
+  width: 240px;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.eva-partners-social-links,
+.eva-course-social-icons,
+.eva-social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
 
 

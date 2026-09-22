@@ -49,6 +49,7 @@
 }
 .footer-social-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 18px;
   margin-top: 8px;
   text-align: left;

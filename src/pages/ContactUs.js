@@ -5,6 +5,8 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import emailjs from '@emailjs/browser';
 import { useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
+import AttributionFields from '../components/AttributionFields';
+import { getAttribution, pushClientLead } from '../utils/attribution';
 
 function ContactUs() {
   const formRef = useRef();
@@ -61,10 +63,13 @@ function ContactUs() {
       // Store in Firestore as backup
       await addDoc(collection(db, 'contact_submissions'), {
         ...formData,
+        ...getAttribution(),
+        lead_type: 'client',
         timestamp: serverTimestamp(),
         status: 'new'
       });
-      
+
+      pushClientLead();
       setMessage('Thank you for your message! We will get back to you soon.');
       setFormData({
         name: '',
@@ -230,6 +235,7 @@ function ContactUs() {
               </div>
             )}
             <form ref={formRef} onSubmit={handleSubmit} aria-label="Contact form">
+              <AttributionFields leadType="client" />
               <div className="form-group">
                 <label htmlFor="name" className="visually-hidden">Your Name</label>
                 <input

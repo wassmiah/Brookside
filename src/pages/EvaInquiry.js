@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Eva.css";
 import "./EvaInquiry.css";
 import SEO from "../components/SEO";
+import SocialLinks from "../components/SocialLinks";
+import { pushClientLead } from "../utils/attribution";
 
 const EVA_INQUIRY_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScDMfeClW80ATe_sY2S6nELA83C57kdWCyPYsW4zV5gsl12iA/viewform";
 const EVA_INQUIRY_FORM_EMBED_URL = `${EVA_INQUIRY_FORM_URL}?embedded=true&hl=en`;
 
 function EvaInquiry() {
+  const formFrameRef = useRef(null);
+  const formLoadCount = useRef(0);
+  const formFocused = useRef(false);
+  const leadTracked = useRef(false);
+
+  useEffect(() => {
+    const markFocused = () => {
+      if (document.activeElement === formFrameRef.current) {
+        formFocused.current = true;
+      }
+    };
+    window.addEventListener("blur", markFocused);
+    return () => window.removeEventListener("blur", markFocused);
+  }, []);
+
+  const handleInquiryFormLoad = () => {
+    formLoadCount.current += 1;
+    if (!formFocused.current || formLoadCount.current < 2 || leadTracked.current) return;
+    leadTracked.current = true;
+    pushClientLead();
+  };
+
   return (
     <>
       <SEO
@@ -122,12 +146,14 @@ function EvaInquiry() {
                 <div className="eva-google-form-shell">
                   <div className="eva-google-form-container">
                     <iframe
+                      ref={formFrameRef}
                       className="eva-google-form"
                       src={EVA_INQUIRY_FORM_EMBED_URL}
                       title="EVA Client Inquiry Form"
                       width="640"
                       height="1885"
                       loading="lazy"
+                      onLoad={handleInquiryFormLoad}
                     >
                       Loading…
                     </iframe>
@@ -228,17 +254,7 @@ function EvaInquiry() {
 
               <div className="eva-inquiry-social-section">
                 <h3 className="eva-inquiry-social-title">Follow Us</h3>
-                <div className="eva-inquiry-social-icons">
-                  <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon" aria-label="Brookside Manpower Facebook">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon" aria-label="Brookside Manpower LinkedIn">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                  <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-inquiry-social-icon" aria-label="Brookside Manpower TikTok">
-                    <i className="fab fa-tiktok"></i>
-                  </a>
-                </div>
+                <SocialLinks className="eva-inquiry-social-icons" linkClassName="eva-inquiry-social-icon" />
               </div>
             </div>
           </div>

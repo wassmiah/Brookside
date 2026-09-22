@@ -125,7 +125,7 @@ function Navbar() {
             <div className="nav-dropdown-menu">{aboutLinks}</div>
           </div>
           <a href="/#offer" onClick={closeMenu}>What We Offer</a>
-          <a href="/#partners" onClick={closeMenu}>Partners</a>
+          <a href="/#partners" onClick={closeMenu}>Our Partners</a>
           <a href="/#locations" onClick={closeMenu}>Locations</a>
           <a href={evaHref} className="eva-nav-link" onClick={closeMenu} aria-label="Explore EVA">
             <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
@@ -147,7 +147,7 @@ function Navbar() {
             <p className="overlay-group-label">About</p>
             {aboutLinks}
             <a href="/#offer" onClick={closeMenu}>What We Offer</a>
-            <a href="/#partners" onClick={closeMenu}>Partners</a>
+            <a href="/#partners" onClick={closeMenu}>Our Partners</a>
             <a href="/#locations" onClick={closeMenu}>Locations</a>
             <a href={evaHref} className="eva-nav-link" onClick={closeMenu} aria-label="Explore EVA">
               <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />

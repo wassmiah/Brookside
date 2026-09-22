@@ -6,6 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SEO from "../components/SEO";
 import { getBrooksideUrl, getEvaUrl } from "../utils/siteLinks";
+import SocialLinks from "../components/SocialLinks";
 
 const blockMediaMenu = (e) => {
   e.preventDefault();
@@ -736,6 +737,28 @@ function Eva() {
           </div>
         </section>
 
+        <section className="eva-ceo-section" ref={ceoRef} id="eva-ceo">
+          <div className="eva-ceo-container" data-aos="fade-in">
+            <div className="eva-ceo-image">
+              <img src="/A7406164.JPG" alt="CEO Marc Catubay" className="eva-ceo-photo" />
+            </div>
+            <div className="eva-ceo-content">
+              <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
+              <p className="eva-ceo-text">
+                In today&apos;s fast-paced world, businesses need agile, reliable, and efficient support. That&apos;s where EVA comes in. Whether it&apos;s administrative tasks, customer service, marketing, or executive assistance, EVA&apos;s team of dedicated professionals is here to ensure that you can focus on what truly matters: growing your business.
+              </p>
+              <p className="eva-ceo-text">
+                EVA takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA is here to make your work-life balance a reality.
+              </p>
+              <div className="eva-ceo-signature">
+                <p className="eva-signature-name">MARC CATUBAY</p>
+                <p className="eva-signature-title">CEO, EVA</p>
+                <Link to={getEvaUrl("/the-ceo")} className="eva-ceo-more">The CEO →</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Partners Section */}
         <section className="eva-partners-section" id="brookside-partnership" ref={partnersRef}>
           <div className="eva-partners-container">
@@ -746,7 +769,7 @@ function Eva() {
               </p>
 
             <div className="eva-partners-group">
-              <p className="eva-partners-group-label">Partners</p>
+              <p className="eva-partners-group-label">Our Partners</p>
               <div className="eva-partners-group-frame">
                 <img
                   src="/partners-group.png"
@@ -772,20 +795,7 @@ function Eva() {
               </div>
               <div className="eva-partners-social-block">
                 <h4 className="eva-partners-social-title">Follow Us on our Socials!</h4>
-                <div className="eva-partners-social-links">
-                  <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-partners-social-link" aria-label="EVA on Facebook">
-                    <i className="fab fa-facebook-f"></i>
-                    <span>Facebook</span>
-                  </a>
-                  <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-partners-social-link" aria-label="EVA on LinkedIn">
-                    <i className="fab fa-linkedin-in"></i>
-                    <span>LinkedIn</span>
-                  </a>
-                  <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-partners-social-link" aria-label="EVA on TikTok">
-                    <i className="fab fa-tiktok"></i>
-                    <span>TikTok</span>
-                  </a>
-                </div>
+                <SocialLinks className="eva-partners-social-links" linkClassName="eva-partners-social-link" showLabels />
               </div>
             </div>
             <br />
@@ -859,29 +869,6 @@ function Eva() {
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-                {/* CEO Message Section */}
-                <section className="eva-ceo-section" ref={ceoRef}>
-          <div className="eva-ceo-container" data-aos="fade-in">
-            <div className="eva-ceo-image">
-              <img src="/A7406164.JPG" alt="CEO Marc Catubay" className="eva-ceo-photo" />
-            </div>
-            <div className="eva-ceo-content">
-              <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
-              <p className="eva-ceo-text">
-                In today's fast-paced world, businesses need agile, reliable, and efficient support. That's where EVA comes in. Whether it's administrative tasks, customer service, marketing, or executive assistance, EVA's team of dedicated professionals is here to ensure that you can focus on what truly matters: growing your business.
-              </p>
-              <p className="eva-ceo-text">
-                EVA takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA is here to make your work-life balance a reality.
-              </p>
-              <div className="eva-ceo-signature">
-                <p className="eva-signature-name">MARC CATUBAY</p>
-                <p className="eva-signature-title">CEO, EVA</p>
-                <Link to={getEvaUrl("/the-ceo")} className="eva-ceo-more">The CEO →</Link>
               </div>
             </div>
           </div>
@@ -1131,17 +1118,7 @@ function Eva() {
             </a>
             <div className="eva-course-social">
               <span className="eva-course-social-label">Follow Brookside Manpower:</span>
-              <div className="eva-course-social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-course-social-icon" aria-label="Brookside Manpower Facebook">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-course-social-icon" aria-label="Brookside Manpower LinkedIn">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-course-social-icon" aria-label="Brookside Manpower TikTok">
-                  <i className="fab fa-tiktok"></i>
-                </a>
-              </div>
+              <SocialLinks className="eva-course-social-icons" linkClassName="eva-course-social-icon" />
             </div>
           </div>
         </section>
@@ -1226,17 +1203,7 @@ function Eva() {
               </div>
               <div className="eva-contact-item">
                 <h3 className="eva-contact-label">Social</h3>
-                <div className="eva-social-icons">
-                  <a href="https://www.facebook.com/profile.php?id=61560528418956" target="_blank" rel="noopener noreferrer" className="eva-social-icon" aria-label="Brookside Manpower Facebook">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/company/brookside-manpower-services" target="_blank" rel="noopener noreferrer" className="eva-social-icon" aria-label="Brookside Manpower LinkedIn">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                  <a href="https://www.tiktok.com/@brooksidemps" target="_blank" rel="noopener noreferrer" className="eva-social-icon" aria-label="Brookside Manpower TikTok">
-                    <i className="fab fa-tiktok"></i>
-                  </a>
-                </div>
+                <SocialLinks className="eva-social-icons" linkClassName="eva-social-icon" />
               </div>
             </div>
           </div>
@@ -1257,7 +1224,7 @@ function Eva() {
               <a href={brooksidePartners} className="eva-footer-link eva-footer-brand" aria-label="View Brookside partners">
                 View
                 <img src="/logo-white.png" alt="Brookside" />
-                Partners
+                Our Partners
               </a>
               <Link to="/privacy-policy" className="eva-footer-link">Privacy Policy</Link>
             </div>

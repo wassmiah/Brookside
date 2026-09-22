@@ -22,6 +22,8 @@ import Eva from './pages/Eva';
 import EvaInquiry from './pages/EvaInquiry';
 import TheCEO from './pages/TheCEO';
 import EvaNavbar from './components/EvaNavbar';
+import { NewsList, NewsArticle } from './pages/News';
+import { captureAttribution } from './utils/attribution';
 import './App.css';
 
 const isEvaSubdomain = () =>
@@ -56,6 +58,10 @@ function AppContent() {
       navigate('/eva/the-ceo', { replace: true });
     }
   }, [location.pathname, navigate, onEvaSubdomain]);
+
+  useEffect(() => {
+    captureAttribution(location.search);
+  }, [location.pathname, location.search]);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -108,6 +114,7 @@ function AppContent() {
             "sameAs": [
               "https://www.facebook.com/profile.php?id=61560528418956",
               "https://www.linkedin.com/company/brookside-manpower-services",
+              "https://www.instagram.com/brookside_manpower/",
               "https://www.tiktok.com/@brooksidemps"
             ]
           })}
@@ -123,6 +130,8 @@ function AppContent() {
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/meet-the-team" element={<MeetTheTeam />} />
+            <Route path="/news" element={<NewsList />} />
+            <Route path="/news/:slug" element={<NewsArticle />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/employee-access" element={<EmployeeAccess />} />

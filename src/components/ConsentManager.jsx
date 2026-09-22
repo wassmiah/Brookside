@@ -20,23 +20,26 @@ const ConsentManager = () => {
     if (typeof window.fbq === "function") {
       window.fbq("consent", granted ? "grant" : "revoke");
     }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "cookie_consent_update",
+      analytics_storage: granted ? "granted" : "denied",
+      ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied"
+    });
   }, []);
 
   useEffect(() => {
     const savedConsent = localStorage.getItem(STORAGE_KEY);
 
-    if (savedConsent === "accepted") {
-      applyConsent("accepted");
-      return;
-    }
-
-    if (savedConsent === "rejected") {
-      applyConsent("rejected");
+    if (savedConsent === "accepted" || savedConsent === "rejected") {
       return;
     }
 
     setShowBanner(true);
-  }, [applyConsent]);
+  }, []);
 
   const acceptCookies = () => {
     localStorage.setItem(STORAGE_KEY, "accepted");
