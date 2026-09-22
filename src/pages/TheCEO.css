@@ -1,0 +1,74 @@
+.ceo-portrait {
+  background: #0b0b0b;
+  display: flex;
+  justify-content: center;
+  padding: 120px 8% 24px;
+}
+
+.ceo-portrait img {
+  width: min(100%, 420px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.ceo-block {
+  padding: 56px 12%;
+  background: #111;
+  color: #fff;
+}
+
+.ceo-block.alt {
+  background: #181818;
+}
+
+.ceo-block h2 {
+  font-size: 1.8rem;
+  margin: 0 0 16px;
+  color: #c084fc;
+}
+
+.ceo-placeholder {
+  max-width: 720px;
+  min-height: 140px;
+  padding: 28px 24px;
+  border: 1px dashed rgba(192, 132, 252, 0.45);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ceo-placeholder-media {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ceo-tba {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ec4899;
+  margin: 0 0 8px;
+}
+
+.ceo-placeholder p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+}
+
+.ceo-placeholder .ceo-tba + p {
+  margin-top: 4px;
+}
+
+@media (max-width: 800px) {
+  .ceo-portrait,
+  .ceo-block {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+}

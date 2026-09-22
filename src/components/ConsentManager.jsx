@@ -1,42 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const STORAGE_KEY = "brookside_cookie_consent";
 
 const ConsentManager = () => {
   const [showBanner, setShowBanner] = useState(false);
 
-  const updateGoogleConsent = (granted) => {
-    if (typeof window.gtag !== "function") {
-      console.warn("Google Analytics gtag is not available.");
-      return;
-    }
-
-    window.gtag("consent", "update", {
-      analytics_storage: granted ? "granted" : "denied",
-      ad_storage: granted ? "granted" : "denied",
-      ad_user_data: granted ? "granted" : "denied",
-      ad_personalization: granted ? "granted" : "denied"
-    });
-  };
-
-  const updateMetaConsent = (granted) => {
-    if (typeof window.fbq !== "function") {
-      return;
-    }
-
-    if (granted) {
-      window.fbq("consent", "grant");
-    } else {
-      window.fbq("consent", "revoke");
-    }
-  };
-
-  const applyConsent = (choice) => {
+  const applyConsent = useCallback((choice) => {
     const granted = choice === "accepted";
 
-    updateGoogleConsent(granted);
-    updateMetaConsent(granted);
-  };
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        analytics_storage: granted ? "granted" : "denied",
+        ad_storage: granted ? "granted" : "denied",
+        ad_user_data: granted ? "granted" : "denied",
+        ad_personalization: granted ? "granted" : "denied"
+      });
+    }
+
+    if (typeof window.fbq === "function") {
+      window.fbq("consent", granted ? "grant" : "revoke");
+    }
+  }, []);
 
   useEffect(() => {
     const savedConsent = localStorage.getItem(STORAGE_KEY);
@@ -52,7 +36,7 @@ const ConsentManager = () => {
     }
 
     setShowBanner(true);
-  }, []);
+  }, [applyConsent]);
 
   const acceptCookies = () => {
     localStorage.setItem(STORAGE_KEY, "accepted");

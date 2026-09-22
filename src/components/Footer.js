@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
+import { getEvaUrl } from "../utils/siteLinks";
 
 function Footer() {
+  const evaHref = getEvaUrl();
+
   return (
     <footer className="footer">
       <div className="footer-contact-container">
@@ -19,9 +22,20 @@ function Footer() {
           <div className="footer-contact-block">
             <div className="footer-contact-label">Email</div>
             <div>
-              <a href={`"mailto:inquire@brooksidemanpower.com"'}`} className="footer-email-link">
+              <a href="mailto:inquire@brooksidemanpower.com" className="footer-email-link">
                 {['inquire', '@', 'brooksidemanpower.com'].join('')}
               </a>
+            </div>
+          </div>
+          <div className="footer-contact-block">
+            <div className="footer-contact-label">Explore</div>
+            <div>
+              <a href={evaHref} className="footer-brand-cta" aria-label="Explore EVA">
+                Explore
+                <img src="/eva-nav-logo.png" alt="EVA" />
+              </a>
+              <span> · </span>
+              <a href="/#partners" className="footer-email-link">Partners</a>
             </div>
           </div>
           <div className="footer-contact-block">
@@ -48,4 +62,4 @@ function Footer() {
   );
 }
 
-export default Footer; 
+export default Footer;

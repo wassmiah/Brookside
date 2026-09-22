@@ -2356,7 +2356,9 @@ body.eva-overlay-open {
 /* Partners Section - Professional, Large-scale, Captivating */
 .eva-partners-section {
   padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 64px) clamp(80px, 12vw, 140px);
-  background: linear-gradient(180deg, #08080a 0%, #0f0f14 25%, #12121a 50%, #0d0d12 75%, #08080a 100%);
+  background:
+    radial-gradient(circle at 50% 46%, rgba(109, 40, 217, 0.28) 0%, transparent 42%),
+    linear-gradient(180deg, #08080a 0%, #12081f 30%, #0c0618 70%, #08080a 100%);
   position: relative;
   overflow: hidden;
   overflow-x: clip;
@@ -2375,11 +2377,16 @@ body.eva-overlay-open {
 .eva-partners-section::after {
   content: '';
   position: absolute;
-  top: -30%;
-  left: -20%;
-  width: 140%;
-  height: 80%;
-  background: radial-gradient(ellipse at 40% 20%, rgba(157, 78, 221, 0.12) 0%, transparent 55%);
+  top: 8%;
+  left: 50%;
+  width: min(920px, 92vw);
+  height: min(920px, 92vw);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2px rgba(157, 78, 221, 0.18),
+    0 0 0 70px rgba(124, 58, 237, 0.06),
+    0 0 120px 20px rgba(157, 78, 221, 0.16);
   pointer-events: none;
 }
 
@@ -2412,8 +2419,100 @@ body.eva-overlay-open {
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   color: #9ca3af;
   line-height: 1.65;
-  margin: 0 auto 24px;
-  max-width: 620px;
+  margin: 0 auto 28px;
+  max-width: 680px;
+}
+
+.eva-partners-brookside-mark {
+  display: block;
+  height: 88px;
+  width: auto;
+  margin: 8px auto 12px;
+  object-fit: contain;
+}
+
+.eva-partners-group {
+  text-align: center;
+  margin: 0 auto 56px;
+  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eva-partners-group-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.eva-partners-group-label img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  letter-spacing: 0;
+}
+
+.eva-partners-group-label::before,
+.eva-partners-group-label::after {
+  content: "";
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,0.28);
+}
+
+.eva-partners-group-frame {
+  background: #fff;
+  border-radius: 24px;
+  padding: clamp(16px, 3vw, 36px);
+  margin-bottom: 28px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(157, 78, 221, 0.18),
+    0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.eva-partners-view-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #9d4edd, #ec4899);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(157, 78, 221, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.eva-partners-view-btn img {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+}
+
+.eva-partners-view-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(236, 72, 153, 0.4);
+  color: #fff;
+}
+
+.eva-partners-group-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .eva-partners-trust-bar {
@@ -3025,7 +3124,7 @@ body.eva-overlay-open {
   width: 100vw;
   max-width: 100vw;
   border-radius: 0;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 
 .eva-partners-carousel-track {
@@ -3040,21 +3139,58 @@ body.eva-overlay-open {
 .eva-partners-carousel-slide {
   min-width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  padding: 10px 0;
+  padding: 10px 16px 8px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.eva-partners-carousel-frame {
+  height: clamp(280px, 48vw, 520px);
+  width: min(100%, 920px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 16px;
+}
+
+.eva-va-caption {
+  width: min(100%, 720px);
+  margin-top: 16px;
+  margin-bottom: 4px;
+  text-align: center;
+  color: #fff;
+}
+
+.eva-va-caption strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.eva-va-caption span {
+  display: block;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.7);
 }
 
 .eva-partners-carousel-img {
-  width: 100%;
-  height: clamp(360px, 62vw, 620px);
-  object-fit: cover;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
 .eva-partners-carousel-nav {
   position: absolute;
-  top: 50%;
+  top: calc(10px + clamp(280px, 48vw, 520px) / 2);
   transform: translateY(-50%);
   z-index: 3;
   width: 44px;
@@ -3107,15 +3243,16 @@ body.eva-overlay-open {
 }
 
 .eva-partners-carousel-dots {
-  position: absolute;
-  left: 50%;
-  bottom: 26px;
-  transform: translateX(-50%);
+  position: relative;
+  left: auto;
+  bottom: auto;
+  transform: none;
   z-index: 3;
   display: flex;
   gap: 8px;
   align-items: center;
   justify-content: center;
+  margin: 12px auto 8px;
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.35);
@@ -3311,6 +3448,18 @@ body.eva-overlay-open {
 .eva-partners-cta-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(157, 78, 221, 0.4);
+}
+
+.eva-partners-cta-with-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eva-partners-cta-with-logo img {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
 }
 
 .eva-partners-social-block {
@@ -3625,6 +3774,14 @@ body.eva-overlay-open {
 .eva-signature-title {
   font-size: 1.1rem;
   color: #9d4edd;
+}
+
+.eva-ceo-more {
+  display: inline-block;
+  margin-top: 16px;
+  color: #ec4899;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* Why Choose EVA Section */
@@ -5432,6 +5589,18 @@ body.eva-overlay-open {
 
 .eva-footer-link:hover {
   color: #9d4edd;
+}
+
+.eva-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eva-footer-brand img {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Mobile Footer */

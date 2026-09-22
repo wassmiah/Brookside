@@ -1,5 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
-import { createPortal } from "react-dom";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Eva.css";
 import "./EvaInquiry.css";
@@ -10,34 +9,6 @@ const EVA_INQUIRY_FORM_URL =
 const EVA_INQUIRY_FORM_EMBED_URL = `${EVA_INQUIRY_FORM_URL}?embedded=true&hl=en`;
 
 function EvaInquiry() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const evaMenuToggleRef = useRef(null);
-  const closeEvaMenu = useCallback(() => setMenuOpen(false), []);
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add("eva-overlay-open");
-      requestAnimationFrame(() => {
-        const firstLink = document.querySelector(".eva-nav-links a, .eva-nav-links .eva-nav-brookside-logo");
-        firstLink?.focus?.();
-      });
-    } else {
-      document.body.classList.remove("eva-overlay-open");
-      evaMenuToggleRef.current?.focus();
-    }
-    return () => document.body.classList.remove("eva-overlay-open");
-  }, [menuOpen]);
-
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") closeEvaMenu();
-    };
-    if (menuOpen) {
-      document.addEventListener("keydown", handleEscape);
-      return () => document.removeEventListener("keydown", handleEscape);
-    }
-  }, [menuOpen, closeEvaMenu]);
-
   return (
     <>
       <SEO
@@ -133,48 +104,6 @@ function EvaInquiry() {
       />
 
       <div className="eva-inquiry-page">
-        <nav className="eva-nav">
-          <div className="eva-nav-container">
-            <Link to={typeof window !== "undefined" && window.location.hostname === "eva.brooksidemps.com" ? "/" : "/eva"}>
-              <img src="/eva-nav-logo.png" alt="EVA Brookside - Executive Virtual Assistant Philippines" className="eva-logo-small" />
-            </Link>
-            <div className="eva-nav-links">
-              <Link to="/eva#home" onClick={closeEvaMenu}>Home</Link>
-              <Link to="/eva#about" onClick={closeEvaMenu}>About</Link>
-              <Link to="/eva#partners" onClick={closeEvaMenu}>Partners</Link>
-              <Link to="/eva#services" onClick={closeEvaMenu}>Services</Link>
-              <Link to="/eva#clients" onClick={closeEvaMenu}>Clients</Link>
-              <Link to="/eva#course" onClick={closeEvaMenu}>Course</Link>
-              <Link to="/eva#apply" onClick={closeEvaMenu}>Apply</Link>
-              <Link to="/eva/inquiry" onClick={closeEvaMenu}>Contact</Link>
-              <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
-                <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-              </a>
-            </div>
-            <button ref={evaMenuToggleRef} type="button" className="eva-nav-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
-              <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
-            </button>
-          </div>
-          {menuOpen && createPortal(
-            <div className="eva-nav-overlay eva-nav-overlay-open" onClick={closeEvaMenu} aria-hidden="false" role="dialog" aria-modal="true" aria-label="Menu">
-              <div className="eva-nav-links eva-nav-links-overlay active" onClick={(e) => e.stopPropagation()}>
-                <Link to="/eva#home" onClick={closeEvaMenu}>Home</Link>
-                <Link to="/eva#about" onClick={closeEvaMenu}>About</Link>
-                <Link to="/eva#partners" onClick={closeEvaMenu}>Partners</Link>
-                <Link to="/eva#services" onClick={closeEvaMenu}>Services</Link>
-                <Link to="/eva#clients" onClick={closeEvaMenu}>Clients</Link>
-                <Link to="/eva#course" onClick={closeEvaMenu}>Course</Link>
-                <Link to="/eva#apply" onClick={closeEvaMenu}>Apply</Link>
-                <Link to="/eva/inquiry" onClick={closeEvaMenu}>Contact</Link>
-                <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
-                  <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
-                </a>
-              </div>
-            </div>,
-            document.body
-          )}
-        </nav>
-
         <section className="eva-inquiry-main section-partition">
           <div className="eva-inquiry-container">
             <div className="eva-inquiry-intro">

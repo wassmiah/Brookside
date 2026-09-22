@@ -26,6 +26,13 @@ function ContactUs() {
     setError('');
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (location.hash === "#quote") {
+      const quoteSection = document.getElementById("quote");
+      quoteSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.hash]);
+
   const handleCloseMessage = () => setMessage('');
 
   const handleChange = (e) => {
@@ -201,7 +208,7 @@ function ContactUs() {
             </div>
           </section>
 
-          <section className="contact-form section-partition" aria-label="Contact form">
+          <section className="contact-form section-partition" id="quote" aria-label="Get a quote">
             <h2>Get a Quote</h2>
             {message && (
               <div className="success-message" role="alert">
