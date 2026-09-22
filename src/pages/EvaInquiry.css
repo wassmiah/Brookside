@@ -1,426 +1,231 @@
-/* EVA Inquiry Page Styles */
+/* EVA Inquiry Page */
 .eva-inquiry-page {
   min-height: 100vh;
-  background: #000;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(157, 78, 221, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(64, 180, 255, 0.08) 0%, transparent 50%),
+    #000;
   color: #fff;
   font-family: 'Questrial', sans-serif;
   overflow-x: hidden;
 }
 
-/* Navigation */
-.eva-inquiry-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(157, 78, 221, 0.2);
-  padding: 20px 0;
+.eva-inquiry-kicker {
+  margin: 0 0 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #40b4ff;
+  text-shadow: 0 0 18px rgba(64, 180, 255, 0.45);
 }
 
-.eva-inquiry-nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.eva-inquiry-kicker-left {
+  margin-bottom: 12px;
 }
 
-.eva-inquiry-nav-logo-link {
-  display: flex;
-  align-items: center;
-  line-height: 0;
-  text-decoration: none;
-}
-
-.eva-inquiry-nav-logo-img {
-  width: 160px;
-  height: auto;
-  max-height: 52px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-  transition: filter 0.3s ease;
-}
-
-.eva-inquiry-nav-logo-link:hover .eva-inquiry-nav-logo-img {
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
-}
-
-.eva-inquiry-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.eva-inquiry-brookside-logo {
-  display: inline-flex;
-  align-items: center;
-  line-height: 0;
-}
-
-.eva-inquiry-brookside-img {
-  width: 90px;
-  height: auto;
-  max-height: 32px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
-  transition: filter 0.3s ease;
-}
-
-.eva-inquiry-brookside-logo:hover .eva-inquiry-brookside-img {
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
-}
-
-.eva-inquiry-back-link {
-  color: #9d4edd;
-  text-decoration: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s;
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(157, 78, 221, 0.3);
-}
-
-.eva-inquiry-back-link:hover {
-  background: rgba(157, 78, 221, 0.1);
-  border-color: rgba(157, 78, 221, 0.5);
-  transform: translateX(-4px);
-}
-
-/* Hero Section */
-.eva-inquiry-hero {
-  padding: 100px 40px 80px;
-  background: linear-gradient(135deg, #1a0033 0%, #4a0080 50%, #000000 100%);
+.eva-inquiry-intro {
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  margin-bottom: 40px;
 }
 
-.eva-inquiry-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.eva-inquiry-hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.eva-inquiry-hero-logo-wrap {
-  margin-bottom: 28px;
-}
-
-.eva-inquiry-hero-logo {
-  width: 220px;
+.eva-inquiry-intro-logo {
+  width: 148px;
   height: auto;
   max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.35));
+  margin: 0;
+  filter: drop-shadow(0 0 18px rgba(157, 78, 221, 0.45));
 }
 
-.eva-inquiry-hero-title {
-  font-size: 4.5rem;
-  font-weight: 900;
-  margin-bottom: 24px;
-  background: linear-gradient(135deg, #fff 0%, #9d4edd 50%, #40b4ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
-}
-
-.eva-inquiry-hero-subtitle {
-  font-size: 1.5rem;
-  color: #ccc;
-  line-height: 1.6;
-}
-
-/* Main Content */
 .eva-inquiry-main {
-  padding: 80px 40px;
-  background: #000;
+  padding: 128px 40px 80px;
 }
 
 .eva-inquiry-container {
-  max-width: 1400px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
 .eva-inquiry-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 60px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.75fr);
+  gap: 28px;
   align-items: start;
 }
 
-/* Form Section */
-.eva-inquiry-form-section {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(157, 78, 221, 0.2);
-  border-radius: 24px;
-  padding: 50px 40px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+.eva-inquiry-form-section,
+.eva-inquiry-benefits-card,
+.eva-inquiry-contact-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(18, 10, 28, 0.92) 0%, rgba(8, 8, 12, 0.96) 100%);
+  border: 1px solid rgba(157, 78, 221, 0.28);
+  border-radius: 20px;
+  padding: 36px 32px 28px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.eva-inquiry-form-section::before,
+.eva-inquiry-benefits-card::before,
+.eva-inquiry-contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(64, 180, 255, 0.7), rgba(157, 78, 221, 0.7), transparent);
 }
 
 .eva-inquiry-form-header {
-  margin-bottom: 40px;
+  margin-bottom: 22px;
 }
 
-.eva-inquiry-form-title {
-  font-size: 2.5rem;
+.eva-inquiry-form-title,
+.eva-inquiry-benefits-title,
+.eva-inquiry-contact-title {
+  font-size: 1.85rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 12px;
+  margin: 0 0 10px;
+  letter-spacing: 0.02em;
 }
 
-.eva-inquiry-form-subtitle {
-  font-size: 1.1rem;
-  color: #999;
-  line-height: 1.6;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-.eva-inquiry-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.eva-inquiry-form-group {
-  margin-bottom: 0;
-}
-
-.eva-inquiry-form-group input,
-.eva-inquiry-form-group textarea {
-  width: 100%;
-  padding: 14px 18px;
-  border: 1px solid rgba(157, 78, 221, 0.3);
-  border-radius: 12px;
+.eva-inquiry-form-subtitle,
+.eva-inquiry-contact-subtitle {
   font-size: 1rem;
-  font-family: 'Questrial', sans-serif;
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  transition: border-color 0.3s, background 0.3s;
+  color: #9a9a9a;
+  line-height: 1.65;
+  margin: 0;
 }
 
-.eva-inquiry-form-group input::placeholder,
-.eva-inquiry-form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+.eva-inquiry-contact-subtitle {
+  margin-bottom: 32px;
 }
 
-.eva-inquiry-form-group input:focus,
-.eva-inquiry-form-group textarea:focus {
-  outline: none;
-  border-color: #9d4edd;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.eva-inquiry-form-group textarea {
-  min-height: 140px;
-  resize: vertical;
-}
-
-.eva-inquiry-submit-btn {
-  background: linear-gradient(135deg, #9d4edd 0%, #40b4ff 100%);
-  color: #fff;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  margin-top: 10px;
-  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.4);
-}
-
-.eva-inquiry-submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(157, 78, 221, 0.5);
-}
-
-.eva-inquiry-submit-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.eva-inquiry-success-message {
-  position: relative;
-  padding: 16px 48px 16px 20px;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.4);
-  border-radius: 12px;
-  color: #4ade80;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.eva-inquiry-success-message i {
-  font-size: 1.3rem;
-  flex-shrink: 0;
-}
-
-.eva-inquiry-error-message {
-  padding: 16px 20px;
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  border-radius: 12px;
-  color: #f87171;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.eva-inquiry-error-message i {
-  font-size: 1.3rem;
-  flex-shrink: 0;
-}
-
-.eva-inquiry-close-message {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: none;
-  border: none;
-  color: inherit;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  opacity: 0.8;
-}
-
-.eva-inquiry-close-message:hover {
-  opacity: 1;
+/* Google Form nested in EVA chrome */
+.eva-google-form-shell {
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(64, 180, 255, 0.55), rgba(157, 78, 221, 0.55));
 }
 
 .eva-google-form-container {
   position: relative;
   width: 100%;
-  min-height: 800px;
-  border-radius: 16px;
+  height: 1885px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
+  border-radius: 13px;
+  background: #1a1330;
 }
 
 .eva-google-form {
+  display: block;
   width: 100%;
-  height: 800px;
-  border: none;
-  border-radius: 16px;
-}
-
-.eva-form-fallback {
-  padding: 30px;
-  text-align: center;
-  background: rgba(157, 78, 221, 0.1);
-  border-radius: 12px;
-  margin-top: 20px;
+  height: 1885px;
+  border: 0;
+  background: #fff;
 }
 
 .eva-form-fallback-text {
-  color: #ccc;
-  margin-bottom: 16px;
-  font-size: 1rem;
+  margin: 16px 0 0;
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
 }
 
-.eva-form-link-button {
-  display: inline-block;
-  background: linear-gradient(135deg, #9d4edd 0%, #40b4ff 100%);
-  color: #fff;
-  padding: 12px 32px;
-  border-radius: 8px;
+.eva-inquiry-contact-link {
+  color: #40b4ff;
   text-decoration: none;
-  font-weight: 700;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.4);
+  transition: color 0.3s;
 }
 
-.eva-form-link-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(157, 78, 221, 0.6);
+.eva-inquiry-contact-link:hover {
+  color: #9d4edd;
+  text-decoration: underline;
 }
 
-/* Contact Section */
-.eva-inquiry-contact-section {
+/* Why Choose Us */
+.eva-inquiry-benefits-card {
+  padding: 36px 28px;
+}
+
+.eva-inquiry-benefits-title {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.eva-inquiry-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 16px;
 }
 
-.eva-inquiry-contact-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(157, 78, 221, 0.2);
-  border-radius: 24px;
-  padding: 50px 40px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+.eva-inquiry-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  color: #e8e8e8;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  background: rgba(157, 78, 221, 0.08);
+  border: 1px solid rgba(157, 78, 221, 0.22);
+  box-shadow: 0 0 24px rgba(157, 78, 221, 0.08);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
 }
 
-.eva-inquiry-contact-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #9d4edd;
-  margin-bottom: 12px;
+.eva-inquiry-benefit-item:hover {
+  background: rgba(157, 78, 221, 0.14);
+  border-color: rgba(64, 180, 255, 0.4);
+  transform: translateY(-2px);
 }
 
-.eva-inquiry-contact-subtitle {
-  font-size: 1.1rem;
-  color: #999;
-  margin-bottom: 40px;
-  line-height: 1.6;
+.eva-inquiry-benefit-item i {
+  color: #c084fc;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(157, 78, 221, 0.85));
+}
+
+/* Contact */
+.eva-inquiry-contact-below {
+  margin-top: 28px;
 }
 
 .eva-inquiry-contact-details {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
 }
 
 .eva-inquiry-contact-item {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: flex-start;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(157, 78, 221, 0.16);
 }
 
 .eva-inquiry-contact-icon {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   background: linear-gradient(135deg, #9d4edd 0%, #40b4ff 100%);
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.4);
 }
 
 .eva-inquiry-contact-content {
@@ -428,58 +233,51 @@
 }
 
 .eva-inquiry-contact-label {
-  font-size: 1.1rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #40b4ff;
+  margin: 0 0 8px;
 }
 
 .eva-inquiry-contact-value {
-  font-size: 1rem;
-  color: #ccc;
-  line-height: 1.8;
+  font-size: 0.98rem;
+  color: #cfcfcf;
+  line-height: 1.7;
   margin: 0;
 }
 
-.eva-inquiry-contact-link {
-  color: #9d4edd;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.eva-inquiry-contact-link:hover {
-  color: #40b4ff;
-  text-decoration: underline;
-}
-
 .eva-inquiry-social-section {
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .eva-inquiry-social-title {
-  font-size: 1.2rem;
+  font-size: 0.78rem;
   font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: #fff;
-  margin-bottom: 20px;
+  margin: 0 0 16px;
 }
 
 .eva-inquiry-social-icons {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 
 .eva-inquiry-social-icon {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   transition: all 0.3s;
   text-decoration: none;
   border: 1px solid rgba(157, 78, 221, 0.3);
@@ -487,160 +285,58 @@
 
 .eva-inquiry-social-icon:hover {
   background: linear-gradient(135deg, #9d4edd 0%, #40b4ff 100%);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(157, 78, 221, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(157, 78, 221, 0.35);
 }
 
-/* Benefits Card */
-.eva-inquiry-benefits-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(157, 78, 221, 0.2);
-  border-radius: 24px;
-  padding: 50px 40px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.eva-inquiry-benefits-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.eva-inquiry-benefits-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.eva-inquiry-benefit-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: #ccc;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.eva-inquiry-benefit-item i {
-  color: #9d4edd;
-  font-size: 1.3rem;
-  flex-shrink: 0;
-}
-
-/* Tablet Responsive */
 @media (max-width: 1024px) {
-  .eva-inquiry-nav-container {
-    padding: 0 30px;
-  }
-
-  .eva-inquiry-hero {
-    padding: 80px 30px 60px;
-  }
-
-  .eva-inquiry-hero-logo {
-    width: 200px;
-  }
-
-  .eva-inquiry-hero-title {
-    font-size: 3.5rem;
-  }
-
-  .eva-inquiry-hero-subtitle {
-    font-size: 1.3rem;
-  }
-
   .eva-inquiry-main {
-    padding: 60px 30px;
+    padding: 116px 28px 56px;
   }
 
   .eva-inquiry-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 22px;
   }
 
   .eva-inquiry-form-section,
   .eva-inquiry-contact-card,
   .eva-inquiry-benefits-card {
-    padding: 40px 30px;
+    padding: 28px 24px;
   }
 
-  .eva-inquiry-form-title,
-  .eva-inquiry-contact-title {
-    font-size: 2.2rem;
-  }
-
-  .eva-google-form {
-    height: 700px;
+  .eva-inquiry-contact-details {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
-  .eva-inquiry-nav-container {
-    padding: 0 20px;
-  }
-
-  .eva-inquiry-nav-logo-img {
-    width: 130px;
-    max-height: 42px;
-  }
-
-  .eva-inquiry-brookside-img {
-    width: 70px;
-    max-height: 26px;
-  }
-
-  .eva-inquiry-back-link {
-    font-size: 0.9rem;
-    padding: 6px 12px;
-  }
-
-  .eva-inquiry-hero {
-    padding: 60px 20px 40px;
-  }
-
-  .eva-inquiry-hero-logo {
-    width: 180px;
-  }
-
-  .eva-inquiry-hero-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-
-  .eva-inquiry-hero-subtitle {
-    font-size: 1.1rem;
-  }
-
   .eva-inquiry-main {
-    padding: 40px 20px;
+    padding: 104px 18px 40px;
   }
 
-  .eva-inquiry-form-section,
-  .eva-inquiry-contact-card,
-  .eva-inquiry-benefits-card {
-    padding: 30px 20px;
+  .eva-inquiry-intro {
+    margin-bottom: 36px;
   }
 
-  .eva-inquiry-form-title,
-  .eva-inquiry-contact-title {
-    font-size: 1.8rem;
+  .eva-inquiry-intro-logo {
+    width: 120px;
   }
 
   .eva-inquiry-form-subtitle,
   .eva-inquiry-contact-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
+  .eva-inquiry-form-title,
+  .eva-inquiry-contact-title,
+  .eva-inquiry-benefits-title {
+    font-size: 1.5rem;
+  }
+
+  .eva-google-form-container,
   .eva-google-form {
-    height: 600px;
-    min-height: 600px;
+    height: 1600px;
   }
 
   .eva-inquiry-contact-item {
@@ -648,105 +344,28 @@
     gap: 12px;
   }
 
-  .eva-inquiry-contact-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
-  }
-
-  .eva-inquiry-benefits-title {
-    font-size: 1.6rem;
-  }
-
-  .eva-inquiry-benefit-item {
-    font-size: 1rem;
-  }
-
   .eva-inquiry-social-icons {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
-/* Small Mobile */
 @media (max-width: 480px) {
-  .eva-inquiry-nav-container {
-    padding: 0 15px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .eva-inquiry-nav-logo-img {
-    width: 110px;
-    max-height: 36px;
-  }
-
-  .eva-inquiry-brookside-img {
-    width: 60px;
-    max-height: 22px;
-  }
-
-  .eva-inquiry-nav-right {
-    gap: 12px;
-  }
-
-  .eva-inquiry-back-link {
-    font-size: 0.85rem;
-    padding: 5px 10px;
-  }
-
-  .eva-inquiry-hero {
-    padding: 50px 15px 30px;
-  }
-
-  .eva-inquiry-hero-logo {
-    width: 140px;
-  }
-
-  .eva-inquiry-hero-title {
-    font-size: 2rem;
-  }
-
-  .eva-inquiry-hero-subtitle {
-    font-size: 1rem;
-  }
-
   .eva-inquiry-main {
-    padding: 30px 15px;
+    padding: 96px 14px 32px;
+  }
+
+  .eva-inquiry-intro-logo {
+    width: 108px;
   }
 
   .eva-inquiry-form-section,
   .eva-inquiry-contact-card,
   .eva-inquiry-benefits-card {
-    padding: 25px 15px;
+    padding: 22px 16px;
   }
 
-  .eva-inquiry-form-title,
-  .eva-inquiry-contact-title {
-    font-size: 1.5rem;
-  }
-
+  .eva-google-form-container,
   .eva-google-form {
-    height: 500px;
-    min-height: 500px;
-  }
-
-  .eva-inquiry-contact-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-
-  .eva-inquiry-benefits-title {
-    font-size: 1.4rem;
-  }
-
-  .eva-inquiry-benefit-item {
-    font-size: 0.95rem;
-    gap: 12px;
-  }
-
-  .eva-form-link-button {
-    padding: 10px 24px;
-    font-size: 0.9rem;
+    height: 1500px;
   }
 }

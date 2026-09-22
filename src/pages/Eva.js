@@ -75,8 +75,6 @@ const EVA_EMPLOYEE_IMAGES = [
   { src: "/eva-team-5.jpg", alt: "EVA team member" },
   { src: "/eva-team-6.jpg", alt: "EVA team member" },
   { src: "/eva-team-7.jpg", alt: "EVA team member" },
-  { src: "/eva-team-8.jpg", alt: "EVA team member" },
-  { src: "/eva-team-9.jpg", alt: "EVA team member" },
   { src: "/eva-team-10.jpg", alt: "EVA team member" },
   { src: "/eva-team-11.jpg", alt: "EVA team member" },
 ];
@@ -910,7 +908,7 @@ function Eva() {
               <a href="#clients" onClick={closeEvaMenu}>Clients</a>
               <a href="#course" onClick={closeEvaMenu}>Course</a>
               <a href="#apply" onClick={closeEvaMenu}>Apply</a>
-              <a href="#contact" onClick={closeEvaMenu}>Contact</a>
+              <Link to="/eva/inquiry" onClick={closeEvaMenu}>Contact</Link>
               <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
                 <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
               </a>
@@ -930,7 +928,7 @@ function Eva() {
                 <a href="#clients" onClick={closeEvaMenu}>Clients</a>
                 <a href="#course" onClick={closeEvaMenu}>Course</a>
                 <a href="#apply" onClick={closeEvaMenu}>Apply</a>
-                <a href="#contact" onClick={closeEvaMenu}>Contact</a>
+                <Link to="/eva/inquiry" onClick={closeEvaMenu}>Contact</Link>
                 <a href="https://brooksidemps.com" className="eva-nav-brookside-logo" aria-label="Brookside Manpower Services home" onClick={closeEvaMenu}>
                   <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-logo-small" />
                 </a>
@@ -1176,7 +1174,7 @@ function Eva() {
                 <section className="eva-ceo-section" ref={ceoRef}>
           <div className="eva-ceo-container" data-aos="fade-in">
             <div className="eva-ceo-image">
-              <img src="/eva-ceo.jpeg" alt="CEO Ethel Ann Cabezas" className="eva-ceo-photo" />
+              <img src="/eva-ceo-marc.jpg" alt="CEO Marc Catubay" className="eva-ceo-photo" />
             </div>
             <div className="eva-ceo-content">
               <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
@@ -1187,7 +1185,7 @@ function Eva() {
                 EVA takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA is here to make your work-life balance a reality.
               </p>
               <div className="eva-ceo-signature">
-                <p className="eva-signature-name">ETHEL ANN CABEZAS</p>
+                <p className="eva-signature-name">MARC CATUBAY</p>
                 <p className="eva-signature-title">CEO, EVA</p>
               </div>
             </div>
