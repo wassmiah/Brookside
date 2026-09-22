@@ -200,6 +200,16 @@ function Home() {
               </div>
             </article>
           </div>
+          <div className="commitment-right" data-aos="fade-left">
+            <img
+              src="/ceo.png"
+              alt="Timothy Justin Zeta, Chief Executive Officer"
+              className="commitment-ceo-img"
+              width="400"
+              height="500"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
