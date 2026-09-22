@@ -133,7 +133,6 @@ function Home() {
           loop
           playsInline
           preload="metadata"
-          poster="/about-bms1.png"
           aria-hidden="true"
           tabIndex={-1}
           controls={false}
