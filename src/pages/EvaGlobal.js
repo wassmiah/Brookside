@@ -624,7 +624,7 @@ function EvaGlobal() {
               <img src="/eva-logo.png" alt="EVA Brookside - Executive Virtual Assistant Services" className="eva-logo-hero" />
             </div>
             <h1 className="eva-hero-tagline">
-              Your AI-Fluent Assistant.
+              Your AI{"\u2011"}Fluent Assistant.
             </h1>
             <p className="eva-hero-subtitle">
               Work smarter with trained, AI-fluent virtual assistants backed by Brookside, the #1 Philippines’ premier talent agencies.
@@ -674,7 +674,7 @@ function EvaGlobal() {
           <div className="eva-g-wrap">
             <header className="eva-g-head">
               <p className="eva-signature-title">Why EVA</p>
-              <h2>AI-Fluent Assistants. Smarter Talent. Stronger Business.</h2>
+              <h2>AI{"\u2011"}Fluent Assistants. Smarter Talent. Stronger Business.</h2>
             </header>
             <div className="eva-g-points" id="ai-fluent">
               <article>
@@ -682,7 +682,7 @@ function EvaGlobal() {
                 <p>Accurate talent matching powered by ASEAMETRICS.</p>
               </article>
               <article>
-                <h3>AI-Trained. Human-Led.</h3>
+                <h3>AI{"\u2011"}Trained. Human-Led.</h3>
                 <p>Directly trained and overseen by a dedicated AI trainer.</p>
               </article>
               <article>

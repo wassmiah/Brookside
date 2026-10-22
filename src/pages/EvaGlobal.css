@@ -12,6 +12,19 @@
   filter: none !important;
 }
 
+.eva-page.eva-global,
+.eva-page.eva-global h1,
+.eva-page.eva-global h2,
+.eva-page.eva-global h3,
+.eva-page.eva-global p,
+.eva-page.eva-global li,
+.eva-page.eva-global a {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 body[data-eva-view="global"] .eva-page.eva-global .eva-hero {
   position: relative;
   isolation: isolate;
@@ -525,7 +538,17 @@ body[data-eva-view="global"] .eva-page.eva-global .eva-g-close-inner {
   body[data-eva-view="global"] .eva-page.eva-global .eva-g-close-inner {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: start;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .eva-g-points article,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot h3,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot p,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-g-close h2,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-g-close p {
+    text-align: center;
   }
 
   body[data-eva-view="global"] .eva-page.eva-global .eva-hero-buttons {
