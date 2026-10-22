@@ -21,6 +21,7 @@ import NotFound from './NotFound';
 import Eva from './pages/Eva';
 import EvaInquiry from './pages/EvaInquiry';
 import EvaNavbar from './components/EvaNavbar';
+import { EvaAudienceProvider } from './context/EvaAudienceContext';
 import { NewsList, NewsArticle } from './pages/News';
 import { captureAttribution } from './utils/attribution';
 import './App.css';
@@ -38,6 +39,10 @@ function AppContent() {
     location.pathname === '/eva' ||
     location.pathname.startsWith('/eva/') ||
     location.pathname === '/inquiry' ||
+    location.pathname === '/ph' ||
+    location.pathname === '/global' ||
+    location.pathname === '/eva/ph' ||
+    location.pathname === '/eva/global' ||
     isCeoPage ||
     (onEvaSubdomain && (location.pathname === '/' || location.pathname === ''));
 
@@ -120,12 +125,15 @@ function AppContent() {
         </script>
       </Helmet>
 
+      <EvaAudienceProvider>
       <div className="App">
         {!isEvaPage && <Navbar />}
         {isEvaPage && <EvaNavbar />}
         <main>
           <Routes>
             <Route path="/" element={onEvaSubdomain ? <Eva /> : <Home />} />
+            <Route path="/ph" element={<Eva />} />
+            <Route path="/global" element={<Eva />} />
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/meet-the-team" element={<MeetTheTeam />} />
@@ -139,6 +147,8 @@ function AppContent() {
             <Route path="/admin-dashboard" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
             <Route path="/learn-here" element={<ProtectedRoute><LearnHere /></ProtectedRoute>} />
             <Route path="/eva" element={<Eva />} />
+            <Route path="/eva/ph" element={<Eva />} />
+            <Route path="/eva/global" element={<Eva />} />
             <Route path="/eva/inquiry" element={<EvaInquiry />} />
             <Route path="/inquiry" element={<EvaInquiry />} />
             <Route path="*" element={<NotFound />} />
@@ -147,6 +157,7 @@ function AppContent() {
         {!isEvaPage && <Footer />}
         <ConsentManager />
       </div>
+      </EvaAudienceProvider>
     </>
   );
 }

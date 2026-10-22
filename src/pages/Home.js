@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import AOS from "aos";
@@ -13,32 +13,32 @@ const LOCATIONS = [
     city: "Baguio",
     description: "A highland hub for sourcing and developing talent across Northern Luzon.",
     detail: "Regional operations and candidate engagement.",
-    image: "/baguio.jpg",
+    image: "/media/loc-baguio.webp",
   },
   {
     city: "Clark",
     description: "A Central Luzon base close to a fast-growing business corridor.",
     detail: "Operational staffing and specialized placement support.",
-    image: "/clark.webp",
+    image: "/media/loc-clark.webp",
   },
   {
     city: "Manila",
     description: "Our Metro Manila hub for partner operations and talent deployment.",
     detail: "Headquarters presence serving hospitality and enterprise partners.",
-    image: "/manila.jpg",
+    image: "/media/loc-manila.webp",
   },
   {
     city: "Cebu",
     description: "Our Visayas presence for workforce support and client operations.",
     detail: "Island talent network and growing business partnerships.",
-    image: "/cebu.jpg",
+    image: "/media/loc-cebu.webp",
   },
   {
     city: "Nevada, USA",
     poweredByEva: true,
     description: "International online staffing, powered through EVA.",
     detail: "Remote talent deployment for global partners.",
-    image: "/nevada.jpg",
+    image: "/media/loc-nevada.webp",
   },
 ];
 
@@ -51,9 +51,67 @@ const blockMediaMenu = (e) => {
   return false;
 };
 
+function prefersStillMedia() {
+  if (typeof window === "undefined") return false;
+  const narrow = window.matchMedia("(max-width: 1024px)").matches;
+  const coarsePointer = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const saveData = Boolean(connection && connection.saveData);
+  const slowLink = Boolean(connection && ["slow-2g", "2g"].includes(connection.effectiveType));
+  return narrow || coarsePointer || reduceMotion || saveData || slowLink;
+}
+
+function BackgroundVideo({ src, poster, className }) {
+  const ref = useRef(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (typeof IntersectionObserver === "undefined") {
+      setReady(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "240px 0px" }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      className={className}
+      poster={poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload={ready ? "metadata" : "none"}
+      aria-hidden="true"
+      tabIndex={-1}
+      controls={false}
+      controlsList="nodownload noplaybackrate noremoteplayback"
+      disablePictureInPicture
+      disableRemotePlayback
+      onContextMenu={blockMediaMenu}
+    >
+      {ready ? <source src={src} type="video/mp4" /> : null}
+    </video>
+  );
+}
+
 function Home() {
   const evaHref = getEvaUrl();
-  const teamVideoRef = useRef(null);
+  const [useStillMedia] = useState(prefersStillMedia);
 
   useEffect(() => {
     AOS.init({
@@ -63,12 +121,6 @@ function Home() {
       offset: 100,
       delay: 0,
     });
-
-    const video = teamVideoRef.current;
-    if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      video.pause();
-      video.removeAttribute("autoplay");
-    }
 
     const hash = window.location.hash;
     if (hash) {
@@ -85,7 +137,6 @@ function Home() {
         title="Home"
         description="Brookside matches quality talent to businesses that need the right fit: workforce solutions, specialized professionals, and online staffing through EVA."
         keywords="talent solutions, workforce solutions, staffing solutions, specialized talent, online staffing, Philippines, EVA"
-        ogImage="/logohero.webp"
         ogImageWidth={1200}
         ogImageHeight={630}
         ogImageAlt="Brookside. The Right People. The Right Fit."
@@ -99,10 +150,28 @@ function Home() {
       />
 
       <section className="hero" id="home" aria-label="Hero section">
-        <video autoPlay muted loop playsInline preload="auto" id="heroVideo" aria-hidden="true">
-          <source src="/herobg.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {useStillMedia ? (
+          <img
+            alt=""
+            className="hero-still"
+            width="1400"
+            height="933"
+            fetchPriority="high"
+            decoding="async"
+          />
+        ) : (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            id="heroVideo"
+            aria-hidden="true"
+          >
+            <source src="/herobg.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="hero-overlay">
           <picture>
             <source srcSet="/logohero.webp" type="image/webp" />
@@ -125,24 +194,23 @@ function Home() {
       </section>
 
       <section className="about-new section-partition" id="about" aria-label="About Brookside">
-        <video
-          ref={teamVideoRef}
-          className="about-full-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          tabIndex={-1}
-          controls={false}
-          controlsList="nodownload noplaybackrate noremoteplayback"
-          disablePictureInPicture
-          disableRemotePlayback
-          onContextMenu={blockMediaMenu}
-        >
-          <source src="/brookside-team-vid.mp4" type="video/mp4" />
-        </video>
+        {useStillMedia ? (
+          <img
+            src="/media/about-still.webp"
+            alt=""
+            className="about-full-video"
+            width="1400"
+            height="933"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <BackgroundVideo
+            src="/brookside-team-vid.mp4"
+            poster="/media/about-still.webp"
+            className="about-full-video"
+          />
+        )}
         <div className="about-overlay-copy">
           <div className="about-overlay-top">
             <p className="about-eyebrow">
@@ -170,7 +238,7 @@ function Home() {
 
       <section className="commitment-section section-partition" id="mission" aria-label="Vision, mission, and values">
         <img
-          src="/commitment-bg.png"
+          src="/media/commitment-bg.webp"
           alt=""
           className="commitment-bg-img"
           width="1920"
@@ -201,7 +269,7 @@ function Home() {
           </div>
           <div className="commitment-right" data-aos="fade-left">
             <img
-              src="/ceo.png"
+              src="/media/ceo.webp"
               alt="Timothy Justin Zeta, Chief Executive Officer"
               className="commitment-ceo-img"
               width="400"
@@ -219,7 +287,7 @@ function Home() {
         <p className="section-lead offer-lead">{TALENT_LEAD}</p>
         <div className="offer-grid">
           <article className="offer-card" data-aos="fade-up">
-            <img src="/A7406576.jpg" alt="" className="offer-card-photo" width="1200" height="800" loading="lazy" />
+            <img src="/media/offer-general.webp" alt="" className="offer-card-photo" width="1000" height="667" loading="lazy" decoding="async" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
               <h3>General Manpower</h3>
@@ -227,7 +295,7 @@ function Home() {
             </div>
           </article>
           <article className="offer-card offer-card-featured" data-aos="fade-up" data-aos-delay="80">
-            <img src="/A7404803.JPG" alt="" className="offer-card-photo" width="1200" height="800" loading="lazy" />
+            <img src="/media/offer-online.webp" alt="" className="offer-card-photo" width="1000" height="667" loading="lazy" decoding="async" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
               <h3>Online Staffing</h3>
@@ -240,7 +308,7 @@ function Home() {
             </div>
           </article>
           <article className="offer-card" data-aos="fade-up" data-aos-delay="160">
-            <img src="/A7405688.jpg" alt="" className="offer-card-photo" width="1200" height="800" loading="lazy" />
+            <img src="/media/offer-specialized.webp" alt="" className="offer-card-photo" width="1000" height="667" loading="lazy" decoding="async" />
             <div className="offer-card-shade"></div>
             <div className="offer-card-body">
               <h3>Specialized Talent</h3>
@@ -332,11 +400,15 @@ function Home() {
         <div className="location-grid">
           {LOCATIONS.map((place) => (
             <article className="location-card" key={place.city}>
-              <div
+              <img
+                src={place.image}
+                alt=""
                 className="location-card-photo"
-                style={{ backgroundImage: `url(${place.image})` }}
-                aria-hidden="true"
-              ></div>
+                width="900"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="location-card-inner">
                 <h3>{place.city}</h3>
                 {place.poweredByEva && (

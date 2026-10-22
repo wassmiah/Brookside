@@ -1,0 +1,62 @@
+.site-switch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 16px;
+  min-height: 48px;
+  padding: 10px 16px;
+  background: #10231f;
+  color: #f7f4ee;
+  font-family: "Questrial", "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.site-switch p {
+  margin: 0;
+  max-width: 760px;
+}
+
+.site-switch a,
+.site-switch button {
+  border: 1px solid rgba(247, 244, 238, 0.45);
+  background: transparent;
+  color: #f7f4ee;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-switch a {
+  background: #f7f4ee;
+  color: #10231f;
+  border-color: #f7f4ee;
+}
+
+body.has-site-switch {
+  padding-top: 48px;
+}
+
+body.has-site-switch .eva-nav,
+body.has-site-switch .navbar {
+  top: 48px;
+}
+
+body.has-site-switch .eva-hero {
+  padding-top: 96px;
+}
+
+@media (max-width: 640px) {
+  .site-switch {
+    font-size: 13px;
+    justify-content: flex-start;
+  }
+}

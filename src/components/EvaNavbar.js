@@ -3,9 +3,20 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import "../pages/Eva.css";
 import { getBrooksideUrl, getEvaUrl } from "../utils/siteLinks";
+import BookingCta from "../eva/BookingCta";
+import { useEvaAudience } from "../context/EvaAudienceContext";
 
 function isEvaHomePath(pathname) {
-  return pathname === "/eva" || pathname === "/eva/" || pathname === "/" || pathname === "";
+  return (
+    pathname === "/eva" ||
+    pathname === "/eva/" ||
+    pathname === "/" ||
+    pathname === "" ||
+    pathname === "/ph" ||
+    pathname === "/global" ||
+    pathname === "/eva/ph" ||
+    pathname === "/eva/global"
+  );
 }
 
 function SectionLink({ href, onEvaHome, onClick, children }) {
@@ -23,6 +34,8 @@ function EvaNavbar() {
   const closeEvaMenu = useCallback(() => setMenuOpen(false), []);
   const evaHome = getEvaUrl();
   const brooksideHome = getBrooksideUrl("/");
+  const { audience } = useEvaAudience();
+  const isGlobal = audience !== "ph";
   const onEvaHome = isEvaHomePath(location.pathname);
   const sectionHref = (id) => (onEvaHome ? `#${id}` : `${evaHome}#${id}`);
 
@@ -35,7 +48,7 @@ function EvaNavbar() {
       document.body.classList.add("eva-overlay-open");
       wasOpen.current = true;
       requestAnimationFrame(() => {
-        const firstLink = document.querySelector(".eva-nav-links-overlay a, .eva-nav-links-overlay .eva-nav-brookside-logo");
+        const firstLink = document.querySelector(".eva-nav-links-overlay a");
         firstLink?.focus?.();
       });
     } else {
@@ -56,7 +69,18 @@ function EvaNavbar() {
     }
   }, [menuOpen, closeEvaMenu]);
 
-  const navLinks = (
+  const navLinks = isGlobal ? (
+    <>
+      <SectionLink href={sectionHref("home")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Home</SectionLink>
+      <SectionLink href={sectionHref("about")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Why EVA</SectionLink>
+      <SectionLink href={sectionHref("how-it-works")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>How It Works</SectionLink>
+      <SectionLink href={sectionHref("talent")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Talent</SectionLink>
+      <SectionLink href={sectionHref("elevate")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Pricing</SectionLink>
+      <BookingCta interest="discovery" purpose="discovery" className="eva-nav-cta" onClick={closeEvaMenu}>
+        Book a Call
+      </BookingCta>
+    </>
+  ) : (
     <>
       <SectionLink href={sectionHref("home")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Home</SectionLink>
       <SectionLink href={sectionHref("how-it-works")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>How It Works</SectionLink>

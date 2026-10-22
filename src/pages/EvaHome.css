@@ -1,0 +1,483 @@
+.eva-home {
+  background: #f6f3ee;
+  color: #17211e;
+  font-family: "Questrial", "Segoe UI", sans-serif;
+}
+
+.eva-home * {
+  box-sizing: border-box;
+}
+
+.eva-wrap {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.eva-home section {
+  scroll-margin-top: 108px;
+  padding: 88px 0;
+}
+
+.eva-kicker {
+  margin: 0 0 12px;
+  color: #0f6e6b;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eva-home h2,
+.eva-hero h1 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.eva-home h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  max-width: 16ch;
+}
+
+.eva-lead {
+  max-width: 62ch;
+  margin: 16px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #3d4a46;
+}
+
+.eva-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.eva-btn-primary,
+.eva-btn-light {
+  background: #10231f;
+  color: #f7f4ee;
+}
+
+.eva-btn-light {
+  background: #f7f4ee;
+  color: #10231f;
+}
+
+.eva-btn-secondary {
+  background: transparent;
+  color: #10231f;
+  border-color: #10231f;
+}
+
+.eva-btn:hover {
+  transform: translateY(-1px);
+}
+
+.eva-btn:focus-visible,
+.eva-nav-book:focus-visible {
+  outline: 3px solid #0f6e6b;
+  outline-offset: 3px;
+}
+
+.eva-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 128px 0 72px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(15, 110, 107, 0.16), transparent 28%),
+    #f6f3ee;
+}
+
+.eva-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.eva-hero h1 {
+  font-size: clamp(40px, 5vw, 68px);
+  max-width: 12ch;
+}
+
+.eva-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.eva-hero-figure {
+  margin: 0;
+}
+
+.eva-hero-figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 28px;
+  display: block;
+}
+
+.eva-hero-figure figcaption {
+  margin-top: 12px;
+  color: #3d4a46;
+  font-size: 14px;
+}
+
+.eva-benefit-grid,
+.eva-level-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.eva-benefit-card,
+.eva-level-card,
+.eva-price-card,
+.eva-panel {
+  background: #fff;
+  border: 1px solid rgba(16, 35, 31, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.eva-benefit-card h3,
+.eva-level-card h3,
+.eva-price-card h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.eva-benefit-card p,
+.eva-level-card p,
+.eva-panel p {
+  margin: 0;
+  color: #3d4a46;
+  line-height: 1.55;
+}
+
+.eva-home-alt {
+  background: #fff;
+}
+
+.eva-brookside-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.eva-partner-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eva-partner-grid li {
+  margin: 0;
+  text-align: center;
+}
+
+.eva-partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92px;
+  padding: 12px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(16, 35, 31, 0.08);
+}
+
+.eva-partner-logo.is-dark {
+  background: #17211e;
+}
+
+.eva-partner-logo img {
+  max-width: 100%;
+  max-height: 64px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.eva-partner-grid p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #3d4a46;
+}
+
+.eva-pilot {
+  margin: 28px 0 18px;
+  padding: 28px;
+  border-radius: 24px;
+  background: #10231f;
+  color: #f7f4ee;
+}
+
+.eva-pilot-kicker,
+.eva-pilot-decision {
+  margin: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #d7c4a3;
+}
+
+.eva-pilot-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  margin: 8px 0;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+}
+
+.eva-pilot-price span:last-child {
+  font-size: 0.46em;
+  font-weight: 700;
+}
+
+.eva-pilot-copy,
+.eva-pilot-decision {
+  max-width: 62ch;
+}
+
+.eva-pilot-copy {
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.eva-pilot-decision {
+  margin-bottom: 18px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: 16px;
+  color: #f7f4ee;
+}
+
+.eva-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.eva-price-card.is-featured {
+  background: #10231f;
+  color: #f7f4ee;
+  border-color: #10231f;
+}
+
+.eva-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 8px 0 18px;
+}
+
+.eva-price span {
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.eva-price small {
+  font-size: 16px;
+}
+
+.eva-check-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.eva-check-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.eva-check-list svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: #0f6e6b;
+}
+
+.eva-price-card.is-featured .eva-check-list svg {
+  color: #d7c4a3;
+}
+
+.eva-price-card.is-featured .eva-btn-primary {
+  background: #f7f4ee;
+  color: #10231f;
+}
+
+.eva-price-card .eva-btn {
+  width: 100%;
+}
+
+.eva-price-card {
+  transition: transform 0.2s ease;
+}
+
+.eva-price-card:hover {
+  transform: translateY(-4px);
+}
+
+.eva-consult-actions,
+.eva-final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.eva-final-cta {
+  text-align: center;
+}
+
+.eva-final-cta .eva-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eva-final-cta h2,
+.eva-final-cta .eva-lead {
+  max-width: 20ch;
+}
+
+.eva-final-cta .eva-lead {
+  max-width: 46ch;
+}
+
+.eva-footer {
+  background: #10231f;
+  color: #f7f4ee;
+  padding: 48px 0 32px;
+}
+
+.eva-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 24px;
+}
+
+.eva-footer a {
+  color: #f7f4ee;
+}
+
+.eva-footer h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  max-width: none;
+}
+
+.eva-footer p,
+.eva-footer li {
+  margin: 0 0 8px;
+  line-height: 1.5;
+  color: rgba(247, 244, 238, 0.86);
+}
+
+.eva-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eva-footer-note {
+  margin-top: 28px;
+  font-size: 13px;
+  color: rgba(247, 244, 238, 0.7);
+}
+
+.eva-footer-social {
+  display: flex;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.eva-footer-social a {
+  color: #f7f4ee;
+  font-size: 18px;
+}
+
+.eva-price-card .eva-btn {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .eva-nav-container > .eva-nav-links {
+    display: none;
+  }
+
+  .eva-nav-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 800px) {
+  .eva-hero {
+    min-height: auto;
+    padding-top: 112px;
+  }
+
+  .eva-hero-grid,
+  .eva-benefit-grid,
+  .eva-level-grid,
+  .eva-brookside-layout,
+  .eva-pricing-grid,
+  .eva-footer-grid,
+  .eva-partner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eva-partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .eva-hero-figure img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .eva-home section {
+    padding: 64px 0;
+  }
+
+  .eva-consult-actions .eva-btn,
+  .eva-final-cta .eva-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eva-btn:hover,
+  .eva-price-card:hover {
+    transform: none;
+  }
+
+  .eva-price-card {
+    transition: none;
+  }
+}

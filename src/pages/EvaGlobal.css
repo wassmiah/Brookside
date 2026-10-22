@@ -1,0 +1,553 @@
+.eva-page.eva-global {
+  background: #121018;
+  color: #f6f3ee;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.eva-page.eva-global h1,
+.eva-page.eva-global h2,
+.eva-page.eva-global h3,
+.eva-page.eva-global p {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 24px;
+  background: #07070b;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero #heroVideo {
+  z-index: 0;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-fallback {
+  z-index: -1;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-content {
+  z-index: 1;
+  width: min(920px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-logo-container,
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-buttons {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-tagline {
+  max-width: 14em;
+  margin: 0 auto 18px;
+  color: #fff;
+  font-size: clamp(2.35rem, 4.4vw, 4.15rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-align: center;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45) !important;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-line {
+  display: block;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-subtitle {
+  max-width: 40rem;
+  margin: 0 auto 36px;
+  color: #e6e6e6;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.5;
+  text-align: center;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-cta-primary {
+  background: rgba(0, 0, 0, 0.42);
+  color: #fff;
+  border: 2px solid rgba(192, 132, 252, 0.92);
+  box-shadow:
+    0 0 4px rgba(255, 255, 255, 0.45),
+    0 0 14px rgba(192, 132, 252, 0.85);
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-cta-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  box-shadow: none;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-cta-primary:hover {
+  background: #fff;
+  color: #1a1024;
+  border-color: #fff;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-hero-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.eva-page.eva-global .eva-features,
+.eva-page.eva-global .eva-ceo-section,
+.eva-page.eva-global .eva-services-min,
+.eva-page.eva-global .eva-value-benefits-section,
+.eva-page.eva-global .eva-cta-section,
+.eva-page.eva-global .eva-contact {
+  background: #0c0b10;
+  color: #f6f3ee;
+}
+
+.eva-page.eva-global .eva-features .eva-feature-title,
+.eva-page.eva-global .eva-features .eva-feature-description,
+.eva-page.eva-global .eva-ceo-title,
+.eva-page.eva-global .eva-ceo-text,
+.eva-page.eva-global .eva-signature-name,
+.eva-page.eva-global .eva-signature-title,
+.eva-page.eva-global .eva-services-min-title,
+.eva-page.eva-global .eva-services-min-subtitle,
+.eva-page.eva-global .eva-service-hover h4 {
+  color: #f6f3ee;
+}
+
+.eva-page.eva-global .eva-service-hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: #141218;
+}
+
+.eva-page.eva-global .eva-service-hover p {
+  opacity: 1;
+  transform: none;
+  color: rgba(246, 243, 238, 0.76);
+}
+
+.eva-page.eva-global .eva-partners-section {
+  background: #16131c;
+}
+
+.eva-g-wrap {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.eva-g-talent {
+  padding: 88px 24px 76px;
+  background: #0c0b10;
+}
+
+.eva-g-head {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.eva-page.eva-global .eva-g-head .eva-signature-title {
+  margin: 0 0 15px;
+  color: #d8c7ff !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 0.22em !important;
+}
+
+.eva-g-head h2 {
+  margin: 0;
+  color: #f6f3ee;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.eva-g-head p,
+.eva-g-close p {
+  margin: 0 auto;
+  max-width: 46rem;
+  color: rgba(246, 243, 238, 0.74);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.eva-g-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.eva-g-points article {
+  margin: 0;
+  padding: 28px 22px 26px;
+  border-radius: 18px;
+  background: #121218;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.eva-page.eva-global .eva-g-points h3 {
+  margin: 0 0 12px;
+  color: #c7bcd5;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 10px rgba(131, 85, 223, 0.55) !important;
+}
+
+.eva-g-points p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.eva-page.eva-global .eva-partners-collage {
+  width: min(980px, 100%);
+}
+
+.eva-page.eva-global .eva-partners-collage figcaption h3,
+.eva-page.eva-global .eva-partners-collage figcaption p {
+  color: #f6f3ee;
+}
+
+.eva-page.eva-global .eva-partners-collage figcaption p {
+  color: rgba(246, 243, 238, 0.72);
+}
+
+.eva-page.eva-global .eva-partners-frame {
+  padding: 18px;
+  border-radius: 24px;
+  background: #f3f0ea;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.eva-page.eva-global .eva-partners-carousel-frame {
+  position: relative;
+  width: min(100%, 960px);
+  aspect-ratio: 2048 / 1365;
+  overflow: hidden;
+  background: #1b1526;
+}
+
+.eva-page.eva-global .eva-partners-carousel-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section {
+  padding: 48px 24px 28px;
+  background: #0c0b10;
+  color: #fff;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-section-head {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-section-head h2 {
+  color: #fff;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot,
+body[data-eva-view="global"] .eva-page.eva-global .eva-g-close-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 0 14px;
+  padding: 14px 18px;
+  border-radius: 14px;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-g-close-inner {
+  background: linear-gradient(105deg, #5b21b6 0%, #7c3aed 48%, #c026d3 120%);
+  border: 1px solid rgba(233, 213, 255, 0.55);
+  box-shadow: 0 0 28px rgba(168, 85, 247, 0.55);
+  color: #fff;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot {
+  background: #f6f3ee;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+  color: #1c1724;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-g-close h2 {
+  margin: 0 0 4px;
+  color: #fff;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot h3 {
+  margin: 0 0 4px;
+  color: #1c1724;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-g-close p {
+  margin: 0;
+  max-width: none;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot p {
+  margin: 0;
+  max-width: none;
+  color: #4d4658;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-g-close .eva-btn {
+  flex: 0 0 auto;
+  background: #fff;
+  color: #3b0764;
+  border: 0;
+  box-shadow: none;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot .eva-btn {
+  flex: 0 0 auto;
+  background: #7c3aed;
+  color: #fff;
+  border: 0;
+  box-shadow: none;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 22px 22px 18px;
+  border-radius: 18px;
+  background: #121218;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card.is-featured {
+  background: linear-gradient(180deg, #17141f 0%, #3b1768 100%);
+  border-color: rgba(216, 180, 254, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(168, 85, 247, 0.4),
+    0 0 42px rgba(124, 58, 237, 0.48);
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 10px 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price span {
+  color: #fff;
+  font-size: clamp(2rem, 2.6vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price small {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-check-list {
+  flex: 1;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-check-list svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin-top: 2px;
+  color: #d8b4fe;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card .eva-btn {
+  width: 100%;
+  margin-top: auto;
+  border-radius: 12px;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card .eva-btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card .eva-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-price-card.is-featured .eva-btn-primary {
+  background: #7c3aed;
+  color: #fff;
+  border: 0;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.7);
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-price-note {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-ceo-section {
+  background: #0c0b10 !important;
+  padding: 72px 24px !important;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-ceo-title {
+  color: #f6f3ee !important;
+  font-size: clamp(2rem, 3vw, 2.8rem) !important;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-ceo-text,
+body[data-eva-view="global"] .eva-page.eva-global .eva-signature-name {
+  color: rgba(246, 243, 238, 0.88) !important;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-signature-title {
+  color: #d8c7ff !important;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-ceo-photo {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.eva-g-close {
+  padding: 0 24px 40px;
+  background: #07070b;
+}
+
+body[data-eva-view="global"] .eva-page.eva-global .eva-g-close-inner {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.eva-g-close .eva-btn {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 980px) {
+  .eva-g-points {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pricing-grid,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-g-close-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  body[data-eva-view="global"] .eva-page.eva-global .eva-hero-buttons {
+    flex-direction: column;
+  }
+
+  body[data-eva-view="global"] .eva-page.eva-global .eva-hero-cta {
+    width: min(100%, 320px);
+  }
+}
+
+@media (max-width: 640px) {
+  .eva-g-talent,
+  .eva-g-close,
+  .eva-page.eva-global .eva-pricing-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .eva-g-close .eva-btn,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-pricing-section .eva-pilot .eva-btn,
+  body[data-eva-view="global"] .eva-page.eva-global .eva-g-close .eva-btn {
+    width: 100%;
+  }
+}
