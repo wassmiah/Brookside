@@ -26,6 +26,7 @@ export const EVA_PLANS = [
   {
     id: "part-time",
     name: "Part-Time",
+    hours: "80 hours",
     price: "$1499",
     period: "/ month",
     featured: false,
@@ -39,6 +40,7 @@ export const EVA_PLANS = [
   {
     id: "full-time",
     name: "Full-Time",
+    hours: "160 hours",
     price: "$2799",
     period: "/ month",
     featured: true,

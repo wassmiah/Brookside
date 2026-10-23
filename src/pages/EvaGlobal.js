@@ -22,7 +22,7 @@ const blockMediaMenu = (event) => {
 const EVA_EMPLOYEE_IMAGES = [
   { src: "/A7406397.jpg", alt: "Executive Virtual Assistant", title: "Executive Virtual Assistant", caption: "Administrative support, scheduling and business coordination." },
   { src: "/A7407707.jpg", alt: "Marketing Virtual Assistant", title: "Marketing Virtual Assistant", caption: "Social media, content and digital marketing support." },
-  { src: "/A7405901.jpg", alt: "Finance Virtual Assistant", title: "Finance Virtual Assistant", caption: "Bookkeeping, reporting and financial administration." },
+  { src: "/A7405901.png", alt: "Finance Virtual Assistant", title: "Finance Virtual Assistant", caption: "Bookkeeping, reporting and financial administration." },
   { src: "/A7405770.jpg", alt: "EVA team collaboration", title: "Team collaboration", caption: "Professionals working together across time zones." },
   { src: "/A7406858.jpg", alt: "Remote-work environment", title: "Remote-ready talent", caption: "Dedicated setups for focused virtual support." },
   { src: "/A7407768.jpg", alt: "EVA team member", title: "Professional lifestyle", caption: "Human, international, and ready to represent your brand." },
@@ -621,7 +621,7 @@ function EvaGlobal() {
           <div className="eva-hero-fallback"></div>
           <div className="eva-hero-content">
             <div className="eva-logo-container">
-              <img src="/eva-logo.png" alt="EVA Brookside - Executive Virtual Assistant Services" className="eva-logo-hero" />
+              <img src="/eva-hero.png" alt="EVA Brookside - Executive Virtual Assistant Services" className="eva-logo-hero" />
             </div>
             <h1 className="eva-hero-tagline">
               Your AI{"\u2011"}Fluent Assistant.
@@ -635,81 +635,37 @@ function EvaGlobal() {
           </div>
         </section>
 
-                {/* Features Section */}
-                <section className="eva-features grid-container" id="how-it-works" ref={featuresRef} data-aos="fade-in">
-          <div className="eva-features-inner">
-          <div className="eva-feature-card grid-item">
-            <div className="eva-feature-icon">
-              <img src="/f1.png" alt="Feature 1" className="eva-feature-image" />
-            </div>
-            <h3 className="eva-feature-title">Match-making is key</h3>
-            <p className="eva-feature-description">
-              Find the perfect virtual assistant to elevate your business efficiency and free up your time for what matters most!
-            </p>
-          </div>
-
-          <div className="eva-feature-card grid-item">
-            <div className="eva-feature-icon">
-              <img src="/f2.png" alt="Feature 2" className="eva-feature-image" />
-            </div>
-            <h3 className="eva-feature-title">Skill meets competence</h3>
-            <p className="eva-feature-description">
-              We have unlocked the secret to providing the best virtual assistance for you and your business.
-            </p>
-          </div>
-
-          <div className="eva-feature-card grid-item">
-            <div className="eva-feature-icon">
-              <img src="/f3.png" alt="Feature 3" className="eva-feature-image" />
-            </div>
-            <h3 className="eva-feature-title">Your work-life balance redefined</h3>
-            <p className="eva-feature-description">
-              Time is life's greatest commodity and we help to give you more of it!
-            </p>
-          </div>
-          </div>
-        </section>
-
         <section className="eva-g-talent" id="about" ref={vmvRef}>
           <div className="eva-g-wrap">
             <header className="eva-g-head">
-              <p className="eva-signature-title">Why EVA</p>
-              <h2>AI{"\u2011"}Fluent Assistants. Smarter Talent. Stronger Business.</h2>
+              <p className="eva-why-kicker">Why EVA</p>
+              <h2>Skilled People. Smarter Ways to Work.</h2>
+              <p className="eva-why-lead">
+                EVA combines experienced virtual assistants with practical AI training to help your business work more efficiently, without losing the human touch.
+              </p>
             </header>
+            <div className="eva-g-fluency">
+              <div className="eva-g-fluency-copy">
+                <p className="eva-why-kicker">What is AI Fluency?</p>
+                <h3>AI Skills Applied to Real Work.</h3>
+              </div>
+              <p>
+                Practical AI knowledge applied to research, reporting, communication, and everyday workflows, with human judgment guiding every result.
+              </p>
+            </div>
             <div className="eva-g-points" id="ai-fluent">
               <article>
-                <h3>Talent Matching</h3>
-                <p>Accurate talent matching powered by ASEAMETRICS.</p>
+                <h3>Practical AI Training</h3>
+                <p>Assistants trained to apply AI tools to everyday business tasks.</p>
               </article>
               <article>
-                <h3>AI{"\u2011"}Trained. Human-Led.</h3>
-                <p>Directly trained and overseen by a dedicated AI trainer.</p>
+                <h3>Skills That Fit Your Business</h3>
+                <p>Experienced professionals matched to your needs, with AI fluency that adds value to their existing expertise.</p>
               </article>
               <article>
-                <h3>Backed by Brookside</h3>
-                <p>Services for top brands and companies in the Philippines.</p>
+                <h3>Smarter Workflows</h3>
+                <p>Reduce repetitive work and improve productivity through AI-assisted processes and human oversight.</p>
               </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="eva-ceo-section" ref={ceoRef} id="eva-ceo">
-          <div className="eva-ceo-container" data-aos="fade-in">
-            <div className="eva-ceo-image">
-              <img src="/A7406164.jpg" alt="CEO Marc Catubay" className="eva-ceo-photo" />
-            </div>
-            <div className="eva-ceo-content">
-              <h2 className="eva-ceo-title">Message from <br/> EVA CEO</h2>
-              <p className="eva-ceo-text">
-                In today&apos;s fast-paced world, businesses need agile, reliable, and efficient support. That&apos;s where EVA comes in. Whether it&apos;s administrative tasks, customer service, marketing, or executive assistance, EVA&apos;s team of dedicated professionals is here to ensure that you can focus on what truly matters: growing your business.
-              </p>
-              <p className="eva-ceo-text">
-                EVA takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA is here to make your work-life balance a reality.
-              </p>
-              <div className="eva-ceo-signature">
-                <p className="eva-signature-name">MARC CATUBAY</p>
-                <p className="eva-signature-title">CEO, EVA</p>
-              </div>
             </div>
           </div>
         </section>
@@ -719,13 +675,24 @@ function EvaGlobal() {
           <div className="eva-partners-container">
             <div className="eva-brookside-compact">
               <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-brookside-logo" />
-              <h2>Premium Talent.</h2>
+              <h2>Brookside Premium Talent.</h2>
               <p>
-                EVA is supported by Brookside Manpower Services Inc., the #1 Philippine workforce solutions provider with experience in recruiting, screening, and managing professional talent.
+                EVA is supported by Brookside Manpower Services, the #1 Philippine workforce solutions provider with experience in recruiting, screening, and managing professional talent.
               </p>
               <a href={brooksideHome} className="eva-text-link">Discover Brookside</a>
             </div>
 
+            <div className="eva-training">
+              <p className="eva-training-label">Trained Talents By Brookside</p>
+              <div className="eva-training-grid">
+                <img src="/eva-team-1.jpg" alt="Brookside team with training certificates" />
+                <img src="/A7407654.jpg" alt="Virtual assistants in a Brookside training session" />
+                <img src="/eva-team-4.jpg" alt="Brookside trainer leading a session" />
+                <img src="/eva-team-6.jpg" alt="EVA Brookside virtual training session" />
+              </div>
+            </div>
+
+            <div className="eva-partners-stage">
             <figure className="eva-partners-collage">
               <div className="eva-partners-frame">
                 <img
@@ -809,6 +776,29 @@ function EvaGlobal() {
                   ))}
               </div>
             </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="eva-ceo-section" ref={ceoRef} id="eva-ceo">
+          <div className="eva-ceo-container" data-aos="fade-in">
+            <div className="eva-ceo-image">
+              <img src="/A74061642.png" alt="CEO Marc Catubay" className="eva-ceo-photo" />
+            </div>
+            <div className="eva-ceo-content">
+              <h2 className="eva-ceo-title">Message from <br/> <span className="eva-ceo-mark">EVA CEO</span></h2>
+              <p className="eva-ceo-text">
+                In today&apos;s fast-paced world, businesses need agile, reliable, and efficient support. That&apos;s where EVA comes in. Whether it&apos;s administrative tasks, customer service, marketing, or executive assistance, EVA&apos;s team of dedicated professionals is here to ensure that you can focus on what truly matters: growing your business.
+              </p>
+              <p className="eva-ceo-text">
+                EVA takes pride in offering personalized solutions tailored to your unique needs. Our EVA virtual assistants are not just service providers; they are strategic partners committed to your success. With cutting-edge tools and a passion for excellence, EVA is here to make your work-life balance a reality.
+              </p>
+              <div className="eva-ceo-signature">
+                <p className="eva-signature-name">MARC CATUBAY</p>
+                <p className="eva-signature-title">CEO, EVA</p>
+                <p className="eva-ceo-origin">From <span>Las Vegas, Nevada, USA</span></p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -820,18 +810,15 @@ function EvaGlobal() {
             <PilotBanner pilot={EVA_PILOT} />
             <PricingCards plans={EVA_PLANS} />
             <p className="eva-price-note">*prices may vary depending on your business needs.</p>
-          </div>
-        </section>
-
-        <section className="eva-g-close" id="book">
-          <div className="eva-g-close-inner">
-            <div>
-              <h2>Your Next Great Hire Starts Here.</h2>
-              <p>Need specialized support? Let&apos;s find an AI-fluent assistant who fits the way your business works.</p>
+            <div className="eva-g-close-inner" id="book">
+              <div>
+                <h2>Your Next Great Hire Starts Here.</h2>
+                <p>Need specialized support? Let&apos;s find an AI-fluent assistant who fits the way your business works.</p>
+              </div>
+              <BookingCta interest="discovery" purpose="discovery" className="eva-btn eva-btn-primary">
+                Book a Discovery Call
+              </BookingCta>
             </div>
-            <BookingCta interest="discovery" purpose="discovery" className="eva-btn eva-btn-primary">
-              Book a Discovery Call
-            </BookingCta>
           </div>
         </section>
 
@@ -890,106 +877,40 @@ function EvaGlobal() {
           </div>
         </section>
 
-{/* Combined Value Proposition & Benefits Section */}
-<section className="eva-value-benefits-section" id="clients" ref={valueBenefitsRef}>
-  <div className="eva-value-benefits-container">
-
-    {/* Value Proposition */}
-    <div className="eva-value-proposition" data-aos="fade-up">
-      <div className="eva-value-content">
-        <h2 className="eva-value-heading">
-      More Time.<br />
-          <span className="eva-value-highlight">Better Focus. <br />Smarter Support.</span>
-        </h2>
-
-        <p className="eva-value-description">
-        With EVA, we provide reliable virtual assistants to support your operations in helping your business develop and achieve results without interruption.       
-        </p>
-        <Link
-          to="/eva/inquiry"
-          className="eva-cta-button-primary"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          Start Free Consultation
-        </Link>
-      </div>
-
-      <div className="eva-value-visual" data-aos="fade-left">
-        <div className="eva-value-illustration">
-          <img
-            src="/eva-value.png"
-            alt="EVA Value Illustration"
-            className="value-main-illustration"
-            draggable={false}
-            onContextMenu={(e) => e.preventDefault()}
-            onDragStart={(e) => e.preventDefault()}
-          />
-        </div>
-      </div>
-    </div>
-
-    {/* Benefits Header */}
-    <div className="eva-benefits-header" data-aos="fade-up">
-      <h2 className="eva-benefits-title">What You Gain with <br />EVA</h2>
-      <p className="eva-benefits-subtitle">
-        EVA delivers practical benefits designed to improve how your business runs every day.
-      </p>
-    </div>
-
-    {/* Benefits Grid */}
-    <div className="eva-benefits-showcase">
-      <div className="eva-benefits-grid grid-container">
-
-        <div className="eva-benefit-card grid-item">
-          <div className="eva-benefit-illustration">
-            <IllustrationImage imageNumber={7} size={220} />
-            <div className="eva-benefit-illustration-overlay"></div>
+        <section className="eva-features grid-container" id="how-it-works" ref={featuresRef} data-aos="fade-in">
+          <div className="eva-g-head">
+            <h2>What You Gain with EVA</h2>
           </div>
-          <h3 className="eva-benefit-title">More Time Back</h3>
-          <p className="eva-benefit-description">
-            Delegate repetitive and time-consuming tasks so your schedule stays focused on what truly matters.
-          </p>
-        </div>
-
-        <div className="eva-benefit-card grid-item">
-          <div className="eva-benefit-illustration">
-            <IllustrationImage imageNumber={8} size={220} />
-            <div className="eva-benefit-illustration-overlay"></div>
+          <div className="eva-features-inner">
+            <div className="eva-feature-card grid-item">
+              <div className="eva-feature-icon">
+                <img src="/f1.png" alt="" className="eva-feature-image" />
+              </div>
+              <h3 className="eva-feature-title">Match-making is key</h3>
+              <p className="eva-feature-description">
+                Find the perfect virtual assistant to elevate your business efficiency and free up your time for what matters most!
+              </p>
+            </div>
+            <div className="eva-feature-card grid-item">
+              <div className="eva-feature-icon">
+                <img src="/f2.png" alt="" className="eva-feature-image" />
+              </div>
+              <h3 className="eva-feature-title">Skill meets competence</h3>
+              <p className="eva-feature-description">
+                We have unlocked the secret to providing the best virtual assistance for you and your business.
+              </p>
+            </div>
+            <div className="eva-feature-card grid-item">
+              <div className="eva-feature-icon">
+                <img src="/f3.png" alt="" className="eva-feature-image" />
+              </div>
+              <h3 className="eva-feature-title">Your work-life balance redefined</h3>
+              <p className="eva-feature-description">
+                Time is life&apos;s greatest commodity and we help to give you more of it!
+              </p>
+            </div>
           </div>
-          <h3 className="eva-benefit-title">Reliable Daily Support</h3>
-          <p className="eva-benefit-description">
-            Your assistant works as an extension of your team, aligned with your workflow and priorities.
-          </p>
-        </div>
-
-        <div className="eva-benefit-card grid-item">
-          <div className="eva-benefit-illustration">
-            <IllustrationImage imageNumber={9} size={220} />
-            <div className="eva-benefit-illustration-overlay"></div>
-          </div>
-          <h3 className="eva-benefit-title">Less Operational Stress</h3>
-          <p className="eva-benefit-description">
-            Reduce workload pressure while keeping tasks organized, tracked, and consistently handled.
-          </p>
-        </div>
-
-        <div className="eva-benefit-card grid-item">
-          <div className="eva-benefit-illustration">
-            <IllustrationImage imageNumber={10} size={220} />
-            <div className="eva-benefit-illustration-overlay"></div>
-          </div>
-          <h3 className="eva-benefit-title">Scalable Support</h3>
-          <p className="eva-benefit-description">
-            Easily adjust support as your business grows without restructuring your internal team.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
+        </section>
 
         {/* Contact Section */}
         <section className="eva-contact" id="contact">
