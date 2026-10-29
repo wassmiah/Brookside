@@ -129,7 +129,7 @@ function Navbar() {
           <a href="/#partners" onClick={closeMenu}>Our Partners</a>
           <a href="/#locations" onClick={closeMenu}>Locations</a>
           <a href={evaHref} className="eva-nav-link" onClick={closeMenu} aria-label="Explore EVA">
-            <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
+            <img src="/eva-logo-white-bg-removebg-preview.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
           </a>
         </div>
 
@@ -152,7 +152,7 @@ function Navbar() {
             <a href="/#partners" onClick={closeMenu}>Our Partners</a>
             <a href="/#locations" onClick={closeMenu}>Locations</a>
             <a href={evaHref} className="eva-nav-link" onClick={closeMenu} aria-label="Explore EVA">
-              <img src="/eva-logo-white-bg.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
+              <img src="/eva-logo-white-bg-removebg-preview.png" alt="EVA by Brookside" className="eva-nav-logo-img" />
             </a>
             <a href="/career" className="apply-now-btn" onClick={closeMenu}>Apply Now</a>
           </div>

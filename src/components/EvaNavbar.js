@@ -73,12 +73,15 @@ function EvaNavbar() {
     <>
       <SectionLink href={sectionHref("home")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Home</SectionLink>
       <SectionLink href={sectionHref("about")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Why EVA</SectionLink>
-      <SectionLink href={sectionHref("how-it-works")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>How It Works</SectionLink>
-      <SectionLink href={sectionHref("talent")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Talent</SectionLink>
       <SectionLink href={sectionHref("elevate")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Pricing</SectionLink>
+      <SectionLink href={sectionHref("talent")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>Talent</SectionLink>
+      <SectionLink href={sectionHref("how-it-works")} onEvaHome={onEvaHome} onClick={closeEvaMenu}>How It Works</SectionLink>
       <BookingCta interest="discovery" purpose="discovery" className="eva-nav-cta" onClick={closeEvaMenu}>
         Book a Call
       </BookingCta>
+      <a href={brooksideHome} className="eva-nav-brookside-logo" aria-label="Brookside website" onClick={closeEvaMenu}>
+        <img src="/logo-white.png" alt="Brookside" />
+      </a>
     </>
   ) : (
     <>

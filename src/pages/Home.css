@@ -942,6 +942,25 @@
   padding: 0 0 0 7vw;
 }
 
+.commitment-centered {
+  justify-content: center;
+}
+
+.commitment-centered .commitment-left {
+  flex: 0 1 800px;
+  align-items: center;
+  text-align: center;
+  padding: 72px 24px;
+  margin: 0 auto;
+  transform: none;
+}
+
+.commitment-centered .commitment-desc ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0 auto;
+}
+
 .commitment-block {
   margin-bottom: 38px;
 }
@@ -1501,12 +1520,7 @@ a.brand-cta.brand-cta-eva:hover {
 }
 
 .asia-glow-right {
-  width: 280px;
-  height: 280px;
-  right: 8%;
-  bottom: 8%;
-  border-color: rgba(64, 180, 255, 0.18);
-  border-style: dotted;
+  display: none;
 }
 
 .asia-section .neon-section-title,
@@ -1555,24 +1569,85 @@ a.brand-cta.brand-cta-eva:hover {
 }
 
 .asia-pyramid {
-  max-width: 640px;
+  --asia-card-w: 168px;
+  --asia-card-h: 88px;
+  --asia-top-w: 184px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto minmax(88px, 110px) auto;
+  align-items: stretch;
   width: 100%;
-  margin: 0 auto;
-  padding: 8px 8px 0;
+  max-width: 560px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.asia-triangle {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: center;
+  align-self: stretch;
+  width: calc(100% - var(--asia-card-w));
+  height: calc(100% + 4px);
+  min-height: 88px;
+  margin-top: -2px;
+  margin-bottom: -2px;
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.asia-node {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 1;
+  width: max-content;
+  max-width: 100%;
+  text-align: center;
+}
+
+.asia-node-top {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+}
+
+.asia-node-left {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: start;
+}
+
+.asia-node-right {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: end;
 }
 
 .asia-cap {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+}
+
+.asia-node-top .asia-cap {
+  margin-bottom: 10px;
+}
+
+.asia-node-left .asia-cap,
+.asia-node-right .asia-cap {
+  margin-top: 10px;
 }
 
 .asia-logo-card {
@@ -1581,62 +1656,30 @@ a.brand-cta.brand-cta-eva:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 96px;
-  padding: 12px 16px;
+  width: var(--asia-card-w);
+  height: var(--asia-card-h);
+  padding: 12px 14px;
   box-sizing: border-box;
 }
 
 .asia-logo-card img {
   width: auto;
   max-width: 100%;
-  max-height: 68px;
+  max-height: 58px;
   height: auto;
   object-fit: contain;
 }
 
 .asia-card-brookside {
-  width: 200px;
-  box-shadow: 0 0 0 2px rgba(247, 143, 63, 0.35), 0 0 28px rgba(247, 143, 63, 0.45);
-  z-index: 2;
+  width: var(--asia-top-w);
+  box-shadow: 0 0 0 1px rgba(247, 143, 63, 0.4), 0 0 18px rgba(247, 143, 63, 0.28);
 }
 
 .asia-card-asea,
 .asia-card-hr {
-  width: 180px;
-  box-shadow: 0 0 0 2px rgba(64, 180, 255, 0.45), 0 0 28px rgba(64, 180, 255, 0.4);
-}
-
-.asia-graph {
-  width: 86%;
-  height: 150px;
-  margin: -8px 0 -6px;
-}
-
-.asia-graph svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.asia-base {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px 36px;
-  width: 100%;
-}
-
-.asia-base-item {
-  text-align: center;
-}
-
-.asia-base-item p {
-  margin: 12px 0 0;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.78);
+  width: var(--asia-card-w);
+  height: var(--asia-card-h);
+  box-shadow: 0 0 0 1px rgba(64, 180, 255, 0.4), 0 0 18px rgba(64, 180, 255, 0.24);
 }
 
 .asia-copy {
@@ -1645,11 +1688,15 @@ a.brand-cta.brand-cta-eva:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 650px;
   background: transparent;
   border: none;
   border-radius: 0;
-  padding: 8px 0 0;
+  padding: 0;
   box-shadow: none;
+  transform: none;
 }
 
 .asia-why-us {
@@ -1658,8 +1705,8 @@ a.brand-cta.brand-cta-eva:hover {
 
 .asia-layout {
   display: grid;
-  grid-template-columns: minmax(320px, 1.05fr) minmax(320px, 1fr);
-  gap: 40px 48px;
+  grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
+  gap: 36px 40px;
   align-items: center;
   max-width: 1280px;
   margin: 0 auto;
@@ -1676,13 +1723,17 @@ a.brand-cta.brand-cta-eva:hover {
   margin: 0 0 22px;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(64, 180, 255, 0.28);
+  width: 100%;
+  text-align: left;
 }
 
 .asia-copy p {
   color: rgba(255,255,255,0.82);
   font-size: 1.02rem;
   line-height: 1.75;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
+  max-width: 650px;
+  text-align: left;
 }
 
 .asia-copy p:last-child {
@@ -2020,16 +2071,27 @@ a.brand-cta.brand-cta-eva:hover {
 
   .asia-layout {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
     margin-top: 8px;
   }
 
   .asia-pyramid {
-    padding: 8px 0 0;
+    --asia-card-w: 148px;
+    --asia-card-h: 78px;
+    --asia-top-w: 164px;
+    max-width: 420px;
+    grid-template-rows: auto minmax(72px, 96px) auto;
+    margin-inline: auto;
   }
 
-  .asia-graph {
-    height: 110px;
+  .asia-triangle {
+    width: calc(100% - var(--asia-card-w));
+    min-height: 72px;
+  }
+
+  .asia-cap {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
   }
 
   .asia-why-us {
@@ -2040,9 +2102,11 @@ a.brand-cta.brand-cta-eva:hover {
   }
 
   .asia-copy {
+    max-width: none;
     text-align: left;
     align-items: stretch;
-    padding: 28px 22px;
+    padding: 0;
+    transform: none;
   }
 
   .offer-grid {

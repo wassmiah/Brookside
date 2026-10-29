@@ -246,7 +246,7 @@ function Home() {
           loading="lazy"
         />
         <div className="commitment-overlay"></div>
-        <div className="commitment-content">
+        <div className="commitment-content commitment-centered">
           <div className="commitment-left">
             <article className="commitment-block" id="vision" data-aos="fade-up" data-aos-delay="0">
               <h2 className="commitment-title blue">Vision</h2>
@@ -266,16 +266,6 @@ function Home() {
                 </ul>
               </div>
             </article>
-          </div>
-          <div className="commitment-right" data-aos="fade-left">
-            <img
-              src="/media/ceo.webp"
-              alt="Timothy Justin Zeta, Chief Executive Officer"
-              className="commitment-ceo-img"
-              width="400"
-              height="500"
-              loading="lazy"
-            />
           </div>
         </div>
       </section>
@@ -326,47 +316,49 @@ function Home() {
         </h2>
         <p className="section-lead asia-lead">Science-backed screening, matched to Brookside talent standards before anyone is deployed.</p>
         <div className="asia-layout">
-          <div className="asia-pyramid">
-            <p className="asia-cap">Driven by Quality</p>
-            <div className="asia-logo-card asia-card-brookside">
-              <img src="/logo.png" alt="Brookside" />
-            </div>
-            <div className="asia-graph" aria-hidden="true">
-              <svg viewBox="0 0 400 200" preserveAspectRatio="none">
-                <defs>
-                  <filter id="asiaLineGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="3.5" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-                <g filter="url(#asiaLineGlow)" stroke="#f78f3f" strokeWidth="6" strokeLinecap="round" fill="none">
-                  <line x1="200" y1="8" x2="70" y2="188" />
-                  <line x1="200" y1="8" x2="330" y2="188" />
-                  <line x1="70" y1="188" x2="330" y2="188" />
-                </g>
-                <circle cx="200" cy="8" r="7" fill="#f78f3f" />
-                <circle cx="70" cy="188" r="7" fill="#f78f3f" />
-                <circle cx="330" cy="188" r="7" fill="#f78f3f" />
-              </svg>
-            </div>
-            <div className="asia-base">
-              <div className="asia-base-item">
-                <div className="asia-logo-card asia-card-asea">
-                  <img src="/partners/aseametrics-removebg-preview.png" alt="Aseametrics" />
-                </div>
-                <p>Unmatched Expertise</p>
+          <div className="asia-pyramid" aria-label="Brookside quality triangle">
+            <svg className="asia-triangle" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <filter id="asiaLineGlow" x="-8%" y="-8%" width="116%" height="116%">
+                  <feGaussianBlur stdDeviation="0.9" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              <g filter="url(#asiaLineGlow)" stroke="#f78f3f" strokeWidth="1.25" strokeLinecap="round" fill="none">
+                <line x1="50" y1="0" x2="0" y2="100" />
+                <line x1="50" y1="0" x2="100" y2="100" />
+                <line x1="0" y1="100" x2="100" y2="100" />
+              </g>
+              <circle cx="50" cy="0" r="1.6" fill="#f78f3f" />
+              <circle cx="0" cy="100" r="1.6" fill="#f78f3f" />
+              <circle cx="100" cy="100" r="1.6" fill="#f78f3f" />
+            </svg>
+
+            <div className="asia-node asia-node-top">
+              <p className="asia-cap">Driven by Quality</p>
+              <div className="asia-logo-card asia-card-brookside">
+                <img src="/logo.png" alt="Brookside" />
               </div>
-              <div className="asia-base-item">
-                <div className="asia-logo-card asia-card-hr">
-                  <img src="/partners/hr-avatar.jpg" alt="HR Avatar" />
-                </div>
-                <p>Client Focused</p>
+            </div>
+
+            <div className="asia-node asia-node-left">
+              <div className="asia-logo-card asia-card-asea">
+                <img src="/partners/aseametrics-removebg-preview.png" alt="Aseametrics" />
               </div>
+              <p className="asia-cap">Unmatched Expertise</p>
+            </div>
+
+            <div className="asia-node asia-node-right">
+              <div className="asia-logo-card asia-card-hr">
+                <img src="/partners/hr-avatar.jpg" alt="HR Avatar" />
+              </div>
+              <p className="asia-cap">Client Focused</p>
             </div>
           </div>
+
           <div className="asia-copy">
             <p className="asia-powered">Powered by Aseametrics</p>
             <p>

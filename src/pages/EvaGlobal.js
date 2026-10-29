@@ -207,28 +207,33 @@ function EvaGlobal() {
       }
     });
 
-    // VMV section scroll animations - trigger immediately on mobile
-    const vmvObserverOptions = {
-      threshold: isMobileDevice ? 0.01 : 0.3, // Trigger at 1% visible on mobile (almost immediately), 30% on desktop
-      rootMargin: isMobileDevice ? '200px 0px 0px 0px' : '0px' // Large positive margin on mobile triggers well before element enters viewport
+    // Why EVA scroll transitions — same staggered fade-up pattern as VMV
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const whyObserverOptions = {
+      threshold: isMobileDevice ? 0.01 : 0.2,
+      rootMargin: isMobileDevice ? '200px 0px 0px 0px' : '0px'
     };
 
-    const vmvObserver = new IntersectionObserver((entries) => {
+    const whyObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const vmvItems = entry.target.querySelectorAll('.eva-vmv-item');
-          vmvItems.forEach((item, index) => {
+          const whyItems = entry.target.querySelectorAll('.eva-why-reveal');
+          whyItems.forEach((item, index) => {
+            if (reduceMotion) {
+              item.classList.add('animate-in');
+              return;
+            }
             setTimeout(() => {
               item.classList.add('animate-in');
             }, index * 200);
           });
-          vmvObserver.unobserve(entry.target);
+          whyObserver.unobserve(entry.target);
         }
       });
-    }, vmvObserverOptions);
+    }, whyObserverOptions);
 
     if (vmvRef.current) {
-      vmvObserver.observe(vmvRef.current);
+      whyObserver.observe(vmvRef.current);
     }
 
     // Staggered grid animations - trigger immediately on mobile
@@ -389,7 +394,7 @@ function EvaGlobal() {
         link.removeEventListener('click', handleAnchorClick);
       });
       sectionObserver.disconnect();
-      vmvObserver.disconnect();
+      whyObserver.disconnect();
       gridObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
@@ -635,51 +640,98 @@ function EvaGlobal() {
           </div>
         </section>
 
-        <section className="eva-g-talent" id="about" ref={vmvRef}>
-          <div className="eva-g-wrap">
-            <header className="eva-g-head">
-              <p className="eva-why-kicker">Why EVA</p>
-              <h2>Skilled People. Smarter Ways to Work.</h2>
-              <p className="eva-why-lead">
-                EVA combines experienced virtual assistants with practical AI training to help your business work more efficiently, without losing the human touch.
+        <section className="eva-g-talent eva-why-section" id="about" ref={vmvRef}>
+          <div className="eva-why-atmosphere" aria-hidden="true">
+            <svg className="eva-why-orbits" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="evaWhyStroke" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#A78BFA" stopOpacity="0" />
+                  <stop offset="45%" stopColor="#A78BFA" stopOpacity="0.55" />
+                  <stop offset="100%" stopColor="#93C5FD" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <ellipse cx="720" cy="390" rx="640" ry="220" fill="none" stroke="url(#evaWhyStroke)" strokeWidth="1.25" />
+              <ellipse cx="760" cy="450" rx="500" ry="168" fill="none" stroke="url(#evaWhyStroke)" strokeWidth="1" transform="rotate(-12 760 450)" />
+              <path d="M-60 640 C 240 520, 480 780, 820 650 S 1240 480, 1520 700" fill="none" stroke="url(#evaWhyStroke)" strokeWidth="1.4" />
+              <path d="M-40 160 C 280 280, 620 40, 960 150 S 1280 300, 1520 120" fill="none" stroke="#A78BFA" strokeOpacity="0.28" strokeWidth="1.15" />
+            </svg>
+          </div>
+
+          <div className="eva-why-top">
+            <div className="eva-why-container eva-why-reveal">
+              <p className="eva-why-eyebrow">
+                <span>Why</span>
+                <img src="/eva-nav-logo.png" alt="EVA" className="eva-why-eyebrow-logo" />
+                <span>?</span>
               </p>
-            </header>
-            <div className="eva-g-fluency">
-              <div className="eva-g-fluency-copy">
-                <p className="eva-why-kicker">What is AI Fluency?</p>
-                <h3>AI Skills Applied to Real Work.</h3>
-              </div>
-              <p>
-                Practical AI knowledge applied to research, reporting, communication, and everyday workflows, with human judgment guiding every result.
+              <h2 className="eva-why-headline">
+                <span>AI Fluency</span>
+                <span className="eva-why-and">and</span>
+                <a href={brooksideHome} className="eva-fluency-brookside" aria-label="Brookside website">
+                  <img src="/logo-white.png" alt="Brookside" />
+                </a>
+              </h2>
+              <p className="eva-why-lead">
+                EVA’s advantage is AI fluency and Brookside — assistants trained to use AI in real work, supported by Brookside’s professional talent.
               </p>
             </div>
-            <div className="eva-g-points" id="ai-fluent">
-              <article>
-                <h3>Practical AI Training</h3>
-                <p>Assistants trained to apply AI tools to everyday business tasks.</p>
-              </article>
-              <article>
-                <h3>Skills That Fit Your Business</h3>
-                <p>Experienced professionals matched to your needs, with AI fluency that adds value to their existing expertise.</p>
-              </article>
-              <article>
-                <h3>Smarter Workflows</h3>
-                <p>Reduce repetitive work and improve productivity through AI-assisted processes and human oversight.</p>
-              </article>
+          </div>
+
+          <div className="eva-why-middle">
+            <div className="eva-why-container">
+              <div className="eva-why-reveal">
+                <h3 className="eva-fluency-name">AI Fluency</h3>
+                <p className="eva-why-subhead">AI Skills Applied to Real Work.</p>
+                <p className="eva-fluency-detail">
+                  Practical AI knowledge applied to research, reporting, communication, and everyday workflows, with human judgment guiding every result.
+                </p>
+              </div>
+              <div className="eva-g-points" id="ai-fluent">
+                <article className="eva-why-reveal">
+                  <h2>Practical AI Training</h2>
+                  <p>Assistants trained to apply AI tools to everyday business tasks.</p>
+                </article>
+                <article className="eva-why-reveal">
+                  <h2>Skills That Fit Your Business</h2>
+                  <p>Experienced professionals matched to your needs, with AI fluency that adds value to their existing expertise.</p>
+                </article>
+                <article className="eva-why-reveal">
+                  <h2>Smarter Workflows</h2>
+                  <p>Reduce repetitive work and improve productivity through AI-assisted processes and human oversight.</p>
+                </article>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Partners Section */}
         <section className="eva-partners-section" id="brookside-partnership" ref={partnersRef}>
+          <div className="eva-partners-atmosphere" aria-hidden="true">
+            <svg className="eva-partners-orbits" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="evaPartnersStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#A78BFA" stopOpacity="0.34" />
+                  <stop offset="55%" stopColor="#7DD3FC" stopOpacity="0.12" />
+                  <stop offset="100%" stopColor="#A78BFA" stopOpacity="0.05" />
+                </linearGradient>
+              </defs>
+              <ellipse cx="180" cy="140" rx="420" ry="180" fill="none" stroke="url(#evaPartnersStroke)" strokeWidth="1.2" />
+              <ellipse cx="1260" cy="760" rx="460" ry="210" fill="none" stroke="url(#evaPartnersStroke)" strokeWidth="1.1" />
+              <path d="M-40 520 C 220 420, 420 680, 720 560 S 1180 420, 1520 580" fill="none" stroke="url(#evaPartnersStroke)" strokeWidth="1.15" />
+            </svg>
+          </div>
           <div className="eva-partners-container">
-            <div className="eva-brookside-compact">
+            <div className="eva-brookside-banner">
               <img src="/logo-white.png" alt="Brookside Manpower Services" className="eva-brookside-logo" />
-              <h2>Brookside Premium Talent.</h2>
-              <p>
-                EVA is supported by Brookside Manpower Services, the #1 Philippine workforce solutions provider with experience in recruiting, screening, and managing professional talent.
-              </p>
-              <a href={brooksideHome} className="eva-text-link">Discover Brookside</a>
+            </div>
+            <div className="eva-brookside-compact">
+              <h3>
+                <span className="eva-brookside-eva">EVA</span> is supported by Brookside Manpower Services, the #1 Philippine workforce solutions provider with experience in recruiting, screening, and managing professional talent.
+              </h3>
+              <a href={brooksideHome} className="eva-brookside-cta">
+                Discover Brookside
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
 
             <div className="eva-training">
@@ -693,78 +745,81 @@ function EvaGlobal() {
             </div>
 
             <div className="eva-partners-stage">
-            <figure className="eva-partners-collage">
-              <div className="eva-partners-frame">
-                <img
-                  src="/partners-group.png"
-                  alt="Brands served by Brookside, including West Side City"
-                  width="1494"
-                  height="634"
-                  loading="lazy"
-                />
-              </div>
-              <a href={brooksidePartners} className="eva-text-link">View Brookside partners</a>
-            </figure>
+              <figure className="eva-partners-collage">
+                <div className="eva-partners-frame">
+                  <img
+                    src="/partners-group.png"
+                    alt="Brands served by Brookside, including West Side City"
+                    width="1494"
+                    height="634"
+                    loading="lazy"
+                  />
+                </div>
+                <a href={brooksidePartners} className="eva-partners-view-link">
+                  View Brookside partners
+                  <span aria-hidden="true">→</span>
+                </a>
+              </figure>
 
-            <div className="eva-partners-carousel-wrap">
-              <div className="eva-partners-carousel">
-                <button
-                  type="button"
-                  className="eva-partners-carousel-nav eva-partners-carousel-nav-prev"
-                  onClick={showPrevEmployee}
-                  aria-label="Previous team image"
-                >
-                  ‹
-                </button>
-                <motion.div
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  style={{ x: dragX }}
-                  animate={{ translateX: `-${carouselIndex * 100}%` }}
-                  transition={CAROUSEL_SPRING_OPTIONS}
-                  onDragEnd={onEmployeeDragEnd}
-                  className="eva-partners-carousel-track"
-                >
-                  {EVA_EMPLOYEE_IMAGES.map((img, idx) => (
-                    <motion.div
-                      key={idx}
-                      className="eva-partners-carousel-slide"
-                      animate={{ scale: 1 }}
-                      transition={CAROUSEL_SPRING_OPTIONS}
-                    >
-                      <div className="eva-partners-carousel-frame">
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          className="eva-partners-carousel-img"
-                          onError={(e) => {
-                            e.target.style.display = "none";
-                            const slide = e.target.closest(".eva-partners-carousel-slide");
-                            if (slide) slide.classList.add("eva-partners-slide-fallback");
-                          }}
-                        />
-                      </div>
-                      {img.title && (
-                        <div className="eva-va-caption">
-                          <strong>{img.title}</strong>
-                          <span>{img.caption}</span>
+              <div className="eva-partners-carousel-wrap">
+                <div className="eva-partners-carousel">
+                  <button
+                    type="button"
+                    className="eva-partners-carousel-nav eva-partners-carousel-nav-prev"
+                    onClick={showPrevEmployee}
+                    aria-label="Previous team image"
+                  >
+                    ‹
+                  </button>
+                  <motion.div
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    style={{ x: dragX }}
+                    animate={{ translateX: `-${carouselIndex * 100}%` }}
+                    transition={CAROUSEL_SPRING_OPTIONS}
+                    onDragEnd={onEmployeeDragEnd}
+                    className="eva-partners-carousel-track"
+                  >
+                    {EVA_EMPLOYEE_IMAGES.map((img, idx) => (
+                      <motion.div
+                        key={idx}
+                        className="eva-partners-carousel-slide"
+                        animate={{ scale: 1 }}
+                        transition={CAROUSEL_SPRING_OPTIONS}
+                      >
+                        <div className="eva-partners-carousel-frame">
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="eva-partners-carousel-img"
+                            onError={(e) => {
+                              e.target.style.display = "none";
+                              const slide = e.target.closest(".eva-partners-carousel-slide");
+                              if (slide) slide.classList.add("eva-partners-slide-fallback");
+                            }}
+                          />
                         </div>
-                      )}
-                    </motion.div>
-                  ))}
-                </motion.div>
-                <button
-                  type="button"
-                  className="eva-partners-carousel-nav eva-partners-carousel-nav-next"
-                  onClick={showNextEmployee}
-                  aria-label="Next team image"
-                >
-                  ›
-                </button>
-                <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-left" />
-                <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-right" />
-              </div>
-              <div className="eva-partners-carousel-dots">
+                        {img.title && (
+                          <div className="eva-va-caption">
+                            <strong>{img.title}</strong>
+                            <span>{img.caption}</span>
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                  <button
+                    type="button"
+                    className="eva-partners-carousel-nav eva-partners-carousel-nav-next"
+                    onClick={showNextEmployee}
+                    aria-label="Next team image"
+                  >
+                    ›
+                  </button>
+                  <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-left" />
+                  <div className="eva-partners-carousel-gradient-edge eva-partners-carousel-gradient-right" />
+                </div>
+                <div className="eva-partners-carousel-dots">
                   {EVA_EMPLOYEE_IMAGES.map((_, idx) => (
                     <button
                       key={idx}
@@ -774,14 +829,14 @@ function EvaGlobal() {
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </section>
 
         <section className="eva-ceo-section" ref={ceoRef} id="eva-ceo">
-          <div className="eva-ceo-container" data-aos="fade-in">
+          <div className="eva-ceo-container">
             <div className="eva-ceo-image">
               <img src="/A74061642.png" alt="CEO Marc Catubay" className="eva-ceo-photo" />
             </div>
@@ -877,7 +932,7 @@ function EvaGlobal() {
           </div>
         </section>
 
-        <section className="eva-features grid-container" id="how-it-works" ref={featuresRef} data-aos="fade-in">
+        <section className="eva-features grid-container" id="how-it-works" ref={featuresRef}>
           <div className="eva-g-head">
             <h2>What You Gain with EVA</h2>
           </div>
@@ -912,31 +967,74 @@ function EvaGlobal() {
           </div>
         </section>
 
+        <section className="eva-value-benefits-section eva-more-time" id="clients" ref={valueBenefitsRef}>
+          <div className="eva-value-benefits-container">
+            <div className="eva-value-proposition">
+              <div className="eva-value-content">
+                <h2 className="eva-value-heading">
+                  More Time.<br />
+                  <span className="eva-value-highlight">Better Focus. <br />Smarter Support.</span>
+                </h2>
+                <p className="eva-value-description">
+                  With EVA, we provide reliable virtual assistants to support your operations in helping your business develop and achieve results without interruption.
+                </p>
+                <Link to={getEvaUrl("/inquiry")} className="eva-cta-button-primary">
+                  Start Free Consultation
+                </Link>
+              </div>
+              <div className="eva-value-visual">
+                <div className="eva-value-illustration">
+                  <img
+                    src="/eva-value.png"
+                    alt="EVA virtual assistants at work"
+                    className="value-main-illustration"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
+                    onDragStart={(e) => e.preventDefault()}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section className="eva-contact" id="contact">
-          <div className="eva-contact-content">
-            <h2 className="eva-contact-title">Contact Us</h2>
-            <div className="eva-contact-info">
-              <div className="eva-contact-item">
-                <h3 className="eva-contact-label">Office</h3>
+          <h2 className="eva-contact-title">Contact Us</h2>
+          <div className="eva-contact-offices">
+            <article className="eva-contact-office">
+              <img src="/manila.jpg" alt="" className="eva-contact-photo" />
+              <div className="eva-contact-panel">
+                <h3 className="eva-contact-region">Philippines</h3>
+                <p className="eva-contact-label">Paranaque Office</p>
                 <p className="eva-contact-value">
-                  Unit 704C, Tower 3, PITX Building, 1 Kennedy Road,<br />
-                  Barangay Tambo, Paranaque City, 1701 Metro Manila
+                  <a href="tel:+63270019493" className="eva-contact-link">(02) 7001 9493</a>
                 </p>
-              </div>
-              <div className="eva-contact-item">
-                <h3 className="eva-contact-label">Phone</h3>
-                <p className="eva-contact-value">(02) 7001 9493 | +63 917 157 8874</p>
-              </div>
-              <div className="eva-contact-item">
-                <h3 className="eva-contact-label">Email</h3>
                 <p className="eva-contact-value">
-                  <a href={`mailto:${`eva@brooksidemanpower.com`}`} className="eva-contact-link" aria-label="Contact EVA Brookside at eva@brooksidemanpower.com">
-                    {['eva', '@', 'brooksidemanpower.com'].join('')}
+                  <a href="tel:+639171578874" className="eva-contact-link">+63 917 157 8874</a>
+                </p>
+                <p className="eva-contact-value">
+                  <a href="mailto:executiveoffice@brooksidemanpower.com" className="eva-contact-link">
+                    executiveoffice@brooksidemanpower.com
                   </a>
                 </p>
               </div>
-            </div>
+            </article>
+            <article className="eva-contact-office">
+              <img src="/nevada.jpg" alt="" className="eva-contact-photo" />
+              <div className="eva-contact-panel">
+                <h3 className="eva-contact-region">USA</h3>
+                <p className="eva-contact-label">Las Vegas Office</p>
+                <p className="eva-contact-value">
+                  <a href="tel:+15629395900" className="eva-contact-link">+1 (562) 939-5900</a>
+                </p>
+                <p className="eva-contact-value">
+                  <a href="mailto:eva@brooksidemanpower.com" className="eva-contact-link">
+                    eva@brooksidemanpower.com
+                  </a>
+                </p>
+              </div>
+            </article>
           </div>
         </section>
 

@@ -6003,7 +6003,20 @@ body[data-eva-view="global"] .eva-nav-container > a:first-child:hover .eva-logo-
   font-weight: 550;
   color: rgba(255, 255, 255, 0.86);
 }body[data-eva-view="global"] .eva-nav-links a:hover {
-  color: #fff;
+  color: #d8b4fe;
+}body[data-eva-view="global"] .eva-nav-brookside-logo img {
+  width: auto;
+  height: 30px;
+  max-height: none;
+  filter: none;
+  transition: filter 250ms ease;
+}body[data-eva-view="global"] .eva-nav-brookside-logo:hover img,
+body[data-eva-view="global"] .eva-nav-brookside-logo:focus-visible img {
+  filter:
+    drop-shadow(0 0 2px rgba(167, 139, 250, 0.95))
+    drop-shadow(0 0 8px rgba(167, 139, 250, 0.75))
+    drop-shadow(0 0 16px rgba(147, 197, 253, 0.35));
+  transform: none;
 }body[data-eva-view="global"] .eva-nav-links a.eva-nav-cta,
 body[data-eva-view="global"] .eva-nav-links-overlay a.eva-nav-cta {
   color: #1a1024;
