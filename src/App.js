@@ -33,35 +33,47 @@ function AppContent() {
   const location = useLocation();
   const navigate = useNavigate();
   const onEvaSubdomain = isEvaSubdomain();
-  const isCeoPage =
-    location.pathname === "/the-ceo" || location.pathname === "/eva/the-ceo";
+  // Routes are case-insensitive; keep navbar/layout checks in sync
+  const path = location.pathname.toLowerCase();
+  const isCeoPage = path === '/the-ceo' || path === '/eva/the-ceo';
   const isEvaPage =
-    location.pathname === '/eva' ||
-    location.pathname.startsWith('/eva/') ||
-    location.pathname === '/inquiry' ||
-    location.pathname === '/ph' ||
-    location.pathname === '/global' ||
-    location.pathname === '/eva/ph' ||
-    location.pathname === '/eva/global' ||
+    path === '/eva' ||
+    path.startsWith('/eva/') ||
+    path === '/inquiry' ||
+    path === '/ph' ||
+    path === '/global' ||
+    path === '/eva/ph' ||
+    path === '/eva/global' ||
     isCeoPage ||
-    (onEvaSubdomain && (location.pathname === '/' || location.pathname === ''));
+    (onEvaSubdomain && (path === '/' || path === ''));
 
   // On eva subdomain: redirect /eva and /eva/inquiry to clean URLs
   useEffect(() => {
+    const normalized = location.pathname.toLowerCase();
     if (onEvaSubdomain) {
-      if (location.pathname === '/eva') {
+      if (normalized === '/eva') {
         navigate('/', { replace: true });
-      } else if (location.pathname === '/eva/inquiry') {
+      } else if (normalized === '/eva/inquiry') {
         navigate('/inquiry', { replace: true });
-      } else if (location.pathname === '/the-ceo' || location.pathname === '/eva/the-ceo') {
+      } else if (normalized === '/the-ceo' || normalized === '/eva/the-ceo') {
         navigate('/', { replace: true });
       }
       return;
     }
-    if (location.pathname === '/the-ceo' || location.pathname === '/eva/the-ceo') {
+    if (normalized === '/the-ceo' || normalized === '/eva/the-ceo') {
       navigate('/eva', { replace: true });
     }
-  }, [location.pathname, navigate, onEvaSubdomain]);
+    // Canonicalize EVA path casing so /EVA → /eva
+    if (location.pathname !== normalized && (
+      normalized === '/eva' ||
+      normalized.startsWith('/eva/') ||
+      normalized === '/inquiry' ||
+      normalized === '/ph' ||
+      normalized === '/global'
+    )) {
+      navigate(`${normalized}${location.search}${location.hash}`, { replace: true });
+    }
+  }, [location.pathname, location.search, location.hash, navigate, onEvaSubdomain]);
 
   useEffect(() => {
     captureAttribution(location.search);
