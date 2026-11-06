@@ -151,7 +151,7 @@ function EvaInquiry() {
                       src={EVA_INQUIRY_FORM_EMBED_URL}
                       title="EVA Client Inquiry Form"
                       width="640"
-                      height="1885"
+                      height="1180"
                       loading="lazy"
                       onLoad={handleInquiryFormLoad}
                     >
@@ -167,26 +167,67 @@ function EvaInquiry() {
                 </p>
               </div>
 
-              <aside className="eva-inquiry-benefits-card">
-                <h2 className="eva-inquiry-benefits-title">Why Choose EVA?</h2>
-                <ul className="eva-inquiry-benefits-list">
-                  <li className="eva-inquiry-benefit-item">
-                    <i className="fas fa-check-circle" aria-hidden="true"></i>
-                    <span>98% client retention rate</span>
-                  </li>
-                  <li className="eva-inquiry-benefit-item">
-                    <i className="fas fa-check-circle" aria-hidden="true"></i>
-                    <span>Fast hiring in 21 days average</span>
-                  </li>
-                  <li className="eva-inquiry-benefit-item">
-                    <i className="fas fa-check-circle" aria-hidden="true"></i>
-                    <span>Save up to 70% on staffing costs</span>
-                  </li>
-                  <li className="eva-inquiry-benefit-item">
-                    <i className="fas fa-check-circle" aria-hidden="true"></i>
-                    <span>Elite virtual assistants, vetted and trained</span>
-                  </li>
-                </ul>
+              <aside className="eva-inquiry-side">
+                <div className="eva-inquiry-benefits-card">
+                  <h2 className="eva-inquiry-benefits-title">Why Choose EVA?</h2>
+                  <ul className="eva-inquiry-benefits-list">
+                    <li className="eva-inquiry-benefit-item">
+                      <i className="fas fa-check-circle" aria-hidden="true"></i>
+                      <span>98% client retention rate</span>
+                    </li>
+                    <li className="eva-inquiry-benefit-item">
+                      <i className="fas fa-check-circle" aria-hidden="true"></i>
+                      <span>Fast hiring in 21 days average</span>
+                    </li>
+                    <li className="eva-inquiry-benefit-item">
+                      <i className="fas fa-check-circle" aria-hidden="true"></i>
+                      <span>Save up to 70% on staffing costs</span>
+                    </li>
+                    <li className="eva-inquiry-benefit-item">
+                      <i className="fas fa-check-circle" aria-hidden="true"></i>
+                      <span>Elite virtual assistants, vetted and trained</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="eva-inquiry-offices">
+                  <h2 className="eva-inquiry-offices-title">Contact Us</h2>
+                  <div className="eva-inquiry-offices-grid">
+                    <article className="eva-inquiry-office">
+                      <img src="/manila.jpg" alt="" className="eva-inquiry-office-photo" />
+                      <div className="eva-inquiry-office-panel">
+                        <h3 className="eva-inquiry-office-region">Philippines</h3>
+                        <p className="eva-inquiry-office-label">Paranaque Office</p>
+                        <p className="eva-inquiry-office-value">
+                          <a href="tel:+63270019493" className="eva-inquiry-contact-link">(02) 7001 9493</a>
+                        </p>
+                        <p className="eva-inquiry-office-value">
+                          <a href="tel:+639171578874" className="eva-inquiry-contact-link">+63 917 157 8874</a>
+                        </p>
+                        <p className="eva-inquiry-office-value">
+                          <a href="mailto:executiveoffice@brooksidemanpower.com" className="eva-inquiry-contact-link">
+                            executiveoffice@brooksidemanpower.com
+                          </a>
+                        </p>
+                      </div>
+                    </article>
+                    <article className="eva-inquiry-office">
+                      <img src="/nevada.jpg" alt="" className="eva-inquiry-office-photo" />
+                      <div className="eva-inquiry-office-panel">
+                        <h3 className="eva-inquiry-office-region">USA</h3>
+                        <p className="eva-inquiry-office-label">Las Vegas Office</p>
+                        <p className="eva-inquiry-office-value">
+                          <a href="tel:+15629395900" className="eva-inquiry-contact-link">+1 (562) 939-5900</a>
+                        </p>
+                        <p className="eva-inquiry-office-value">
+                          <a href="mailto:eva@brooksidemanpower.com" className="eva-inquiry-contact-link">
+                            eva@brooksidemanpower.com
+                          </a>
+                        </p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
               </aside>
             </div>
 

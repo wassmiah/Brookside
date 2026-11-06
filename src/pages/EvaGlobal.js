@@ -917,10 +917,10 @@ function EvaGlobal() {
             <div className="eva-training">
               <p className="eva-training-label eva-reveal">Trained Talents By Brookside</p>
               <div className="eva-training-grid">
-                <img src="/eva-team-1.jpg" alt="Brookside team with training certificates" className="eva-reveal" />
-                <img src="/A7407654.jpg" alt="Virtual assistants in a Brookside training session" className="eva-reveal" />
-                <img src="/eva-team-4.jpg" alt="Brookside trainer leading a session" className="eva-reveal" />
-                <img src="/eva-team-6.jpg" alt="EVA Brookside virtual training session" className="eva-reveal" />
+                <img src="/eva-team-1.jpg" alt="Brookside team with training certificates" className="eva-reveal" width="1600" height="450" />
+                <img src="/A7407654.jpg" alt="Virtual assistants in a Brookside training session" className="eva-reveal" width="1600" height="450" />
+                <img src="/eva-team-4.jpg" alt="Brookside trainer leading a session" className="eva-reveal" width="1600" height="450" />
+                <img src="/eva-team-6.jpg" alt="EVA Brookside virtual training session" className="eva-reveal" width="1600" height="450" />
               </div>
             </div>
 
